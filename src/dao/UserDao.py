@@ -1,10 +1,10 @@
 from jaydebeapi import Error
 from typing import List
-from src.modelo.vo.UserVO import UserVO
-from src.modelo.conexion.Conexion import Conexion
-from src.modelo.dao.UserInterface import UserInterface
+from src.vo.userVO import UserVO 
+from src.conexion.conexion2JDBC import Conexion
+from src.dao.UserInterface import UserInterface
 
-class UserDai(UserInterface):
+class UserDao(UserInterface):
     def __init__(self, conexion=None):
         self.conexion=conexion
 

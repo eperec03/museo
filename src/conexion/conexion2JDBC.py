@@ -9,17 +9,6 @@
 # CARPETA LIB
 # Dentro del proyecto, se hace una carpeta lib y se descomprime el zip anterior
 # Para asegurarse de que está todo correcto, el icono del archivo mysql-connector-j-8.3.0.jar no puede ser blanco. 
-# INSTALAR JDK 
-# conda install conda-forge::openjdk -> si se usa anaconda. Recordar instalarlo en el sistema operativo que useis. Windows: https://www.oracle.com/java/technologies/downloads/#jdk22-windows
-# INSTALAR EL JRE
-# conda install cyclus::java-jre -> si se usa anaconda. 
-# INSTALAR JayDeBeApi
-# pip install JayDeBeApi
-# DESCARGAR JAR del conector de la base de datos (puede ser MYSQL)
-# https://dev.mysql.com/downloads/connector/j/ -> plataforma independiente para windows y en zip
-# CARPETA LIB
-# Dentro del proyecto, se hace una carpeta lib y se descomprime el zip anterior
-# Para asegurarse de que está todo correcto, el icono del archivo mysql-connector-j-8.3.0.jar no puede ser blanco. 
 import jaydebeapi
 
 class Conexion:

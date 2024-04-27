@@ -1,10 +1,6 @@
-
-
-
-
+#seria userVO???????????
 class UsuarioEspecial:
-    def __init__(self, DNI, NombreCompleto, Telefono, Email,
-                 TarjetaBancaria, Contraseña, FechaRegistro)
+    def __init__(self, DNI, NombreCompleto, Telefono, Email, TarjetaBancaria, Contraseña, FechaRegistro):
         self.DNI = DNI
         self.NombreCompleto = NombreCompleto
         self.Telefono = Telefono
