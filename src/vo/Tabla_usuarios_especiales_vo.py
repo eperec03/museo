@@ -1,14 +1,10 @@
-import mysql.connector 
-import datetime
-# config = {'user': 'bduser', 'passwd' : 'bdpass', 'host':
-# 'localhost', 'database': 'DataCars'}
-# cnx = mysql.connector.connect(**config)
-# cursor = cnx.cursor()
-# # query = "INSERT INTO Pets(id, name, weight) VALUES ('GA111','Willow', 10.2)"
-# # cursor.execute(query)
-# cnx.commit() 
+
+
+
+
 class UsuarioEspecial:
-    def __init__(self, DNI, NombreCompleto, Telefono, Email,TarjetaBancaria, Contraseña, FechaRegistro):
+    def __init__(self, DNI, NombreCompleto, Telefono, Email,
+                 TarjetaBancaria, Contraseña, FechaRegistro)
         self.DNI = DNI
         self.NombreCompleto = NombreCompleto
         self.Telefono = Telefono
@@ -17,10 +13,6 @@ class UsuarioEspecial:
         self.Contraseña = Contraseña
         self.FechaRegistro = FechaRegistro
 
-    def connect_to_db(self):
-        config = {'user': self.user, 'passwd' : self.passwd, 'host':self.host, 'database': self.database}
-        return mysql.connector.connect(**config)
-    
     def getDNI(self):
         return self.DNI
 
