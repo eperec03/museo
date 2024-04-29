@@ -1,11 +1,13 @@
-#seria userVO???????????
-class UsuarioEspecial:
-    def __init__(self, DNI, NombreCompleto, Telefono, Email, TarjetaBancaria, Contraseña, FechaRegistro):
+class Usuario:
+    def __init__(self, DNI, NombreCompleto, Telefono, Email,
+                 Titular, Cvv, Caducidad, Contraseña, FechaRegistro):
         self.DNI = DNI
         self.NombreCompleto = NombreCompleto
         self.Telefono = Telefono
         self.Email = Email
-        self.TarjetaBancaria = TarjetaBancaria
+        self.Titular = Titular
+        self.Cvv = Cvv
+        self.Caducidad = Caducidad
         self.Contraseña = Contraseña
         self.FechaRegistro = FechaRegistro
 
@@ -33,11 +35,23 @@ class UsuarioEspecial:
     def setEmail(self, Email):
         self.Email = Email
 
-    def getTarjetaBancaria(self):
-        return self.TarjetaBancaria
+    def getTitular(self):
+        return self.Titular
 
-    def setTarjetaBancaria(self, TarjetaBancaria):
-        self.TarjetaBancaria = TarjetaBancaria
+    def setTitular(self, Titular):
+        self.Titular = Titular
+
+    def getCvv(self):
+        return self.Cvv
+
+    def setCvv(self, Cvv):
+        self.Cvv = Cvv
+
+    def getCaducidad(self):
+        return self.Caducidad
+
+    def setCaducidad(self, Caducidad):
+        self.Caducidad = Caducidad
 
     def getContraseña(self):
         return self.Contraseña

@@ -7,7 +7,7 @@ class ConexionMSQL:
 
     # Especifica los detalles de la conexión
     host = 'localhost'
-    database = 'museo'
+    database = 'museoo'
     user = 'root'
     password = 'changeme'
 
