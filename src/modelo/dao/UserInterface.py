@@ -1,34 +1,22 @@
-import mysql.connector
+from typing import List
+from abc import ABC, abstractmethod
+from vo.UserVO import UserVO
 
-def obtener_ubicacion_basededatos(host, usuario, contraseña, base_de_datos):
-    try:
-        # Conectar a la base de datos MySQL
-        conexion = mysql.connector.connect(
-            host=host,
-            user=usuario,
-            password=contraseña,
-            database=base_de_datos
-        )
-
-        # Obtener la ubicación de la base de datos
-        cursor = conexion.cursor()
-        cursor.execute("SELECT @@datadir;")
-        ubicacion = cursor.fetchone()[0]
-        
-        print(f"La ubicación de la base de datos '{base_de_datos}' es: {ubicacion}")
-
-    except mysql.connector.Error as error:
-        print(f"Error al conectar con la base de datos: {error}")
-
-    finally:
-        if conexion:
-            conexion.close()
-
-# Configuración de la conexión a MySQL
-host = 'localhost'
-usuario = 'root'
-contraseña = 'changeme'
-base_de_datos = 'museo'
-
-# Llamar a la función para obtener la ubicación de la base de datos
-obtener_ubicacion_basededatos(host, usuario, contraseña, base_de_datos)
+""" La interface permite acceder a distintos tipos de fuentes de datos. """
+class UserInterface(ABC):
+    @abstractmethod
+    def getUsuarios(self) -> List[UserVO]:
+        """
+        Recupera todos los usuarios de la base de datos.        
+        Devuelve: List[UserDTO]: Una lista de objetos UserDTO.
+        """
+        raise NotImplementedError("Método getUsuarios no implementado")
+    
+    @abstractmethod
+    def insertUsuario(self, usuarios: UserVO):
+        """
+        Inserta un nuevo usuario en la base de datos.
+        Parametros requeridos: El objeto UserVO a insertar.
+        Devuelve: int: 1 si fue exitoso
+        """
+        raise NotImplementedError("Método insertUsuario no implementado")

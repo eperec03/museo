@@ -1,8 +1,8 @@
-from src.conexion.conexion2JDBC import Conexion
-from src.dao.UserDao import UserDao
-from src.vo.userVO import UserVO #-- aun no está este script
 import sys
-sys.path.append(r'C:\Users\el resto del path donde este lo de practica2 o patron dao, como se llame')
+sys.path.append(r'C:\Users\eripe\OneDrive\Documentos\ERI ULE\2º\SEGUNDO CUATRI\IS\PROYECTO\src\modelo')
+from conexion.conexion2JDBC import Conexion
+from dao.UserDao import UserDao
+from vo.UserVO import UserVO #-- aun no está este script
 
 class Logica:
     def __init__(self, conexion=None):

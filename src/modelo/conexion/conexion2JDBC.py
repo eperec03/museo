@@ -15,7 +15,7 @@ class Conexion:
 
     # Especifica los detalles de la conexión
     host = 'localhost'
-    database = 'museoo'
+    database = 'museo'
     user = 'root'
     password = 'changeme'
 
@@ -38,10 +38,3 @@ class Conexion:
             conn.close()
         except Exception as e:
             print(e)
-
-conn = Conexion.getConnection()
-if conn:
-    print("Conexión exitosa a la base de datos MySQL.")
-    conn.close()
-else:
-    print("No se pudo establecer la conexión a la base de datos MySQL.")

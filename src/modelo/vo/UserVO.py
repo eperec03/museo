@@ -1,4 +1,4 @@
-class Usuario:
+class UserVO:
     def __init__(self, DNI, NombreCompleto, Telefono, Email,
                  Titular, Cvv, Caducidad, Contraseña, FechaRegistro):
         self.DNI = DNI

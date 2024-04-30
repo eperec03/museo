@@ -1,28 +1,25 @@
 from jaydebeapi import Error
 from typing import List
-from src.vo.userVO import UserVO 
-from src.conexion.conexion2JDBC import Conexion
-from src.dao.UserInterface import UserInterface
+from vo.UserVO import UserVO 
+from conexion.conexion2JDBC import Conexion
+from dao.UserInterface import UserInterface
 # Creamos la clase UsuarioDAO que manejará las operaciones de acceso a datos para los usuarios
 
-class UserDao(UserInterface):
-    def __init__(self, conexion=None):
-        self.conexion=conexion
-
+class UserDao(UserInterface,Conexion):
     #Todas las operaciones CRUD que sean necesarias
     SQL_SELECT = "SELECT DNI, NombreCompleto, Telefono, Email, Titular, Cvv, Caducidad, Contraseña, FechaRegistro FROM Usuarios"
-    SQL_INSERT = "INSERT INTO Usuarios(DNI, NombreCompleto, Telefono, Email, Titular, Cvv, Caducidad, Contraseña, FechaRegistro)"
+    SQL_INSERT = "INSERT INTO Usuarios(DNI, NombreCompleto, Telefono, Email, Titular, Cvv, Caducidad, Contraseña, FechaRegistro) VALUES (?, ?, ?, ?, ?, ?, ? , ? , ?, ?)"
 
 
     def getUsuarios(self) -> List[UserVO]:
+        conexion=self.getConnection()
         conn = None
         cursor = None
         usuarios = []
 
         try:
-            if self.conexion:
-                conn= self.conexion
-
+            if conexion:
+                conn= conexion
             else:
                 print("La base de datos no esta disponible")
 
@@ -54,7 +51,7 @@ class UserDao(UserInterface):
             if cursor:
                 #Cierra el cursor para liberar recursos
                 cursor.close()
-
+        conexion = self.closeConnection(conn)
         return usuarios
 
     #se hace el proximo dia
