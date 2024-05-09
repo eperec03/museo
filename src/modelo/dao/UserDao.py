@@ -1,5 +1,10 @@
 from jaydebeapi import Error
 from typing import List
+
+import sys
+#sys.path.append(r'C:\Users\eripe\OneDrive\Documentos\ERI ULE\2º\SEGUNDO CUATRI\IS\PROYECTO\src')
+sys.path.append(r'c:\Users\clara\Documents\2ºUNI\2CUATRI\IS\museoTrabajo\src\modelo')
+
 from vo.UserVO import UserVO 
 from conexion.conexion2JDBC import Conexion
 from dao.UserInterface import UserInterface
@@ -35,11 +40,14 @@ class UserDao(UserInterface,Conexion):
                 DNI, NombreCompleto, Telefono, Email, Titular, Cvv, Caducidad, Contraseña, FechaRegistro = row
                 #Crea un objeto UserVO para cada fila DNI, NombreCompleto...
                 usuario = UserVO()
+                usuario.setDNI(DNI)
                 usuario.setNombreCompleto(NombreCompleto)
+                usuario.setTelefono(Telefono)
+                usuario.setEmail(Email)
                 usuario.setTitular(Titular)
                 usuario.setCvv(Cvv)
                 usuario.setCaducidad(Caducidad)
-                usuario.setEmail(Email)
+                usuario.setContraseña(Contraseña)
                 usuario.setFechaRegistro(FechaRegistro)
                 usuarios.append(usuario)
 
@@ -56,9 +64,45 @@ class UserDao(UserInterface,Conexion):
 
     #se hace el proximo dia
     def insertUsuario (self, usuario: UserVO) -> int:
+        conexion = self.getConnection()
         conn = None
         cursor = None
-        return int
+        rows = 0
+
+        try:
+            if conexion:
+                conn = conexion
+           
+            else:
+                print("La base de datos no esta disponible")
+
+            cursor = conn.cursor()
+            cursor.execute(self.SQL_INSERT, (usuario.getDNI(),usuario.getNombreCompleto(),usuario.getTelefono(),usuario.getEmail(),usuario.getTitular(),usuario.getCvv(),usuario.getCaducidad(),usuario.getContraseña(),usuario.getFechaRegistro()))
+            conn.commit()
+            #Asegurarse de que esos cambios se hagan permanentes: conn.commit(). Si conn.autocommit = True no es necesario llamar explícitamente a conn.commit() después de cada inserción, ya que la base de datos confirma automáticamente cada instrucción.
+           
+            #Devuelve 1 si la inserción fue exitosa
+            rows = cursor.rowcount
+        except Error as e:
+            print("Error al insertar usuario:", e)
+
+
+        finally:
+            if cursor:
+                cursor.close()
+
+        conexion = self.closeConnection(conn)
+        return rows
+
+
+
+
+
+
+
+
+
+
 
 
 

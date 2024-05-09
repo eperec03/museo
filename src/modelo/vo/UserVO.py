@@ -64,3 +64,10 @@ class UserVO:
 
     def setFechaRegistro(self, FechaRegistro):
         self.FechaRegistro = FechaRegistro
+
+#cambiar a nuestros atributos
+    # def toString(self):
+    #     return "UserVO{" + "DNI=" + str(self._idUser) + ", nombre='" + self._nombre + "', apellido1='" + self._apellido1 + "', apellido2='" + self._apellido2 + "', email='" + self._email + "'}"
+
+    # def __str__(self):
+    #     return self.toString()

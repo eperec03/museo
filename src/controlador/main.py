@@ -5,7 +5,9 @@
 # guardamos la ventana en la carpeta vista
 import sys
 ruta_modulo = r'ruta'
-sys.path.append(r'C:\Users\eripe\OneDrive\Documentos\ERI ULE\2º\SEGUNDO CUATRI\IS\PROYECTO\src')
+#sys.path.append(r'C:\Users\eripe\OneDrive\Documentos\ERI ULE\2º\SEGUNDO CUATRI\IS\PROYECTO\src')
+sys.path.append(r'c:\Users\clara\Documents\2ºUNI\2CUATRI\IS\museoTrabajo\src')
+
 
 from vista.RegistroUsuarioVentana import RegistroUsuarioVentana
 from controlador.coordinador import Coordinador

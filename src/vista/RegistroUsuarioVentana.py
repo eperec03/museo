@@ -1,5 +1,6 @@
 import sys
-sys.path.append(r'C:\Users\eripe\OneDrive\Documentos\ERI ULE\2º\SEGUNDO CUATRI\IS\PROYECTO\src\modelo')
+#sys.path.append(r'C:\Users\eripe\OneDrive\Documentos\ERI ULE\2º\SEGUNDO CUATRI\IS\PROYECTO\src\modelo')
+sys.path.append(r'c:\Users\clara\Documents\2ºUNI\2CUATRI\IS\museoTrabajo\src\modelo')
 
 import tkinter as tk
 from vo.UserVO import UserVO
@@ -61,9 +62,15 @@ class RegistroUsuarioVentana:
         self.boton.pack()
 
     def limpiar(self):
-        self.id_entry.delete(0, tk.END)
+        self.dni_entry.delete(0, tk.END)
         self.nombre_entry.delete(0, tk.END)
+        self.tfno_entry.delete(0, tk.END)
         self.email_entry.delete(0, tk.END)
+        self.titular_entry.delete(0, tk.END)
+        self.cvv_entry.delete(0, tk.END)
+        self.cad_entry.delete(0, tk.END)
+        self.contrasenna_entry.delete(0, tk.END)
+        self.fecha_entry.delete(0, tk.END)
 
     def setVisible(self, visible: bool) -> None:
         if visible:
@@ -79,9 +86,15 @@ class RegistroUsuarioVentana:
     def registrarPersona(self) -> None:
         try:
             persona = UserVO(
-                idUser = self.id_entry.get(),
-                nombre = self.nombre_entry.get(),
-                email = self.email_entry.get()
+                DNI = self.dni_entry.get(),
+                NombreCompleto = self.nombre_entry.get(),
+                Telefono = self.tfno_entry.get(),
+                Email = self.email_entry.get(),
+                Titular = self.titular_entry.get(), 
+                Cvv = self.cvv_entry.get(), 
+                Caducidad = self.cad_entry.get(), 
+                Contraseña = self.contrasenna_entry.get(), 
+                FechaRegistro = self.fecha_entry.get()
             )
             self.coordinador.registrarUsuario(persona)
             self.limpiar()
