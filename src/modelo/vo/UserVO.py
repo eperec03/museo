@@ -1,11 +1,12 @@
 class UserVO:
     def __init__(self, DNI, NombreCompleto, Telefono, Email,
-                 Titular, Cvv, Caducidad, Contraseña, FechaRegistro):
+                 Titular, NumTarjeta, Cvv, Caducidad, Contraseña, FechaRegistro):
         self.DNI = DNI
         self.NombreCompleto = NombreCompleto
         self.Telefono = Telefono
         self.Email = Email
         self.Titular = Titular
+        self.NumTarjeta = NumTarjeta
         self.Cvv = Cvv
         self.Caducidad = Caducidad
         self.Contraseña = Contraseña
@@ -40,6 +41,12 @@ class UserVO:
 
     def setTitular(self, Titular):
         self.Titular = Titular
+
+    def getNumTarjeta(self):
+        return self.NumTarjeta
+
+    def setNumTarjeta(self, NumTarjeta):
+        self.NumTarjeta = NumTarjeta
 
     def getCvv(self):
         return self.Cvv

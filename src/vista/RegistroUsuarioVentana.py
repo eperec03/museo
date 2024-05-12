@@ -38,12 +38,17 @@ class RegistroUsuarioVentana:
         self.titular_entry = tk.Entry(self.root)
         self.titular_entry.pack()
 
+        self.numTarj_label = tk.Label(self.root, text="Numero Tarjeta:")
+        self.numTarj_label.pack()
+        self.numTarj_entry = tk.Entry(self.root)
+        self.numTarj_entry.pack()
+
         self.cvv_label = tk.Label(self.root, text="Cvv:")
         self.cvv_label.pack()
         self.cvv_entry = tk.Entry(self.root)
         self.cvv_entry.pack()
 
-        self.cad_label = tk.Label(self.root, text="Cad:")
+        self.cad_label = tk.Label(self.root, text="Fecha Caducidad:")
         self.cad_label.pack()
         self.cad_entry = tk.Entry(self.root)
         self.cad_entry.pack()
@@ -67,6 +72,7 @@ class RegistroUsuarioVentana:
         self.tfno_entry.delete(0, tk.END)
         self.email_entry.delete(0, tk.END)
         self.titular_entry.delete(0, tk.END)
+        self.numTarj_entry.delete(0, tk.END)
         self.cvv_entry.delete(0, tk.END)
         self.cad_entry.delete(0, tk.END)
         self.contrasenna_entry.delete(0, tk.END)
@@ -91,6 +97,7 @@ class RegistroUsuarioVentana:
                 Telefono = self.tfno_entry.get(),
                 Email = self.email_entry.get(),
                 Titular = self.titular_entry.get(), 
+                NumTarjeta = self.numTarj_entry.get(),
                 Cvv = self.cvv_entry.get(), 
                 Caducidad = self.cad_entry.get(), 
                 Contraseña = self.contrasenna_entry.get(), 

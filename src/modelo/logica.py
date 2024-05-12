@@ -15,10 +15,11 @@ class Logica:
     def set_coordinador(self, mi_coordinador: Coordinador) -> None:
         self._mi_coordinador = mi_coordinador
 
-
     def validar_registro(self, mi_persona: UserVO):
+        #habría que poner más cosas para validar el registtro?
         if '@' in mi_persona.getEmail():
-            mi_persona_dao = UserDao()                  
+            mi_persona_dao = UserDao()
+            # mi_persona_dao.getUsuarios()                  
             mi_persona_dao.insertUsuario(mi_persona)
         else:
             messagebox.showwarning("Advertencia", "El email no es válido")

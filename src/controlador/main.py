@@ -20,7 +20,7 @@ if __name__ == "__main__":
     logica = Logica()
     controlador = Coordinador()
 
-    # A cada ventada hay que asignarle un coordinador. Un mismo controlador puede controlar varias ventanas
+    # A cada ventana hay que asignarle un coordinador. Un mismo controlador puede controlar varias ventanas
     ventanaRegistro.setCoordinador(controlador)
 
     # Al coordinador hay que asignarle una ventana. Un coordinador puede tener referencias a varias ventanas
