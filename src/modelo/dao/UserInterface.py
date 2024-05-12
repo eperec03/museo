@@ -23,3 +23,19 @@ class UserInterface(ABC):
         Devuelve: int: 1 si fue exitoso
         """
         raise NotImplementedError("Método insertUsuario no implementado")
+    
+    @abstractmethod
+    def eliminateUsuario(self, usuarios: UserVO):
+        """
+        Elimina un nuevo usuario en la base de datos.
+        Parametros requeridos: El objeto UserVO para borrar.
+        """
+        raise NotImplementedError("Método eliminateUsuario no implementado")
+
+    @abstractmethod
+    def updateUsuario(self, usuarios: UserVO):
+        """
+        Actualiza el usuario que tenga el mismo dni que el que se le pasa en la base de datos.
+        Parametros requeridos: El objeto UserVO a actualizar.
+        """
+        raise NotImplementedError("Método updateUsuario no implementado")

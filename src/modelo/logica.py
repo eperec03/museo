@@ -24,3 +24,25 @@ class Logica:
         else:
             messagebox.showwarning("Advertencia", "El email no es válido")
 
+    def eliminar_registro(self, mi_persona: UserVO):
+        mi_persona_dao=UserDao()
+        error=1
+        for i in range (len(mi_persona_dao.getUsuarios)):
+            if mi_persona.DNI() == mi_persona_dao.getUsuarios[i].getDNI():            
+                mi_persona_dao.eliminateUsuario(mi_persona)
+                error=0
+        if error==1:
+            messagebox.showwarning("Advertencia", "No existe nadie con ese DNI")
+
+    def actualizar_registro(self, mi_persona: UserVO):
+        mi_persona_dao=UserDao()
+        error=1
+        for i in range (len(mi_persona_dao.getUsuarios)):
+            if mi_persona.DNI() == mi_persona_dao.getUsuarios[i].getDNI():            
+                mi_persona_dao.updateUsuario(mi_persona)
+                error=0
+        if error==1:
+            messagebox.showwarning("Advertencia", "No existe nadie con ese DNI")
+
+
+

@@ -8,7 +8,8 @@ ruta_modulo = r'ruta'
 #sys.path.append(r'C:\Users\eripe\OneDrive\Documentos\ERI ULE\2º\SEGUNDO CUATRI\IS\PROYECTO\src')
 sys.path.append(r'c:\Users\clara\Documents\2ºUNI\2CUATRI\IS\museoTrabajo\src')
 
-
+from vista.ActualizarUsuarioVentana import ActualizarUsuarioVentana
+from vista.EliminarUsuarioVentana import EliminarUsuarioVentana
 from vista.RegistroUsuarioVentana import RegistroUsuarioVentana
 from controlador.coordinador import Coordinador
 from modelo.logica import Logica
@@ -17,6 +18,11 @@ from modelo.logica import Logica
 if __name__ == "__main__":
     #root = tk.Tk()
     ventanaRegistro = RegistroUsuarioVentana()
+    ventanaEliminarUsuario = EliminarUsuarioVentana()
+    ventanaActualizarUsuario = ActualizarUsuarioVentana()
+    ##################################################################################################################
+    #TODAVIA NO LE HE PUESTO QUE SE VEAN LAS VENTANAS DE ELIMINAR Y ACTUALIZAR, HAY QUE IRLAS CAMBIANDO PARA PROBARLAS
+    ##################################################################################################################
     logica = Logica()
     controlador = Coordinador()
 

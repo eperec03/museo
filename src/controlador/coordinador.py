@@ -10,6 +10,8 @@ class Coordinador:
       self._model = None
       #Puede tener tantas referencias a ventanas como controle
       self._viewRegistro = None
+      self._viewEliminarUsuario = None
+      self._viewActualizarUsuario = None
       
     def getModel(self):
        return self._model
@@ -24,9 +26,28 @@ class Coordinador:
     def setViewRegistro(self, view):
        self._viewRegistro = view
     
+    def getViewEliminarUsuario(self):
+       return self._viewEliminarUsuario
+
+    def setViewEliminarUsuario(self, view):
+       self._viewEliminarUsuario = view
+
+    def getViewActualizarUsuario(self):
+       return self._viewEliminarUsuario
+
+    def setViewActualizarUsuario(self, view):
+       self._viewEliminarUsuario = view
+    
     ##############################################
 
     def registrarUsuario(self, usuario: UserVO) -> None:
        self._model.validar_registro(usuario)
        #aqui van los metodos de lo que hacen los 'botones'
+
+    def eliminarUsuario(self usuario: UserVO) -> None:
+       self._model.eliminar_registro(usuario)
+
+    def actualizarUsuario(self usuario: UserVO) -> None:
+       self._model.actualizar_registro(usuario)
+    
       

@@ -14,6 +14,9 @@ class UserDao(UserInterface, Conexion):
     #Todas las operaciones CRUD que sean necesarias
     SQL_SELECT = "SELECT DNI, UsuNombreCompleto, UsuTfno, UsuEmail, UsuTitularMP, UsuCvvMP, UsuNumTarjMP, UsuCadMP, UsuContrasenna, UsuFecha FROM Usuarios"
     SQL_INSERT = "INSERT INTO Usuarios(DNI, UsuNombreCompleto, UsuTfno, UsuEmail, UsuTitularMP, UsuNumTarjMP, UsuCvvMP, UsuCadMP, UsuContrasenna, UsuFecha) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)"
+    SQL_DELETE = "DELETE FROM Usuarios WHERE DNI = VALUES ?"
+    SQL_UPDATE = "UPDATE Usuarios SET UsuNombreCompleto = ?, UsuTfno = ?, UsuEmail = ?, UsuTitularMP = ?, UsuCvvMP = ?, UsuNumTarjMP = ?, UsuCadMP = ?, UsuContrasenna = ? WHERE DNI = ?"
+
 
     def getUsuarios(self) -> List[UserVO]:
         conexion = self.getConnection()
@@ -28,7 +31,7 @@ class UserDao(UserInterface, Conexion):
                 print("La base de datos no esta disponible")
             #Crea un objeto para poder ejecutar consultas SQL sobre la conexion abierta
             cursor = conn.cursor()
-            #Ejecuta de sonsulta SQL
+            #Ejecuta de consulta SQL
             cursor.execute(self.SQL_SELECT)
             #Obtiene todas las filas resultantes de la consulta
             rows = cursor.fetchall()
@@ -51,12 +54,12 @@ class UserDao(UserInterface, Conexion):
 
         except Error as e:
             print("Error al seleccionar usuarios:", e)
+
         #Se ejecuta siempre
         finally:
             if cursor:
                 #Cierra el cursor para liberar recursos
                 cursor.close()
-
         conexion = self.closeConnection(conn)
         return usuarios
 
@@ -92,6 +95,71 @@ class UserDao(UserInterface, Conexion):
         conexion = self.closeConnection(conn)
 
         return rows
+
+    def eliminateUsuario (self, usuario:UserVO) -> int:
+        conexion = self.getConnection()
+        conn = None
+        cursor = None
+        rows = 0
+
+        try:
+            if conexion:
+                conn = conexion
+           
+            else:
+                print("La base de datos no esta disponible")
+
+            cursor = conn.cursor()
+            cursor.execute(self.SQL_DELETE, (usuario.getDNI()))
+            # conn.commit()
+            #Asegurarse de que esos cambios se hagan permanentes: conn.commit(). Si conn.autocommit = True no es necesario llamar explícitamente a conn.commit() después de cada inserción, ya que la base de datos confirma automáticamente cada instrucción.
+           
+            #Devuelve 1 si la inserción fue exitosa
+            rows = cursor.rowcount
+        except Error as e:
+            print("Error al eliminar usuario:", e)
+
+
+        finally:
+            if cursor:
+                cursor.close()
+
+        conexion = self.closeConnection(conn)
+
+        return rows
+
+    def updateUsuario  (self, usuario:UserVO) -> int:
+        conexion = self.getConnection()
+        conn = None
+        cursor = None
+        rows = 0
+
+        try:
+            if conexion:
+                conn = conexion
+           
+            else:
+                print("La base de datos no esta disponible")
+
+            cursor = conn.cursor()
+            cursor.execute(self.SQL_UPDATE, (usuario.getNombreCompleto(),usuario.getTelefono(),usuario.getEmail(),usuario.getTitular(),usuario.getNumTarjeta(),usuario.getCvv(),usuario.getCaducidad(),usuario.getContraseña(), usuario.getDNI()))
+            # conn.commit()
+            #Asegurarse de que esos cambios se hagan permanentes: conn.commit(). Si conn.autocommit = True no es necesario llamar explícitamente a conn.commit() después de cada inserción, ya que la base de datos confirma automáticamente cada instrucción.
+           
+            #Devuelve 1 si la inserción fue exitosa
+            rows = cursor.rowcount
+        except Error as e:
+            print("Error al actualizar usuario:", e)
+
+
+        finally:
+            if cursor:
+                cursor.close()
+
+        conexion = self.closeConnection(conn)
+
+        return rows
+
 
 
 
