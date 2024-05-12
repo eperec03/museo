@@ -16,6 +16,7 @@ class UserDao(UserInterface, Conexion):
     SQL_INSERT = "INSERT INTO Usuarios(DNI, UsuNombreCompleto, UsuTfno, UsuEmail, UsuTitularMP, UsuNumTarjMP, UsuCvvMP, UsuCadMP, UsuContrasenna, UsuFecha) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)"
     SQL_DELETE = "DELETE FROM Usuarios WHERE DNI = VALUES ?"
     SQL_UPDATE = "UPDATE Usuarios SET UsuNombreCompleto = ?, UsuTfno = ?, UsuEmail = ?, UsuTitularMP = ?, UsuCvvMP = ?, UsuNumTarjMP = ?, UsuCadMP = ?, UsuContrasenna = ? WHERE DNI = ?"
+    SQL_FILTER = "SELECT * FROM Usuarios WHERE DNI = %s"
 
 
     def getUsuarios(self) -> List[UserVO]:
@@ -23,7 +24,6 @@ class UserDao(UserInterface, Conexion):
         conn = None
         cursor = None
         usuarios = []
-
         try:
             if conexion:
                 conn = conexion
@@ -32,8 +32,7 @@ class UserDao(UserInterface, Conexion):
             #Crea un objeto para poder ejecutar consultas SQL sobre la conexion abierta
             cursor = conn.cursor()
             #Ejecuta de consulta SQL
-            cursor.execute(self.SQL_SELECT)
-            #Obtiene todas las filas resultantes de la consulta
+            cursor.execute(self.SQL_SELECT) #Obtiene todas las filas resultantes de la consulta
             rows = cursor.fetchall()
             #Itera sobre todas las filas
             for row in rows:
@@ -62,7 +61,49 @@ class UserDao(UserInterface, Conexion):
                 cursor.close()
         conexion = self.closeConnection(conn)
         return usuarios
+    
+    def getFiltroUsuarios(self,dni) -> List[UserVO]:
+        conexion = self.getConnection()
+        conn = None
+        cursor = None
+        usuarios = []
 
+        try:
+            if conexion:
+                conn = conexion
+            else:
+                print("La base de datos no esta disponible")
+            #Crea un objeto para poder ejecutar consultas SQL sobre la conexion abierta
+            cursor = conn.cursor()
+            #Ejecuta de consulta SQL
+            cursor.execute(self.SQL_SELECT, (dni,)) #Obtiene todas las filas resultantes de la consulta
+            #Obtiene todas las filas resultantes de la consulta
+            rows = cursor.fetchall()
+            #Crea un objeto UserVO para cada fila DNI, NombreCompleto...
+            for row in rows:
+                usuario = UserVO()
+                usuario.setDNI(row[0]) 
+                usuario.setNombreCompleto(row[1])
+                usuario.setTelefono(row[2])
+                usuario.setEmail(row[3])
+                usuario.setTitular(row[4])
+                usuario.setNumTarjeta(row[5])
+                usuario.setCvv(row[6])
+                usuario.setCaducidad(row[7])
+                usuario.setContraseña(row[8])
+                usuario.setFechaRegistro(row[9])
+                usuarios.append(usuario)
+
+        except Error as e:
+            print("Error al seleccionar usuarios:", e)
+
+        #Se ejecuta siempre
+        finally:
+            if cursor:
+                #Cierra el cursor para liberar recursos
+                cursor.close()
+        conexion = self.closeConnection(conn)
+        return usuarios
     #se hace el proximo dia
     def insertUsuario (self, usuario: UserVO) -> int:
         conexion = self.getConnection()

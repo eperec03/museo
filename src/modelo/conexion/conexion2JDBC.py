@@ -16,7 +16,7 @@ class Conexion:
     # Especifica los detalles de la conexión
     host = 'localhost'
     # database = 'museo'
-    database = 'museoo'
+    database = 'museo'
     user = 'root'
     password = 'changeme'
 

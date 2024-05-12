@@ -1,5 +1,5 @@
 import sys
-#sys.path.append(r'C:\Users\eripe\OneDrive\Documentos\ERI ULE\2º\SEGUNDO CUATRI\IS\PROYECTO\src\modelo')
+sys.path.append(r'C:\Users\eripe\OneDrive\Documentos\ERI ULE\2º\SEGUNDO CUATRI\IS\PROYECTO\src\modelo')
 sys.path.append(r'c:\Users\clara\Documents\2ºUNI\2CUATRI\IS\museoTrabajo\src\modelo')
 
 import tkinter as tk
@@ -38,9 +38,11 @@ class EliminarUsuarioVentana:
     def eliminarPersona(self) -> None:
         try:
             persona = UserVO(
-                DNI = self.dni_entry.get()
-            )
+                DNI = self.dni_entry.get(),
+                NombreCompleto=None, Telefono=None, Email=None,
+                Titular=None, NumTarjeta=None, Cvv=None, Caducidad=None, Contraseña=None, FechaRegistro=None)
             self.coordinador.eliminarUsuario(persona)
+
             self.limpiar()
         except Exception as ex:
             messagebox.showwarning("Error", ex)

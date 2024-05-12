@@ -27,8 +27,8 @@ class Logica:
     def eliminar_registro(self, mi_persona: UserVO):
         mi_persona_dao=UserDao()
         error=1
-        for i in range (len(mi_persona_dao.getUsuarios)):
-            if mi_persona.DNI() == mi_persona_dao.getUsuarios[i].getDNI():            
+        for i in range (len(mi_persona_dao.getFiltroUsuarios(mi_persona.getDNI()))):
+            if mi_persona.getDNI() == mi_persona_dao.getFiltroUsuarios[i].getDNI():            
                 mi_persona_dao.eliminateUsuario(mi_persona)
                 error=0
         if error==1:

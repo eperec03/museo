@@ -1,5 +1,5 @@
 import sys
-#sys.path.append(r'C:\Users\eripe\OneDrive\Documentos\ERI ULE\2º\SEGUNDO CUATRI\IS\PROYECTO\src')
+sys.path.append(r'C:\Users\eripe\OneDrive\Documentos\ERI ULE\2º\SEGUNDO CUATRI\IS\PROYECTO\src')
 sys.path.append(r'c:\Users\clara\Documents\2ºUNI\2CUATRI\IS\museoTrabajo\src')
 
 from modelo.vo.UserVO import UserVO
@@ -33,10 +33,10 @@ class Coordinador:
        self._viewEliminarUsuario = view
 
     def getViewActualizarUsuario(self):
-       return self._viewEliminarUsuario
+       return self._viewActualizarUsuario
 
     def setViewActualizarUsuario(self, view):
-       self._viewEliminarUsuario = view
+       self._viewActualizarUsuario = view
     
     ##############################################
 

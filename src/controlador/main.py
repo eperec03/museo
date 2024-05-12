@@ -5,7 +5,7 @@
 # guardamos la ventana en la carpeta vista
 import sys
 ruta_modulo = r'ruta'
-#sys.path.append(r'C:\Users\eripe\OneDrive\Documentos\ERI ULE\2º\SEGUNDO CUATRI\IS\PROYECTO\src')
+sys.path.append(r'C:\Users\eripe\OneDrive\Documentos\ERI ULE\2º\SEGUNDO CUATRI\IS\PROYECTO\src')
 sys.path.append(r'c:\Users\clara\Documents\2ºUNI\2CUATRI\IS\museoTrabajo\src')
 
 from vista.ActualizarUsuarioVentana import ActualizarUsuarioVentana
@@ -28,12 +28,17 @@ if __name__ == "__main__":
 
     # A cada ventana hay que asignarle un coordinador. Un mismo controlador puede controlar varias ventanas
     ventanaRegistro.setCoordinador(controlador)
+    ventanaEliminarUsuario.setCoordinador(controlador)
+    ventanaActualizarUsuario.setCoordinador(controlador)
 
     # Al coordinador hay que asignarle una ventana. Un coordinador puede tener referencias a varias ventanas
-    controlador.setViewRegistro(ventanaRegistro)
+    # controlador.setViewRegistro(ventanaRegistro)
+    controlador.setViewRegistro(ActualizarUsuarioVentana)
+
 
     # Al coordinador también hay que asignarle la lógica del modelo
     controlador.setModel(logica)
 
     #Para comenzar con la pantalla de inicio: True aparece la pantalla y False la destruye
-    ventanaRegistro.setVisible(True)
+    # ventanaRegistro.setVisible(True)
+    ventanaActualizarUsuario.setVisible(True)
