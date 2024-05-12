@@ -44,10 +44,10 @@ class Coordinador:
        self._model.validar_registro(usuario)
        #aqui van los metodos de lo que hacen los 'botones'
 
-    def eliminarUsuario(self usuario: UserVO) -> None:
+    def eliminarUsuario(self, usuario: UserVO) -> None:
        self._model.eliminar_registro(usuario)
 
-    def actualizarUsuario(self usuario: UserVO) -> None:
+    def actualizarUsuario(self, usuario: UserVO) -> None:
        self._model.actualizar_registro(usuario)
     
       
