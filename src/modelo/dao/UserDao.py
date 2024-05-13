@@ -14,7 +14,7 @@ class UserDao(UserInterface, Conexion):
     #Todas las operaciones CRUD que sean necesarias
     SQL_SELECT = "SELECT DNI, UsuNombreCompleto, UsuTfno, UsuEmail, UsuTitularMP, UsuCvvMP, UsuNumTarjMP, UsuCadMP, UsuContrasenna, UsuFecha FROM Usuarios"
     SQL_INSERT = "INSERT INTO Usuarios(DNI, UsuNombreCompleto, UsuTfno, UsuEmail, UsuTitularMP, UsuNumTarjMP, UsuCvvMP, UsuCadMP, UsuContrasenna, UsuFecha) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)"
-    SQL_DELETE = "DELETE FROM Usuarios WHERE DNI = VALUES ?"
+    SQL_DELETE = "DELETE FROM Usuarios WHERE DNI = ?"
     SQL_UPDATE = "UPDATE Usuarios SET UsuNombreCompleto = ?, UsuTfno = ?, UsuEmail = ?, UsuTitularMP = ?, UsuCvvMP = ?, UsuNumTarjMP = ?, UsuCadMP = ?, UsuContrasenna = ? WHERE DNI = ?"
     SQL_FILTER = "SELECT * FROM Usuarios WHERE DNI = ?"
 
@@ -145,7 +145,7 @@ class UserDao(UserInterface, Conexion):
                 print("La base de datos no esta disponible")
 
             cursor = conn.cursor()
-            cursor.execute(self.SQL_DELETE, (usuario.getDNI()))
+            cursor.execute(self.SQL_DELETE, (usuario.getDNI(),))
             # conn.commit()
             #Asegurarse de que esos cambios se hagan permanentes: conn.commit(). Si conn.autocommit = True no es necesario llamar explícitamente a conn.commit() después de cada inserción, ya que la base de datos confirma automáticamente cada instrucción.
            

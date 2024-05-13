@@ -1,6 +1,6 @@
 import sys
 #sys.path.append(r'C:\Users\eripe\OneDrive\Documentos\ERI ULE\2º\SEGUNDO CUATRI\IS\PROYECTO\src')
-sys.path.append(r'c:\Users\clara\Documents\2ºUNI\2CUATRI\IS\museoTrabajo\src')
+sys.path.append(r'c:\Users\clara\Documents\2ºUNI\2CUATRI\IS\museo\src')
 
 import tkinter as tk
 from tkinter import messagebox
@@ -27,8 +27,10 @@ class Logica:
     def eliminar_registro(self, mi_persona: UserVO):
         mi_persona_dao=UserDao()
         error=1
-        for i in range (len(mi_persona_dao.getFiltroUsuarios(mi_persona.getDNI()))):
-            if mi_persona.getDNI() == mi_persona_dao.getFiltroUsuarios[i].getDNI():            
+        # for i in range (len(mi_persona_dao.getFiltroUsuarios(mi_persona.getDNI()))):
+        # print(mi_persona_dao.getFiltroUsuarios(mi_persona.getDNI())[0].getDNI())
+        # print(mi_persona.getDNI())
+        if mi_persona.getDNI() == mi_persona_dao.getFiltroUsuarios(mi_persona.getDNI())[0].getDNI():            
                 mi_persona_dao.eliminateUsuario(mi_persona)
                 error=0
         if error==1:
