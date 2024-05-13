@@ -85,19 +85,7 @@ class UserDao(UserInterface, Conexion):
             for row in rows:
                 DNI, UsuNombreCompleto, UsuTfno, UsuEmail, UsuTitularMP, UsuNumTarjMP, UsuCvvMP, UsuCadMP, UsuContrasenna, UsuFecha = row
                 #Crea un objeto UserVO para cada fila DNI, NombreCompleto...
-                usuario = UserVO()
-
-                print("porfi")
-                usuario.setDNI(DNI)
-                usuario.setNombreCompleto(UsuNombreCompleto)
-                usuario.setTelefono(UsuTfno)
-                usuario.setEmail(UsuEmail)
-                usuario.setTitular(UsuTitularMP)
-                usuario.setNumTarjeta(UsuNumTarjMP)
-                usuario.setCvv(UsuCvvMP)
-                usuario.setCaducidad(UsuCadMP)
-                usuario.setContraseña(UsuContrasenna)
-                usuario.setFechaRegistro(UsuFecha)
+                usuario = UserVO(DNI=DNI, NombreCompleto=UsuNombreCompleto, Telefono=UsuTfno,Email=UsuEmail, Titular= UsuTitularMP, NumTarjeta= UsuNumTarjMP,Cvv= UsuCvvMP, Caducidad= UsuCadMP, Contraseña=UsuContrasenna, FechaRegistro=UsuFecha)
                 usuarios.append(usuario)
 
         except Error as e:
