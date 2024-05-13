@@ -33,7 +33,7 @@ if __name__ == "__main__":
 
     # Al coordinador hay que asignarle una ventana. Un coordinador puede tener referencias a varias ventanas
     # controlador.setViewRegistro(ventanaRegistro)
-    controlador.setViewRegistro(ActualizarUsuarioVentana)
+    controlador.setViewRegistro(ventanaEliminarUsuario)
 
 
     # Al coordinador también hay que asignarle la lógica del modelo
@@ -41,4 +41,4 @@ if __name__ == "__main__":
 
     #Para comenzar con la pantalla de inicio: True aparece la pantalla y False la destruye
     # ventanaRegistro.setVisible(True)
-    ventanaActualizarUsuario.setVisible(True)
+    ventanaEliminarUsuario.setVisible(True)

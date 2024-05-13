@@ -2,7 +2,7 @@ from jaydebeapi import Error
 from typing import List
 
 import sys
-#sys.path.append(r'C:\Users\eripe\OneDrive\Documentos\ERI ULE\2º\SEGUNDO CUATRI\IS\PROYECTO\src')
+sys.path.append(r'C:\Users\eripe\OneDrive\Documentos\ERI ULE\2º\SEGUNDO CUATRI\IS\PROYECTO\src\modelo')
 sys.path.append(r'c:\Users\clara\Documents\2ºUNI\2CUATRI\IS\museoTrabajo\src\modelo')
 
 from vo.UserVO import UserVO 
@@ -16,7 +16,7 @@ class UserDao(UserInterface, Conexion):
     SQL_INSERT = "INSERT INTO Usuarios(DNI, UsuNombreCompleto, UsuTfno, UsuEmail, UsuTitularMP, UsuNumTarjMP, UsuCvvMP, UsuCadMP, UsuContrasenna, UsuFecha) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)"
     SQL_DELETE = "DELETE FROM Usuarios WHERE DNI = VALUES ?"
     SQL_UPDATE = "UPDATE Usuarios SET UsuNombreCompleto = ?, UsuTfno = ?, UsuEmail = ?, UsuTitularMP = ?, UsuCvvMP = ?, UsuNumTarjMP = ?, UsuCadMP = ?, UsuContrasenna = ? WHERE DNI = ?"
-    SQL_FILTER = "SELECT * FROM Usuarios WHERE DNI = %s"
+    SQL_FILTER = "SELECT * FROM Usuarios WHERE DNI = ?"
 
 
     def getUsuarios(self) -> List[UserVO]:
@@ -76,22 +76,28 @@ class UserDao(UserInterface, Conexion):
             #Crea un objeto para poder ejecutar consultas SQL sobre la conexion abierta
             cursor = conn.cursor()
             #Ejecuta de consulta SQL
-            cursor.execute(self.SQL_SELECT, (dni,)) #Obtiene todas las filas resultantes de la consulta
+            cursor.execute(self.SQL_FILTER, (dni,)) #Obtiene todas las filas resultantes de la consulta
             #Obtiene todas las filas resultantes de la consulta
             rows = cursor.fetchall()
+            print(rows)
+
             #Crea un objeto UserVO para cada fila DNI, NombreCompleto...
             for row in rows:
+                DNI, UsuNombreCompleto, UsuTfno, UsuEmail, UsuTitularMP, UsuNumTarjMP, UsuCvvMP, UsuCadMP, UsuContrasenna, UsuFecha = row
+                #Crea un objeto UserVO para cada fila DNI, NombreCompleto...
                 usuario = UserVO()
-                usuario.setDNI(row[0]) 
-                usuario.setNombreCompleto(row[1])
-                usuario.setTelefono(row[2])
-                usuario.setEmail(row[3])
-                usuario.setTitular(row[4])
-                usuario.setNumTarjeta(row[5])
-                usuario.setCvv(row[6])
-                usuario.setCaducidad(row[7])
-                usuario.setContraseña(row[8])
-                usuario.setFechaRegistro(row[9])
+
+                print("porfi")
+                usuario.setDNI(DNI)
+                usuario.setNombreCompleto(UsuNombreCompleto)
+                usuario.setTelefono(UsuTfno)
+                usuario.setEmail(UsuEmail)
+                usuario.setTitular(UsuTitularMP)
+                usuario.setNumTarjeta(UsuNumTarjMP)
+                usuario.setCvv(UsuCvvMP)
+                usuario.setCaducidad(UsuCadMP)
+                usuario.setContraseña(UsuContrasenna)
+                usuario.setFechaRegistro(UsuFecha)
                 usuarios.append(usuario)
 
         except Error as e:
