@@ -1,6 +1,7 @@
-class UserVO:
+class CLientePremiumVO:
     def __init__(self, DNI, NombreCompleto, Telefono, Email,
-                 Titular, NumTarjeta, Cvv, Caducidad, Contraseña, FechaRegistro):
+                 Titular, NumTarjeta, Cvv, Caducidad, Contraseña, FechaRegistro,
+                  ObrasAdquiridas, Dinerogastado, TipoTarifa, Penalizacion):
         self.DNI = DNI
         self.NombreCompleto = NombreCompleto
         self.Telefono = Telefono
@@ -11,6 +12,10 @@ class UserVO:
         self.Caducidad = Caducidad
         self.Contraseña = Contraseña
         self.FechaRegistro = FechaRegistro
+        self.ObrasAdquiridas = ObrasAdquiridas
+        self.Dinerogastado = Dinerogastado
+        self.TipoTarifa = TipoTarifa
+        self.Penalizacion = Penalizacion
 
     def getDNI(self):
         return self.DNI
@@ -72,9 +77,36 @@ class UserVO:
     def setFechaRegistro(self, FechaRegistro):
         self.FechaRegistro = FechaRegistro
 
-#cambiar a nuestros atributos
-    # def toString(self):
-    #     return "UserVO{" + "DNI=" + str(self._idUser) + ", nombre='" + self._nombre + "', apellido1='" + self._apellido1 + "', apellido2='" + self._apellido2 + "', email='" + self._email + "'}"
+    ObrasAdquiridas, Dinerogastado, TipoTarifa, Penalizacion
 
-    # def __str__(self):
-    #     return self.toString()
+    def getObrasAdquiridas(self):
+        return self.ObrasAdquiridas
+
+    def setObrasAdquiridas(self, ObrasAdquiridas):
+        self.ObrasAdquiridas = ObrasAdquiridas
+
+    def getDinerogastado(self):
+        return self.Dinerogastado
+
+    def setDinerogastado(self, Dinerogastado):
+        self.Dinerogastado = Dinerogastado
+
+    def getTipoTarifa(self):
+        return self.TipoTarifa
+
+    def setTipoTarifa(self, TipoTarifa):
+        self.TipoTarifa = TipoTarifa
+
+    def getPenalizacion(self):
+        return self.Penalizacion
+
+    def setPenalizacion(self, Penalizacion):
+        self.Penalizacion = Penalizacion
+
+#cambiar a nuestros atributos
+#No hace falta
+    """def toString(self):
+        return "UsuarioPremiumVO{" + "DNI=" + str(self._idUser) + ", NombreCompleto='" + self._nombre + "', Telefono='" + self._apellido1 + "', Email='" + self._apellido2 + "', Titular='" + self._email + "', NumTarjeta='" + self._email + "'"'}"
+
+    def __str__(self):
+        return self.toString()"""
