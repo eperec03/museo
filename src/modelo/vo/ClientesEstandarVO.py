@@ -1,5 +1,5 @@
 class ClienteEstandarVO:
-    def __init__(self, NumEntrada, PrecioEntrada):
+    def __init__(self, NumEntrada=None, PrecioEntrada=None):
         self.NumEntrada = NumEntrada
         self.PrecioEntrada = PrecioEntrada
 
