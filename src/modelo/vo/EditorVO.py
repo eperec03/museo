@@ -1,6 +1,6 @@
 class EditorVO:
-    def __init__(self, DNI, NombreCompleto, Telefono, Email,
-                 Titular, NumTarjeta, Cvv, Caducidad, Contraseña, FechaRegistro, Horario, TipoContrato, Estudios):
+    def __init__(self, DNI=None, NombreCompleto=None, Telefono=None, Email=None,
+                 Titular=None, NumTarjeta=None, Cvv=None, Caducidad=None, Contraseña=None, FechaRegistro=None, Horario=None, TipoContrato=None, Estudios=None):
         self.DNI = DNI
         self.NombreCompleto = NombreCompleto
         self.Telefono = Telefono

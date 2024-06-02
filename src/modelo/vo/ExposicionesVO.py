@@ -1,5 +1,5 @@
 class ExposicionesVO:
-    def __init__(self, IdExposicion, Titulo, Imagen, Descripcion, NumSala):
+    def __init__(self, IdExposicion=None, Titulo=None, Imagen=None, Descripcion=None, NumSala=None):
         self.IdExposicion = IdExposicion
         self.Titulo = Titulo
         self.Imagen = Imagen

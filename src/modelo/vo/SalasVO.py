@@ -1,5 +1,5 @@
 class SalasVO:
-    def __init__(self, NumeroSala, Capacidad, Tematica, IdMapa):
+    def __init__(self, NumeroSala=None, Capacidad=None, Tematica=None, IdMapa=None):
         self.NumeroSala = NumeroSala
         self.Capacidad = Capacidad
         self.Tematica = Tematica

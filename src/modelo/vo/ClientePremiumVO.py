@@ -1,7 +1,7 @@
 class CLientePremiumVO:
-    def __init__(self, DNI, NombreCompleto, Telefono, Email,
-                 Titular, NumTarjeta, Cvv, Caducidad, Contraseña, FechaRegistro,
-                  ObrasAdquiridas, Dinerogastado, TipoTarifa, Penalizacion):
+    def __init__(self, DNI=None, NombreCompleto=None, Telefono=None, Email=None,
+                 Titular=None, NumTarjeta=None, Cvv=None, Caducidad=None, Contraseña=None, FechaRegistro=None,
+                  ObrasAdquiridas=None, Dinerogastado=None, TipoTarifa=None, Penalizacion=None):
         self.DNI = DNI
         self.NombreCompleto = NombreCompleto
         self.Telefono = Telefono

@@ -1,6 +1,6 @@
 class ObjetosVO:
-    def __init__(self, IdObjeto, Imagen, Precio, Tipo, 
-    Inspiracion, Existencias, Agotado, IdCatalogo):
+    def __init__(self, IdObjeto=None, Imagen=None, Precio=None, Tipo=None, 
+    Inspiracion=None, Existencias=None, Agotado=None, IdCatalogo=None):
         self.IdObjeto = IdObjeto
         self.Imagen = Imagen
         self.Precio = Precio
