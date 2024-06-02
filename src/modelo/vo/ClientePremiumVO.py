@@ -77,8 +77,6 @@ class CLientePremiumVO:
     def setFechaRegistro(self, FechaRegistro):
         self.FechaRegistro = FechaRegistro
 
-    ObrasAdquiridas, Dinerogastado, TipoTarifa, Penalizacion
-
     def getObrasAdquiridas(self):
         return self.ObrasAdquiridas
 
