@@ -84,6 +84,24 @@ class EditorVO:
 
     def setFechaRegistro(self, FechaRegistro):
         self.FechaRegistro = FechaRegistro
+    
+    def getHorario(self):
+        return self.Horario
+
+    def setHorario(self, Horario):
+        self.Horario = Horario
+
+    def getTipoContrato(self):
+        return self.TipoContrato
+
+    def setTipoContrato(self,TipoContrato):
+        self.TipoContrato =TipoContrato
+    
+    def getEstudios(self):
+        return self.Estudios
+
+    def setEstudios(self, Estudios):
+        self.Estudios = Estudios
 
 #cambiar a nuestros atributos
     # def toString(self):
