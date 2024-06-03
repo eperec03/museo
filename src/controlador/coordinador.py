@@ -1,9 +1,9 @@
 import sys
-sys.path.append(r'C:\Users\eripe\OneDrive\Documentos\ERI ULE\2º\SEGUNDO CUATRI\IS\PROYECTO\src')
+#sys.path.append(r'C:\Users\eripe\OneDrive\Documentos\ERI ULE\2º\SEGUNDO CUATRI\IS\PROYECTO\src')
 sys.path.append(r'c:\Users\clara\Documents\2ºUNI\2CUATRI\IS\museo\src')
 
-from modelo.vo.UserVO import UserVO
-from vista.RegistroUsuarioVentana import RegistroUsuarioVentana
+from modelo.vo.ClientePremiumVO import *
+from vista.RegistroClientePVentana import RegistroClientePVentana
 
 class Coordinador:
     def __init__(self):
@@ -40,14 +40,14 @@ class Coordinador:
     
     ##############################################
 
-    def registrarUsuario(self, usuario: UserVO) -> None:
+    def registrarUsuario(self, usuario: ClientePremiumVO) -> None:
        self._model.validar_registro(usuario)
        #aqui van los metodos de lo que hacen los 'botones'
 
-    def eliminarUsuario(self, usuario: UserVO) -> None:
+    def eliminarUsuario(self, usuario: ClientePremiumVO) -> None:
        self._model.eliminar_registro(usuario)
 
-    def actualizarUsuario(self, usuario: UserVO) -> None:
+    def actualizarUsuario(self, usuario: ClientePremiumVO) -> None:
        self._model.actualizar_registro(usuario)
     
       

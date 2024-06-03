@@ -1,4 +1,4 @@
-class CLientePremiumVO:
+class ClientePremiumVO:
     def __init__(self, DNI=None, NombreCompleto=None, Telefono=None, Email=None,
                  Titular=None, NumTarjeta=None, Cvv=None, Caducidad=None, Contraseña=None, FechaRegistro=None,
                   ObrasAdquiridas=None, Dinerogastado=None, TipoTarifa=None, Penalizacion=None):
