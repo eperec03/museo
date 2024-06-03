@@ -4,7 +4,7 @@ sys.path.append(r'c:\Users\clara\Documents\2ºUNI\2CUATRI\IS\museo\src')
 
 import tkinter as tk
 from tkinter import messagebox
-from modelo.vo.UserVO import UserVO
+from modelo.vo.ClientePremiumVO import ClientePremiumVO
 from modelo.dao.UserDao import UserDao
 from controlador.coordinador import Coordinador
 
@@ -15,7 +15,7 @@ class Logica:
     def set_coordinador(self, mi_coordinador: Coordinador) -> None:
         self._mi_coordinador = mi_coordinador
 
-    def validar_registro(self, mi_persona: UserVO):
+    def validar_registro(self, mi_persona: ClientePremiumVO):
         #habría que poner más cosas para validar el registtro?
         if '@' in mi_persona.getEmail():
             mi_persona_dao = UserDao()
@@ -24,7 +24,7 @@ class Logica:
         else:
             messagebox.showwarning("Advertencia", "El email no es válido")
 
-    def eliminar_registro(self, mi_persona: UserVO):
+    def eliminar_registro(self, mi_persona: ClientePremiumVO):
         mi_persona_dao=UserDao()
         error=1
         # for i in range (len(mi_persona_dao.getFiltroUsuarios(mi_persona.getDNI()))):
@@ -36,7 +36,7 @@ class Logica:
         if error==1:
             messagebox.showwarning("Advertencia", "No existe nadie con ese DNI")
 
-    def actualizar_registro(self, mi_persona: UserVO):
+    def actualizar_registro(self, mi_persona: ClientePremiumVO):
         mi_persona_dao=UserDao()
         error=1
         for i in range (len(mi_persona_dao.getUsuarios)):
