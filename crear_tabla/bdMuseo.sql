@@ -682,7 +682,7 @@ CREATE TABLE `obras` (
   `IDObra` int NOT NULL,
   `Titulo` varchar(45) NOT NULL,
   `Descripcion` varchar(100) DEFAULT NULL,
-  `Fecha` date NOT NULL,
+  `Fecha` date NULL,
   `Imagen` blob NOT NULL,
   `IDArtista` int NOT NULL,
   `IDExposicion` int NOT NULL,

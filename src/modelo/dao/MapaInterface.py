@@ -9,10 +9,7 @@ from vo.MapaVO import MapaVO
 class MapaInterface(ABC):
     @abstractmethod
     def getInfoMapa(self) -> MapaVO:
-        """
-        Recupera todos los usuarios de la base de datos.        
-        Devuelve: List[UserDTO]: Una lista de objetos UserDTO.
-        """
+
         raise NotImplementedError("Método getUsuarios no implementado")
     
     

@@ -45,8 +45,3 @@ class MapaDao(MapaInterface, Conexion):
     
 
 
-a=MapaDao()
-que=a.getInfoMapa()
-print(que.getImagen())
-
-
