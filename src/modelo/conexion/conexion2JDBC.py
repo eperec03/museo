@@ -27,7 +27,11 @@ class Conexion:
             # Cargar el driver JDBC de MySQL
             jdbc_driver = "com.mysql.cj.jdbc.Driver"
             jar_file = "./lib/mysql-connector-j-8.3.0.jar"
-            return jaydebeapi.connect(jdbc_driver, f"jdbc:mysql://{Conexion.host}/{Conexion.database}", [Conexion.user, Conexion.password], jar_file)
+            conn=jaydebeapi.connect(jdbc_driver, f"jdbc:mysql://{Conexion.host}/{Conexion.database}", [Conexion.user, Conexion.password], jar_file)
+            conn.jconn.setAutoCommit(False)  # Desactivar autocommit
+            return conn
+
+
         except Exception as e:
             print(e)
             return None

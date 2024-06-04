@@ -1,4 +1,5 @@
 use museo;
+/*
 INSERT INTO `artistas` (`NombreArtista`, `FechaNac`, `FechaMuerte`, `Descripcion`, `Corriente`)
 VALUES 
 (1, '1881-10-25', '1973-04-08', 'Pablo Picasso, pintor y escultor español.', 'Cubismo'),
@@ -22,3 +23,9 @@ VALUES
 (1, 1, 'a', '00:05:30'),
 (2, 2, 'b', '00:07:45'),
 (3, 3, 'c', '00:06:20');
+
+INSERT INTO tarifas (TipoTarifa, Precio, Duracion) VALUES ('Normal', 10.00, '1 hora');
+INSERT INTO tarifas (TipoTarifa, Precio, Duracion) VALUES ('Reducida', 7.50, '1 hora');
+INSERT INTO tarifas (TipoTarifa, Precio, Duracion) VALUES ('Grupo', 30.00, '1 hora');
+*/
+select * from tarifas

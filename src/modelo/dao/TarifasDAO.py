@@ -5,25 +5,25 @@ import sys
 sys.path.append(r'C:\Users\eripe\OneDrive\Documentos\ERI ULE\2º\SEGUNDO CUATRI\IS\PROYECTO\src\modelo')
 sys.path.append(r'c:\Users\clara\Documents\2ºUNI\2CUATRI\IS\museoTrabajo\src\modelo')
 
-from vo.AudioguiasVO import AudioguiasVO 
+from vo.TarifasVO import TarifasVO
 from conexion.conexion2JDBC import Conexion
-from dao.AudioguiasInterface import AudioguiasInterface
+from dao.TarifasInterface import TarifasInterface
 # Creamos la clase UsuarioDAO que manejará las operaciones de acceso a datos para los usuarios
 
-class AudioguiasDao(AudioguiasInterface, Conexion):
+class TarifasDao(TarifasInterface, Conexion):
     #Todas las operaciones CRUD que sean necesarias
-    SQL_SELECT = "SELECT * FROM audioguias"
-    SQL_INSERT = "INSERT INTO audioguias(IDAudioguia, IDObra, Audio, Duracion) VALUES (?, ?, ?, ?)"
-    SQL_DELETE = "DELETE FROM audioguias WHERE IDAudioguia = ?"
-    SQL_UPDATE = "UPDATE audioguias SET IDObra= ?, Audio= ?, Duracion = ? WHERE IDAudioguia = ?"
-    SQL_FILTER = "SELECT * FROM audioguias WHERE IDAudioguia = ?"
+    SQL_SELECT = "SELECT * FROM tarifas"
+    SQL_INSERT = "INSERT INTO tarifas(TipoTarifa,Precio,Duracion) VALUES (?, ?, ?)"
+    SQL_DELETE = "DELETE FROM tarifas WHERE TipoTarifa = ?"
+    SQL_UPDATE = "UPDATE tarifas SET Precio= ?, Duracion = ? WHERE TipoTarifa = ?"
+    SQL_FILTER = "SELECT * FROM tarifas WHERE TipoTarifa = ?"
 
 
-    def getAudioguias(self) -> List[AudioguiasVO]:
+    def getTarifas(self) -> List[TarifasVO]:
         conexion = self.getConnection()
         conn = None
         cursor = None
-        audioguias = []
+        tarifas = []
         try:
             if conexion:
                 conn = conexion
@@ -36,25 +36,24 @@ class AudioguiasDao(AudioguiasInterface, Conexion):
             rows = cursor.fetchall()
             #Itera sobre todas las filas
             for row in rows:
-                IDAudio,IDObra,Audio,Duracion= row
-                audioguia = AudioguiasVO()
-                audioguia.setIdAudio(IDAudio)
-                audioguia.setDuracion(Duracion)
-                audioguia.setIdObra(IDObra)
-                audioguia.setAudio(Audio)
-                audioguias.append(audioguia)
+                id,at1,at2= row
+                tarifa = TarifasVO()
+                tarifa.setTipoTarifa(id)
+                tarifa.setPrecio(at1)
+                tarifa.setDuracion(at2)
+                tarifas.append(tarifa)
 
         except Error as e:
-            print("Error al seleccionar Audioguia:", e)
+            print("Error al seleccionar Tarifa:", e)
         #Se ejecuta siempre
         finally:
             if cursor:
                 #Cierra el cursor para liberar recursos
                 cursor.close()
         conexion = self.closeConnection(conn)
-        return audioguias
+        return tarifas
     
-    def getAudioguia(self,id) -> AudioguiasVO:
+    def getTarifa(self,id) -> TarifasVO:
         conexion = self.getConnection()
         conn = None
         cursor = None
@@ -69,24 +68,23 @@ class AudioguiasDao(AudioguiasInterface, Conexion):
             cursor.execute(self.SQL_FILTER, (id,)) #Obtiene todas las filas resultantes de la consulta
             #Obtiene todas las filas resultantes de la consulta
             row = cursor.fetchall()
-            audioguia = AudioguiasVO()
-            IDAudio,IDObra,Audio,Duracion= row[0]   #Al filtrar por la clave primaria, solo hay 1 resultado almacenado en la 1º pos
-            audioguia.setIdAudio(IDAudio)
-            audioguia.setIdObra(IDObra)
-            audioguia.setDuracion(Duracion)
-            audioguia.setAudio(Audio)
+            Tarifa = TarifasVO()
+            id,at1,at2= row[0]   #Al filtrar por la clave primaria, solo hay 1 resultado almacenado en la 1º pos
+            Tarifa.setTipoTarifa(id)
+            Tarifa.setPrecio(at1)
+            Tarifa.setDuracion(at2)
         except Error as e:
-            print("Error al seleccionar Audioguia:", e)
+            print("Error al seleccionar Tarifa:", e)
         #Se ejecuta siempre
         finally:
             if cursor:
                 #Cierra el cursor para liberar recursos
                 cursor.close()
         conexion = self.closeConnection(conn)
-        return audioguia
+        return Tarifa
     
     #se hace el proximo dia
-    def insertAudioguia (self, audioguia: AudioguiasVO) -> int:
+    def insertTarifa (self, Tarifa: TarifasVO) -> int:
         conexion = self.getConnection()
         conn = None
         cursor = None
@@ -98,12 +96,12 @@ class AudioguiasDao(AudioguiasInterface, Conexion):
             else:
                 print("La base de datos no esta disponible")
             cursor = conn.cursor()
-            cursor.execute(self.SQL_INSERT, (audioguia.getIdAudio(),audioguia.getIdObra(),audioguia.getAudio(),audioguia.getDuracion()))
+            cursor.execute(self.SQL_INSERT, (Tarifa.getTipoTarifa(),Tarifa.getPrecio(),Tarifa.getDuracion()))
             conn.commit()
             #Devuelve 1 si la inserción fue exitosa
             rows = cursor.rowcount
         except Error as e:
-            print("Error al insertar Audioguia:", e)
+            print("Error al insertar Tarifa:", e)
 
         finally:
             if cursor:
@@ -113,7 +111,7 @@ class AudioguiasDao(AudioguiasInterface, Conexion):
 
         return rows
 
-    def deleteAudioguia (self, id) -> int:
+    def deleteTarifa (self, id) -> int:
         conexion = self.getConnection()
         conn = None
         cursor = None
@@ -129,7 +127,7 @@ class AudioguiasDao(AudioguiasInterface, Conexion):
             #Devuelve 1 si la inserción fue exitosa
             rows = cursor.rowcount
         except Error as e:
-            print("Error al eliminar Audioguia:", e)
+            print("Error al eliminar Tarifa:", e)
 
 
         finally:
@@ -140,7 +138,7 @@ class AudioguiasDao(AudioguiasInterface, Conexion):
 
         return rows
 
-    def updateAudioguia(self, audioguia:AudioguiasVO) -> int:
+    def updateTarifa(self, Tarifa:TarifasVO) -> int:
         conexion = self.getConnection()
         conn = None
         cursor = None
@@ -154,12 +152,12 @@ class AudioguiasDao(AudioguiasInterface, Conexion):
                 print("La base de datos no esta disponible")
 
             cursor = conn.cursor()
-            cursor.execute(self.SQL_UPDATE, (audioguia.getIdObra(),audioguia.getAudio(),audioguia.getDuracion(),audioguia.getIdAudio()))
+            cursor.execute(self.SQL_UPDATE, (Tarifa.getPrecio(),Tarifa.getDuracion(),Tarifa.getTipoTarifa()))
             conn.commit()
             #Devuelve 1 si la inserción fue exitosa
             rows = cursor.rowcount
         except Error as e:
-            print("Error al actualizar Audioguia:", e)
+            print("Error al actualizar Tarifa:", e)
         finally:
             if cursor:
                 cursor.close()
@@ -168,15 +166,15 @@ class AudioguiasDao(AudioguiasInterface, Conexion):
 
         return rows
 
-# a=AudioguiasDao()
-# b=AudioguiasVO()
-# b.setIdAudio('3')
-# b.setIdObra('3')
-# b.setDuracion('01:15:00')
-# b.setAudio('55')
-# print(str(a.getAudioguia('3').Duracion))
-# a.updateAudioguia(b)
-# print(str(a.getAudioguia('3').Duracion))
+# a=TarifasDao()
+# b=TarifasVO()
+# b.setTipoTarifa('Exclusiva')
+# b.setDuracion('10 horas')
+# b.setPrecio('150.00')
+# a.insertTarifa(b)
+# print(str(a.getTarifas()[0].Precio))
+# print(str(a.getTarifa('Exclusiva').Precio))
+# a.deleteTarifa('Exclusiva')
 
 
 
