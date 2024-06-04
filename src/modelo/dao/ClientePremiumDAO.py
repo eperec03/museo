@@ -3,23 +3,23 @@ from typing import List
 
 import sys
 sys.path.append(r'C:\Users\eripe\OneDrive\Documentos\ERI ULE\2º\SEGUNDO CUATRI\IS\PROYECTO\src\modelo')
-sys.path.append(r'c:\Users\clara\Documents\2ºUNI\2CUATRI\IS\museoTrabajo\src\modelo')
+sys.path.append(r'c:\Users\clara\Documents\2ºUNI\2CUATRI\IS\museo\src\modelo')
 
-from vo.UserVO import UserVO 
+from vo.ClientePremiumVO import ClientePremiumVO 
 from conexion.conexion2JDBC import Conexion
-from dao.UserInterface import UserInterface
+from modelo.dao.ClientePremiumInterface import ClientePInterface
 # Creamos la clase UsuarioDAO que manejará las operaciones de acceso a datos para los usuarios
 
-class UserDao(UserInterface, Conexion):
+class ClientePremiumDAO(ClientePInterface, Conexion):
     #Todas las operaciones CRUD que sean necesarias
-    SQL_SELECT = "SELECT DNI, UsuNombreCompleto, UsuTfno, UsuEmail, UsuTitularMP, UsuCvvMP, UsuNumTarjMP, UsuCadMP, UsuContrasenna, UsuFecha FROM Usuarios"
-    SQL_INSERT = "INSERT INTO Usuarios(DNI, UsuNombreCompleto, UsuTfno, UsuEmail, UsuTitularMP, UsuNumTarjMP, UsuCvvMP, UsuCadMP, UsuContrasenna, UsuFecha) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)"
+    SQL_SELECT = "SELECT DNI, UsuNombreCompleto, UsuTfno, UsuEmail, UsuTitularMP, UsuCvvMP, UsuNumTarjMP, UsuCadMP, UsuContrasenna, FROM Clientespremium"
+    SQL_INSERT = "INSERT INTO Usuarios(DNI, UsuNombreCompleto, UsuTfno, UsuEmail, UsuTitularMP, UsuNumTarjMP, UsuCvvMP, UsuCadMP, UsuContrasenna) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)"
     SQL_DELETE = "DELETE FROM Usuarios WHERE DNI = ?"
     SQL_UPDATE = "UPDATE Usuarios SET UsuNombreCompleto = ?, UsuTfno = ?, UsuEmail = ?, UsuTitularMP = ?, UsuCvvMP = ?, UsuNumTarjMP = ?, UsuCadMP = ?, UsuContrasenna = ? WHERE DNI = ?"
     SQL_FILTER = "SELECT * FROM Usuarios WHERE DNI = ?"
 
 
-    def getUsuarios(self) -> List[UserVO]:
+    def getUsuarios(self) -> List[ClientePremiumVO]:
         conexion = self.getConnection()
         conn = None
         cursor = None
@@ -36,9 +36,9 @@ class UserDao(UserInterface, Conexion):
             rows = cursor.fetchall()
             #Itera sobre todas las filas
             for row in rows:
-                DNI, UsuNombreCompleto, UsuTfno, UsuEmail, UsuTitularMP, UsuNumTarjMP, UsuCvvMP, UsuCadMP, UsuContrasenna, UsuFecha = row
-                #Crea un objeto UserVO para cada fila DNI, NombreCompleto...
-                usuario = UserVO()
+                DNI, UsuNombreCompleto, UsuTfno, UsuEmail, UsuTitularMP, UsuNumTarjMP, UsuCvvMP, UsuCadMP, UsuContrasenna = row
+                #Crea un objeto ClientePremiumVO para cada fila DNI, NombreCompleto...
+                usuario = ClientePremiumVO()
                 usuario.setDNI(DNI)
                 usuario.setNombreCompleto(UsuNombreCompleto)
                 usuario.setTelefono(UsuTfno)
@@ -48,7 +48,6 @@ class UserDao(UserInterface, Conexion):
                 usuario.setCvv(UsuCvvMP)
                 usuario.setCaducidad(UsuCadMP)
                 usuario.setContraseña(UsuContrasenna)
-                usuario.setFechaRegistro(UsuFecha)
                 usuarios.append(usuario)
 
         except Error as e:
@@ -62,7 +61,7 @@ class UserDao(UserInterface, Conexion):
         conexion = self.closeConnection(conn)
         return usuarios
     
-    def getFiltroUsuarios(self,dni) -> List[UserVO]:
+    def getFiltroUsuarios(self,dni) -> List[ClientePremiumVO]:
         conexion = self.getConnection()
         conn = None
         cursor = None
@@ -81,11 +80,11 @@ class UserDao(UserInterface, Conexion):
             rows = cursor.fetchall()
             print(rows)
 
-            #Crea un objeto UserVO para cada fila DNI, NombreCompleto...
+            #Crea un objeto ClientePremiumVO para cada fila DNI, NombreCompleto...
             for row in rows:
                 DNI, UsuNombreCompleto, UsuTfno, UsuEmail, UsuTitularMP, UsuNumTarjMP, UsuCvvMP, UsuCadMP, UsuContrasenna, UsuFecha = row
-                #Crea un objeto UserVO para cada fila DNI, NombreCompleto...
-                usuario = UserVO(DNI=DNI, NombreCompleto=UsuNombreCompleto, Telefono=UsuTfno,Email=UsuEmail, Titular= UsuTitularMP, NumTarjeta= UsuNumTarjMP,Cvv= UsuCvvMP, Caducidad= UsuCadMP, Contraseña=UsuContrasenna, FechaRegistro=UsuFecha)
+                #Crea un objeto ClientePremiumVO para cada fila DNI, NombreCompleto...
+                usuario = ClientePremiumVO(DNI=DNI, NombreCompleto=UsuNombreCompleto, Telefono=UsuTfno,Email=UsuEmail, Titular= UsuTitularMP, NumTarjeta= UsuNumTarjMP,Cvv= UsuCvvMP, Caducidad= UsuCadMP, Contraseña=UsuContrasenna, FechaRegistro=UsuFecha)
                 usuarios.append(usuario)
 
         except Error as e:
@@ -99,7 +98,7 @@ class UserDao(UserInterface, Conexion):
         conexion = self.closeConnection(conn)
         return usuarios
     #se hace el proximo dia
-    def insertUsuario (self, usuario: UserVO) -> int:
+    def insertUsuario (self, usuario: ClientePremiumVO) -> int:
         conexion = self.getConnection()
         conn = None
         cursor = None
@@ -113,7 +112,7 @@ class UserDao(UserInterface, Conexion):
                 print("La base de datos no esta disponible")
 
             cursor = conn.cursor()
-            cursor.execute(self.SQL_INSERT, (usuario.getDNI(),usuario.getNombreCompleto(),usuario.getTelefono(),usuario.getEmail(),usuario.getTitular(),usuario.getNumTarjeta(),usuario.getCvv(),usuario.getCaducidad(),usuario.getContraseña(),usuario.getFechaRegistro()))
+            cursor.execute(self.SQL_INSERT, (usuario.getDNI(),usuario.getNombreCompleto(),usuario.getTelefono(),usuario.getEmail(),usuario.getTitular(),usuario.getNumTarjeta(),usuario.getCvv(),usuario.getCaducidad(),usuario.getContraseña()))
             # conn.commit()
             #Asegurarse de que esos cambios se hagan permanentes: conn.commit(). Si conn.autocommit = True no es necesario llamar explícitamente a conn.commit() después de cada inserción, ya que la base de datos confirma automáticamente cada instrucción.
            
@@ -131,7 +130,7 @@ class UserDao(UserInterface, Conexion):
 
         return rows
 
-    def eliminateUsuario (self, usuario:UserVO) -> int:
+    def eliminateUsuario (self, usuario:ClientePremiumVO) -> int:
         conexion = self.getConnection()
         conn = None
         cursor = None
@@ -163,7 +162,7 @@ class UserDao(UserInterface, Conexion):
 
         return rows
 
-    def updateUsuario  (self, usuario:UserVO) -> int:
+    def updateUsuario  (self, usuario:ClientePremiumVO) -> int:
         conexion = self.getConnection()
         conn = None
         cursor = None
