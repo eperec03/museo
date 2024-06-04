@@ -64,6 +64,7 @@ class RegistroClientePVentana(QtWidgets.QMainWindow):
             self.coordinador.registrarUsuario(persona)
             self.limpiar()
         except Exception as ex:
+            print(ex)
             self.mostrar_advertencia(ex)
 
     def mostrar_advertencia(ex):
