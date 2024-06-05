@@ -4,8 +4,10 @@ sys.path.append(r'c:\Users\clara\Documents\2ºUNI\2CUATRI\IS\museo\src')
 
 import tkinter as tk
 from tkinter import messagebox
-from modelo.vo.ClientePremiumVO import ClientePremiumVO
-from modelo.dao.ClientePremiumDAO import ClientePremiumDAO
+from modelo.vo.ClientePremiumVO import *
+from modelo.dao.ClientePremiumDAO import *
+from modelo.vo.ClientesEstandarVO import *
+from modelo.dao.ClienteEstandarDAO import *
 from controlador.coordinador import Coordinador
 
 class Logica:
@@ -47,4 +49,8 @@ class Logica:
             messagebox.showwarning("Advertencia", "No existe nadie con ese DNI")
 
 
-
+    def validar_entrada(self, mi_entrada: ClienteEstandarVO):
+        #habría que poner más cosas para validar el registtro?
+        mi_entrada = ClienteEstandarDAO()
+        mi_entrada.getEntradas()                  
+        mi_entrada.insertEntrada(mi_entrada)

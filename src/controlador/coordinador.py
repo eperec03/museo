@@ -3,7 +3,8 @@ import sys
 sys.path.append(r'c:\Users\clara\Documents\2ºUNI\2CUATRI\IS\museo\src')
 
 from modelo.vo.ClientePremiumVO import *
-from vista.RegistroClientePVentana import RegistroClientePVentana
+from modelo.vo.ClientesEstandarVO import *
+
 
 class Coordinador:
     def __init__(self):
@@ -12,6 +13,7 @@ class Coordinador:
       self._viewRegistro = None
       self._viewEliminarUsuario = None
       self._viewActualizarUsuario = None
+      self._viewRegistroEntrada = None
       
     def getModel(self):
        return self._model
@@ -37,6 +39,12 @@ class Coordinador:
 
     def setViewActualizarUsuario(self, view):
        self._viewActualizarUsuario = view
+
+    def getViewRegistroEntrada(self):
+       return self._viewRegistroEntrada
+
+    def setViewRegistroEntrada(self, view):
+       self._viewActualizarUsuario = view
     
     ##############################################
 
@@ -50,4 +58,5 @@ class Coordinador:
     def actualizarUsuario(self, usuario: ClientePremiumVO) -> None:
        self._model.actualizar_registro(usuario)
     
-      
+    def registrarEntrada(self, usuario: ClienteEstandarVO) -> None:
+       self._model.validar_entrada(usuario)      

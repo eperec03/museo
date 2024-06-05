@@ -13,7 +13,7 @@ from modelo.dao.ClientePremiumInterface import ClientePInterface
 class ClientePremiumDAO(ClientePInterface, Conexion):
     #Todas las operaciones CRUD que sean necesarias
     SQL_SELECT = "SELECT DNI, UsuNombreCompleto, UsuTfno, UsuEmail, UsuTitularMP, UsuCvvMP, UsuNumTarjMP, UsuCadMP, UsuContrasenna, FROM Clientespremium"
-    SQL_INSERT = "INSERT INTO Usuarios(DNI, UsuNombreCompleto, UsuTfno, UsuEmail, UsuTitularMP, UsuNumTarjMP, UsuCvvMP, UsuCadMP, UsuContrasenna) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)"
+    SQL_INSERT = "INSERT INTO Clientespremium(DNI, UsuNombreCompleto, UsuTfno, UsuEmail, UsuTitularMP, UsuNumTarjMP, UsuCvvMP, UsuCadMP, UsuContrasenna) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)"
     SQL_DELETE = "DELETE FROM Usuarios WHERE DNI = ?"
     SQL_UPDATE = "UPDATE Usuarios SET UsuNombreCompleto = ?, UsuTfno = ?, UsuEmail = ?, UsuTitularMP = ?, UsuCvvMP = ?, UsuNumTarjMP = ?, UsuCadMP = ?, UsuContrasenna = ? WHERE DNI = ?"
     SQL_FILTER = "SELECT * FROM Usuarios WHERE DNI = ?"
