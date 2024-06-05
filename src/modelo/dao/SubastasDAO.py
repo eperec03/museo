@@ -1,29 +1,29 @@
-from jaydebeapi import Error
+IDObrafrom jaydebeapi import Error
 from typing import List
 
 import sys
 sys.path.append(r'C:\Users\eripe\OneDrive\Documentos\ERI ULE\2º\SEGUNDO CUATRI\IS\PROYECTO\src\modelo')
 sys.path.append(r'c:\Users\clara\Documents\2ºUNI\2CUATRI\IS\museoTrabajo\src\modelo')
 
-from vo.ObjetosVO import ObjetosVO 
+from vo.SubastasVO import SubastasVO 
 from conexion.conexion2JDBC import Conexion
-from dao.ObjetosInterface import ObjetosInterface
+from dao.SubastasInterface import SubastasInterface
 # Creamos la clase UsuarioDAO que manejará las operaciones de acceso a datos para los usuarios
 
-class ObjetosDao(ObjetosInterface, Conexion):
+class SubastasDao(SubastasInterface, Conexion):
     #Todas las operaciones CRUD que sean necesarias
-    SQL_SELECT = "SELECT * FROM objetos"
-    SQL_INSERT = "INSERT INTO objetos(IDObjeto, Imagen, Tipo, Precio, Inspiracion, Existencias, Agotado, IDCatalogo) VALUES (?, ?, ?, ?, ?, ?, ?, ?)"
-    SQL_DELETE = "DELETE FROM objetos WHERE IDObjeto = ?"
-    SQL_UPDATE = "UPDATE objetos SET Imagen= ?, Tipo= ?, Precio = ?, Inspiracion = ?, Existencias = ?, Agotado = ?, IDCatalogo = ? WHERE IDObjeto = ?"
-    SQL_FILTER = "SELECT * FROM objetos WHERE IDObjeto = ?"
+    SQL_SELECT = "SELECT * FROM Subastas"
+    SQL_INSERT = "INSERT INTO Subastas(IDSubasta, Titulo, Descripcion, Fecha) VALUES (?, ?, ?, ?)"
+    SQL_DELETE = "DELETE FROM Subastas WHERE IDSubasta = ?"
+    SQL_UPDATE = "UPDATE Subastas SET Titulo= ?, Descripcion= ?, Fecha = ? WHERE IDSubasta = ?"
+    SQL_FILTER = "SELECT * FROM Subastas WHERE IDSubasta = ?"
 
 
-    def getObjetos(self) -> List[ObjetosVO]:
+    def getSubastas(self) -> List[SubastasVO]:
         conexion = self.getConnection()
         conn = None
         cursor = None
-        objetos = []
+        subastas = []
         try:
             if conexion:
                 conn = conexion
@@ -36,29 +36,25 @@ class ObjetosDao(ObjetosInterface, Conexion):
             rows = cursor.fetchall()
             #Itera sobre todas las filas
             for row in rows:
-                IDObjeto,Imagen,Tipo,Precio,Inspiracion,Existencias,Agotado,IDCatalogo= row
-                objeto = ObjetosVO()
-                objeto.setIDObjeto(IDObjeto)
-                objeto.setPrecio(Precio)
-                objeto.setImagen(Imagen)
-                objeto.setTipo(Tipo)
-                objeto.setInspiracion(Inspiracion)
-                objeto.setExistencias(Existencias)
-                objeto.setAgotado(Agotado)
-                objeto.setIDCatalogo(IDCatalogo)
-                objetos.append(objeto)
+                IDSubasta,Titulo,Descripcion,Fecha= row
+                subasta = SubastasVO()
+                subasta.setIDSubasta(IDSubasta)
+                subasta.setDescripcion(Descripcion)
+                subasta.setTitulo(Titulo)
+                subasta.setFecha(Fecha)
+                Subastas.append(subasta)
 
         except Error as e:
-            print("Error al seleccionar objeto:", e)
+            print("Error al seleccionar subasta:", e)
         #Se ejecuta siempre
         finally:
             if cursor:
                 #Cierra el cursor para liberar recursos
                 cursor.close()
         conexion = self.closeConnection(conn)
-        return objetos
+        return subastas
     
-    def getObjeto(self,id) -> ObjetosVO:
+    def getSubasta(self,id) -> SubastasVO:
         conexion = self.getConnection()
         conn = None
         cursor = None
@@ -73,28 +69,24 @@ class ObjetosDao(ObjetosInterface, Conexion):
             cursor.execute(self.SQL_FILTER, (id,)) #Obtiene todas las filas resultantes de la consulta
             #Obtiene todas las filas resultantes de la consulta
             row = cursor.fetchall()
-            objeto = ObjetosVO()
-            IDObjeto,Imagen,Tipo,Precio,Inspiracion,Existencias,Agotado,IDCatalogo= row[0]   #Al filtrar por la clave primaria, solo hay 1 resultado almacenado en la 1º pos
-            objeto.setIDObjeto(IDObjeto)
-            objeto.setImagen(Imagen)
-            objeto.setPrecio(Precio)
-            objeto.setTipo(Tipo)
-            objeto.setInspiracion(Inspiracion)
-            objeto.setAgotado(Agotado)
-            objeto.setIDCatalogo(IDCatalogo)
-            objeto.setExistencias(Existencias)
+            subasta = SubastasVO()
+            IDSubasta,Titulo,Descripcion,Fecha = row[0]   #Al filtrar por la clave primaria, solo hay 1 resultado almacenado en la 1º pos
+            subasta.setIDSubasta(IDSubasta)
+            subasta.setTitulo(Titulo)
+            subasta.setFecha(Fecha)
+            subasta.setDescripcion(Descripcion)
         except Error as e:
-            print("Error al seleccionar objeto:", e)
+            print("Error al seleccionar subasta:", e)
         #Se ejecuta siempre
         finally:
             if cursor:
                 #Cierra el cursor para liberar recursos
                 cursor.close()
         conexion = self.closeConnection(conn)
-        return objeto
+        return subasta
     
     #se hace el proximo dia
-    def insertObjeto (self, objeto: ObjetosVO) -> int:
+    def insertSubasta (self, subasta: SubastasVO) -> int:
         conexion = self.getConnection()
         conn = None
         cursor = None
@@ -106,12 +98,12 @@ class ObjetosDao(ObjetosInterface, Conexion):
             else:
                 print("La base de datos no esta disponible")
             cursor = conn.cursor()
-            cursor.execute(self.SQL_INSERT, (objeto.getIDObjeto(),objeto.getImagen(),objeto.getTipo(),objeto.getPrecio(),objeto.getInspiracion(),objeto.getExistencias(),objeto.getAgotado(),objeto.getIDCatalogo()))
+            cursor.execute(self.SQL_INSERT, (subasta.getIDSubasta(),subasta.getTitulo(),subasta.getDescripcion(),subasta.getFecha()))
             conn.commit()
             #Devuelve 1 si la inserción fue exitosa
             rows = cursor.rowcount
         except Error as e:
-            print("Error al insertar objeto:", e)
+            print("Error al insertar subasta:", e)
 
         finally:
             if cursor:
@@ -121,7 +113,7 @@ class ObjetosDao(ObjetosInterface, Conexion):
 
         return rows
 
-    def deleteObjeto (self, id) -> int:
+    def deleteSubasta (self, id) -> int:
         conexion = self.getConnection()
         conn = None
         cursor = None
@@ -137,7 +129,7 @@ class ObjetosDao(ObjetosInterface, Conexion):
             #Devuelve 1 si la inserción fue exitosa
             rows = cursor.rowcount
         except Error as e:
-            print("Error al eliminar objeto:", e)
+            print("Error al eliminar subasta:", e)
 
 
         finally:
@@ -148,7 +140,7 @@ class ObjetosDao(ObjetosInterface, Conexion):
 
         return rows
 
-    def updateObjeto(self, objeto:ObjetosVO) -> int:
+    def updateSubasta(self, subasta:SubastasVO) -> int:
         conexion = self.getConnection()
         conn = None
         cursor = None
@@ -162,12 +154,12 @@ class ObjetosDao(ObjetosInterface, Conexion):
                 print("La base de datos no esta disponible")
 
             cursor = conn.cursor()
-            cursor.execute(self.SQL_UPDATE, (objeto.getImagen(),objeto.getTipo(),objeto.getPrecio(),objeto.getIDObjeto(),objeto.getInspiracion(),objeto.getExistencias(),objeto.getAgotado(),objeto.getIDCatalogo()))
+            cursor.execute(self.SQL_UPDATE, (subasta.getTitulo(),subasta.getDescripcion(),subasta.getFecha(),subasta.getIDSubasta()))
             conn.commit()
             #Devuelve 1 si la inserción fue exitosa
             rows = cursor.rowcount
         except Error as e:
-            print("Error al actualizar objeto:", e)
+            print("Error al actualizar subasta:", e)
         finally:
             if cursor:
                 cursor.close()

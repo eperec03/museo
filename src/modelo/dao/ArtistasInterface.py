@@ -24,7 +24,7 @@ class ArtistasInterface(ABC):
         raise NotImplementedError("Método getArtista no implementado")
     
     @abstractmethod
-    def insertArtista(self, Artista: ArtistasVO):
+    def insertArtista(self, artista: ArtistasVO):
         """
         Inserta un nuevo usuario en la base de datos.
         Parametros requeridos: El objeto ArtistasVO a insertar.
@@ -33,7 +33,7 @@ class ArtistasInterface(ABC):
         raise NotImplementedError("Método insertArtista no implementado")
     
     @abstractmethod
-    def deleteArtista(self, Artista: ArtistasVO):
+    def deleteArtista(self, artista: ArtistasVO):
         """
         Elimina un nuevo usuario en la base de datos.
         Parametros requeridos: El objeto ArtistasVO para borrar.
@@ -41,7 +41,7 @@ class ArtistasInterface(ABC):
         raise NotImplementedError("Método deleteArtista no implementado")
 
     @abstractmethod
-    def updateArtista(self, Artista: ArtistasVO):
+    def updateArtista(self, artista: ArtistasVO):
         """
         Actualiza el usuario que tenga el mismo dni que el que se le pasa en la base de datos.
         Parametros requeridos: El objeto ArtistasVO a actualizar.
