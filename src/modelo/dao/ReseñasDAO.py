@@ -5,60 +5,58 @@ import sys
 sys.path.append(r'C:\Users\eripe\OneDrive\Documentos\ERI ULE\2º\SEGUNDO CUATRI\IS\PROYECTO\src\modelo')
 sys.path.append(r'c:\Users\clara\Documents\2ºUNI\2CUATRI\IS\museoTrabajo\src\modelo')
 
-from vo.ObjetosVO import ObjetosVO 
+from vo.ReseñasVO import ReseñasVO 
 from conexion.conexion2JDBC import Conexion
-from dao.ObjetosInterface import ObjetosInterface
+from dao.ReseñasInterface import ReseñasInterface
 # Creamos la clase UsuarioDAO que manejará las operaciones de acceso a datos para los usuarios
 
-class ObjetosDao(ObjetosInterface, Conexion):
+class ReseñasDao(ReseñasInterface, Conexion):
     #Todas las operaciones CRUD que sean necesarias
-    SQL_SELECT = "SELECT * FROM objetos"
-    SQL_INSERT = "INSERT INTO objetos(IDObjeto, Imagen, Tipo, Precio, Inspiracion, Existencias, Agotado, IDCatalogo) VALUES (?, ?, ?, ?, ?, ?, ?, ?)"
-    SQL_DELETE = "DELETE FROM objetos WHERE IDObjeto = ?"
-    SQL_UPDATE = "UPDATE objetos SET Imagen= ?, Tipo= ?, Precio = ?, Inspiracion = ?, Existencias = ?, Agotado = ?, IDCatalogo = ? WHERE IDObjeto = ?"
-    SQL_FILTER = "SELECT * FROM objetos WHERE IDObjeto = ?"
+    SQL_SELECT = "SELECT * FROM reseñas"
+    SQL_INSERT = "INSERT INTO reseñas(NumReseña, IDObra, Texto, NumEstrellas, Visible, Fecha, Agotado, IDCatalogo) VALUES (?, ?, ?, ?, ?, ?, ?, ?)"
+    SQL_DELETE = "DELETE FROM reseñas WHERE NumReseña = ?"
+    SQL_UPDATE = "UPDATE reseñas SET IDObra= ?, Texto= ?, NumEstrellas = ?, Visible = ?, Fecha = ?, Agotado = ?, IDCatalogo = ? WHERE NumReseña = ?"
+    SQL_FILTER = "SELECT * FROM reseñas WHERE NumReseña = ?"
 
 
-    def getObjetos(self) -> List[ObjetosVO]:
+    def getReseñas(self) -> List[ReseñasVO]:
         conexion = self.getConnection()
         conn = None
         cursor = None
-        objetos = []
+        reseñas = []
         try:
             if conexion:
                 conn = conexion
             else:
                 print("La base de datos no esta disponible")
-            #Crea un objeto para poder ejecutar consultas SQL sobre la conexion abierta
+            #Crea un reseña para poder ejecutar consultas SQL sobre la conexion abierta
             cursor = conn.cursor()
             #Ejecuta de consulta SQL
             cursor.execute(self.SQL_SELECT) #Obtiene todas las filas resultantes de la consulta
             rows = cursor.fetchall()
             #Itera sobre todas las filas
             for row in rows:
-                IDObjeto,Imagen,Tipo,Precio,Inspiracion,Existencias,Agotado,IDCatalogo= row
-                objeto = ObjetosVO()
-                objeto.setIDObjeto(IDObjeto)
-                objeto.setPrecio(Precio)
-                objeto.setImagen(Imagen)
-                objeto.setTipo(Tipo)
-                objeto.setInspiracion(Inspiracion)
-                objeto.setExistencias(Existencias)
-                objeto.setAgotado(Agotado)
-                objeto.setIDCatalogo(IDCatalogo)
-                objetos.append(objeto)
+                NumReseña,IDObra,Texto,NumEstrellas,Visible,Fecha= row
+                reseña = ReseñasVO()
+                reseña.setNumReseña(NumReseña)
+                reseña.setNumEstrellas(NumEstrellas)
+                reseña.setIDObra(IDObra)
+                reseña.setTexto(Texto)
+                reseña.setVisible(Visible)
+                reseña.setFecha(Fecha)
+                reseñas.append(reseña)
 
         except Error as e:
-            print("Error al seleccionar objeto:", e)
+            print("Error al seleccionar reseña:", e)
         #Se ejecuta siempre
         finally:
             if cursor:
                 #Cierra el cursor para liberar recursos
                 cursor.close()
         conexion = self.closeConnection(conn)
-        return objetos
+        return reseñas
     
-    def getObjeto(self,id) -> ObjetosVO:
+    def getReseña(self,id) -> ReseñasVO:
         conexion = self.getConnection()
         conn = None
         cursor = None
@@ -67,34 +65,32 @@ class ObjetosDao(ObjetosInterface, Conexion):
                 conn = conexion
             else:
                 print("La base de datos no esta disponible")
-            #Crea un objeto para poder ejecutar consultas SQL sobre la conexion abierta
+            #Crea un reseña para poder ejecutar consultas SQL sobre la conexion abierta
             cursor = conn.cursor()
             #Ejecuta de consulta SQL
             cursor.execute(self.SQL_FILTER, (id,)) #Obtiene todas las filas resultantes de la consulta
             #Obtiene todas las filas resultantes de la consulta
             row = cursor.fetchall()
-            objeto = ObjetosVO()
-            IDObjeto,Imagen,Tipo,Precio,Inspiracion,Existencias,Agotado,IDCatalogo= row[0]   #Al filtrar por la clave primaria, solo hay 1 resultado almacenado en la 1º pos
-            objeto.setIDObjeto(IDObjeto)
-            objeto.setImagen(Imagen)
-            objeto.setPrecio(Precio)
-            objeto.setTipo(Tipo)
-            objeto.setInspiracion(Inspiracion)
-            objeto.setAgotado(Agotado)
-            objeto.setIDCatalogo(IDCatalogo)
-            objeto.setExistencias(Existencias)
+            reseña = ReseñasVO()
+            NumReseña,IDObra,Texto,NumEstrellas,Visible,Fecha= row[0]   #Al filtrar por la clave primaria, solo hay 1 resultado almacenado en la 1º pos
+            reseña.setNumReseña(NumReseña)
+            reseña.setIDObra(IDObra)
+            reseña.setNumEstrellas(NumEstrellas)
+            reseña.setVisible(Visible)
+            reseña.setFecha(Fecha)
+            reseña.setTexto(Texto)
         except Error as e:
-            print("Error al seleccionar objeto:", e)
+            print("Error al seleccionar reseña:", e)
         #Se ejecuta siempre
         finally:
             if cursor:
                 #Cierra el cursor para liberar recursos
                 cursor.close()
         conexion = self.closeConnection(conn)
-        return objeto
+        return reseña
     
     #se hace el proximo dia
-    def insertObjeto (self, objeto: ObjetosVO) -> int:
+    def insertReseña (self, reseña: ReseñasVO) -> int:
         conexion = self.getConnection()
         conn = None
         cursor = None
@@ -106,12 +102,12 @@ class ObjetosDao(ObjetosInterface, Conexion):
             else:
                 print("La base de datos no esta disponible")
             cursor = conn.cursor()
-            cursor.execute(self.SQL_INSERT, (objeto.getIDObjeto(),objeto.getImagen(),objeto.getTipo(),objeto.getPrecio(),objeto.getInspiracion(),objeto.getExistencias(),objeto.getAgotado(),objeto.getIDCatalogo()))
+            cursor.execute(self.SQL_INSERT, (reseña.getNumReseña(),reseña.getIDObra(),reseña.getTexto(),reseña.getNumEstrellas(),reseña.getVisible(),reseña.getFecha()))
             conn.commit()
             #Devuelve 1 si la inserción fue exitosa
             rows = cursor.rowcount
         except Error as e:
-            print("Error al insertar objeto:", e)
+            print("Error al insertar reseña:", e)
 
         finally:
             if cursor:
@@ -121,7 +117,7 @@ class ObjetosDao(ObjetosInterface, Conexion):
 
         return rows
 
-    def deleteObjeto (self, id) -> int:
+    def deleteReseña (self, id) -> int:
         conexion = self.getConnection()
         conn = None
         cursor = None
@@ -137,7 +133,7 @@ class ObjetosDao(ObjetosInterface, Conexion):
             #Devuelve 1 si la inserción fue exitosa
             rows = cursor.rowcount
         except Error as e:
-            print("Error al eliminar objeto:", e)
+            print("Error al eliminar reseña:", e)
 
 
         finally:
@@ -148,7 +144,7 @@ class ObjetosDao(ObjetosInterface, Conexion):
 
         return rows
 
-    def updateObjeto(self, objeto:ObjetosVO) -> int:
+    def updateReseña(self, reseña:ReseñasVO) -> int:
         conexion = self.getConnection()
         conn = None
         cursor = None
@@ -162,12 +158,12 @@ class ObjetosDao(ObjetosInterface, Conexion):
                 print("La base de datos no esta disponible")
 
             cursor = conn.cursor()
-            cursor.execute(self.SQL_UPDATE, (objeto.getImagen(),objeto.getTipo(),objeto.getPrecio(),objeto.getIDObjeto(),objeto.getInspiracion(),objeto.getExistencias(),objeto.getAgotado(),objeto.getIDCatalogo()))
+            cursor.execute(self.SQL_UPDATE, (reseña.getIDObra(),reseña.getTexto(),reseña.getNumEstrellas(),reseña.getNumReseña(),reseña.getVisible()))
             conn.commit()
             #Devuelve 1 si la inserción fue exitosa
             rows = cursor.rowcount
         except Error as e:
-            print("Error al actualizar objeto:", e)
+            print("Error al actualizar reseña:", e)
         finally:
             if cursor:
                 cursor.close()

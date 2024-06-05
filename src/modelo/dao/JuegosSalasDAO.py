@@ -5,25 +5,25 @@ import sys
 sys.path.append(r'C:\Users\eripe\OneDrive\Documentos\ERI ULE\2º\SEGUNDO CUATRI\IS\PROYECTO\src\modelo')
 sys.path.append(r'c:\Users\clara\Documents\2ºUNI\2CUATRI\IS\museoTrabajo\src\modelo')
 
-from vo.ObjetosVO import ObjetosVO 
+from vo.JuegosSalasVO import JuegosSalasVO 
 from conexion.conexion2JDBC import Conexion
-from dao.ObjetosInterface import ObjetosInterface
+from dao.JuegosSalasInterface import JuegosSalasInterface
 # Creamos la clase UsuarioDAO que manejará las operaciones de acceso a datos para los usuarios
 
-class ObjetosDao(ObjetosInterface, Conexion):
+class JuegosSalasDao(JuegosSalasInterface, Conexion):
     #Todas las operaciones CRUD que sean necesarias
-    SQL_SELECT = "SELECT * FROM objetos"
-    SQL_INSERT = "INSERT INTO objetos(IDObjeto, Imagen, Tipo, Precio, Inspiracion, Existencias, Agotado, IDCatalogo) VALUES (?, ?, ?, ?, ?, ?, ?, ?)"
-    SQL_DELETE = "DELETE FROM objetos WHERE IDObjeto = ?"
-    SQL_UPDATE = "UPDATE objetos SET Imagen= ?, Tipo= ?, Precio = ?, Inspiracion = ?, Existencias = ?, Agotado = ?, IDCatalogo = ? WHERE IDObjeto = ?"
-    SQL_FILTER = "SELECT * FROM objetos WHERE IDObjeto = ?"
+    SQL_SELECT = "SELECT * FROM JuegosSalas"
+    SQL_INSERT = "INSERT INTO JuegosSalas(IDJuegoSala, IDSala) VALUES (?, ?)"
+    SQL_DELETE = "DELETE FROM JuegosSalas WHERE IDJuegoSala = ?"
+    SQL_UPDATE = "UPDATE JuegosSalas SET IDSala= ? WHERE IDJuegoSala = ?"
+    SQL_FILTER = "SELECT * FROM JuegosSalas WHERE IDJuegoSala = ?"
 
 
-    def getObjetos(self) -> List[ObjetosVO]:
+    def getJuegosSalas(self) -> List[JuegosSalasVO]:
         conexion = self.getConnection()
         conn = None
         cursor = None
-        objetos = []
+        juegosSalas = []
         try:
             if conexion:
                 conn = conexion
@@ -36,29 +36,23 @@ class ObjetosDao(ObjetosInterface, Conexion):
             rows = cursor.fetchall()
             #Itera sobre todas las filas
             for row in rows:
-                IDObjeto,Imagen,Tipo,Precio,Inspiracion,Existencias,Agotado,IDCatalogo= row
-                objeto = ObjetosVO()
-                objeto.setIDObjeto(IDObjeto)
-                objeto.setPrecio(Precio)
-                objeto.setImagen(Imagen)
-                objeto.setTipo(Tipo)
-                objeto.setInspiracion(Inspiracion)
-                objeto.setExistencias(Existencias)
-                objeto.setAgotado(Agotado)
-                objeto.setIDCatalogo(IDCatalogo)
-                objetos.append(objeto)
+                IDJuegoSala,IDSala= row
+                juegosSalas = JuegosSalasVO()
+                juegosSalas.setIDJuegoSala(IDJuegoSala)
+                juegosSalas.setIDSala(IDSala)
+                juegosSalas.append(JuegosSalas)
 
         except Error as e:
-            print("Error al seleccionar objeto:", e)
+            print("Error al seleccionar JuegosSalas:", e)
         #Se ejecuta siempre
         finally:
             if cursor:
                 #Cierra el cursor para liberar recursos
                 cursor.close()
         conexion = self.closeConnection(conn)
-        return objetos
+        return juegosSalas
     
-    def getObjeto(self,id) -> ObjetosVO:
+    def getJuegosSalas(self,id) -> JuegosSalasVO:
         conexion = self.getConnection()
         conn = None
         cursor = None
@@ -73,28 +67,22 @@ class ObjetosDao(ObjetosInterface, Conexion):
             cursor.execute(self.SQL_FILTER, (id,)) #Obtiene todas las filas resultantes de la consulta
             #Obtiene todas las filas resultantes de la consulta
             row = cursor.fetchall()
-            objeto = ObjetosVO()
-            IDObjeto,Imagen,Tipo,Precio,Inspiracion,Existencias,Agotado,IDCatalogo= row[0]   #Al filtrar por la clave primaria, solo hay 1 resultado almacenado en la 1º pos
-            objeto.setIDObjeto(IDObjeto)
-            objeto.setImagen(Imagen)
-            objeto.setPrecio(Precio)
-            objeto.setTipo(Tipo)
-            objeto.setInspiracion(Inspiracion)
-            objeto.setAgotado(Agotado)
-            objeto.setIDCatalogo(IDCatalogo)
-            objeto.setExistencias(Existencias)
+            JuegosSalas = JuegosSalasVO()
+            IDJuegoSala,IDSala= row[0]   #Al filtrar por la clave primaria, solo hay 1 resultado almacenado en la 1º pos
+            JuegosSalas.setIDJuegoSala(IDJuegoSala)
+            JuegosSalas.setIDSala(IDSala)
         except Error as e:
-            print("Error al seleccionar objeto:", e)
+            print("Error al seleccionar JuegosSalas:", e)
         #Se ejecuta siempre
         finally:
             if cursor:
                 #Cierra el cursor para liberar recursos
                 cursor.close()
         conexion = self.closeConnection(conn)
-        return objeto
+        return juegosSalas
     
     #se hace el proximo dia
-    def insertObjeto (self, objeto: ObjetosVO) -> int:
+    def insertJuegosSalas (self, juegosSalas: JuegosSalasVO) -> int:
         conexion = self.getConnection()
         conn = None
         cursor = None
@@ -106,12 +94,12 @@ class ObjetosDao(ObjetosInterface, Conexion):
             else:
                 print("La base de datos no esta disponible")
             cursor = conn.cursor()
-            cursor.execute(self.SQL_INSERT, (objeto.getIDObjeto(),objeto.getImagen(),objeto.getTipo(),objeto.getPrecio(),objeto.getInspiracion(),objeto.getExistencias(),objeto.getAgotado(),objeto.getIDCatalogo()))
+            cursor.execute(self.SQL_INSERT, (JuegosSalas.getIDJuegoSala(),JuegosSalas.getIDSala()))
             conn.commit()
             #Devuelve 1 si la inserción fue exitosa
             rows = cursor.rowcount
         except Error as e:
-            print("Error al insertar objeto:", e)
+            print("Error al insertar JuegosSalas:", e)
 
         finally:
             if cursor:
@@ -121,7 +109,7 @@ class ObjetosDao(ObjetosInterface, Conexion):
 
         return rows
 
-    def deleteObjeto (self, id) -> int:
+    def deleteJuegosSalas (self, id) -> int:
         conexion = self.getConnection()
         conn = None
         cursor = None
@@ -137,7 +125,7 @@ class ObjetosDao(ObjetosInterface, Conexion):
             #Devuelve 1 si la inserción fue exitosa
             rows = cursor.rowcount
         except Error as e:
-            print("Error al eliminar objeto:", e)
+            print("Error al eliminar JuegosSalas:", e)
 
 
         finally:
@@ -148,7 +136,7 @@ class ObjetosDao(ObjetosInterface, Conexion):
 
         return rows
 
-    def updateObjeto(self, objeto:ObjetosVO) -> int:
+    def updateJuegosSalas(self, juegosSalas:JuegosSalasVO) -> int:
         conexion = self.getConnection()
         conn = None
         cursor = None
@@ -162,12 +150,12 @@ class ObjetosDao(ObjetosInterface, Conexion):
                 print("La base de datos no esta disponible")
 
             cursor = conn.cursor()
-            cursor.execute(self.SQL_UPDATE, (objeto.getImagen(),objeto.getTipo(),objeto.getPrecio(),objeto.getIDObjeto(),objeto.getInspiracion(),objeto.getExistencias(),objeto.getAgotado(),objeto.getIDCatalogo()))
+            cursor.execute(self.SQL_UPDATE, (JuegosSalas.getIDSala(),JuegosSalas.getIDJuegoSala()))
             conn.commit()
             #Devuelve 1 si la inserción fue exitosa
             rows = cursor.rowcount
         except Error as e:
-            print("Error al actualizar objeto:", e)
+            print("Error al actualizar JuegosSalas:", e)
         finally:
             if cursor:
                 cursor.close()
