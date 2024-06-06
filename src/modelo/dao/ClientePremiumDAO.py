@@ -8,11 +8,10 @@ sys.path.append(r'c:\Users\clara\Documents\2ºUNI\2CUATRI\IS\museo\src\modelo')
 from vo.ClientePremiumVO import ClientePremiumVO 
 from conexion.conexion2JDBC import Conexion
 from modelo.dao.ClientePremiumInterface import ClientePInterface
-# Creamos la clase UsuarioDAO que manejará las operaciones de acceso a datos para los usuarios
 
 class ClientePremiumDAO(ClientePInterface, Conexion):
     #Todas las operaciones CRUD que sean necesarias
-    SQL_SELECT = "SELECT DNI, UsuNombreCompleto, UsuTfno, UsuEmail, UsuTitularMP, UsuCvvMP, UsuNumTarjMP, UsuCadMP, UsuContrasenna, FROM Clientespremium"
+    SQL_SELECT = "SELECT DNI, UsuNombreCompleto, UsuTfno, UsuEmail, UsuTitularMP, UsuCvvMP, UsuNumTarjMP, UsuCadMP, UsuContrasenna FROM Clientespremium"
     SQL_INSERT = "INSERT INTO Clientespremium(DNI, UsuNombreCompleto, UsuTfno, UsuEmail, UsuTitularMP, UsuNumTarjMP, UsuCvvMP, UsuCadMP, UsuContrasenna) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)"
     SQL_DELETE = "DELETE FROM Usuarios WHERE DNI = ?"
     SQL_UPDATE = "UPDATE Usuarios SET UsuNombreCompleto = ?, UsuTfno = ?, UsuEmail = ?, UsuTitularMP = ?, UsuCvvMP = ?, UsuNumTarjMP = ?, UsuCadMP = ?, UsuContrasenna = ? WHERE DNI = ?"
@@ -61,7 +60,7 @@ class ClientePremiumDAO(ClientePInterface, Conexion):
         conexion = self.closeConnection(conn)
         return usuarios
     
-    def getFiltroUsuarios(self,dni) -> List[ClientePremiumVO]:
+    def getUsuario(self,dni) -> ClientePremiumVO:
         conexion = self.getConnection()
         conn = None
         cursor = None
@@ -79,13 +78,9 @@ class ClientePremiumDAO(ClientePInterface, Conexion):
             #Obtiene todas las filas resultantes de la consulta
             rows = cursor.fetchall()
             print(rows)
-
-            #Crea un objeto ClientePremiumVO para cada fila DNI, NombreCompleto...
-            for row in rows:
-                DNI, UsuNombreCompleto, UsuTfno, UsuEmail, UsuTitularMP, UsuNumTarjMP, UsuCvvMP, UsuCadMP, UsuContrasenna, UsuFecha = row
-                #Crea un objeto ClientePremiumVO para cada fila DNI, NombreCompleto...
-                usuario = ClientePremiumVO(DNI=DNI, NombreCompleto=UsuNombreCompleto, Telefono=UsuTfno,Email=UsuEmail, Titular= UsuTitularMP, NumTarjeta= UsuNumTarjMP,Cvv= UsuCvvMP, Caducidad= UsuCadMP, Contraseña=UsuContrasenna, FechaRegistro=UsuFecha)
-                usuarios.append(usuario)
+            DNI, UsuNombreCompleto, UsuTfno, UsuEmail, UsuTitularMP, UsuNumTarjMP, UsuCvvMP, UsuCadMP, UsuContrasenna, UsuFecha = rows[0]
+            usuario = ClientePremiumVO(DNI=DNI, NombreCompleto=UsuNombreCompleto, Telefono=UsuTfno,Email=UsuEmail, Titular= UsuTitularMP, NumTarjeta= UsuNumTarjMP,Cvv= UsuCvvMP, Caducidad= UsuCadMP, Contraseña=UsuContrasenna, FechaRegistro=UsuFecha)
+            usuarios.append(usuario)
 
         except Error as e:
             print("Error al seleccionar usuarios:", e)
@@ -113,7 +108,7 @@ class ClientePremiumDAO(ClientePInterface, Conexion):
 
             cursor = conn.cursor()
             cursor.execute(self.SQL_INSERT, (usuario.getDNI(),usuario.getNombreCompleto(),usuario.getTelefono(),usuario.getEmail(),usuario.getTitular(),usuario.getNumTarjeta(),usuario.getCvv(),usuario.getCaducidad(),usuario.getContraseña()))
-            # conn.commit()
+            conn.commit()
             #Asegurarse de que esos cambios se hagan permanentes: conn.commit(). Si conn.autocommit = True no es necesario llamar explícitamente a conn.commit() después de cada inserción, ya que la base de datos confirma automáticamente cada instrucción.
            
             #Devuelve 1 si la inserción fue exitosa
@@ -145,7 +140,7 @@ class ClientePremiumDAO(ClientePInterface, Conexion):
 
             cursor = conn.cursor()
             cursor.execute(self.SQL_DELETE, (usuario.getDNI(),))
-            # conn.commit()
+            conn.commit()
             #Asegurarse de que esos cambios se hagan permanentes: conn.commit(). Si conn.autocommit = True no es necesario llamar explícitamente a conn.commit() después de cada inserción, ya que la base de datos confirma automáticamente cada instrucción.
            
             #Devuelve 1 si la inserción fue exitosa
@@ -177,7 +172,7 @@ class ClientePremiumDAO(ClientePInterface, Conexion):
 
             cursor = conn.cursor()
             cursor.execute(self.SQL_UPDATE, (usuario.getNombreCompleto(),usuario.getTelefono(),usuario.getEmail(),usuario.getTitular(),usuario.getNumTarjeta(),usuario.getCvv(),usuario.getCaducidad(),usuario.getContraseña(), usuario.getDNI()))
-            # conn.commit()
+            conn.commit()
             #Asegurarse de que esos cambios se hagan permanentes: conn.commit(). Si conn.autocommit = True no es necesario llamar explícitamente a conn.commit() después de cada inserción, ya que la base de datos confirma automáticamente cada instrucción.
            
             #Devuelve 1 si la inserción fue exitosa

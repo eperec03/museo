@@ -1,7 +1,7 @@
 class EditorVO:
-    def __init__(self, DNI=None, NombreCompleto=None, Telefono=None, Email=None,
+    def __init__(self, SSN=None, NombreCompleto=None, Telefono=None, Email=None,
                  Titular=None, NumTarjeta=None, Cvv=None, Caducidad=None, Contraseña=None, FechaRegistro=None, Horario=None, TipoContrato=None, Estudios=None):
-        self.DNI = DNI
+        self.SSN = SSN
         self.NombreCompleto = NombreCompleto
         self.Telefono = Telefono
         self.Email = Email
@@ -16,11 +16,11 @@ class EditorVO:
         self.Estudios = Estudios
 
 
-    def getDNI(self):
-        return self.DNI
+    def getSSN(self):
+        return self.SSN
 
-    def setDNI(self, DNI):
-        self.DNI = DNI
+    def setSSN(self, SSN):
+        self.SSN = SSN
 
     def getNombreCompleto(self):
         return self.NombreCompleto
@@ -105,7 +105,7 @@ class EditorVO:
 
 #cambiar a nuestros atributos
     # def toString(self):
-    #     return "{" + "DNI=" + str(self._idUser) + ", nombre='" + self._nombre + "', apellido1='" + self._apellido1 + "', apellido2='" + self._apellido2 + "', email='" + self._email + "'}"
+    #     return "{" + "SSN=" + str(self._idUser) + ", nombre='" + self._nombre + "', apellido1='" + self._apellido1 + "', apellido2='" + self._apellido2 + "', email='" + self._email + "'}"
 
     # def __str__(self):
     #     return self.toString()

@@ -1,4 +1,4 @@
-IDObrafrom jaydebeapi import Error
+from jaydebeapi import Error
 from typing import List
 
 import sys
@@ -38,11 +38,11 @@ class SubastasDao(SubastasInterface, Conexion):
             for row in rows:
                 IDSubasta,Titulo,Descripcion,Fecha= row
                 subasta = SubastasVO()
-                subasta.setIDSubasta(IDSubasta)
+                subasta.setIdSubastas(IDSubasta)
                 subasta.setDescripcion(Descripcion)
                 subasta.setTitulo(Titulo)
                 subasta.setFecha(Fecha)
-                Subastas.append(subasta)
+                subastas.append(subasta)
 
         except Error as e:
             print("Error al seleccionar subasta:", e)
@@ -71,7 +71,7 @@ class SubastasDao(SubastasInterface, Conexion):
             row = cursor.fetchall()
             subasta = SubastasVO()
             IDSubasta,Titulo,Descripcion,Fecha = row[0]   #Al filtrar por la clave primaria, solo hay 1 resultado almacenado en la 1º pos
-            subasta.setIDSubasta(IDSubasta)
+            subasta.setIdSubastas(IDSubasta)
             subasta.setTitulo(Titulo)
             subasta.setFecha(Fecha)
             subasta.setDescripcion(Descripcion)

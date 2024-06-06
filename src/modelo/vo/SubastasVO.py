@@ -1,9 +1,9 @@
 class SubastasVO:
-    def __init__(self, IdSubastas=None, Titulo=None, Descripcion=None,NumSala=None):
+    def __init__(self, IdSubastas=None, Titulo=None, Descripcion=None,Fecha=None):
         self.IdSubastas = IdSubastas
         self.Titulo = Titulo
         self.Descripcion=Descripcion
-        self.NumSala=NumSala
+        self.Fecha=Fecha
 
     def getIdSubastas(self):
         return self.IdSubastas
@@ -23,11 +23,11 @@ class SubastasVO:
     def setDescripcion(self, Descripcion):
         self.Descripcion = Descripcion
     
-    def getNumSala(self):
-        return self.NumSala
+    def getFecha(self):
+        return self.Fecha
 
-    def setNumSala(self, NumSala):
-        self.NumSala = NumSala
+    def setFecha(self, Fecha):
+        self.Fecha  = Fecha
 
 
     

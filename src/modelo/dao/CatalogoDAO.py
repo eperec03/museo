@@ -8,7 +8,6 @@ sys.path.append(r'c:\Users\clara\Documents\2ºUNI\2CUATRI\IS\museoTrabajo\src\mo
 from vo.CatalogoVO import CatalogoVO 
 from conexion.conexion2JDBC import Conexion
 from dao.CatalogoInterface import CatalogoInterface
-# Creamos la clase UsuarioDAO que manejará las operaciones de acceso a datos para los usuarios
 
 class CatalogoDao(CatalogoInterface, Conexion):
     #Todas las operaciones CRUD que sean necesarias
@@ -23,7 +22,7 @@ class CatalogoDao(CatalogoInterface, Conexion):
         conexion = self.getConnection()
         conn = None
         cursor = None
-        catalogo = []
+        catalogos = []
         try:
             if conexion:
                 conn = conexion
@@ -40,7 +39,7 @@ class CatalogoDao(CatalogoInterface, Conexion):
                 catalogo = CatalogoVO()
                 catalogo.setIDCatalogo(IDCatalogo)
                 catalogo.setImagen(Imagen)
-                catalogo.append(catalogo)
+                catalogos.append(catalogo)
 
         except Error as e:
             print("Error al seleccionar catalogo:", e)

@@ -1,4 +1,4 @@
-IDObrafrom jaydebeapi import Error
+from jaydebeapi import Error
 from typing import List
 
 import sys
@@ -13,10 +13,10 @@ from dao.JuegosInterface import JuegosInterface
 class JuegosDao(JuegosInterface, Conexion):
     #Todas las operaciones CRUD que sean necesarias
     SQL_SELECT = "SELECT * FROM juegos"
-    SQL_INSERT = "INSERT INTO juegos(IDJuego, Nombre, Dificultad, Descripcion) VALUES (?, ?, ?, ?)"
-    SQL_DELETE = "DELETE FROM juegos WHERE IDJuego = ?"
-    SQL_UPDATE = "UPDATE juegos SET Nombre= ?, Dificultad= ?, Descripcion = ? WHERE IDJuego = ?"
-    SQL_FILTER = "SELECT * FROM juegos WHERE IDJuego = ?"
+    SQL_INSERT = "INSERT INTO juegos(IdJuego, Nombre, Dificultad, Descripcion) VALUES (?, ?, ?, ?)"
+    SQL_DELETE = "DELETE FROM juegos WHERE IdJuego = ?"
+    SQL_UPDATE = "UPDATE juegos SET Nombre= ?, Dificultad= ?, Descripcion = ? WHERE IdJuego = ?"
+    SQL_FILTER = "SELECT * FROM juegos WHERE IdJuego = ?"
 
 
     def getJuegos(self) -> List[JuegosVO]:
@@ -36,9 +36,9 @@ class JuegosDao(JuegosInterface, Conexion):
             rows = cursor.fetchall()
             #Itera sobre todas las filas
             for row in rows:
-                IDJuego,Nombre,Dificultad,Descripcion= row
+                IdJuego,Nombre,Dificultad,Descripcion= row
                 juego = JuegosVO()
-                juego.setIDJuego(IDJuego)
+                juego.setIdJuego(IdJuego)
                 juego.setDescripcion(Descripcion)
                 juego.setNombre(Nombre)
                 juego.setDificultad(Dificultad)
@@ -52,7 +52,7 @@ class JuegosDao(JuegosInterface, Conexion):
                 #Cierra el cursor para liberar recursos
                 cursor.close()
         conexion = self.closeConnection(conn)
-        return Juegos
+        return juegos
     
     def getJuego(self,id) -> JuegosVO:
         conexion = self.getConnection()
@@ -70,8 +70,8 @@ class JuegosDao(JuegosInterface, Conexion):
             #Obtiene todas las filas resultantes de la consulta
             row = cursor.fetchall()
             juego = JuegosVO()
-            IDJuego,Nombre,Dificultad,Descripcion= row[0]   #Al filtrar por la clave primaria, solo hay 1 resultado almacenado en la 1º pos
-            juego.setIDJuego(IDJuego)
+            IdJuego,Nombre,Dificultad,Descripcion= row[0]   #Al filtrar por la clave primaria, solo hay 1 resultado almacenado en la 1º pos
+            juego.setIdJuego(IdJuego)
             juego.setNombre(Nombre)
             juego.setDescripcion(Descripcion)
             juego.setDificultad(Dificultad)
@@ -98,7 +98,7 @@ class JuegosDao(JuegosInterface, Conexion):
             else:
                 print("La base de datos no esta disponible")
             cursor = conn.cursor()
-            cursor.execute(self.SQL_INSERT, (Juego.getIDJuego(),Juego.getNombre(),Juego.getDificultad(),Juego.getDescripcion()))
+            cursor.execute(self.SQL_INSERT, (juego.getIdJuego(),juego.getNombre(),juego.getDificultad(),juego.getDescripcion()))
             conn.commit()
             #Devuelve 1 si la inserción fue exitosa
             rows = cursor.rowcount
@@ -154,7 +154,7 @@ class JuegosDao(JuegosInterface, Conexion):
                 print("La base de datos no esta disponible")
 
             cursor = conn.cursor()
-            cursor.execute(self.SQL_UPDATE, (juego.getNombre(),juego.getDificultad(),juego.getDescripcion(),juego.getIDJuego()))
+            cursor.execute(self.SQL_UPDATE, (juego.getNombre(),juego.getDificultad(),juego.getDescripcion(),juego.getIdJuego()))
             conn.commit()
             #Devuelve 1 si la inserción fue exitosa
             rows = cursor.rowcount

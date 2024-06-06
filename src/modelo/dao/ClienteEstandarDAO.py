@@ -73,69 +73,7 @@ class ClienteEstandarDAO(ClienteEInterface, Conexion):
 
         return rows
 
-    # def eliminateUsuario (self, usuario:ClientePremiumVO) -> int:
-    #     conexion = self.getConnection()
-    #     conn = None
-    #     cursor = None
-    #     rows = 0
 
-    #     try:
-    #         if conexion:
-    #             conn = conexion
-           
-    #         else:
-    #             print("La base de datos no esta disponible")
-
-    #         cursor = conn.cursor()
-    #         cursor.execute(self.SQL_DELETE, (usuario.getDNI(),))
-            # conn.commit()
-            #Asegurarse de que esos cambios se hagan permanentes: conn.commit(). Si conn.autocommit = True no es necesario llamar explícitamente a conn.commit() después de cada inserción, ya que la base de datos confirma automáticamente cada instrucción.
-           
-            #Devuelve 1 si la inserción fue exitosa
-        #     rows = cursor.rowcount
-        # except Error as e:
-        #     print("Error al eliminar usuario:", e)
-
-
-        # finally:
-        #     if cursor:
-        #         cursor.close()
-
-        # conexion = self.closeConnection(conn)
-
-        # return rows
-
-    # def updateUsuario  (self, usuario:ClientePremiumVO) -> int:
-    #     conexion = self.getConnection()
-    #     conn = None
-    #     cursor = None
-    #     rows = 0
-
-    #     try:
-    #         if conexion:
-    #             conn = conexion
-           
-    #         else:
-    #             print("La base de datos no esta disponible")
-
-    #         cursor = conn.cursor()
-    #         cursor.execute(self.SQL_UPDATE, (usuario.getNombreCompleto(),usuario.getTelefono(),usuario.getEmail(),usuario.getTitular(),usuario.getNumTarjeta(),usuario.getCvv(),usuario.getCaducidad(),usuario.getContraseña(), usuario.getDNI()))
-    #         # conn.commit()
-    #         #Asegurarse de que esos cambios se hagan permanentes: conn.commit(). Si conn.autocommit = True no es necesario llamar explícitamente a conn.commit() después de cada inserción, ya que la base de datos confirma automáticamente cada instrucción.
-           
-    #         #Devuelve 1 si la inserción fue exitosa
-    #         rows = cursor.rowcount
-    #     except Error as e:
-    #         print("Error al actualizar usuario:", e)
-
-
-    #     finally:
-    #         if cursor:
-    #             cursor.close()
-
-    #     conexion = self.closeConnection(conn)
-
-    #     return rows
 
 
 

@@ -29,10 +29,7 @@ class Logica:
     def eliminar_registro(self, mi_persona: ClientePremiumVO):
         mi_persona_dao=ClientePremiumDAO()
         error=1
-        # for i in range (len(mi_persona_dao.getFiltroUsuarios(mi_persona.getDNI()))):
-        # print(mi_persona_dao.getFiltroUsuarios(mi_persona.getDNI())[0].getDNI())
-        # print(mi_persona.getDNI())
-        if mi_persona.getDNI() == mi_persona_dao.getFiltroUsuarios(mi_persona.getDNI())[0].getDNI():            
+        if mi_persona.getDNI() == mi_persona_dao.getUsuario(mi_persona.getDNI()).getDNI():            
                 mi_persona_dao.eliminateUsuario(mi_persona)
                 error=0
         if error==1:

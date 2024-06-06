@@ -12,18 +12,18 @@ from modelo.dao.EditorInterface import EditorInterface
 
 class EditorDAO(EditorInterface, Conexion):
     #Todas las operaciones CRUD que sean necesarias
-    SQL_SELECT = "SELECT DNI, UsuNombreCompleto, UsuTfno, UsuEmail, UsuTitularMP, UsuCvvMP, UsuNumTarjMP, UsuCadMP, UsuContrasenna,rol  FROM editores"
-    SQL_INSERT = "INSERT INTO Usuarios(DNI, UsuNombreCompleto, UsuTfno, UsuEmail, UsuTitularMP, UsuNumTarjMP, UsuCvvMP, UsuCadMP, UsuContrasenna,rol) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)"
-    SQL_DELETE = "DELETE FROM Usuarios WHERE DNI = ?"
-    SQL_UPDATE = "UPDATE Usuarios SET UsuNombreCompleto = ?, UsuTfno = ?, UsuEmail = ?, UsuTitularMP = ?, UsuCvvMP = ?, UsuNumTarjMP = ?, UsuCadMP = ?, UsuContrasenna = ?, rol = ? WHERE DNI = ?"
-    SQL_FILTER = "SELECT * FROM Usuarios WHERE DNI = ?"
+    SQL_SELECT = "SELECT *  FROM editores"
+    SQL_INSERT = "INSERT INTO editores(SSN, Horario, TipoContrato, Estudios VALUES (?, ?, ?, ?)"
+    SQL_DELETE = "DELETE FROM editores WHERE SSN = ?"
+    SQL_UPDATE = "UPDATE editores SET Horario = ?, TipoContrato = ?, Estudios = ?,  WHERE SSN = ?"
+    SQL_FILTER = "SELECT * FROM editores WHERE SSN = ?"
 
 
     def getUsuarios(self) -> List[EditorVO]:
         conexion = self.getConnection()
         conn = None
         cursor = None
-        usuarios = []
+        ediotres = []
         try:
             if conexion:
                 conn = conexion
@@ -38,18 +38,18 @@ class EditorDAO(EditorInterface, Conexion):
             for row in rows:
                 DNI, UsuNombreCompleto, UsuTfno, UsuEmail, UsuTitularMP, UsuNumTarjMP, UsuCvvMP, UsuCadMP, UsuContrasenna, rol = row
                 #Crea un objeto EditorVO para cada fila DNI, NombreCompleto...
-                usuario = EditorVO()
-                usuario.setDNI(DNI)
-                usuario.setNombreCompleto(UsuNombreCompleto)
-                usuario.setTelefono(UsuTfno)
-                usuario.setEmail(UsuEmail)
-                usuario.setTitular(UsuTitularMP)
-                usuario.setNumTarjeta(UsuNumTarjMP)
-                usuario.setCvv(UsuCvvMP)
-                usuario.setCaducidad(UsuCadMP)
-                usuario.setContraseña(UsuContrasenna)
-                usuario.setContraseña(rol)
-                usuarios.append(usuario)
+                editor = EditorVO()
+                editor.set(DNI)
+                editor.setNombreCompleto(UsuNombreCompleto)
+                editor.setTelefono(UsuTfno)
+                editor.setEmail(UsuEmail)
+                editor.setTitular(UsuTitularMP)
+                editor.setNumTarjeta(UsuNumTarjMP)
+                editor.setCvv(UsuCvvMP)
+                editor.setCaducidad(UsuCadMP)
+                editor.setContraseña(UsuContrasenna)
+                editor.setContraseña(rol)
+                editores.append(usuario)
 
         except Error as e:
             print("Error al seleccionar usuarios:", e)

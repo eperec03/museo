@@ -7,7 +7,7 @@ sys.path.append(r'c:\Users\clara\Documents\2ºUNI\2CUATRI\IS\museoTrabajo\src\mo
 
 from vo.ArtistasVO import ArtistasVO 
 from conexion.conexion2JDBC import Conexion
-from dao.artistasInterface import ArtistasInterface
+from dao.ArtistasInterface import ArtistasInterface
 # Creamos la clase UsuarioDAO que manejará las operaciones de acceso a datos para los usuarios
 
 class ArtistasDao(ArtistasInterface, Conexion):
@@ -43,7 +43,7 @@ class ArtistasDao(ArtistasInterface, Conexion):
                 artista.setFechaMuerte(FechaMuerte)
                 artista.setDescripcion(Descripcion)
                 artista.setDescripcion(Corriente)
-                artista.append(artista)
+                artistas.append(artista)
 
         except Error as e:
             print("Error al seleccionar artista:", e)
@@ -101,7 +101,7 @@ class ArtistasDao(ArtistasInterface, Conexion):
                 print("La base de datos no esta disponible")
             cursor = conn.cursor()
             cursor.execute(self.SQL_INSERT, (artista.getNombreArtista(),artista.getFechaNacimiento(),artista.getFechaMuerte(),artista.getDescripcion(), artista.getCorriente()))
-            # conn.commit()
+            conn.commit()
             #Asegurarse de que esos cambios se hagan permanentes: conn.commit(). Si conn.autocommit = True no es necesario llamar explícitamente a conn.commit() después de cada inserción, ya que la base de datos confirma automáticamente cada instrucción.
            
             #Devuelve 1 si la inserción fue exitosa
@@ -130,7 +130,7 @@ class ArtistasDao(ArtistasInterface, Conexion):
             cursor = conn.cursor()
             cursor.execute(self.SQL_DELETE, (artista.getNombreArtista(),))
             #Asegurarse de que esos cambios se hagan permanentes: conn.commit(). Si conn.autocommit = True no es necesario llamar explícitamente a conn.commit() después de cada inserción, ya que la base de datos confirma automáticamente cada instrucción.
-            # conn.commit()
+            conn.commit()
             #Devuelve 1 si la inserción fue exitosa
             rows = cursor.rowcount
         except Error as e:
@@ -160,7 +160,7 @@ class ArtistasDao(ArtistasInterface, Conexion):
 
             cursor = conn.cursor()
             cursor.execute(self.SQL_UPDATE, ( artista.getFechaNacimiento(),artista.getFechaMuerte(),artista.getDescripcion(), artista.getCorriente()))
-            # conn.commit()
+            conn.commit()
             #Asegurarse de que esos cambios se hagan permanentes: conn.commit(). Si conn.autocommit = True no es necesario llamar explícitamente a conn.commit() después de cada inserción, ya que la base de datos confirma automáticamente cada instrucción.
             #Devuelve 1 si la inserción fue exitosa
             rows = cursor.rowcount

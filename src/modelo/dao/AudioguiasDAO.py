@@ -85,7 +85,6 @@ class AudioguiasDao(AudioguiasInterface, Conexion):
         conexion = self.closeConnection(conn)
         return audioguia
     
-    #se hace el proximo dia
     def insertAudioguia (self, audioguia: AudioguiasVO) -> int:
         conexion = self.getConnection()
         conn = None
