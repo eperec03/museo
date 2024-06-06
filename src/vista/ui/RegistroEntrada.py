@@ -1,13 +1,12 @@
 # -*- coding: utf-8 -*-
 
 ################################################################################
-## Form generated from reading UI file 'RegistroEntradahuhUIj.ui'
+## Form generated from reading UI file 'RegistroEntradaYIxtEm.ui'
 ##
 ## Created by: Qt User Interface Compiler version 5.15.2
 ##
 ## WARNING! All changes made in this file will be lost when recompiling UI file!
 ################################################################################
-
 from PyQt5 import QtCore, QtGui, QtWidgets
 from PyQt5.QtCore import *
 from PyQt5.QtGui import *
@@ -74,10 +73,10 @@ class Ui_MainWindow(object):
 "font-weight: bold;\n"
 "font-family: 'Verdana';\n"
 "border-radius: 15px;")
-        self.lineEdit = QLineEdit(self.centralwidget)
-        self.lineEdit.setObjectName(u"lineEdit")
-        self.lineEdit.setGeometry(QRect(270, 270, 211, 41))
-        self.lineEdit.setStyleSheet(u"border-radius: 15px;\n"
+        self.lineEntrada = QLineEdit(self.centralwidget)
+        self.lineEntrada.setObjectName(u"lineEntrada")
+        self.lineEntrada.setGeometry(QRect(270, 270, 211, 41))
+        self.lineEntrada.setStyleSheet(u"border-radius: 15px;\n"
 "background-color: rgb(208, 223, 232);")
         self.label = QLabel(self.centralwidget)
         self.label.setObjectName(u"label")
@@ -91,6 +90,10 @@ class Ui_MainWindow(object):
         font1.setBold(False)
         font1.setWeight(50)
         self.label_2.setFont(font1)
+        self.label_3 = QLabel(self.centralwidget)
+        self.label_3.setObjectName(u"label_3")
+        self.label_3.setGeometry(QRect(270, 160, 291, 91))
+        self.label_3.setFont(font1)
         MainWindow.setCentralWidget(self.centralwidget)
         self.menubar = QMenuBar(MainWindow)
         self.menubar.setObjectName(u"menubar")
@@ -114,7 +117,8 @@ class Ui_MainWindow(object):
         MainWindow.setWindowTitle(QCoreApplication.translate("MainWindow", u"MainWindow", None))
         self.enviarBoton.setText(QCoreApplication.translate("MainWindow", u"ENTRAR", None))
         self.label.setText(QCoreApplication.translate("MainWindow", u"N\u00ba ENTRADA", None))
-        self.label_2.setText(QCoreApplication.translate("MainWindow", u"\u00a1BIENVENIDOS!", None))
+        self.label_2.setText("")
+        self.label_3.setText(QCoreApplication.translate("MainWindow", u"\u00a1ENTRA YA!", None))
         self.menuInicio.setTitle(QCoreApplication.translate("MainWindow", u"Inicio", None))
     # retranslateUi
 

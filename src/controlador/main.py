@@ -33,14 +33,14 @@ if __name__ == "__main__":
     controlador = Coordinador()
 
     # A cada ventana hay que asignarle un coordinador. Un mismo controlador puede controlar varias ventanas
-    # ventanaRegistro.setCoordinador(controlador)
+    ventanaRegistro.setCoordinador(controlador)
     ventanaRegistroEntrada.setCoordinador(controlador)
 
     # ventanaEliminarUsuario.setCoordinador(controlador)
     # ventanaActualizarUsuario.setCoordinador(controlador)
 
     # Al coordinador hay que asignarle una ventana. Un coordinador puede tener referencias a varias ventanas
-    # controlador.setViewRegistro(ventanaRegistro)
+    controlador.setViewRegistro(ventanaRegistro)
     controlador.setViewRegistro(ventanaRegistroEntrada)
 
     # controlador.setViewRegistro(ventanaEliminarUsuario)
@@ -50,7 +50,7 @@ if __name__ == "__main__":
     controlador.setModel(logica)
 
     #Para comenzar con la pantalla de inicio: True aparece la pantalla y False la destruye
-    # ventanaRegistro.setVisible(True)
+    ventanaRegistro.setVisible(True)
     ventanaRegistroEntrada.setVisible(True)
     # ventanaEliminarUsuario.setVisible(True)
     sys.exit(app.exec_())

@@ -1,10 +1,10 @@
 import sys
-sys.path.append(r'C:\Users\eripe\OneDrive\Documentos\ERI ULE\2º\SEGUNDO CUATRI\IS\PROYECTO\src\modelo')
+# #sys.path.append(r'C:\Users\eripe\OneDrive\Documentos\ERI ULE\2º\SEGUNDO CUATRI\IS\PROYECTO\src\modelo')
 sys.path.append(r'c:\Users\clara\Documents\2ºUNI\2CUATRI\IS\src')
 
 import tkinter as tk
 from tkinter import messagebox
-from modelo.vo.ClientesEstandarVO import ClienteEstandarVO
+from modelo.vo.ClientesEstandarVO import ClientesEstandarVO
 from PyQt5 import QtWidgets, uic
 from PyQt5.QtWidgets import QMessageBox
 from PyQt5.QtGui import QIcon
@@ -14,9 +14,11 @@ class RegistroEntradaVentana(QtWidgets.QMainWindow):
         # Importamos el .ui
         super(RegistroEntradaVentana, self).__init__()
         uic.loadUi('src/vista/ui/RegistroEntrada.ui', self)
-        self.setWindowTitle("REGISTRO CON ENTRADA")
-        # self.setWindowIcon(QIcon('src/vista/Imagenes/logo.png'))  # Reemplaza con la ruta a tu logo
+        self.setWindowTitle("REGISTRO SIN CUENTA")
+        self.setWindowIcon(QIcon('src/vista/Imagenes/logo.png'))  # Reemplaza con la ruta a tu logo
+        # Almacena una referencia al controlador
         self.coordinador = controlador
+        # "EnviarBoton" es el nombre que se le ha dado al objeto en el .ui
         self.enviarBoton.clicked.connect(self.registrarEntrada)
         self.show()
 
@@ -40,8 +42,8 @@ class RegistroEntradaVentana(QtWidgets.QMainWindow):
 
     def registrarEntrada(self) -> None:
         try:
-            persona = ClienteEstandarVO(
-                NumEntrada= self.lineEntrada.text(),
+            persona = ClientesEstandarVO(
+                NumEntrada = self.lineEstandar.text()
             )
             self.coordinador.registrarEntrada(persona)
             self.limpiar()

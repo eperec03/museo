@@ -45,9 +45,7 @@ class ClienteEstandarDAO(ClienteEInterface, Conexion):
         conexion = self.closeConnection(conn)
         return entradas
 
-    def insertEntrada (self, entrada: ClienteEstandarVO) -> int:
-        if not isinstance(entrada, ClienteEstandarVO):
-                raise TypeError("entrada must be an instance of ClienteEstandarVO")
+    def insertEntrada (self, clienteestandar:ClienteEstandarVO) -> int:
         conexion = self.getConnection()
         conn = None
         cursor = None
@@ -60,7 +58,8 @@ class ClienteEstandarDAO(ClienteEInterface, Conexion):
                 print("La base de datos no esta disponible")
 
             cursor = conn.cursor()
-            cursor.execute(self.SQL_INSERT, (entrada.getNumEntrada(),))
+            cursor.execute(self.SQL_INSERT, (clienteestandar.getNumEntrada(),))
+            conn.commit()
             rows = cursor.rowcount
 
         except Error as e:

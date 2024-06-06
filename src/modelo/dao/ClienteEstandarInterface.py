@@ -13,7 +13,7 @@ class ClienteEInterface(ABC):
         raise NotImplementedError("Método getUsuarios no implementado")
     
     @abstractmethod
-    def insertEntrada(self, entradas: ClienteEstandarVO):
+    def insertEntrada(self, entrada: ClienteEstandarVO):
         raise NotImplementedError("Método insertEntrada no implementado")
     
     # @abstractmethod

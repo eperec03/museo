@@ -51,6 +51,6 @@ class Logica:
 
     def validar_entrada(self, mi_entrada: ClienteEstandarVO):
         #habría que poner más cosas para validar el registtro?
-        mi_entrada = ClienteEstandarDAO()
-        mi_entrada.getEntradas()                  
-        mi_entrada.insertEntrada(mi_entrada)
+        mi_entrada_dao = ClienteEstandarDAO()
+        mi_entrada_dao.getEntradas()                  
+        mi_entrada_dao.insertEntrada(mi_entrada)
