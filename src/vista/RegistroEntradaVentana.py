@@ -1,10 +1,10 @@
 import sys
-# #sys.path.append(r'C:\Users\eripe\OneDrive\Documentos\ERI ULE\2º\SEGUNDO CUATRI\IS\PROYECTO\src\modelo')
+sys.path.append(r'C:\Users\eripe\OneDrive\Documentos\ERI ULE\2º\SEGUNDO CUATRI\IS\PROYECTO\src')
 sys.path.append(r'c:\Users\clara\Documents\2ºUNI\2CUATRI\IS\src')
 
 import tkinter as tk
 from tkinter import messagebox
-from modelo.vo.ClientesEstandarVO import ClientesEstandarVO
+from modelo.vo.ClienteEstandarVO import ClienteEstandarVO
 from PyQt5 import QtWidgets, uic
 from PyQt5.QtWidgets import QMessageBox
 from PyQt5.QtGui import QIcon
@@ -42,8 +42,8 @@ class RegistroEntradaVentana(QtWidgets.QMainWindow):
 
     def registrarEntrada(self) -> None:
         try:
-            persona = ClientesEstandarVO(
-                NumEntrada = self.lineEstandar.text()
+            persona = ClienteEstandarVO(
+                NumEntrada = self.lineEntrada.text()
             )
             self.coordinador.registrarEntrada(persona)
             self.limpiar()

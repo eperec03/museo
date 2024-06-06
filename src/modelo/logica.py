@@ -1,12 +1,12 @@
 import sys
-#sys.path.append(r'C:\Users\eripe\OneDrive\Documentos\ERI ULE\2º\SEGUNDO CUATRI\IS\PROYECTO\src')
+sys.path.append(r'C:\Users\eripe\OneDrive\Documentos\ERI ULE\2º\SEGUNDO CUATRI\IS\PROYECTO\src')
 sys.path.append(r'c:\Users\clara\Documents\2ºUNI\2CUATRI\IS\museo\src')
 
 import tkinter as tk
 from tkinter import messagebox
 from modelo.vo.ClientePremiumVO import *
 from modelo.dao.ClientePremiumDAO import *
-from modelo.vo.ClientesEstandarVO import *
+from modelo.vo.ClienteEstandarVO import *
 from modelo.dao.ClienteEstandarDAO import *
 from controlador.coordinador import Coordinador
 
