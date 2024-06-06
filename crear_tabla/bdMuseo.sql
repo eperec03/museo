@@ -442,9 +442,7 @@ DROP TABLE IF EXISTS `editores`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `editores` (
   `SSN` varchar(9) NOT NULL,
-  `Horario` blob,
-  `TipoContrato` varchar(15) DEFAULT NULL,
-  `Estudios` varchar(100) DEFAULT NULL,
+  `Rol` varchar(30) NOT NULL,
   PRIMARY KEY (`SSN`),
   CONSTRAINT `UsuEditores` FOREIGN KEY (`SSN`) REFERENCES `usuarios` (`DNI`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
@@ -849,6 +847,7 @@ DROP TABLE IF EXISTS `servicios`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `servicios` (
   `IDServicios` int NOT NULL auto_increment,
+  `Nombre` varchar(80) NULL,
   PRIMARY KEY (`IDServicios`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
