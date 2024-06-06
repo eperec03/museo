@@ -13,7 +13,7 @@ from dao.ObrasInterface import ObrasInterface
 class ObrasDao(ObrasInterface, Conexion):
     #Todas las operaciones CRUD que sean necesarias
     SQL_SELECT = "SELECT * FROM Obras"
-    SQL_INSERT = "INSERT INTO Obras(IDObra, Imagen, Titulo, Descripcion, Fecha, IDArtista, IDExposicion) VALUES (?, ?, ?, ?, ?, ?, ?)"
+    SQL_INSERT = "INSERT INTO Obras (Imagen, Titulo, Descripcion, Fecha, IDArtista, IDExposicion) VALUES (?, ?, ?, ?, ?, ?, ?)"
     SQL_DELETE = "DELETE FROM Obras WHERE IDObra = ?"
     SQL_UPDATE = "UPDATE Obras SET Imagen= ?, Titulo= ?, Descripcion = ?, Fecha = ?, IDArtista = ?, IDExposicion = ? WHERE IDObra = ?"
     SQL_FILTER = "SELECT * FROM Obras WHERE IDObra = ?"

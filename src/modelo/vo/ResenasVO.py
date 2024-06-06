@@ -1,4 +1,4 @@
-class ReseñasVO:
+class ResenasVO:
     def __init__(self, NumReseña=None, IdObra=None, Texto=None, NumEstrellas=None, Visible=None, Fecha=None):
         self.NumReseña = NumReseña
         self.IdObra = IdObra

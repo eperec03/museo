@@ -1,7 +1,8 @@
 class ObjetosVO:
-    def __init__(self, IdObjeto=None, Imagen=None, Precio=None, Tipo=None, 
-    Inspiracion=None, Existencias=None, Agotado=None, IdCatalogo=None):
+    def __init__(self, IdObjeto=None, NombreObjeto=None, Imagen=None, Precio=None, Tipo=None, 
+                 Inspiracion=None, Existencias=None, Agotado=None, IdCatalogo=None):
         self.IdObjeto = IdObjeto
+        self.NombreObjeto = NombreObjeto
         self.Imagen = Imagen
         self.Precio = Precio
         self.Tipo = Tipo
@@ -15,6 +16,12 @@ class ObjetosVO:
 
     def setIdObjeto(self, IdObjeto):
         self.IdObjeto = IdObjeto
+
+    def getNombreObjeto(self):
+        return self.NombreObjeto
+
+    def setNombreObjeto(self, NombreObjeto):
+        self.NombreObjeto = NombreObjeto
 
     def getImagen(self):
         return self.Imagen
@@ -58,8 +65,6 @@ class ObjetosVO:
     def setIdCatalogo(self, IdCatalogo):
         self.IdCatalogo = IdCatalogo
 
-#cambiar a nuestros atributos
-#No hace falta
     """def toString(self):
         return "UsuarioPremiumVO{" + "DNI=" + str(self._idUser) + ", NombreCompleto='" + self._nombre + "', Telefono='" + self._apellido1 + "', Email='" + self._apellido2 + "', Titular='" + self._email + "', NumTarjeta='" + self._email + "'"'}"
 

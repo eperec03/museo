@@ -13,7 +13,6 @@
 /*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
-
 --
 -- Table structure for table `artistas`
 --
@@ -22,12 +21,13 @@ DROP TABLE IF EXISTS `artistas`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `artistas` (
-  `NombreArtista` int NOT NULL,
+	`IdArtista`int auto_increment not null,
+  `NombreArtista` varchar(50) NOT NULL,
   `FechaNac` date NOT NULL,
   `FechaMuerte` date DEFAULT NULL,
   `Descripcion` varchar(100) DEFAULT NULL,
   `Corriente` varchar(20) DEFAULT NULL,
-  PRIMARY KEY (`NombreArtista`)
+  PRIMARY KEY (`IdArtista`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -472,7 +472,7 @@ CREATE TABLE `editresennas` (
   PRIMARY KEY (`IDEdicionResennas`),
   KEY `IDResenna_idx` (`IDResenna`),
   CONSTRAINT `edicionMenuR` FOREIGN KEY (`IDEdicionResennas`) REFERENCES `edicionresennas` (`IDEdicionResennas`) ON DELETE RESTRICT ON UPDATE CASCADE,
-  CONSTRAINT `IDResenna` FOREIGN KEY (`IDResenna`) REFERENCES `reseñas` (`Numreseña`) ON DELETE RESTRICT ON UPDATE CASCADE
+  CONSTRAINT `IDResenna` FOREIGN KEY (`IDResenna`) REFERENCES `resenas` (`Numresena`) ON DELETE RESTRICT ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -525,6 +525,7 @@ CREATE TABLE `juegos` (
   `Nombre` varchar(45) NOT NULL,
   `Dificultad` varchar(45) NOT NULL,
   `Descripcion` varchar(100) DEFAULT NULL,
+  `ruta` varchar(1000) DEFAULT NULL,
   PRIMARY KEY (`IDJuego`),
   CONSTRAINT `SerJue` FOREIGN KEY (`IDJuego`) REFERENCES `servicios` (`IDServicios`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
@@ -648,16 +649,17 @@ DROP TABLE IF EXISTS `objetos`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `objetos` (
-  `IDObjeto` int NOT NULL,
+  `IDObjeto` int NOT NULL auto_increment,
+  `NombreObjeto` varchar(30) not null unique,
   `imagen` blob NOT NULL,
   `precio` float NOT NULL,
   `tipo` varchar(45) NOT NULL,
   `inspiracion` varchar(45) NOT NULL,
   `existencias` int NOT NULL,
   `agotado` binary(1) NOT NULL,
-  `IDCatalogo` varchar(45) NOT NULL,
+  `IDCatalogo` int NOT NULL,
   PRIMARY KEY (`IDObjeto`),
-  CONSTRAINT `CatObj` FOREIGN KEY (`IDObjeto`) REFERENCES `catalogo` (`IDCatalogo`) ON DELETE RESTRICT ON UPDATE CASCADE
+  CONSTRAINT `CatObj` FOREIGN KEY (`IDCatalogo`) REFERENCES `catalogo` (`IDCatalogo`) ON DELETE RESTRICT ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -678,7 +680,7 @@ DROP TABLE IF EXISTS `obras`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `obras` (
-  `IDObra` int NOT NULL,
+  `IDObra` int NOT NULL auto_increment,
   `Titulo` varchar(45) NOT NULL,
   `Descripcion` varchar(100) DEFAULT NULL,
   `Fecha` date NULL,
@@ -688,7 +690,7 @@ CREATE TABLE `obras` (
   PRIMARY KEY (`IDObra`),
   KEY `ExpOb_idx` (`IDExposicion`),
   KEY `ArtObr_idx` (`IDArtista`),
-  CONSTRAINT `ArtObr` FOREIGN KEY (`IDArtista`) REFERENCES `artistas` (`NombreArtista`) ON UPDATE CASCADE,
+  CONSTRAINT `ArtObr` FOREIGN KEY (`IDArtista`) REFERENCES `artistas` (`IdArtista`) ON UPDATE CASCADE,
   CONSTRAINT `ExpOb` FOREIGN KEY (`IDExposicion`) REFERENCES `exposiciones` (`IDExposiciones`) ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -783,32 +785,32 @@ LOCK TABLES `puja` WRITE;
 UNLOCK TABLES;
 
 --
--- Table structure for table `reseñas`
+-- Table structure for table `resenas`
 --
 
 DROP TABLE IF EXISTS `resenas`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `resenas` (
-  `Numreseña` int NOT NULL,
+  `Numresena` int NOT NULL,
   `IDObra` int NOT NULL,
   `Texto` varchar(1000) NOT NULL,
   `Numestrellas` int NOT NULL,
   `Visible` binary(1) NOT NULL,
   `Fecha` date NOT NULL,
-  PRIMARY KEY (`Numreseña`,`IDObra`),
+  PRIMARY KEY (`Numresena`,`IDObra`),
   KEY `ObraRese_idx` (`IDObra`),
   CONSTRAINT `ObraRese` FOREIGN KEY (`IDObra`) REFERENCES `obras` (`IDObra`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `reseñas`
+-- Dumping data for table `resenas`
 --
 
-LOCK TABLES `reseñas` WRITE;
-/*!40000 ALTER TABLE `reseñas` DISABLE KEYS */;
-/*!40000 ALTER TABLE `reseñas` ENABLE KEYS */;
+LOCK TABLES `resenas` WRITE;
+/*!40000 ALTER TABLE `resenas` DISABLE KEYS */;
+/*!40000 ALTER TABLE `resenas` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -846,7 +848,7 @@ DROP TABLE IF EXISTS `servicios`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `servicios` (
-  `IDServicios` int NOT NULL,
+  `IDServicios` int NOT NULL auto_increment,
   PRIMARY KEY (`IDServicios`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -917,7 +919,7 @@ DROP TABLE IF EXISTS `usuarios`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `usuarios` (
-  `DNI` varchar(9) NOT NULL,
+  `DNI` varchar(9) NOT NULL ,
   `UsuNombreCompleto` varchar(50) NOT NULL,
   `Usutfno` varchar(9) NOT NULL,
   `UsuEmail` varchar(50) NOT NULL,

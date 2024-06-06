@@ -1,31 +1,73 @@
-class JuegosVO:
-    def __init__(self, IdJuego=None, Nombre=None, Dificultad=None, Descripcion=None):
-        self.IdJuego = IdJuego
-        self.Nombre = Nombre
-        self.Dificultad = Dificultad
-        self.Descripcion = Descripcion
+class JuegoVO:
+    def __init__(self, IDJuego, Nombre, Dificultad, Descripcion=None, ruta=None):
+        self._IDJuego = IDJuego
+        self._Nombre = Nombre
+        self._Dificultad = Dificultad
+        self._Descripcion = Descripcion
+        self._ruta = ruta
 
-    def getIdJuego(self):
-        return self.IdJuego
+    def get_IDJuego(self):
+        return self._IDJuego
 
-    def setIdJuego(self, IdJuego):
-        self.IdJuego = IdJuego
+    def set_IDJuego(self, IDJuego):
+        self._IDJuego = IDJuego
 
-    def getNombre(self):
-        return self.Nombre
+    def get_Nombre(self):
+        return self._Nombre
 
-    def setNombre(self, Nombre):
-        self.Nombre = Nombre
+    def set_Nombre(self, Nombre):
+        self._Nombre = Nombre
 
-    def getDificultad(self):
-        return self.Dificultad
+    def get_Dificultad(self):
+        return self._Dificultad
 
-    def setDificultad(self, Dificultad):
-        self.Dificultad = Dificultad
+    def set_Dificultad(self, Dificultad):
+        self._Dificultad = Dificultad
 
-    def getDescripcion(self):
-        return self.Descripcion
+    def get_Descripcion(self):
+        return self._Descripcion
 
-    def setDescripcion(self, Descripcion):
-        self.Descripcion = Descripcion
+    def set_Descripcion(self, Descripcion):
+        self._Descripcion = Descripcion
 
+    def get_ruta(self):
+        return self._ruta
+
+    def set_ruta(self, ruta):
+        self._ruta = ruta
+
+
+class JuegoObraVO(JuegoVO):
+    def __init__(self, IDJuegoobra, IDObra):
+        self._IDJuegoobra = IDJuegoobra
+        self._IDObra = IDObra
+
+    def get_IDJuegoobra(self):
+        return self._IDJuegoobra
+
+    def set_IDJuegoobra(self, IDJuegoobra):
+        self._IDJuegoobra = IDJuegoobra
+
+    def get_IDObra(self):
+        return self._IDObra
+
+    def set_IDObra(self, IDObra):
+        self._IDObra = IDObra
+
+
+class JuegoSalaVO(JuegoVO):
+    def __init__(self, IDJuegossalas, IDSala):
+        self._IDJuegossalas = IDJuegossalas
+        self._IDSala = IDSala
+
+    def get_IDJuegossalas(self):
+        return self._IDJuegossalas
+
+    def set_IDJuegossalas(self, IDJuegossalas):
+        self._IDJuegossalas = IDJuegossalas
+
+    def get_IDSala(self):
+        return self._IDSala
+
+    def set_IDSala(self, IDSala):
+        self._IDSala = IDSala

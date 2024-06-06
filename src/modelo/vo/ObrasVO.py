@@ -49,3 +49,40 @@ class ObrasVO:
 
     def setIdExposicion(self, IdExposicion):
         self.IdExposicion = IdExposicion
+
+class ObrasExpuestaVO(ObrasVO):
+    def __init__(self, IDObra, Titulo, Descripcion, Fecha, Imagen, IDArtista, IDExposicion, Disponible):
+        super().__init__(IDObra, Titulo, Descripcion, Fecha, Imagen, IDArtista, IDExposicion)
+        self._Disponible = Disponible
+
+    def get_Disponible(self):
+        return self._Disponible
+
+    def set_Disponible(self, Disponible):
+        self._Disponible = Disponible
+
+
+class ObrasSubastadaVO(ObrasVO):
+    def __init__(self, IDObra, Titulo, Descripcion, Fecha, Imagen, IDArtista, IDExposicion, PrecioSalida, PrecioVenta, MejorPostor):
+        super().__init__(IDObra, Titulo, Descripcion, Fecha, Imagen, IDArtista, IDExposicion)
+        self._PrecioSalida = PrecioSalida
+        self._PrecioVenta = PrecioVenta
+        self._MejorPostor = MejorPostor
+
+    def get_PrecioSalida(self):
+        return self._PrecioSalida
+
+    def set_PrecioSalida(self, PrecioSalida):
+        self._PrecioSalida = PrecioSalida
+
+    def get_PrecioVenta(self):
+        return self._PrecioVenta
+
+    def set_PrecioVenta(self, PrecioVenta):
+        self._PrecioVenta = PrecioVenta
+
+    def get_MejorPostor(self):
+        return self._MejorPostor
+
+    def set_MejorPostor(self, MejorPostor):
+        self._MejorPostor = MejorPostor

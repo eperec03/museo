@@ -1,22 +1,22 @@
 use museo;
-
+INSERT INTO `mapa` (`IDMapa`,`imagen`) values (1,'a');
 INSERT INTO `artistas` (`NombreArtista`, `FechaNac`, `FechaMuerte`, `Descripcion`, `Corriente`)
 VALUES 
 ('Pablo Picasso', '1881-10-25', '1973-04-08', 'Pablo Picasso, pintor y escultor español.', 'Cubismo'),
 ('Leonardo da Vinci', '1452-04-15', '1519-05-02', 'Leonardo da Vinci, artista y científico italiano.', 'Renacimiento'),
 ('Frida Kahlo', '1907-07-06', '1954-07-13', 'Frida Kahlo, pintora mexicana.', 'Surrealismo');
 insert into clienteestandar (NumEntrada,PrecioEntrada) values (25,25.00);
-select * from clienteestandar;
+select * from artistas;
 INSERT INTO `salas` (`NumSala`, `Capacidad`, `Tematica`, `IDMapa`)
 VALUES 
 (101, 50, 'Surrealismo', 1),
 (102, 75, 'Generacion del 98', 1),
 (103, 90, 'Brutalismo', 1);
-INSERT INTO `exposiciones` (`Titulo`, `Imagen`, `NumSala`)
+INSERT INTO `exposiciones` (`IdExposiciones`,`Titulo`, `Imagen`, `NumSala`)
 VALUES 
-( 'Exposición de Picasso', 'i', 101),
-( 'Renacimiento Italiano', 'i', 102),
-( 'Frida Kahlo: Viva la Vida', 'i', 103);
+( 1,'Exposición de Picasso', 'i', 101),
+( 2,'Renacimiento Italiano', 'i', 102),
+( 3,'Frida Kahlo: Viva la Vida', 'i', 103);
 
 INSERT INTO `obras` (`Titulo`, `Descripcion`, `Fecha`, `Imagen`, `IDArtist`, `IDExposicion`)
 VALUES 

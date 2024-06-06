@@ -11,9 +11,6 @@ from dao.MapaInterface import MapaInterface
 class MapaDao(MapaInterface, Conexion):
     #Todas las operaciones CRUD que sean necesarias
     SQL_SELECT = "SELECT * FROM MAPA"
-    SQL_INSERT = "INSERT INTO MAPA(IdMapa, Imagen) VALUES (?, ?)"
-    SQL_UPDATE = "UPDATE MAPA SET Imagen = ? WHERE IdMapa = ?"
-
 
     def getInfoMapa(self) -> MapaVO:
         conexion = self.getConnection()
