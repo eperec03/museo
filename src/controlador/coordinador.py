@@ -10,6 +10,7 @@ class Coordinador:
     def __init__(self):
       self._model = None
       #Puede tener tantas referencias a ventanas como controle
+      self._viewInicio = None
       self._viewRegistro = None
       self._viewEliminarUsuario = None
       self._viewActualizarUsuario = None
@@ -44,7 +45,13 @@ class Coordinador:
        return self._viewRegistroEntrada
 
     def setViewRegistroEntrada(self, view):
-       self._viewActualizarUsuario = view
+       self._viewRegistroEntrada = view
+
+    def getViewInicio(self):
+       return self._viewInicio
+
+    def setViewInicio(self, view):
+       self._viewInicio = view
     
     ##############################################
 

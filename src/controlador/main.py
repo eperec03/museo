@@ -14,6 +14,7 @@ from vista.RegistroClientePVentana import *
 from vista.RegistroEntradaVentana import *
 from vista.ActualizarUsuarioVentana import *
 from vista.EliminarUsuarioVentana import *
+from vista.InicioVentana import *
 
 from controlador.coordinador import Coordinador
 from modelo.logica import Logica
@@ -22,8 +23,9 @@ from modelo.logica import Logica
 if __name__ == "__main__":
     #root = tk.Tk()
     app = QtWidgets.QApplication(sys.argv)
-    ventanaRegistro = RegistroClientePVentana()
-    ventanaRegistroEntrada = RegistroEntradaVentana()
+    # ventanaRegistro = RegistroClientePVentana()
+    # ventanaRegistroEntrada = RegistroEntradaVentana()
+    ventanaInicio = InicioVentana()
     # ventanaEliminarUsuario = EliminarUsuarioVentana()
     # ventanaActualizarUsuario = ActualizarUsuarioVentana()
     ##################################################################################################################
@@ -33,15 +35,17 @@ if __name__ == "__main__":
     controlador = Coordinador()
 
     # A cada ventana hay que asignarle un coordinador. Un mismo controlador puede controlar varias ventanas
-    ventanaRegistro.setCoordinador(controlador)
-    ventanaRegistroEntrada.setCoordinador(controlador)
+    # ventanaRegistro.setCoordinador(controlador)
+    # ventanaRegistroEntrada.setCoordinador(controlador)
+    ventanaInicio.setCoordinador(controlador)
 
     # ventanaEliminarUsuario.setCoordinador(controlador)
     # ventanaActualizarUsuario.setCoordinador(controlador)
 
     # Al coordinador hay que asignarle una ventana. Un coordinador puede tener referencias a varias ventanas
-    controlador.setViewRegistro(ventanaRegistro)
-    controlador.setViewRegistro(ventanaRegistroEntrada)
+    # controlador.setViewRegistro(ventanaRegistro)
+    # controlador.setViewRegistro(ventanaRegistroEntrada)
+    controlador.setViewInicio(ventanaInicio)
 
     # controlador.setViewRegistro(ventanaEliminarUsuario)
 
@@ -50,7 +54,8 @@ if __name__ == "__main__":
     controlador.setModel(logica)
 
     #Para comenzar con la pantalla de inicio: True aparece la pantalla y False la destruye
-    ventanaRegistro.setVisible(True)
-    ventanaRegistroEntrada.setVisible(True)
+    # ventanaRegistro.setVisible(True)
+    # ventanaRegistroEntrada.setVisible(True)
     # ventanaEliminarUsuario.setVisible(True)
+    # ventanaInicio.setVisible(True)
     sys.exit(app.exec_())
