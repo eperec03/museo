@@ -170,11 +170,16 @@ class TarifasDao(TarifasInterface, Conexion):
 # b=TarifasVO()
 # b.setTipoTarifa('Exclusiva')
 # b.setDuracion('10 horas')
-# b.setPrecio('150.00')
+# b.setPrecio(150.00)
 # a.insertTarifa(b)
 # print(str(a.getTarifas()[0].Precio))
 # print(str(a.getTarifa('Exclusiva').Precio))
-# a.deleteTarifa('Exclusiva')
+# c=TarifasVO()
+# c.setTipoTarifa('Exclusiva')
+# c.setDuracion('152 horas')
+# c.setPrecio(8000.50)
+# a.updateTarifa(c)
+
 
 
 

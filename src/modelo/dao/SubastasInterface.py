@@ -24,7 +24,7 @@ class SubastasInterface(ABC):
         raise NotImplementedError("Método getSubasta no implementado")
     
     @abstractmethod
-    def inesertSubasta(self, subasta: SubastasVO):
+    def insertSubasta(self, subasta: SubastasVO):
         """
         Ineserta un nuevo usuario en la base de datos.
         Parametros requeridos: El objeto SubastasVO a inesertar.
