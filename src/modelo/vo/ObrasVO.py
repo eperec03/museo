@@ -53,36 +53,36 @@ class ObrasVO:
 class ObrasExpuestaVO(ObrasVO):
     def __init__(self, IDObra, Titulo, Descripcion, Fecha, Imagen, IDArtista, IDExposicion, Disponible):
         super().__init__(IDObra, Titulo, Descripcion, Fecha, Imagen, IDArtista, IDExposicion)
-        self._Disponible = Disponible
+        self.Disponible = Disponible
 
     def get_Disponible(self):
-        return self._Disponible
+        return self.Disponible
 
     def set_Disponible(self, Disponible):
-        self._Disponible = Disponible
+        self.Disponible = Disponible
 
 
 class ObrasSubastadaVO(ObrasVO):
     def __init__(self, IDObra, Titulo, Descripcion, Fecha, Imagen, IDArtista, IDExposicion, PrecioSalida, PrecioVenta, MejorPostor):
         super().__init__(IDObra, Titulo, Descripcion, Fecha, Imagen, IDArtista, IDExposicion)
-        self._PrecioSalida = PrecioSalida
-        self._PrecioVenta = PrecioVenta
-        self._MejorPostor = MejorPostor
+        self.PrecioSalida = PrecioSalida
+        self.PrecioVenta = PrecioVenta
+        self.MejorPostor = MejorPostor
 
     def get_PrecioSalida(self):
-        return self._PrecioSalida
+        return self.PrecioSalida
 
     def set_PrecioSalida(self, PrecioSalida):
-        self._PrecioSalida = PrecioSalida
+        self.PrecioSalida = PrecioSalida
 
     def get_PrecioVenta(self):
-        return self._PrecioVenta
+        return self.PrecioVenta
 
     def set_PrecioVenta(self, PrecioVenta):
-        self._PrecioVenta = PrecioVenta
+        self.PrecioVenta = PrecioVenta
 
     def get_MejorPostor(self):
-        return self._MejorPostor
+        return self.MejorPostor
 
     def set_MejorPostor(self, MejorPostor):
-        self._MejorPostor = MejorPostor
+        self.MejorPostor = MejorPostor

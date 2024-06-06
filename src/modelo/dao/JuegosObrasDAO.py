@@ -5,7 +5,8 @@ import sys
 sys.path.append(r'C:\Users\eripe\OneDrive\Documentos\ERI ULE\2º\SEGUNDO CUATRI\IS\PROYECTO\src\modelo')
 sys.path.append(r'c:\Users\clara\Documents\2ºUNI\2CUATRI\IS\museoTrabajo\src\modelo')
 
-from vo.JuegosObrasVO import JuegosObrasVO 
+from vo.JuegosVO import * 
+from dao.JuegosDAO import *
 from conexion.conexion2JDBC import Conexion
 from dao.JuegosObrasInterface import JuegosObrasInterface
 # Creamos la clase UsuarioDAO que manejará las operaciones de acceso a datos para los usuarios
@@ -37,10 +38,10 @@ class JuegosObrasDao(JuegosObrasInterface, Conexion):
             #Itera sobre todas las filas
             for row in rows:
                 IDJuegoObra,IDObra= row
-                juegosObras = JuegosObrasVO()
-                juegosObras.setIDJuegoObra(IDJuegoObra)
-                juegosObras.setIDObra(IDObra)
-                juegosObras.append(JuegosObras)
+                juegoObras = JuegosObrasVO()
+                juegoObras.set_IDJuegoobra(IDJuegoObra)
+                juegoObras.set_IDObra(IDObra)
+                juegosObras.append(juegoObras)
 
         except Error as e:
             print("Error al seleccionar JuegosObras:", e)
@@ -69,8 +70,8 @@ class JuegosObrasDao(JuegosObrasInterface, Conexion):
             row = cursor.fetchall()
             JuegosObras = JuegosObrasVO()
             IDJuegoObra,IDObra= row[0]   #Al filtrar por la clave primaria, solo hay 1 resultado almacenado en la 1º pos
-            JuegosObras.setIDJuegoObra(IDJuegoObra)
-            JuegosObras.setIDObra(IDObra)
+            JuegosObras.set_IDJuegoobra(IDJuegoObra)
+            JuegosObras.set_IDObra(IDObra)
         except Error as e:
             print("Error al seleccionar JuegosObras:", e)
         #Se ejecuta siempre
@@ -79,7 +80,7 @@ class JuegosObrasDao(JuegosObrasInterface, Conexion):
                 #Cierra el cursor para liberar recursos
                 cursor.close()
         conexion = self.closeConnection(conn)
-        return juegosObras
+        return JuegosObras
     
     #se hace el proximo dia
     def insertJuegosObras (self, juegosObras: JuegosObrasVO) -> int:
@@ -94,7 +95,12 @@ class JuegosObrasDao(JuegosObrasInterface, Conexion):
             else:
                 print("La base de datos no esta disponible")
             cursor = conn.cursor()
-            cursor.execute(self.SQL_INSERT, (JuegosObras.getIDJuegoObra(),JuegosObras.getIDObra()))
+            #Ahora, antes de crear la instancia de JuegosObras, hay que crearla en Juegos. Con los valores proporcionados:
+            juego=JuegosVO(Nombre=juegosObras.get_Nombre(),Dificultad=juegosObras.get_Dificultad(),Descripcion=juegosObras.get_Descripcion(),ruta=juegosObras.get_ruta())
+            juego_dao=JuegosDao()
+            juego_dao.insertJuego(juego)
+            #Ahora, ya podemos insertarlo en la tabla juegosObras.
+            cursor.execute(self.SQL_INSERT, (juegosObras.get_IDJuegoobra(),juegosObras.get_IDObra()))
             conn.commit()
             #Devuelve 1 si la inserción fue exitosa
             rows = cursor.rowcount
@@ -150,7 +156,7 @@ class JuegosObrasDao(JuegosObrasInterface, Conexion):
                 print("La base de datos no esta disponible")
 
             cursor = conn.cursor()
-            cursor.execute(self.SQL_UPDATE, (JuegosObras.getIDObra(),JuegosObras.getIDJuegoObra()))
+            cursor.execute(self.SQL_UPDATE, (juegosObras.get_IDObra(),juegosObras.get_IDJuegoobra()))
             conn.commit()
             #Devuelve 1 si la inserción fue exitosa
             rows = cursor.rowcount

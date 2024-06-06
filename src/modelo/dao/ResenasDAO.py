@@ -102,7 +102,7 @@ class ResenasDao(ResenasInterface, Conexion):
             else:
                 print("La base de datos no esta disponible")
             cursor = conn.cursor()
-            cursor.execute(self.SQL_INSERT, (resena.getNumResena(),resena.getIDObra(),resena.getTexto(),resena.getNumEstrellas(),resena.getVisible(),resena.getFecha()))
+            cursor.execute(self.SQL_INSERT, (resena.getNumResena(),resena.getIdObra(),resena.getTexto(),resena.getNumEstrellas(),resena.getVisible(),resena.getFecha()))
             conn.commit()
             #Devuelve 1 si la inserción fue exitosa
             rows = cursor.rowcount

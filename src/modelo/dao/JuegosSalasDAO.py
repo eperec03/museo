@@ -5,7 +5,7 @@ import sys
 sys.path.append(r'C:\Users\eripe\OneDrive\Documentos\ERI ULE\2º\SEGUNDO CUATRI\IS\PROYECTO\src\modelo')
 sys.path.append(r'c:\Users\clara\Documents\2ºUNI\2CUATRI\IS\museoTrabajo\src\modelo')
 
-from vo.JuegosSalasVO import JuegosSalasVO 
+from vo.JuegosVO import * 
 from conexion.conexion2JDBC import Conexion
 from dao.JuegosSalasInterface import JuegosSalasInterface
 # Creamos la clase UsuarioDAO que manejará las operaciones de acceso a datos para los usuarios
@@ -37,10 +37,10 @@ class JuegosSalasDao(JuegosSalasInterface, Conexion):
             #Itera sobre todas las filas
             for row in rows:
                 IDJuegoSala,IDSala= row
-                juegosSalas = JuegosSalasVO()
-                juegosSalas.setIDJuegoSala(IDJuegoSala)
-                juegosSalas.setIDSala(IDSala)
-                juegosSalas.append(JuegosSalas)
+                juegoSalas = JuegosSalasVO()
+                juegoSalas.set_IDJuegossalas(IDJuegoSala)
+                juegoSalas.set_IDJuegossalas(IDSala)
+                juegosSalas.append(juegoSalas)
 
         except Error as e:
             print("Error al seleccionar JuegosSalas:", e)
@@ -52,7 +52,7 @@ class JuegosSalasDao(JuegosSalasInterface, Conexion):
         conexion = self.closeConnection(conn)
         return juegosSalas
     
-    def getJuegosSalas(self,id) -> JuegosSalasVO:
+    def getJuegoSalas(self,id) -> JuegosSalasVO:
         conexion = self.getConnection()
         conn = None
         cursor = None
@@ -67,10 +67,10 @@ class JuegosSalasDao(JuegosSalasInterface, Conexion):
             cursor.execute(self.SQL_FILTER, (id,)) #Obtiene todas las filas resultantes de la consulta
             #Obtiene todas las filas resultantes de la consulta
             row = cursor.fetchall()
-            JuegosSalas = JuegosSalasVO()
+            juegoSalas = JuegosSalasVO()
             IDJuegoSala,IDSala= row[0]   #Al filtrar por la clave primaria, solo hay 1 resultado almacenado en la 1º pos
-            JuegosSalas.setIDJuegoSala(IDJuegoSala)
-            JuegosSalas.setIDSala(IDSala)
+            juegoSalas.set_IDJuegossalas(IDJuegoSala)
+            juegoSalas.set_IDSala(IDSala)
         except Error as e:
             print("Error al seleccionar JuegosSalas:", e)
         #Se ejecuta siempre
@@ -79,7 +79,7 @@ class JuegosSalasDao(JuegosSalasInterface, Conexion):
                 #Cierra el cursor para liberar recursos
                 cursor.close()
         conexion = self.closeConnection(conn)
-        return juegosSalas
+        return juegoSalas
     
     #se hace el proximo dia
     def insertJuegosSalas (self, juegosSalas: JuegosSalasVO) -> int:
@@ -94,12 +94,12 @@ class JuegosSalasDao(JuegosSalasInterface, Conexion):
             else:
                 print("La base de datos no esta disponible")
             cursor = conn.cursor()
-            cursor.execute(self.SQL_INSERT, (JuegosSalas.getIDJuegoSala(),JuegosSalas.getIDSala()))
+            cursor.execute(self.SQL_INSERT, (juegosSalas.get_IDJuegossalas(),juegosSalas.get_IDSala()))
             conn.commit()
             #Devuelve 1 si la inserción fue exitosa
             rows = cursor.rowcount
         except Error as e:
-            print("Error al insertar JuegosSalas:", e)
+            print("Error al insertar juegosSalas:", e)
 
         finally:
             if cursor:
@@ -150,12 +150,12 @@ class JuegosSalasDao(JuegosSalasInterface, Conexion):
                 print("La base de datos no esta disponible")
 
             cursor = conn.cursor()
-            cursor.execute(self.SQL_UPDATE, (JuegosSalas.getIDSala(),JuegosSalas.getIDJuegoSala()))
+            cursor.execute(self.SQL_UPDATE, (juegosSalas.get_IDSala(),juegosSalas.get_IDJuegossalas()))
             conn.commit()
             #Devuelve 1 si la inserción fue exitosa
             rows = cursor.rowcount
         except Error as e:
-            print("Error al actualizar JuegosSalas:", e)
+            print("Error al actualizar juegosSalas:", e)
         finally:
             if cursor:
                 cursor.close()
