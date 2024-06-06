@@ -13,7 +13,9 @@ from dao.JuegosInterface import JuegosInterface
 class JuegosDao(JuegosInterface, Conexion):
     #Todas las operaciones CRUD que sean necesarias
     SQL_SELECT = "SELECT * FROM juegos"
-    SQL_INSERT = "INSERT INTO juegos(IdJuego, Nombre, Dificultad, Descripcion) VALUES (?, ?, ?, ?)"
+    SQL_INSERT = "INSERT INTO juegos(IdJuego, Nombre, Dificultad, Descripcion, Ruta) VALUES (?, ?, ?, ?, ?)"
+    SQL_INSERT_SERV = "INSERT INTO Servicios(Nombre) VALUES (?)"
+    SQL_SELECT_SERV = "SELECT IDServicios FROM servicios WHERE Nombre = ?"
     SQL_DELETE = "DELETE FROM juegos WHERE IdJuego = ?"
     SQL_UPDATE = "UPDATE juegos SET Nombre= ?, Dificultad= ?, Descripcion = ? WHERE IdJuego = ?"
     SQL_FILTER = "SELECT * FROM juegos WHERE IdJuego = ?"
@@ -98,7 +100,13 @@ class JuegosDao(JuegosInterface, Conexion):
             else:
                 print("La base de datos no esta disponible")
             cursor = conn.cursor()
-            cursor.execute(self.SQL_INSERT, (juego.getIdJuego(),juego.getNombre(),juego.getDificultad(),juego.getDescripcion()))
+            #Primero, vamos a insertarlo en Servicios:
+            cursor.execute(self.SQL_INSERT_SERV, (juego.get_Nombre(), ))
+            conn.commit()
+
+            cursor.execute(self.SQL_SELECT_SERV, (juego.get_Nombre(), ))
+            identificador_servicio = cursor.fetchone()[0] 
+            cursor.execute(self.SQL_INSERT, (identificador_servicio,juego.get_Nombre(),juego.get_Dificultad(),juego.get_Descripcion(),juego.get_ruta()))
             conn.commit()
             #Devuelve 1 si la inserción fue exitosa
             rows = cursor.rowcount

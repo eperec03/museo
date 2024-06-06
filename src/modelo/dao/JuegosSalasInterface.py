@@ -24,7 +24,7 @@ class JuegosSalasInterface(ABC):
         raise NotImplementedError("Método getJuegosSalas no implementado")
     
     @abstractmethod
-    def inesertJuegosSalas(self, JuegosSalas: JuegosSalasVO):
+    def insertJuegosSalas(self, JuegosSalas: JuegosSalasVO):
         """
         Ineserta un nuevo usuario en la base de datos.
         Parametros requeridos: El objeto JuegosSalasVO a inesertar.

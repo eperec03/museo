@@ -36,15 +36,15 @@ class ObrasDao(ObrasInterface, Conexion):
             rows = cursor.fetchall()
             #Itera sobre todas las filas
             for row in rows:
-                IDObra,Imagen,Titulo,Descripcion,Fecha,IDArtista,IDExposicion= row
+                IdObra,Imagen,Titulo,Descripcion,Fecha,IdArtista,IdExposicion= row
                 obra = ObrasVO()
-                obra.setIDObra(IDObra)
+                obra.setIdObra(IdObra)
                 obra.setDescripcion(Descripcion)
                 obra.setImagen(Imagen)
                 obra.setTitulo(Titulo)
                 obra.setFecha(Fecha)
-                obra.setIDArtista(IDArtista)
-                obra.setIDExposicion(IDExposicion)
+                obra.setIdArtista(IdArtista)
+                obra.setIdExposicion(IdExposicion)
                 obras.append(obra)
 
         except Error as e:
@@ -55,9 +55,9 @@ class ObrasDao(ObrasInterface, Conexion):
                 #Cierra el cursor para liberar recursos
                 cursor.close()
         conexion = self.closeConnection(conn)
-        return Obras
+        return obras
     
-    def getObra(self,id) -> ObrasVO:
+    def getObra(self,Id) -> ObrasVO:
         conexion = self.getConnection()
         conn = None
         cursor = None
@@ -69,18 +69,18 @@ class ObrasDao(ObrasInterface, Conexion):
             #Crea un obra para poder ejecutar consultas SQL sobre la conexion abierta
             cursor = conn.cursor()
             #Ejecuta de consulta SQL
-            cursor.execute(self.SQL_FILTER, (id,)) #Obtiene todas las filas resultantes de la consulta
+            cursor.execute(self.SQL_FILTER, (Id,)) #Obtiene todas las filas resultantes de la consulta
             #Obtiene todas las filas resultantes de la consulta
             row = cursor.fetchall()
             obra = ObrasVO()
-            IDObra,Imagen,Titulo,Descripcion, Fecha, IDArtista, IDExposicion= row[0]   #Al filtrar por la clave primaria, solo hay 1 resultado almacenado en la 1º pos
-            obra.setIDObra(IDObra)
+            IdObra,Imagen,Titulo,Descripcion, Fecha, IdArtista, IdExposicion= row[0]   #Al filtrar por la clave primaria, solo hay 1 resultado almacenado en la 1º pos
+            obra.setIdObra(IdObra)
             obra.setImagen(Imagen)
             obra.setDescripcion(Descripcion)
             obra.setTitulo(Titulo)
             obra.setFecha(Fecha)
-            obra.setIDArtista(IDArtista)
-            obra.setIDExposicion(IDExposicion)
+            obra.setIdArtista(IdArtista)
+            obra.setIdExposicion(IdExposicion)
         except Error as e:
             print("Error al seleccionar obra:", e)
         #Se ejecuta siempre
@@ -104,7 +104,7 @@ class ObrasDao(ObrasInterface, Conexion):
             else:
                 print("La base de datos no esta disponible")
             cursor = conn.cursor()
-            cursor.execute(self.SQL_INSERT, (obra.getIDObra(),obra.getImagen(),obra.getTitulo(),obra.getDescripcion(),obra.getFecha(),obra.getIDArtista(),obra.getIDExposicion()))
+            cursor.execute(self.SQL_INSERT, (obra.getIdObra(),obra.getImagen(),obra.getTitulo(),obra.getDescripcion(),obra.getFecha(),obra.getIdArtista(),obra.getIdExposicion()))
             conn.commit()
             #Devuelve 1 si la inserción fue exitosa
             rows = cursor.rowcount
@@ -160,7 +160,7 @@ class ObrasDao(ObrasInterface, Conexion):
                 print("La base de datos no esta disponible")
 
             cursor = conn.cursor()
-            cursor.execute(self.SQL_UPDATE, (obra.getImagen(),obra.getTitulo(),obra.getDescripcion(),obra.getIDObra(),obra.getFecha(),obra.getIDArtista(),obra.getIDExposicion()))
+            cursor.execute(self.SQL_UPDATE, (obra.getImagen(),obra.getTitulo(),obra.getDescripcion(),obra.getIdObra(),obra.getFecha(),obra.getIdArtista(),obra.getIdExposicion()))
             conn.commit()
             #Devuelve 1 si la inserción fue exitosa
             rows = cursor.rowcount
