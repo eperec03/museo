@@ -3,7 +3,6 @@
 -- Host: localhost    Database: museo
 -- ------------------------------------------------------
 -- Server version	8.0.35
-
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
@@ -787,10 +786,10 @@ UNLOCK TABLES;
 -- Table structure for table `reseñas`
 --
 
-DROP TABLE IF EXISTS `reseñas`;
+DROP TABLE IF EXISTS `resenas`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `reseñas` (
+CREATE TABLE `resenas` (
   `Numreseña` int NOT NULL,
   `IDObra` int NOT NULL,
   `Texto` varchar(1000) NOT NULL,

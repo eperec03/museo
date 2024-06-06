@@ -7,7 +7,7 @@ sys.path.append(r'c:\Users\clara\Documents\2ºUNI\2CUATRI\IS\museoTrabajo\src\mo
 
 from vo.ReseñasVO import ReseñasVO 
 from conexion.conexion2JDBC import Conexion
-from dao.ReseñasInterface import ReseñasInterface
+from dao.ReseñaInterface import ReseñasInterface
 # Creamos la clase UsuarioDAO que manejará las operaciones de acceso a datos para los usuarios
 
 class ReseñasDao(ReseñasInterface, Conexion):
