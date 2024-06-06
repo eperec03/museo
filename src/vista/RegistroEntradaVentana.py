@@ -8,6 +8,7 @@ from modelo.vo.ClienteEstandarVO import ClienteEstandarVO
 from PyQt5 import QtWidgets, uic
 from PyQt5.QtWidgets import QMessageBox
 from PyQt5.QtGui import QIcon
+from vista.ElegirUsuario import *
 
 class RegistroEntradaVentana(QtWidgets.QMainWindow):
     def __init__(self, controlador = None):
@@ -20,7 +21,14 @@ class RegistroEntradaVentana(QtWidgets.QMainWindow):
         self.coordinador = controlador
         # "EnviarBoton" es el nombre que se le ha dado al objeto en el .ui
         self.enviarBoton.clicked.connect(self.registrarEntrada)
+        # self.BotonAtras.clicked.connect(self.go_back)
         self.show()
+
+    # def go_back(self):
+    #     self.ventana_anterior = ElegirUsuario()
+    #     self.ventana_anterior.setCoordinador(self.coordinador)
+    #     self.ventana_anterior.show()
+    #     self.hide()
 
     def setCoordinador(self, coord) -> None:
         self.coordinador = coord

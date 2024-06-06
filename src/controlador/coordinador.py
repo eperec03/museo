@@ -15,6 +15,8 @@ class Coordinador:
       self._viewEliminarUsuario = None
       self._viewActualizarUsuario = None
       self._viewRegistroEntrada = None
+      self._viewTipoUsuario = None
+
       
     def getModel(self):
        return self._model
@@ -53,6 +55,11 @@ class Coordinador:
     def setViewInicio(self, view):
        self._viewInicio = view
     
+    def getViewTipoUsuario(self):
+       return self._viewTipoUsuario
+
+    def setViewTipoUsuario(self, view):
+       self._viewTipoUsuario = view
     ##############################################
 
     def registrarUsuario(self, usuario: ClientePremiumVO) -> None:
