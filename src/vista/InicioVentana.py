@@ -7,7 +7,7 @@ from tkinter import messagebox
 from PyQt5 import QtWidgets, uic
 from PyQt5.QtWidgets import QMessageBox
 from PyQt5.QtGui import QIcon
-from vista.RegistroEntradaVentana import *
+from vista.ElegirUsuario import *
 
 class InicioVentana(QtWidgets.QMainWindow):
     def __init__(self, controlador = None):
@@ -23,7 +23,7 @@ class InicioVentana(QtWidgets.QMainWindow):
         self.show()
 
     def go_to_window_registro(self):
-        self.ventana_registro = RegistroEntradaVentana()
+        self.ventana_registro = ElegirUsuario()
         self.ventana_registro.setCoordinador(self.coordinador)
         self.ventana_registro.show()
         self.hide()
@@ -31,21 +31,7 @@ class InicioVentana(QtWidgets.QMainWindow):
     def setCoordinador(self, coord) -> None:
         self.coordinador = coord
 
-
-        # self.lineFecha.clear()
-
-    # def setVisible(self, visible: bool) -> None:
-    #     if visible:
-    #         self.root.mainloop()
-    #     else:
-    #         self.root.destroy()
-
-    # def setCoordinador(self, coord) -> None:
-    #     self.coordinador = coord
-
     #############################Listeners##############################
-
-
 
     def mostrar_advertencia(ex):
         mensaje = QMessageBox()
