@@ -13,7 +13,7 @@ from dao.ReseñasInterface import ReseñasInterface
 class ReseñasDao(ReseñasInterface, Conexion):
     #Todas las operaciones CRUD que sean necesarias
     SQL_SELECT = "SELECT * FROM reseñas"
-    SQL_INSERT = "INSERT INTO reseñas(NumReseña, IDObra, Texto, NumEstrellas, Visible, Fecha, Agotado, IDCatalogo) VALUES (?, ?, ?, ?, ?, ?, ?, ?)"
+    SQL_INSERT = "INSERT INTO reseñas(IDObra, Texto, NumEstrellas, Visible, Fecha) VALUES (?, ?, ?, ?, ?)"
     SQL_DELETE = "DELETE FROM reseñas WHERE NumReseña = ?"
     SQL_UPDATE = "UPDATE reseñas SET IDObra= ?, Texto= ?, NumEstrellas = ?, Visible = ?, Fecha = ?, Agotado = ?, IDCatalogo = ? WHERE NumReseña = ?"
     SQL_FILTER = "SELECT * FROM reseñas WHERE NumReseña = ?"

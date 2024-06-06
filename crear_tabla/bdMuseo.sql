@@ -869,10 +869,10 @@ DROP TABLE IF EXISTS `subastas`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `subastas` (
-  `IDSubasta` int NOT NULL,
+  `IDSubasta` int NOT NULL auto_increment,
   `Fecha` date NOT NULL,
-  `Titulo` varchar(45) NOT NULL,
-  `Descripción` varchar(100) NOT NULL,
+  `Titulo` varchar(45) NOT NULL UNIQUE,
+  `Descripcion` varchar(100) NOT NULL,
   PRIMARY KEY (`IDSubasta`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;

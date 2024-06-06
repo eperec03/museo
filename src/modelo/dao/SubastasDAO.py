@@ -13,9 +13,9 @@ from dao.SubastasInterface import SubastasInterface
 class SubastasDao(SubastasInterface, Conexion):
     #Todas las operaciones CRUD que sean necesarias
     SQL_SELECT = "SELECT * FROM Subastas"
-    SQL_INSERT = "INSERT INTO Subastas(IDSubasta, Titulo, Descripcion, Fecha) VALUES (?, ?, ?, ?)"
-    SQL_DELETE = "DELETE FROM Subastas WHERE IDSubasta = ?"
-    SQL_UPDATE = "UPDATE Subastas SET Titulo= ?, Descripcion= ?, Fecha = ? WHERE IDSubasta = ?"
+    SQL_INSERT = "INSERT INTO Subastas(Titulo, Descripcion, Fecha) VALUES (?, ?, ?)"
+    SQL_DELETE = "DELETE FROM Subastas WHERE Titulo = ?"
+    SQL_UPDATE = "UPDATE Subastas SET Titulo= ?, Descripcion= ?, Fecha = ? WHERE Titulo = ?"
     SQL_FILTER = "SELECT * FROM Subastas WHERE IDSubasta = ?"
 
 
@@ -98,7 +98,7 @@ class SubastasDao(SubastasInterface, Conexion):
             else:
                 print("La base de datos no esta disponible")
             cursor = conn.cursor()
-            cursor.execute(self.SQL_INSERT, (subasta.getIDSubasta(),subasta.getTitulo(),subasta.getDescripcion(),subasta.getFecha()))
+            cursor.execute(self.SQL_INSERT, (subasta.getTitulo(),subasta.getDescripcion(),subasta.getFecha()))
             conn.commit()
             #Devuelve 1 si la inserción fue exitosa
             rows = cursor.rowcount
@@ -154,7 +154,7 @@ class SubastasDao(SubastasInterface, Conexion):
                 print("La base de datos no esta disponible")
 
             cursor = conn.cursor()
-            cursor.execute(self.SQL_UPDATE, (subasta.getTitulo(),subasta.getDescripcion(),subasta.getFecha(),subasta.getIDSubasta()))
+            cursor.execute(self.SQL_UPDATE, (subasta.getTitulo(),subasta.getDescripcion(),subasta.getFecha(),subasta.getTitulo()))
             conn.commit()
             #Devuelve 1 si la inserción fue exitosa
             rows = cursor.rowcount
@@ -167,3 +167,21 @@ class SubastasDao(SubastasInterface, Conexion):
         conexion = self.closeConnection(conn)
 
         return rows
+    
+# a=SubastasDao()
+# b=SubastasVO()
+# b.setDescripcion('Vendemos a Panceta, Puska,...')
+# b.setFecha('2024-12-06')
+# b.setTitulo('ClaritaULE')
+# a.insertSubasta(b)
+# print(str(a.getSubastas()[0].Descripcion))
+# c=SubastasVO()
+# c.setTitulo('ClaritaULE')
+# c.setDescripcion('a')
+# a.updateSubasta(c)
+
+
+
+
+
+
