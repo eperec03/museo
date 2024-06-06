@@ -791,7 +791,7 @@ DROP TABLE IF EXISTS `reseñas`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `reseñas` (
-  `Numreseña` int NOT NULL auto_increment,
+  `Numreseña` int NOT NULL,
   `IDObra` int NOT NULL,
   `Texto` varchar(1000) NOT NULL,
   `Numestrellas` int NOT NULL,
