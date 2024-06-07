@@ -8,32 +8,26 @@ from PyQt5 import QtWidgets, uic
 from PyQt5.QtWidgets import QMessageBox
 from PyQt5.QtGui import QIcon
 from vista.RegistroClientePVentana import *
-from vista.RegistroEntradaVentana import RegistroEntradaVentana
 # from vista.InicioVentana import *
 
-class ElegirUsuario(QtWidgets.QMainWindow):
+class ElegirUsuarioRegistro(QtWidgets.QMainWindow):
     def __init__(self, controlador = None):
-        super(ElegirUsuario, self).__init__()
-        uic.loadUi('src/vista/ui/TipoUsuario.ui', self)
+        # Importamos el .ui
+        super(ElegirUsuarioRegistro, self).__init__()
+        uic.loadUi('src/vista/ui/TipoUsuarioRegistro.ui', self)
         self.setWindowTitle("Identifícate ")
-        self.setWindowIcon(QIcon('src/vista/Imagenes/logo.png'))
+        self.setWindowIcon(QIcon('src/vista/Imagenes/logo.png'))  # Reemplaza con la ruta a tu logo
+        # Almacena una referencia al controlador
         self.coordinador = controlador
-        self.BotonCliE.clicked.connect(self.go_to_window_estandar)
+        # "EnviarBoton" es el nombre que se le ha dado al objeto en el .ui
         self.BotonCliP.clicked.connect(self.go_to_window_premium)
-        #falta poner boton editores
         # self.BotonAtras.clicked.connect(self.go_back)
         self.show()
 
-    def go_to_window_estandar(self):
-        self.ventana_Cliestandar = RegistroEntradaVentana()
+    def go_to_window_premium(self):
+        self.ventana_Cliestandar = RegistroClientePVentana()
         self.ventana_Cliestandar.setCoordinador(self.coordinador)
         self.ventana_Cliestandar.show()
-        self.hide()
-
-    def go_to_window_premium(self):
-        self.ventana_CliPremium = RegistroClientePVentana()
-        self.ventana_CliPremium.setCoordinador(self.coordinador)
-        self.ventana_CliPremium.show()
         self.hide()
         
     # def go_back(self):
