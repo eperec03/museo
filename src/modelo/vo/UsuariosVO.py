@@ -106,26 +106,13 @@ class ClientePremiumVO(UsuarioVO):
 
 
 class EditorVO(UsuarioVO):
-    def __init__(self, SSN, UsuNombreCompleto, Usutfno, UsuEmail, UsuTitularMP, UsuNumTarjMP, UsuCvvMP, UsuCadMP, UsuContrasenna, UsuFecha, Horario, TipoContrato, Estudios):
+    def __init__(self, SSN, UsuNombreCompleto, Usutfno, UsuEmail, UsuTitularMP, UsuNumTarjMP, UsuCvvMP, UsuCadMP, UsuContrasenna, UsuFecha, Rol):
         super().__init__(SSN, UsuNombreCompleto, Usutfno, UsuEmail, UsuTitularMP, UsuNumTarjMP, UsuCvvMP, UsuCadMP, UsuContrasenna, UsuFecha)
-        self.Horario = Horario
-        self.TipoContrato = TipoContrato
-        self.Estudios = Estudios
+        self.Rol = Rol
+        
+    def get_Rol(self):
+        return self.Rol
 
-    def get_Horario(self):
-        return self.Horario
+    def set_Rol(self, Rol):
+        self.Rol = Rol
 
-    def set_Horario(self, Horario):
-        self.Horario = Horario
-
-    def get_TipoContrato(self):
-        return self.TipoContrato
-
-    def set_TipoContrato(self, TipoContrato):
-        self.TipoContrato = TipoContrato
-
-    def get_Estudios(self):
-        return self.Estudios
-
-    def set_Estudios(self, Estudios):
-        self.Estudios = Estudios
