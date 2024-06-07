@@ -22,7 +22,7 @@ class InicioVentana(QtWidgets.QMainWindow):
         self.coordinador = controlador
         # "EnviarBoton" es el nombre que se le ha dado al objeto en el .ui
         self.BotonRegistrarse.clicked.connect(self.go_to_window_registro)
-        self.BotonInicioS.clicked.connect(self.go_to_window_inicio)
+        self.BotonInicioS.clicked.connect(self.go_to_window_objetos)
         self.show()
 
     def go_to_window_registro(self):
@@ -35,7 +35,15 @@ class InicioVentana(QtWidgets.QMainWindow):
         self.ventana_inicio = ElegirUsuario()
         self.ventana_inicio.setCoordinador(self.coordinador)
         self.ventana_inicio.show()
-        self.hide()       
+        self.hide() 
+
+    #-------------QUITAR DESPUES DE HABER HECHO LA PRUEBA-----------------------------
+    def go_to_window_objetos(self):
+        self.ventana_inicio = LogicaPruebaScroll()
+        self.ventana_inicio.setCoordinador(self.coordinador)
+        self.ventana_inicio.show()
+        self.hide()
+    #---------------------------------------------------------------------------------- 
 
     def setCoordinador(self, coord) -> None:
         self.coordinador = coord

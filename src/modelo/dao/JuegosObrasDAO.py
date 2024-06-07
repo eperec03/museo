@@ -19,6 +19,7 @@ class JuegosObrasDao(JuegosObrasInterface, Conexion):
     SQL_UPDATE = "UPDATE JuegosObras SET IDObra= ? WHERE IDJuegoObra = ?"
     SQL_FILTER = "SELECT * FROM JuegosObras WHERE IDJuegoObra = ?"
     SQL_SELECT_SERV = "SELECT IDServicios FROM servicios WHERE Nombre = ?"
+    SQL_FILTER_JUEGO_GETALL = "SELECT Nombre FROM Juegos WHERE IDJuego = ?"
     SQL_DELETE_SERV = "DELETE FROM Servicios WHERE IDServicios = ?"
 
 
@@ -35,16 +36,24 @@ class JuegosObrasDao(JuegosObrasInterface, Conexion):
             #Crea un objeto para poder ejecutar consultas SQL sobre la conexion abierta
             cursor = conn.cursor()
             #Ejecuta de consulta SQL
+            juegos_dao=JuegosDao()
             cursor.execute(self.SQL_SELECT) #Obtiene todas las filas resultantes de la consulta
             rows = cursor.fetchall()
             #Itera sobre todas las filas
             for row in rows:
                 IDJuegoObra,IDObra= row
-                juegoObras = JuegosObrasVO()
-                juegoObras.set_IDJuegoobra(IDJuegoObra)
-                juegoObras.set_IDObra(IDObra)
-                juegosObras.append(juegoObras)
-
+                cursor.execute(self.SQL_FILTER_JUEGO_GETALL,(IDJuegoObra, ))
+                nombre = cursor.fetchone()[0] 
+                juego_vo=juegos_dao.getJuego(nombre)
+                #En juego_vo tenemos los atributos de la tabla Juegos...
+                juegoObra = JuegosObrasVO()
+                juegoObra.set_IDJuego(IDJuegoObra)
+                juegoObra.set_IDObra(IDObra)
+                juegoObra.set_Nombre(juego_vo.get_Nombre())
+                juegoObra.set_Dificultad(juego_vo.get_Dificultad())
+                juegoObra.set_Descripcion(juego_vo.get_Descripcion())
+                juegoObra.set_ruta(juego_vo.get_ruta())
+                juegosObras.append(juegoObra)
         except Error as e:
             print("Error al seleccionar JuegosObras:", e)
         #Se ejecuta siempre
@@ -55,7 +64,7 @@ class JuegosObrasDao(JuegosObrasInterface, Conexion):
         conexion = self.closeConnection(conn)
         return juegosObras
     
-    def getJuegosObras(self,id) -> JuegosObrasVO:
+    def getJuegoObras(self,Titulo) -> JuegosObrasVO:
         conexion = self.getConnection()
         conn = None
         cursor = None
@@ -67,13 +76,20 @@ class JuegosObrasDao(JuegosObrasInterface, Conexion):
             #Crea un objeto para poder ejecutar consultas SQL sobre la conexion abierta
             cursor = conn.cursor()
             #Ejecuta de consulta SQL
-            cursor.execute(self.SQL_FILTER, (id,)) #Obtiene todas las filas resultantes de la consulta
-            #Obtiene todas las filas resultantes de la consulta
+            #Primero, obtiene los datos de la tabla Juegos. Obtengamos su informacion:
+            juegos_dao=JuegosDao()
+            juego_vo=juegos_dao.getJuego(Titulo)
+            #En juegovo tenemos los atributos de la tabla Juegos...
+            cursor.execute(self.SQL_FILTER, (juego_vo.get_IDJuego(),)) #Obtiene todas las filas resultantes de la consulta
             row = cursor.fetchall()
-            JuegosObras = JuegosObrasVO()
-            IDJuegoObra,IDObra= row[0]   #Al filtrar por la clave primaria, solo hay 1 resultado almacenado en la 1º pos
-            JuegosObras.set_IDJuegoobra(IDJuegoObra)
-            JuegosObras.set_IDObra(IDObra)
+            juegoObras = JuegosObrasVO()
+            IDJuegoObra,IDObra= row[0]= row[0]   #Al filtrar por la clave primaria, solo hay 1 resultado almacenado en la 1º pos
+            juegoObras.set_IDJuego(IDJuegoObra)
+            juegoObras.set_IDObra(IDObra)
+            juegoObras.set_Nombre(juego_vo.get_Nombre())
+            juegoObras.set_Dificultad(juego_vo.get_Dificultad())
+            juegoObras.set_Descripcion(juego_vo.get_Descripcion())
+            juegoObras.set_ruta(juego_vo.get_ruta())
         except Error as e:
             print("Error al seleccionar JuegosObras:", e)
         #Se ejecuta siempre
@@ -82,7 +98,7 @@ class JuegosObrasDao(JuegosObrasInterface, Conexion):
                 #Cierra el cursor para liberar recursos
                 cursor.close()
         conexion = self.closeConnection(conn)
-        return JuegosObras
+        return juegoObras
     
     def insertJuegosObras (self, juegosObras: JuegosObrasVO) -> int:
         conexion = self.getConnection()
@@ -185,13 +201,13 @@ class JuegosObrasDao(JuegosObrasInterface, Conexion):
         return rows
     
 a=JuegosObrasDao()
-# # b=JuegosObrasVO()
-# # b.set_Nombre('Snake')
-# # b.set_Dificultad('Imposible')
-# # b.set_Descripcion('Serpiente manzana ñam ñam')
-# # b.set_ruta('/Escritorio')
-# # b.set_IDObra('2')
-# # a.insertJuegosObras(b)
+# b=JuegosObrasVO()
+# b.set_Nombre('Snake')
+# b.set_Dificultad('Imposible')
+# b.set_Descripcion('Serpiente manzana ñam ñam')
+# b.set_ruta('/Escritorio')
+# b.set_IDObra('2')
+# a.insertJuegosObras(b)
 # b=JuegosObrasVO()
 # b.set_Nombre('Snake')
 # b.set_Dificultad('Facilon')
@@ -199,4 +215,5 @@ a=JuegosObrasDao()
 # b.set_ruta('/MiCasa')
 # b.set_IDObra('3')
 # a.updateJuegosObras(b)
-a.deleteJuegosObras('Snake')
+# a.deleteJuegosObras('Snake')
+# print(a.getJuegosObras())

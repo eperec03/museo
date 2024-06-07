@@ -18,7 +18,7 @@ class JuegosDao(JuegosInterface, Conexion):
     SQL_SELECT_SERV = "SELECT IDServicios FROM servicios WHERE Nombre = ?"
     SQL_DELETE_SERV = "DELETE FROM Servicios WHERE IdServicios = ?"
     SQL_UPDATE = "UPDATE juegos SET Nombre= ?, Dificultad= ?, Descripcion = ? WHERE IdJuego = ?"
-    SQL_FILTER = "SELECT * FROM juegos WHERE IdJuego = ?"
+    SQL_FILTER = "SELECT * FROM juegos WHERE Nombre = ?"
 
 
     def getJuegos(self) -> List[JuegosVO]:
@@ -38,12 +38,13 @@ class JuegosDao(JuegosInterface, Conexion):
             rows = cursor.fetchall()
             #Itera sobre todas las filas
             for row in rows:
-                IdJuego,Nombre,Dificultad,Descripcion= row
+                IdJuego,Nombre,Dificultad,Descripcion,ruta= row
                 juego = JuegosVO()
                 juego.set_IDJuego(IdJuego)
                 juego.set_Descripcion(Descripcion)
                 juego.set_Nombre(Nombre)
                 juego.set_Dificultad(Dificultad)
+                juego.set_ruta(ruta)
                 juegos.append(juego)
 
         except Error as e:
@@ -56,7 +57,7 @@ class JuegosDao(JuegosInterface, Conexion):
         conexion = self.closeConnection(conn)
         return juegos
     
-    def getJuego(self,id) -> JuegosVO:
+    def getJuego(self,Nombre) -> JuegosVO:
         conexion = self.getConnection()
         conn = None
         cursor = None
@@ -68,15 +69,16 @@ class JuegosDao(JuegosInterface, Conexion):
             #Crea un objeto para poder ejecutar consultas SQL sobre la conexion abierta
             cursor = conn.cursor()
             #Ejecuta de consulta SQL
-            cursor.execute(self.SQL_FILTER, (id,)) #Obtiene todas las filas resultantes de la consulta
+            cursor.execute(self.SQL_FILTER, (Nombre,)) #Obtiene todas las filas resultantes de la consulta
             #Obtiene todas las filas resultantes de la consulta
             row = cursor.fetchall()
             juego = JuegosVO()
-            IdJuego,Nombre,Dificultad,Descripcion= row[0]   #Al filtrar por la clave primaria, solo hay 1 resultado almacenado en la 1º pos
+            IdJuego,Nombre,Dificultad,Descripcion,ruta= row[0]   #Al filtrar por la clave primaria, solo hay 1 resultado almacenado en la 1º pos
             juego.set_IDJuego(IdJuego)
             juego.set_Nombre(Nombre)
             juego.set_Descripcion(Descripcion)
             juego.set_Dificultad(Dificultad)
+            juego.set_ruta(ruta)
         except Error as e:
             print("Error al seleccionar juego:", e)
         #Se ejecuta siempre
@@ -182,3 +184,7 @@ class JuegosDao(JuegosInterface, Conexion):
         conexion = self.closeConnection(conn)
 
         return rows
+    
+# a=JuegosDao()
+# print(a.getJuegos())
+# # print(a.getJuego('Memory de Arte'))
