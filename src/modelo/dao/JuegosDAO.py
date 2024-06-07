@@ -16,7 +16,7 @@ class JuegosDao(JuegosInterface, Conexion):
     SQL_INSERT = "INSERT INTO juegos(IdJuego, Nombre, Dificultad, Descripcion, Ruta) VALUES (?, ?, ?, ?, ?)"
     SQL_INSERT_SERV = "INSERT INTO Servicios(Nombre) VALUES (?)"
     SQL_SELECT_SERV = "SELECT IDServicios FROM servicios WHERE Nombre = ?"
-    SQL_DELETE = "DELETE FROM juegos WHERE IdJuego = ?"
+    SQL_DELETE_SERV = "DELETE FROM Servicios WHERE IdServicios = ?"
     SQL_UPDATE = "UPDATE juegos SET Nombre= ?, Dificultad= ?, Descripcion = ? WHERE IdJuego = ?"
     SQL_FILTER = "SELECT * FROM juegos WHERE IdJuego = ?"
 
@@ -121,7 +121,7 @@ class JuegosDao(JuegosInterface, Conexion):
 
         return rows
 
-    def deleteJuego (self, id) -> int:
+    def deleteJuego (self, Nombre) -> int:
         conexion = self.getConnection()
         conn = None
         cursor = None
@@ -132,7 +132,11 @@ class JuegosDao(JuegosInterface, Conexion):
             else:
                 print("La base de datos no esta disponible")
             cursor = conn.cursor()
-            cursor.execute(self.SQL_DELETE, (id,))
+            #Primero, buscamos el identificador del servicio con el nombre (es unico)
+            cursor.execute(self.SQL_SELECT_SERV, (Nombre,))
+            identificador_servicio = cursor.fetchone()[0] 
+            #Ahora, eliminamos el servicio de la tabla servicios (hay on delete cascade)
+            cursor.execute(self.SQL_DELETE_SERV, (identificador_servicio,))
             conn.commit()
             #Devuelve 1 si la inserción fue exitosa
             rows = cursor.rowcount
@@ -162,7 +166,10 @@ class JuegosDao(JuegosInterface, Conexion):
                 print("La base de datos no esta disponible")
 
             cursor = conn.cursor()
-            cursor.execute(self.SQL_UPDATE, (juego.getNombre(),juego.getDificultad(),juego.getDescripcion(),juego.getIdJuego()))
+            #Antes de nada, necesitamos el identificador...lo buscamos con el nombre
+            cursor.execute(self.SQL_SELECT_SERV, (juego.get_Nombre(), ))
+            identificador_servicio = cursor.fetchone()[0] 
+            cursor.execute(self.SQL_UPDATE, (juego.get_Nombre(),juego.get_Dificultad(),juego.get_Descripcion(),identificador_servicio))
             conn.commit()
             #Devuelve 1 si la inserción fue exitosa
             rows = cursor.rowcount
