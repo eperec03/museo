@@ -10,8 +10,14 @@
     <height>600</height>
    </rect>
   </property>
+  <property name="focusPolicy">
+   <enum>Qt::StrongFocus</enum>
+  </property>
   <property name="windowTitle">
    <string>MainWindow</string>
+  </property>
+  <property name="windowOpacity">
+   <double>8.000000000000000</double>
   </property>
   <widget class="QWidget" name="centralwidget">
    <widget class="QPushButton" name="BotonRegistrarse">
@@ -239,9 +245,9 @@ border-radius: 15px;</string>
    <widget class="QLabel" name="Titulo">
     <property name="geometry">
      <rect>
-      <x>250</x>
-      <y>150</y>
-      <width>291</width>
+      <x>280</x>
+      <y>140</y>
+      <width>231</width>
       <height>91</height>
      </rect>
     </property>
@@ -482,6 +488,8 @@ border-radius: 15px;</string>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
  </widget>
- <resources/>
+ <resources>
+  <include location="../Imagenes/imagenes.qrc"/>
+ </resources>
  <connections/>
 </ui>

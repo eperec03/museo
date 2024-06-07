@@ -19,7 +19,7 @@ class JuegosObrasDao(JuegosObrasInterface, Conexion):
     SQL_UPDATE = "UPDATE JuegosObras SET IDObra= ? WHERE IDJuegoObra = ?"
     SQL_FILTER = "SELECT * FROM JuegosObras WHERE IDJuegoObra = ?"
     SQL_SELECT_SERV = "SELECT IDServicios FROM servicios WHERE Nombre = ?"
-
+    SQL_DELETE_SERV = "DELETE FROM Servicios WHERE IDServicios = ?"
 
 
     def getJuegosObras(self) -> List[JuegosObrasVO]:
@@ -118,7 +118,7 @@ class JuegosObrasDao(JuegosObrasInterface, Conexion):
 
         return rows
 
-    def deleteJuegosObras (self, id) -> int:
+    def deleteJuegosObras (self, nombre) -> int:
         conexion = self.getConnection()
         conn = None
         cursor = None
@@ -129,7 +129,10 @@ class JuegosObrasDao(JuegosObrasInterface, Conexion):
             else:
                 print("La base de datos no esta disponible")
             cursor = conn.cursor()
-            cursor.execute(self.SQL_DELETE, (id,))
+            cursor.execute(self.SQL_SELECT_SERV, (nombre,))
+            identificador_servicio = cursor.fetchone()[0] 
+            #Ahora, eliminamos el servicio de la tabla servicios (hay on delete cascade)
+            cursor.execute(self.SQL_DELETE_SERV, (identificador_servicio,))
             conn.commit()
             #Devuelve 1 si la inserción fue exitosa
             rows = cursor.rowcount
@@ -159,6 +162,14 @@ class JuegosObrasDao(JuegosObrasInterface, Conexion):
                 print("La base de datos no esta disponible")
 
             cursor = conn.cursor()
+            #Pimero, actualizamos los atributos de juegos;
+            juegos=JuegosVO()
+            juegos.set_Nombre(juegosObras.get_Nombre())
+            juegos.set_Descripcion(juegosObras.get_Descripcion())
+            juegos.set_Dificultad(juegosObras.get_Dificultad())
+            juegos.set_ruta(juegosObras.get_ruta())
+            juegos_dao=JuegosDao()
+            juegos_dao.updateJuego(juegos)
             cursor.execute(self.SQL_UPDATE, (juegosObras.get_IDObra(),juegosObras.get_IDJuegoobra()))
             conn.commit()
             #Devuelve 1 si la inserción fue exitosa
@@ -172,11 +183,20 @@ class JuegosObrasDao(JuegosObrasInterface, Conexion):
         conexion = self.closeConnection(conn)
 
         return rows
+    
 a=JuegosObrasDao()
-b=JuegosObrasVO()
-b.set_Nombre('Snake')
-b.set_Dificultad('Imposible')
-b.set_Descripcion('Serpiente manzana ñam ñam')
-b.set_ruta('/Escritorio')
-b.set_IDObra('5')
-a.insertJuegosObras(b)
+# # b=JuegosObrasVO()
+# # b.set_Nombre('Snake')
+# # b.set_Dificultad('Imposible')
+# # b.set_Descripcion('Serpiente manzana ñam ñam')
+# # b.set_ruta('/Escritorio')
+# # b.set_IDObra('2')
+# # a.insertJuegosObras(b)
+# b=JuegosObrasVO()
+# b.set_Nombre('Snake')
+# b.set_Dificultad('Facilon')
+# b.set_Descripcion('Serpiente manzana ñom ñom')
+# b.set_ruta('/MiCasa')
+# b.set_IDObra('3')
+# a.updateJuegosObras(b)
+a.deleteJuegosObras('Snake')

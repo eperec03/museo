@@ -12,9 +12,9 @@ from modelo.dao.ClientePremiumInterface import ClientePInterface
 class ClientePremiumDAO(ClientePInterface, Conexion):
     #Todas las operaciones CRUD que sean necesarias
     SQL_SELECT = "SELECT DNI, UsuNombreCompleto, UsuTfno, UsuEmail, UsuTitularMP, UsuCvvMP, UsuNumTarjMP, UsuCadMP, UsuContrasenna FROM Clientespremium"
-    SQL_INSERT = "INSERT INTO Clientespremium(DNI, UsuNombreCompleto, UsuTfno, UsuEmail, UsuTitularMP, UsuNumTarjMP, UsuCvvMP, UsuCadMP, UsuContrasenna) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)"
+    SQL_INSERT = "INSERT INTO Clientespremium(DNI, UsuNombreCompleto, UsuTfno, UsuEmail, UsuTitularMP, UsuNumTarjMP, UsuCvvMP, UsuCadMP, UsuContrasenna, ObrasAdquiridas, DineroGastado, Penalizacion, TipoTarifa) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)"
     SQL_DELETE = "DELETE FROM Usuarios WHERE DNI = ?"
-    SQL_UPDATE = "UPDATE Usuarios SET UsuNombreCompleto = ?, UsuTfno = ?, UsuEmail = ?, UsuTitularMP = ?, UsuCvvMP = ?, UsuNumTarjMP = ?, UsuCadMP = ?, UsuContrasenna = ? WHERE DNI = ?"
+    SQL_UPDATE = "UPDATE Usuarios SET UsuNombreCompleto = ?, UsuTfno = ?, UsuEmail = ?, UsuTitularMP = ?, UsuCvvMP = ?, UsuNumTarjMP = ?, UsuCadMP = ?, UsuContrasenna = ?, ObrasAdquiridas = ?, DineroGastado = ?, Penalizacion = ?, TipoTarifa = ? WHERE DNI = ?"
     SQL_FILTER = "SELECT * FROM Usuarios WHERE DNI = ?"
 
 
@@ -35,7 +35,7 @@ class ClientePremiumDAO(ClientePInterface, Conexion):
             rows = cursor.fetchall()
             #Itera sobre todas las filas
             for row in rows:
-                DNI, UsuNombreCompleto, UsuTfno, UsuEmail, UsuTitularMP, UsuNumTarjMP, UsuCvvMP, UsuCadMP, UsuContrasenna = row
+                DNI,UsuNombreCompleto,UsuTfno,UsuEmail,UsuTitularMP,UsuNumTarjMP,UsuCvvMP,UsuCadMP,UsuContrasenna,ObrasAdquiridas,DineroGastado,Penalizacion,TipoTarifa = row
                 #Crea un objeto ClientePremiumVO para cada fila DNI, NombreCompleto...
                 usuario = ClientePremiumVO()
                 usuario.setDNI(DNI)
@@ -46,7 +46,11 @@ class ClientePremiumDAO(ClientePInterface, Conexion):
                 usuario.setNumTarjeta(UsuNumTarjMP)
                 usuario.setCvv(UsuCvvMP)
                 usuario.setCaducidad(UsuCadMP)
-                usuario.setContraseña(UsuContrasenna)
+                usuario.setContrasenna(UsuContrasenna)
+                usuario.setObrasAdquiridas(ObrasAdquiridas)
+                usuario.setDineroGastado(DineroGastado)
+                usuario.setPenalizacion(Penalizacion)
+                usuario.setTipoTarifa(TipoTarifa)
                 usuarios.append(usuario)
 
         except Error as e:
@@ -78,8 +82,8 @@ class ClientePremiumDAO(ClientePInterface, Conexion):
             #Obtiene todas las filas resultantes de la consulta
             rows = cursor.fetchall()
             print(rows)
-            DNI, UsuNombreCompleto, UsuTfno, UsuEmail, UsuTitularMP, UsuNumTarjMP, UsuCvvMP, UsuCadMP, UsuContrasenna, UsuFecha = rows[0]
-            usuario = ClientePremiumVO(DNI=DNI, NombreCompleto=UsuNombreCompleto, Telefono=UsuTfno,Email=UsuEmail, Titular= UsuTitularMP, NumTarjeta= UsuNumTarjMP,Cvv= UsuCvvMP, Caducidad= UsuCadMP, Contraseña=UsuContrasenna, FechaRegistro=UsuFecha)
+            DNI, UsuNombreCompleto, UsuTfno, UsuEmail, UsuTitularMP, UsuNumTarjMP, UsuCvvMP, UsuCadMP, UsuContrasenna, UsuFechaObrasAdquiridas,DineroGastado,Penalizacion,TipoTarifa = rows[0]
+            usuario = ClientePremiumVO(DNI=DNI, NombreCompleto=UsuNombreCompleto, Telefono=UsuTfno,Email=UsuEmail, Titular= UsuTitularMP, NumTarjeta= UsuNumTarjMP,Cvv= UsuCvvMP, Caducidad= UsuCadMP, Contrasenna=UsuContrasenna, FechaRegistro=UsuFecha, ObrasAdquiridas=ObrasAdquiridas, DineroGastado=DineroGastado, Penalizacion= Penalizacion, TipoTarifa=TipoTarifa)
             usuarios.append(usuario)
 
         except Error as e:
@@ -107,7 +111,7 @@ class ClientePremiumDAO(ClientePInterface, Conexion):
                 print("La base de datos no esta disponible")
 
             cursor = conn.cursor()
-            cursor.execute(self.SQL_INSERT, (usuario.getDNI(),usuario.getNombreCompleto(),usuario.getTelefono(),usuario.getEmail(),usuario.getTitular(),usuario.getNumTarjeta(),usuario.getCvv(),usuario.getCaducidad(),usuario.getContraseña()))
+            cursor.execute(self.SQL_INSERT, (usuario.getDNI(),usuario.getNombreCompleto(),usuario.getTelefono(),usuario.getEmail(),usuario.getTitular(),usuario.getNumTarjeta(),usuario.getCvv(),usuario.getCaducidad(),usuario.getContrasenna(),usuario.getObrasAdquiridas, usuario.getDineroGastado, usuario.getPenalizacion(), usuario.getTipoTarifa()))
             conn.commit()
             #Asegurarse de que esos cambios se hagan permanentes: conn.commit(). Si conn.autocommit = True no es necesario llamar explícitamente a conn.commit() después de cada inserción, ya que la base de datos confirma automáticamente cada instrucción.
            
@@ -171,7 +175,7 @@ class ClientePremiumDAO(ClientePInterface, Conexion):
                 print("La base de datos no esta disponible")
 
             cursor = conn.cursor()
-            cursor.execute(self.SQL_UPDATE, (usuario.getNombreCompleto(),usuario.getTelefono(),usuario.getEmail(),usuario.getTitular(),usuario.getNumTarjeta(),usuario.getCvv(),usuario.getCaducidad(),usuario.getContraseña(), usuario.getDNI()))
+            cursor.execute(self.SQL_UPDATE, (usuario.getDNI(), usuario.getNombreCompleto(),usuario.getTelefono(),usuario.getEmail(),usuario.getTitular(),usuario.getNumTarjeta(),usuario.getCvv(),usuario.getCaducidad(),usuario.getContrasenna(), usuario.getObrasAdquiridas(), usuario.getDineroGastado(), usuario.getPenalizacion, usuario.getTipoTarifa() ))
             conn.commit()
             #Asegurarse de que esos cambios se hagan permanentes: conn.commit(). Si conn.autocommit = True no es necesario llamar explícitamente a conn.commit() después de cada inserción, ya que la base de datos confirma automáticamente cada instrucción.
            

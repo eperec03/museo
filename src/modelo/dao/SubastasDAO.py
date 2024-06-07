@@ -173,11 +173,12 @@ class SubastasDao(SubastasInterface, Conexion):
 # b.setDescripcion('Vendemos a Panceta, Puska,...')
 # b.setFecha('2024-12-06')
 # b.setTitulo('ClaritaULE')
-# a.insertSubasta(b)
+# # a.insertSubasta(b)
 # print(str(a.getSubastas()[0].Descripcion))
 # c=SubastasVO()
 # c.setTitulo('ClaritaULE')
-# c.setDescripcion('a')
+# c.setFecha('2024-05-29')
+# c.setDescripcion('Vendemos a Panceta, Puska,...')
 # a.updateSubasta(c)
 
 

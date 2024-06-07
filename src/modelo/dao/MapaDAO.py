@@ -41,4 +41,5 @@ class MapaDao(MapaInterface, Conexion):
         return mapa
     
 
-
+# a=MapaDao()
+# print(a.getInfoMapa())

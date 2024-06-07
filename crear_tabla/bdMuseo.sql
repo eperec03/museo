@@ -76,7 +76,7 @@ DROP TABLE IF EXISTS `catalogo`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `catalogo` (
   `IDCatalogo` int NOT NULL,
-  `Portada` blob NOT NULL,
+  `Imagen` blob NOT NULL,
   PRIMARY KEY (`IDCatalogo`),
   CONSTRAINT `SerCat` FOREIGN KEY (`IDCatalogo`) REFERENCES `servicios` (`IDServicios`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
@@ -679,7 +679,7 @@ DROP TABLE IF EXISTS `obras`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `obras` (
   `IDObra` int NOT NULL auto_increment,
-  `Titulo` varchar(45) NOT NULL,
+  `Titulo` varchar(45) NOT NULL unique,
   `Descripcion` varchar(100) DEFAULT NULL,
   `Fecha` date NULL,
   `Imagen` blob NOT NULL,
@@ -790,7 +790,8 @@ DROP TABLE IF EXISTS `resenas`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `resenas` (
-  `Numresena` int NOT NULL,
+  `Numresena` int NOT NULL auto_increment,
+  `Titulo`varchar(35) NOT NULL unique,
   `IDObra` int NOT NULL,
   `Texto` varchar(1000) NOT NULL,
   `Numestrellas` int NOT NULL,
@@ -927,7 +928,6 @@ CREATE TABLE `usuarios` (
   `UsuCvvMP` int NOT NULL,
   `UsuCadMP` date NOT NULL,
   `UsuContrasenna` varchar(100) NOT NULL,
-  `UsuFecha` date NOT NULL,
   PRIMARY KEY (`DNI`),
   UNIQUE KEY `UQ_UsuEmail` (`UsuEmail`),
   CONSTRAINT `UCMPCHECK` CHECK (((`UsuCvvMP` >= 0) and (`UsuCvvMP` <= 999))),

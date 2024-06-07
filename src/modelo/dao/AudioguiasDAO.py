@@ -13,10 +13,10 @@ from dao.AudioguiasInterface import AudioguiasInterface
 class AudioguiasDao(AudioguiasInterface, Conexion):
     #Todas las operaciones CRUD que sean necesarias
     SQL_SELECT = "SELECT * FROM audioguias"
-    SQL_INSERT = "INSERT INTO audioguias(IDAudioguia, IDObra, Audio, Duracion) VALUES (?, ?, ?, ?)"
-    SQL_DELETE = "DELETE FROM audioguias WHERE IDAudioguia = ?"
-    SQL_UPDATE = "UPDATE audioguias SET IDObra= ?, Audio= ?, Duracion = ? WHERE IDAudioguia = ?"
-    SQL_FILTER = "SELECT * FROM audioguias WHERE IDAudioguia = ?"
+    SQL_INSERT = "INSERT INTO audioguias(IDAudioguiaguia, IDObra, Audio, Duracion) VALUES (?, ?, ?, ?)"
+    SQL_DELETE = "DELETE FROM audioguias WHERE IDAudioguiaguia = ?"
+    SQL_UPDATE = "UPDATE audioguias SET IDObra= ?, Audio= ?, Duracion = ? WHERE IDAudioguiaguia = ?"
+    SQL_FILTER = "SELECT * FROM audioguias WHERE IDAudioguiaguia = ?"
 
 
     def getAudioguias(self) -> List[AudioguiasVO]:
@@ -36,9 +36,9 @@ class AudioguiasDao(AudioguiasInterface, Conexion):
             rows = cursor.fetchall()
             #Itera sobre todas las filas
             for row in rows:
-                IDAudio,IDObra,Audio,Duracion= row
+                IDAudioguia,IDObra,Audio,Duracion= row
                 audioguia = AudioguiasVO()
-                audioguia.setIdAudio(IDAudio)
+                audioguia.setIDAudioguia(IDAudioguia)
                 audioguia.setDuracion(Duracion)
                 audioguia.setIdObra(IDObra)
                 audioguia.setAudio(Audio)
@@ -70,8 +70,8 @@ class AudioguiasDao(AudioguiasInterface, Conexion):
             #Obtiene todas las filas resultantes de la consulta
             row = cursor.fetchall()
             audioguia = AudioguiasVO()
-            IDAudio,IDObra,Audio,Duracion= row[0]   #Al filtrar por la clave primaria, solo hay 1 resultado almacenado en la 1º pos
-            audioguia.setIdAudio(IDAudio)
+            IDAudioguia,IDObra,Audio,Duracion= row[0]   #Al filtrar por la clave primaria, solo hay 1 resultado almacenado en la 1º pos
+            audioguia.setIDAudioguia(IDAudioguia)
             audioguia.setIdObra(IDObra)
             audioguia.setDuracion(Duracion)
             audioguia.setAudio(Audio)
@@ -97,7 +97,7 @@ class AudioguiasDao(AudioguiasInterface, Conexion):
             else:
                 print("La base de datos no esta disponible")
             cursor = conn.cursor()
-            cursor.execute(self.SQL_INSERT, (audioguia.getIdAudio(),audioguia.getIdObra(),audioguia.getAudio(),audioguia.getDuracion()))
+            cursor.execute(self.SQL_INSERT, (audioguia.getIDAudioguia(),audioguia.getIdObra(),audioguia.getAudio(),audioguia.getDuracion()))
             conn.commit()
             #Devuelve 1 si la inserción fue exitosa
             rows = cursor.rowcount
@@ -153,7 +153,7 @@ class AudioguiasDao(AudioguiasInterface, Conexion):
                 print("La base de datos no esta disponible")
 
             cursor = conn.cursor()
-            cursor.execute(self.SQL_UPDATE, (audioguia.getIdObra(),audioguia.getAudio(),audioguia.getDuracion(),audioguia.getIdAudio()))
+            cursor.execute(self.SQL_UPDATE, (audioguia.getIdObra(),audioguia.getAudio(),audioguia.getDuracion(),audioguia.getIDAudioguia()))
             conn.commit()
             #Devuelve 1 si la inserción fue exitosa
             rows = cursor.rowcount
@@ -169,7 +169,7 @@ class AudioguiasDao(AudioguiasInterface, Conexion):
 
 # a=AudioguiasDao()
 # b=AudioguiasVO()
-# b.setIdAudio('3')
+# b.setIDAudioguia('3')
 # b.setIdObra('3')
 # b.setDuracion('01:15:00')
 # b.setAudio('55')
