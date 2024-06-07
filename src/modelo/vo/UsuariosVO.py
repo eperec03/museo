@@ -73,7 +73,7 @@ class UsuarioVO:
 
 
 class ClientePremiumVO(UsuarioVO):
-    def __init__(self, DNI, UsuNombreCompleto, Usutfno, UsuEmail, UsuTitularMP, UsuNumTarjMP, UsuCvvMP, UsuCadMP, UsuContrasenna, UsuFecha, ObrasAdquiridas, DineroGastado, Penalizacion, TipoTarifa):
+    def __init__(self, DNI, UsuNombreCompleto, Usutfno, UsuEmail, UsuTitularMP, UsuNumTarjMP, UsuCvvMP, UsuCadMP, UsuContrasenna, UsuFecha, ObrasAdquiridas=None, DineroGastado=None, Penalizacion=None, TipoTarifa=None):
         super().__init__(DNI, UsuNombreCompleto, Usutfno, UsuEmail, UsuTitularMP, UsuNumTarjMP, UsuCvvMP, UsuCadMP, UsuContrasenna, UsuFecha)
         self.ObrasAdquiridas = ObrasAdquiridas
         self.DineroGastado = DineroGastado

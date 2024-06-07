@@ -41,7 +41,7 @@ class ObrasSubastadasDao(ObrasSubastadasInterface, Conexion):
             for row in rows:
                 IdObra,Titulo,Descripcion,Fecha,Imagen,IdArtista,IdExposicion,PrecioSalida,PrecioVenta,MejorPostor= row
                 obraSubastada = ObrasSubastadasVO()
-                obraSubastada.set_IDObrasubastada(IdObra)
+                obraSubastada.setIdObra(IdObra)
                 obraSubastada.setTitulo(Titulo)
                 obraSubastada.setDescripcion(Descripcion)
                 obraSubastada.setFecha(Fecha)
@@ -81,10 +81,9 @@ class ObrasSubastadasDao(ObrasSubastadasInterface, Conexion):
             #Ahora, cogemos los parámetros de la tabla ObrasSubastadas
             cursor.execute(self.SQL_FILTER, (IdObra,)) 
             row_obrsub = cursor.fetchall()
-            print(row_obrsub[0])
-            IdObraSubastada,PrecioSalida,PrecioVenta,MejorPostor =row_obrsub[0]
+            IdObra,PrecioSalida,PrecioVenta,MejorPostor =row_obrsub[0]
             obraSubastada = ObrasSubastadasVO()
-            obraSubastada.set_IDObrasubastada(IdObraSubastada)
+            obraSubastada.setIdObra(IdObra)
             obraSubastada.setTitulo(Titulo)
             obraSubastada.setDescripcion(Descripcion)
             obraSubastada.setFecha(Fecha)
@@ -94,7 +93,6 @@ class ObrasSubastadasDao(ObrasSubastadasInterface, Conexion):
             obraSubastada.set_MejorPostor(MejorPostor)
             obraSubastada.set_PrecioSalida(PrecioSalida)
             obraSubastada.set_PrecioVenta(PrecioVenta)
-            print('Hola')
         except Error as e:
             print("Error al seleccionar obraSubastada:", e)
         #Se ejecuta siempre
@@ -200,7 +198,6 @@ class ObrasSubastadasDao(ObrasSubastadasInterface, Conexion):
 
         return rows
 obra_subastada1 = ObrasSubastadasVO()
-# Setear valores usando setters
 obra_subastada1.setIdObra(1)
 obra_subastada1.setTitulo("La Noche Estrellada")
 obra_subastada1.setDescripcion("Una pintura famosa de Vincent van Gogh")
@@ -208,14 +205,12 @@ obra_subastada1.setFecha("1889-06-01")
 obra_subastada1.setImagen("noche_estrellada.jpg")
 obra_subastada1.setIdArtista(1)
 obra_subastada1.setIdExposicion(2)
-obra_subastada1.set_IDObrasubastada(1001)
+obra_subastada1.setIdObra(1001)
 obra_subastada1.set_PrecioSalida(500000)
 obra_subastada1.set_PrecioVenta(650000)
 obra_subastada1.set_MejorPostor("John Doe")
 
-# Crear instancia vacía
 obra_subastada2 = ObrasSubastadasVO()
-# Setear valores usando setters
 obra_subastada2.setIdObra(2)
 obra_subastada2.setTitulo("Mona Lisa")
 obra_subastada2.setDescripcion("Una pintura de Leonardo da Vinci")
@@ -223,7 +218,7 @@ obra_subastada2.setFecha("1503-10-01")
 obra_subastada2.setImagen("mona_lisa.jpg")
 obra_subastada2.setIdArtista(2)
 obra_subastada2.setIdExposicion(3)
-obra_subastada2.set_IDObrasubastada(1002)
+obra_subastada2.setIdObra(1002)
 obra_subastada2.set_PrecioSalida(750000)
 obra_subastada2.set_PrecioVenta(950000)
 obra_subastada2.set_MejorPostor("Jane Smith")
