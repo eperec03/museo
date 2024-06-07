@@ -22,8 +22,6 @@ class JuegosObrasDao(JuegosObrasInterface, Conexion):
     SQL_DELETE_SERV = "DELETE FROM Servicios WHERE IDServicios = ?"
 
 
-
-
     def getJuegosObras(self) -> List[JuegosObrasVO]:
         conexion = self.getConnection()
         conn = None
@@ -133,7 +131,6 @@ class JuegosObrasDao(JuegosObrasInterface, Conexion):
             cursor = conn.cursor()
             cursor.execute(self.SQL_SELECT_SERV, (nombre,))
             identificador_servicio = cursor.fetchone()[0] 
-            print(identificador_servicio)
             #Ahora, eliminamos el servicio de la tabla servicios (hay on delete cascade)
             cursor.execute(self.SQL_DELETE_SERV, (identificador_servicio,))
             conn.commit()

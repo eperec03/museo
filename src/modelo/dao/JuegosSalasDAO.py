@@ -17,6 +17,8 @@ class JuegosSalasDao(JuegosSalasInterface, Conexion):
     SQL_DELETE = "DELETE FROM JuegosSalas WHERE IDJuegoSala = ?"
     SQL_UPDATE = "UPDATE JuegosSalas SET IDSala= ? WHERE IDJuegoSala = ?"
     SQL_FILTER = "SELECT * FROM JuegosSalas WHERE IDJuegoSala = ?"
+    SQL_SELECT_SERV = "SELECT IDServicios FROM servicios WHERE Nombre = ?"
+    SQL_DELETE_SERV = "DELETE FROM Servicios WHERE IDServicios = ?"
 
 
     def getJuegosSalas(self) -> List[JuegosSalasVO]:
@@ -94,7 +96,13 @@ class JuegosSalasDao(JuegosSalasInterface, Conexion):
             else:
                 print("La base de datos no esta disponible")
             cursor = conn.cursor()
-            cursor.execute(self.SQL_INSERT, (juegosSalas.get_IDJuegossalas(),juegosSalas.get_IDSala()))
+            juego=JuegosVO(Nombre=juegosSalas.get_Nombre(),Dificultad=juegosSalas.get_Dificultad(),Descripcion=juegosSalas.get_Descripcion(),ruta=juegosSalas.get_ruta())
+            juego_dao=JuegosDao()
+            juego_dao.insertJuego(juego)
+            cursor.execute(self.SQL_SELECT_SERV,(juegosSalas.get_Nombre(), ))
+            identificador_servicio = cursor.fetchone()[0] 
+            #Ahora, ya podemos insertarlo en la tabla juegosSalas.
+            cursor.execute(self.SQL_INSERT, (identificador_servicio,juegosSalas.get_IDSala()))
             conn.commit()
             #Devuelve 1 si la inserción fue exitosa
             rows = cursor.rowcount
@@ -109,7 +117,7 @@ class JuegosSalasDao(JuegosSalasInterface, Conexion):
 
         return rows
 
-    def deleteJuegosSalas (self, id) -> int:
+    def deleteJuegosSalas (self, nombre) -> int:
         conexion = self.getConnection()
         conn = None
         cursor = None
@@ -120,7 +128,10 @@ class JuegosSalasDao(JuegosSalasInterface, Conexion):
             else:
                 print("La base de datos no esta disponible")
             cursor = conn.cursor()
-            cursor.execute(self.SQL_DELETE, (id,))
+            cursor.execute(self.SQL_SELECT_SERV, (nombre,))
+            identificador_servicio = cursor.fetchone()[0] 
+            #Ahora, eliminamos el servicio de la tabla servicios (hay on delete cascade)
+            cursor.execute(self.SQL_DELETE_SERV, (identificador_servicio,))
             conn.commit()
             #Devuelve 1 si la inserción fue exitosa
             rows = cursor.rowcount
@@ -150,7 +161,14 @@ class JuegosSalasDao(JuegosSalasInterface, Conexion):
                 print("La base de datos no esta disponible")
 
             cursor = conn.cursor()
-            cursor.execute(self.SQL_UPDATE, (juegosSalas.get_IDSala(),juegosSalas.get_IDJuegossalas()))
+            juegos=JuegosVO()
+            juegos.set_Nombre(juegosSalas.get_Nombre())
+            juegos.set_Descripcion(juegosSalas.get_Descripcion())
+            juegos.set_Dificultad(juegosSalas.get_Dificultad())
+            juegos.set_ruta(juegosSalas.get_ruta())
+            juegos_dao=JuegosDao()
+            juegos_dao.updateJuego(juegos)
+            cursor.execute(self.SQL_UPDATE, (juegosSalas.get_IDSala(),juegosSalas.get_IDJuegoSala()))
             conn.commit()
             #Devuelve 1 si la inserción fue exitosa
             rows = cursor.rowcount
