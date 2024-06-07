@@ -18,6 +18,8 @@ class JuegosObrasDao(JuegosObrasInterface, Conexion):
     SQL_DELETE = "DELETE FROM JuegosObras WHERE IDJuegoObra = ?"
     SQL_UPDATE = "UPDATE JuegosObras SET IDObra= ? WHERE IDJuegoObra = ?"
     SQL_FILTER = "SELECT * FROM JuegosObras WHERE IDJuegoObra = ?"
+    SQL_SELECT_SERV = "SELECT IDServicios FROM servicios WHERE Nombre = ?"
+
 
 
     def getJuegosObras(self) -> List[JuegosObrasVO]:
@@ -82,7 +84,6 @@ class JuegosObrasDao(JuegosObrasInterface, Conexion):
         conexion = self.closeConnection(conn)
         return JuegosObras
     
-    #se hace el proximo dia
     def insertJuegosObras (self, juegosObras: JuegosObrasVO) -> int:
         conexion = self.getConnection()
         conn = None
@@ -99,8 +100,10 @@ class JuegosObrasDao(JuegosObrasInterface, Conexion):
             juego=JuegosVO(Nombre=juegosObras.get_Nombre(),Dificultad=juegosObras.get_Dificultad(),Descripcion=juegosObras.get_Descripcion(),ruta=juegosObras.get_ruta())
             juego_dao=JuegosDao()
             juego_dao.insertJuego(juego)
+            cursor.execute(self.SQL_SELECT_SERV,(juegosObras.get_Nombre(), ))
+            identificador_servicio = cursor.fetchone()[0] 
             #Ahora, ya podemos insertarlo en la tabla juegosObras.
-            cursor.execute(self.SQL_INSERT, (juegosObras.get_IDJuegoobra(),juegosObras.get_IDObra()))
+            cursor.execute(self.SQL_INSERT, (identificador_servicio,juegosObras.get_IDObra()))
             conn.commit()
             #Devuelve 1 si la inserción fue exitosa
             rows = cursor.rowcount
@@ -169,3 +172,11 @@ class JuegosObrasDao(JuegosObrasInterface, Conexion):
         conexion = self.closeConnection(conn)
 
         return rows
+a=JuegosObrasDao()
+b=JuegosObrasVO()
+b.set_Nombre('Snake')
+b.set_Dificultad('Imposible')
+b.set_Descripcion('Serpiente manzana ñam ñam')
+b.set_ruta('/Escritorio')
+b.set_IDObra('5')
+a.insertJuegosObras(b)

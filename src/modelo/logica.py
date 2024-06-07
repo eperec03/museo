@@ -4,7 +4,7 @@ sys.path.append(r'c:\Users\clara\Documents\2ºUNI\2CUATRI\IS\museo\src')
 
 import tkinter as tk
 from tkinter import messagebox
-from modelo.vo.ClientePremiumVO import *
+from modelo.vo.UsuariosVO import *
 from modelo.dao.ClientePremiumDAO import *
 from modelo.vo.ClienteEstandarVO import *
 from modelo.dao.ClienteEstandarDAO import *
