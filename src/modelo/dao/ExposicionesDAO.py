@@ -13,10 +13,10 @@ from dao.ExposicionesInterface import ExposicionesInterface
 class ExposicionesDao(ExposicionesInterface, Conexion):
     #Todas las operaciones CRUD que sean necesarias
     SQL_SELECT = "SELECT * FROM exposiciones"
-    SQL_INSERT = "INSERT INTO exposiciones(IDExposicion, Titulo, Imagen, Descripcion, NumSala) VALUES (?, ?, ?, ?)"
-    SQL_DELETE = "DELETE FROM exposiciones WHERE IDExposicion = ?"
-    SQL_UPDATE = "UPDATE exposiciones SET Titulo= ?, Imagen= ?, Descripcion = ?, NumSala = ? WHERE IDExposicion = ?"
-    SQL_FILTER = "SELECT * FROM exposiciones WHERE IDExposicion = ?"
+    SQL_INSERT = "INSERT INTO exposiciones(IDExposiciones, Titulo, Imagen, Descripcion, NumSala) VALUES (?, ?, ?, ?)"
+    SQL_DELETE = "DELETE FROM exposiciones WHERE IDExposiciones = ?"
+    SQL_UPDATE = "UPDATE exposiciones SET Titulo= ?, Imagen= ?, Descripcion = ?, NumSala = ? WHERE IDExposiciones = ?"
+    SQL_FILTER = "SELECT * FROM exposiciones WHERE IDExposiciones = ?"
 
 
     def getExposiciones(self) -> List[ExposicionesVO]:
@@ -38,7 +38,7 @@ class ExposicionesDao(ExposicionesInterface, Conexion):
             for row in rows:
                 IDImagen,Titulo,Imagen,Descripcion,NumSala= row
                 exposicion = ExposicionesVO()
-                exposicion.setIDExposicion(IDExposicion)
+                exposicion.setIDExposiciones(IDExposiciones)
                 exposicion.setDescripcion(Descripcion)
                 exposicion.setTitulo(Titulo)
                 exposicion.setImagen(Imagen)
@@ -71,7 +71,7 @@ class ExposicionesDao(ExposicionesInterface, Conexion):
             #Obtiene todas las filas resultantes de la consulta
             row = cursor.fetchall()
             exposicion = ExposicionesVO()
-            IDExposicion,Titulo,Imagen,Descripcion,NumSala= row[0]   #Al filtrar por la clave primaria, solo hay 1 resultado almacenado en la 1º pos
+            IDExposiciones,Titulo,Imagen,Descripcion,NumSala= row[0]   #Al filtrar por la clave primaria, solo hay 1 resultado almacenado en la 1º pos
             exposicion.setIdImagen(IDImagen)
             exposicion.setTitulo(Titulo)
             exposicion.setDescripcion(Descripcion)
@@ -100,7 +100,7 @@ class ExposicionesDao(ExposicionesInterface, Conexion):
             else:
                 print("La base de datos no esta disponible")
             cursor = conn.cursor()
-            cursor.execute(self.SQL_INSERT, (exposicion.getIDExposicion(),exposicion.getTitulo(),exposicion.getImagen(),exposicion.getDescripcion(),exposicion.getNumSala()))
+            cursor.execute(self.SQL_INSERT, (exposicion.getIDExposiciones(),exposicion.getTitulo(),exposicion.getImagen(),exposicion.getDescripcion(),exposicion.getNumSala()))
             conn.commit()
             #Devuelve 1 si la inserción fue exitosa
             rows = cursor.rowcount

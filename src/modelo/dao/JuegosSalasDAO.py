@@ -39,7 +39,7 @@ class JuegosSalasDao(JuegosSalasInterface, Conexion):
                 IDJuegoSala,IDSala= row
                 juegoSalas = JuegosSalasVO()
                 juegoSalas.set_IDJuegossalas(IDJuegoSala)
-                juegoSalas.set_IDJuegossalas(IDSala)
+                juegoSalas.set_IDSala(IDSala)
                 juegosSalas.append(juegoSalas)
 
         except Error as e:
