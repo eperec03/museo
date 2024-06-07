@@ -39,6 +39,7 @@ class JuegosVO:
 
 class JuegosObrasVO(JuegosVO):
     def __init__(self, IDJuegoobra=None, IDObra=None):
+        super().__init__(IDJuego=None, Nombre=None, Dificultad=None, Descripcion=None, ruta=None)
         self.IDJuegoobra = IDJuegoobra
         self.IDObra = IDObra
 
@@ -57,6 +58,7 @@ class JuegosObrasVO(JuegosVO):
 
 class JuegosSalasVO(JuegosVO):
     def __init__(self, IDJuegossalas=None, IDSala=None):
+        super().__init__(IDJuego=None, Nombre=None, Dificultad=None, Descripcion=None, ruta=None)
         self.IDJuegossalas = IDJuegossalas
         self.IDSala = IDSala
 
