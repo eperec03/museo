@@ -5,20 +5,20 @@ import sys
 sys.path.append(r'C:\Users\eripe\OneDrive\Documentos\ERI ULE\2º\SEGUNDO CUATRI\IS\PROYECTO\src\modelo')
 sys.path.append(r'c:\Users\clara\Documents\2ºUNI\2CUATRI\IS\museo\src\modelo')
 
-from vo.UsuariosVO import UsuariosVO 
+from vo.UsuariosVO import UsuarioVO 
 from conexion.conexion2JDBC import Conexion
-from modelo.dao.UsuariosInterface import ClientePInterface
+from dao.UsuarioInterface import ClientePInterface
 
 class UsuariosDAO(ClientePInterface, Conexion):
     #Todas las operaciones CRUD que sean necesarias
-    SQL_SELECT = "SELECT DNI, UsuNombreCompleto, UsuTfno, UsuEmail, UsuTitularMP, UsuCvvMP, UsuNumTarjMP, UsuCadMP, UsuContrasenna FROM usurio"
-    SQL_INSERT = "INSERT INTO Clientespremium(DNI, UsuNombreCompleto, UsuTfno, UsuEmail, UsuTitularMP, UsuNumTarjMP, UsuCvvMP, UsuCadMP, UsuContrasenna) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)"
+    SQL_SELECT = "SELECT DNI, UsuNombreCompleto, UsuTfno, UsuEmail, UsuTitularMP, UsuCvvMP, UsuNumTarjMP, UsuCadMP, UsuContrasenna FROM usuarios"
+    SQL_INSERT = "INSERT INTO usuarios(DNI, UsuNombreCompleto, UsuTfno, UsuEmail, UsuTitularMP, UsuNumTarjMP, UsuCvvMP, UsuCadMP, UsuContrasenna) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)"
     SQL_DELETE = "DELETE FROM Usuarios WHERE DNI = ?"
-    SQL_UPDATE = "UPDATE Usuarios SET UsuNombreCompleto = ?, UsuTfno = ?, UsuEmail = ?, UsuTitularMP = ?, UsuCvvMP = ?, UsuNumTarjMP = ?, UsuCadMP = ?, UsuContrasenna = ? WHERE DNI = ?"
+    SQL_UPDATE = "UPDATE Usuarios SET UsuNombreCompleto = ?, UsuTfno = ?, UsuEmail = ?, UsuTitularMP = ?, UsuNumTarjMP = ?,UsuCvvMP = ?, UsuCadMP = ?, UsuContrasenna = ? WHERE DNI = ?"
     SQL_FILTER = "SELECT * FROM Usuarios WHERE DNI = ?"
 
 
-    def getUsuarios(self) -> List[UsuariosVO]:
+    def getUsuarios(self) -> List[UsuarioVO]:
         conexion = self.getConnection()
         conn = None
         cursor = None
@@ -36,8 +36,8 @@ class UsuariosDAO(ClientePInterface, Conexion):
             #Itera sobre todas las filas
             for row in rows:
                 DNI, UsuNombreCompleto, UsuTfno, UsuEmail, UsuTitularMP, UsuNumTarjMP, UsuCvvMP, UsuCadMP, UsuContrasenna = row
-                #Crea un objeto UsuariosVO para cada fila DNI, NombreCompleto...
-                usuario = UsuariosVO()
+                #Crea un objeto UsuarioVO para cada fila DNI, NombreCompleto...
+                usuario = UsuarioVO()
                 usuario.setDNI(DNI)
                 usuario.setNombreCompleto(UsuNombreCompleto)
                 usuario.setTelefono(UsuTfno)
@@ -60,7 +60,7 @@ class UsuariosDAO(ClientePInterface, Conexion):
         conexion = self.closeConnection(conn)
         return usuarios
     
-    def getUsuario(self,dni) -> UsuariosVO:
+    def getUsuario(self,dni) -> UsuarioVO:
         conexion = self.getConnection()
         conn = None
         cursor = None
@@ -79,7 +79,7 @@ class UsuariosDAO(ClientePInterface, Conexion):
             rows = cursor.fetchall()
             print(rows)
             DNI, UsuNombreCompleto, UsuTfno, UsuEmail, UsuTitularMP, UsuNumTarjMP, UsuCvvMP, UsuCadMP, UsuContrasenna, UsuFecha = rows[0]
-            usuario = UsuariosVO(DNI=DNI, NombreCompleto=UsuNombreCompleto, Telefono=UsuTfno,Email=UsuEmail, Titular= UsuTitularMP, NumTarjeta= UsuNumTarjMP,Cvv= UsuCvvMP, Caducidad= UsuCadMP, Contraseña=UsuContrasenna, FechaRegistro=UsuFecha)
+            usuario = UsuarioVO(DNI=DNI, NombreCompleto=UsuNombreCompleto, Telefono=UsuTfno,Email=UsuEmail, Titular= UsuTitularMP, NumTarjeta= UsuNumTarjMP,Cvv= UsuCvvMP, Caducidad= UsuCadMP, Contraseña=UsuContrasenna, FechaRegistro=UsuFecha)
             usuarios.append(usuario)
 
         except Error as e:
@@ -93,7 +93,7 @@ class UsuariosDAO(ClientePInterface, Conexion):
         conexion = self.closeConnection(conn)
         return usuarios
     #se hace el proximo dia
-    def insertUsuario (self, usuario: UsuariosVO) -> int:
+    def insertUsuario (self, usuario: UsuarioVO) -> int:
         conexion = self.getConnection()
         conn = None
         cursor = None
@@ -107,7 +107,7 @@ class UsuariosDAO(ClientePInterface, Conexion):
                 print("La base de datos no esta disponible")
 
             cursor = conn.cursor()
-            cursor.execute(self.SQL_INSERT, (usuario.getDNI(),usuario.getNombreCompleto(),usuario.getTelefono(),usuario.getEmail(),usuario.getTitular(),usuario.getNumTarjeta(),usuario.getCvv(),usuario.getCaducidad(),usuario.getContraseña()))
+            cursor.execute(self.SQL_INSERT, (usuario.get_DNI(),usuario.get_UsuNombreCompleto(),usuario.get_Usutfno(),usuario.get_UsuEmail(),usuario.get_UsuTitularMP(),usuario.get_UsuNumTarjMP(),usuario.get_UsuCvvMP(),usuario.get_UsuCadMP(),usuario.get_UsuContrasenna()))
             conn.commit()
             #Asegurarse de que esos cambios se hagan permanentes: conn.commit(). Si conn.autocommit = True no es necesario llamar explícitamente a conn.commit() después de cada inserción, ya que la base de datos confirma automáticamente cada instrucción.
            
@@ -125,7 +125,7 @@ class UsuariosDAO(ClientePInterface, Conexion):
 
         return rows
 
-    def eliminateUsuario (self, usuario:UsuariosVO) -> int:
+    def eliminateUsuario (self, dni) -> int:
         conexion = self.getConnection()
         conn = None
         cursor = None
@@ -139,7 +139,7 @@ class UsuariosDAO(ClientePInterface, Conexion):
                 print("La base de datos no esta disponible")
 
             cursor = conn.cursor()
-            cursor.execute(self.SQL_DELETE, (usuario.getDNI(),))
+            cursor.execute(self.SQL_DELETE, (dni,))
             conn.commit()
             #Asegurarse de que esos cambios se hagan permanentes: conn.commit(). Si conn.autocommit = True no es necesario llamar explícitamente a conn.commit() después de cada inserción, ya que la base de datos confirma automáticamente cada instrucción.
            
@@ -157,7 +157,7 @@ class UsuariosDAO(ClientePInterface, Conexion):
 
         return rows
 
-    def updateUsuario  (self, usuario:UsuariosVO) -> int:
+    def updateUsuario  (self, usuario:UsuarioVO) -> int:
         conexion = self.getConnection()
         conn = None
         cursor = None
@@ -171,7 +171,7 @@ class UsuariosDAO(ClientePInterface, Conexion):
                 print("La base de datos no esta disponible")
 
             cursor = conn.cursor()
-            cursor.execute(self.SQL_UPDATE, (usuario.getNombreCompleto(),usuario.getTelefono(),usuario.getEmail(),usuario.getTitular(),usuario.getNumTarjeta(),usuario.getCvv(),usuario.getCaducidad(),usuario.getContraseña(), usuario.getDNI()))
+            cursor.execute(self.SQL_UPDATE, (usuario.get_UsuNombreCompleto(),usuario.get_Usutfno(),usuario.get_UsuEmail(),usuario.get_UsuTitularMP(),usuario.get_UsuNumTarjMP(),usuario.get_UsuCvvMP(),usuario.get_UsuCadMP(),usuario.get_UsuContrasenna(), usuario.get_DNI()))
             conn.commit()
             #Asegurarse de que esos cambios se hagan permanentes: conn.commit(). Si conn.autocommit = True no es necesario llamar explícitamente a conn.commit() después de cada inserción, ya que la base de datos confirma automáticamente cada instrucción.
            
@@ -190,13 +190,34 @@ class UsuariosDAO(ClientePInterface, Conexion):
         return rows
 
 
+# usuario_ejemplo=UsuarioVO()
+# usuario_ejemplo.set_DNI("12345678A")
+# usuario_ejemplo.set_UsuNombreCompleto("Juan Pérez")
+# usuario_ejemplo.set_Usutfno("900123456")
+# usuario_ejemplo.set_UsuEmail("juan.perez@example.com")
+# usuario_ejemplo.set_UsuTitularMP("Juan Pérez")
+# usuario_ejemplo.set_UsuNumTarjMP("1234567812345678")
+# usuario_ejemplo.set_UsuCvvMP("123")
+# usuario_ejemplo.set_UsuCadMP("2026-12-25")
+# usuario_ejemplo.set_UsuContrasenna("PepeJuan558866")
+# usuario_ejemplo.set_UsuFecha("2024-06-07")
 
+# b=UsuariosDAO()
+# # b.insertUsuario(usuario_ejemplo)
+# # b.eliminateUsuario('12345678A')
 
-
-
-
-
-
+# usuario_ejemplo1=UsuarioVO()
+# usuario_ejemplo1.set_DNI("12345678A")
+# usuario_ejemplo1.set_UsuNombreCompleto("ERi Pérez")
+# usuario_ejemplo1.set_Usutfno("601157070")
+# usuario_ejemplo1.set_UsuEmail("eri.perez@example.com")
+# usuario_ejemplo1.set_UsuTitularMP("Eri Pérez")
+# usuario_ejemplo1.set_UsuNumTarjMP("1234567812345678")
+# usuario_ejemplo1.set_UsuCvvMP("123")
+# usuario_ejemplo1.set_UsuCadMP("2026-12-25")
+# usuario_ejemplo1.set_UsuContrasenna("PepeJuan558866")
+# usuario_ejemplo1.set_UsuFecha("2024-06-07")
+# b.updateUsuario(usuario_ejemplo1)
 
 
 

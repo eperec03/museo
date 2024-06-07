@@ -927,7 +927,6 @@ CREATE TABLE `usuarios` (
   `UsuCvvMP` int NOT NULL,
   `UsuCadMP` date NOT NULL,
   `UsuContrasenna` varchar(100) NOT NULL,
-  `UsuFecha` date NOT NULL,
   PRIMARY KEY (`DNI`),
   UNIQUE KEY `UQ_UsuEmail` (`UsuEmail`),
   CONSTRAINT `UCMPCHECK` CHECK (((`UsuCvvMP` >= 0) and (`UsuCvvMP` <= 999))),
