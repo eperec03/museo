@@ -70,6 +70,7 @@ class ObrasExpuestaVO(ObrasVO):
 
 class ObrasSubastadasVO(ObrasVO):
     def __init__(self ,PrecioSalida=None, PrecioVenta=None, MejorPostor=None, IDObrasubastada=None):
+        super().__init__(IdObra=None,IdArtista=None,IdExposicion=None,Imagen=None,Descripcion=None,Titulo=None,Fecha=None)
         self.IDObrasubastada = IDObrasubastada
         self.PrecioSalida = PrecioSalida
         self.PrecioVenta = PrecioVenta
