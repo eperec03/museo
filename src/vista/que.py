@@ -7,7 +7,7 @@ class CustomWidget(QWidget):
         super().__init__(parent)
         self.widget = loadUi(r"C:\Users\eripe\OneDrive\Documentos\ERI ULE\2º\SEGUNDO CUATRI\IS\PROYECTO\src\vista\ui\Principal.ui")  # Cambia la ruta al archivo .ui
                 # Establecer imagen de fondo
-        bg_image = QPixmap(r"C:\Users\eripe\OneDrive\Documentos\ERI ULE\2º\SEGUNDO CUATRI\IS\PROYECTO\src\vista\Imagenes\museo.gif")  # Cambia la ruta a tu imagen de fondo
+        bg_image = QPainter(r"C:\Users\eripe\OneDrive\Documentos\ERI ULE\2º\SEGUNDO CUATRI\IS\PROYECTO\src\vista\Imagenes\foto.jpg")  # Cambia la ruta a tu imagen de fondo
         palette = self.widget.palette()
         brush = QBrush(bg_image)
         palette.setBrush(QPalette.Background, brush)
@@ -80,11 +80,11 @@ from PyQt5.QtCore import Qt
 
 
         
-# if __name__ == "__main__":
-#     import sys
-#     from PyQt5.QtWidgets import QApplication
+if __name__ == "__main__":
+    import sys
+    from PyQt5.QtWidgets import QApplication
     
-#     app = QApplication(sys.argv)
-#     window = CustomWidget2()
-#     window.show()
-#     sys.exit(app.exec_())
+    app = QApplication(sys.argv)
+    window = CustomWidget()
+    window.show()
+    sys.exit(app.exec_())

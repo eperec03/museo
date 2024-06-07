@@ -1,5 +1,5 @@
 class UsuarioVO:
-    def __init__(self, DNI, UsuNombreCompleto, Usutfno, UsuEmail, UsuTitularMP, UsuNumTarjMP, UsuCvvMP, UsuCadMP, UsuContrasenna, UsuFecha):
+    def __init__(self, DNI=None, UsuNombreCompleto=None, Usutfno=None, UsuEmail=None, UsuTitularMP=None, UsuNumTarjMP=None, UsuCvvMP=None, UsuCadMP=None, UsuContrasenna=None, UsuFecha=None):
         self.DNI = DNI
         self.UsuNombreCompleto = UsuNombreCompleto
         self.Usutfno = Usutfno

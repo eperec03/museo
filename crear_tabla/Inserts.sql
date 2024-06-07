@@ -12,13 +12,14 @@ VALUES
 (101, 50, 'Surrealismo', 1),
 (102, 75, 'Generacion del 98', 1),
 (103, 90, 'Brutalismo', 1);
+insert into Servicios (Nombre) VALUES ('Frida Kahlo: Viva la Vida');
 INSERT INTO `exposiciones` (`IdExposiciones`,`Titulo`, `Imagen`, `NumSala`)
 VALUES 
 ( 1,'Exposición de Picasso', 'i', 101),
 ( 2,'Renacimiento Italiano', 'i', 102),
 ( 3,'Frida Kahlo: Viva la Vida', 'i', 103);
 
-INSERT INTO `obras` (`Titulo`, `Descripcion`, `Fecha`, `Imagen`, `IDArtist`, `IDExposicion`)
+INSERT INTO `obras` (`Titulo`, `Descripcion`, `Fecha`, `Imagen`, `IDArtista`, `IDExposicion`)
 VALUES 
 ('Guernica', 'Pintura de Pablo Picasso', '1937-06-04', 'i', 1, 1),
 ('La Última Cena', 'Fresco de Leonardo da Vinci', '1498-01-01', 'i', 2, 2),
@@ -37,3 +38,4 @@ INSERT INTO tarifas (TipoTarifa, Precio, Duracion) VALUES ('Grupo', 30.00, '1 ho
 select * from tarifas
 INSERT INTO juegos (Nombre, Dificultad, Descripcion) VALUES ('Snake', 'Medio', 'Comerse Manzana');
 select * from juegos
+
