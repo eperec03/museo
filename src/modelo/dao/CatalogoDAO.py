@@ -12,9 +12,9 @@ from dao.CatalogoInterface import CatalogoInterface
 class CatalogoDao(CatalogoInterface, Conexion):
     #Todas las operaciones CRUD que sean necesarias
     SQL_SELECT = "SELECT * FROM catalogo"
-    SQL_INSERT = "INSERT INTO catalogo(IDCatalogo, Imagen) VALUES (?, ?)"
+    SQL_INSERT = "INSERT INTO catalogo(IDCatalogo, Portada) VALUES (?, ?)"
     SQL_DELETE = "DELETE FROM catalogo WHERE IDCatalogo = ?"
-    SQL_UPDATE = "UPDATE catalogo SET Imagen= ? WHERE IDCatalogo = ?"
+    SQL_UPDATE = "UPDATE catalogo SET Portada= ? WHERE IDCatalogo = ?"
     SQL_FILTER = "SELECT * FROM catalogo WHERE IDCatalogo = ?"
 
 
@@ -35,10 +35,10 @@ class CatalogoDao(CatalogoInterface, Conexion):
             rows = cursor.fetchall()
             #Itera sobre todas las filas
             for row in rows:
-                IDCatalogo,Imagen= row
+                IDCatalogo,Portada= row
                 catalogo = CatalogoVO()
                 catalogo.setIDCatalogo(IDCatalogo)
-                catalogo.setImagen(Imagen)
+                catalogo.setPortada(Portada)
                 catalogos.append(catalogo)
 
         except Error as e:
@@ -67,9 +67,9 @@ class CatalogoDao(CatalogoInterface, Conexion):
             #Obtiene todas las filas resultantes de la consulta
             row = cursor.fetchall()
             catalogo = CatalogoVO()
-            IDCatalogo,Imagen= row[0]   #Al filtrar por la clave primaria, solo hay 1 resultado almacenado en la 1º pos
+            IDCatalogo,Portada= row[0]   #Al filtrar por la clave primaria, solo hay 1 resultado almacenado en la 1º pos
             catalogo.setIDCatalogo(IDCatalogo)
-            catalogo.setImagen(Imagen)
+            catalogo.setPortada(Portada)
         except Error as e:
             print("Error al seleccionar catalogo:", e)
         #Se ejecuta siempre
@@ -93,7 +93,7 @@ class CatalogoDao(CatalogoInterface, Conexion):
             else:
                 print("La base de datos no esta disponible")
             cursor = conn.cursor()
-            cursor.execute(self.SQL_INSERT, (catalogo.getIDCatalogo(),catalogo.getImagen()))
+            cursor.execute(self.SQL_INSERT, (catalogo.getIDCatalogo(),catalogo.getPortada()))
             conn.commit()
             #Devuelve 1 si la inserción fue exitosa
             rows = cursor.rowcount
@@ -149,7 +149,7 @@ class CatalogoDao(CatalogoInterface, Conexion):
                 print("La base de datos no esta disponible")
 
             cursor = conn.cursor()
-            cursor.execute(self.SQL_UPDATE, (catalogo.getImagen(),catalogo.getIDCatalogo()))
+            cursor.execute(self.SQL_UPDATE, (catalogo.getPortada(),catalogo.getIDCatalogo()))
             conn.commit()
             #Devuelve 1 si la inserción fue exitosa
             rows = cursor.rowcount

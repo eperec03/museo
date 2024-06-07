@@ -13,9 +13,9 @@ from modelo.dao.EditorInterface import EditorInterface
 class EditorDAO(EditorInterface, Conexion):
     #Todas las operaciones CRUD que sean necesarias
     SQL_SELECT = "SELECT *  FROM editores"
-    SQL_INSERT = "INSERT INTO editores(SSN, Horario, TipoContrato, Estudios VALUES (?, ?, ?, ?)"
+    SQL_INSERT = "INSERT INTO editores(SSN, UsuNombreCompleto, UsuTfno, UsuEmail, UsuTitularMP, UsuCvvMP, UsuNumTarjMP, UsuCadMP, UsuContrasenna, Rol) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)"
     SQL_DELETE = "DELETE FROM editores WHERE SSN = ?"
-    SQL_UPDATE = "UPDATE editores SET Horario = ?, TipoContrato = ?, Estudios = ?,  WHERE SSN = ?"
+    SQL_UPDATE = "UPDATE editores SET UsuNombreCompleto = ?, UsuTfno = ?, UsuEmail = ?, UsuTitularMP = ?, UsuCvvMP = ?, UsuNumTarjMP = ?, UsuCadMP = ?, UsuContrasenna= ?, Rol = ?,  WHERE SSN = ?"
     SQL_FILTER = "SELECT * FROM editores WHERE SSN = ?"
 
 
@@ -36,10 +36,10 @@ class EditorDAO(EditorInterface, Conexion):
             rows = cursor.fetchall()
             #Itera sobre todas las filas
             for row in rows:
-                DNI, UsuNombreCompleto, UsuTfno, UsuEmail, UsuTitularMP, UsuNumTarjMP, UsuCvvMP, UsuCadMP, UsuContrasenna, rol = row
+                SSN, UsuNombreCompleto, UsuTfno, UsuEmail, UsuTitularMP, UsuNumTarjMP, UsuCvvMP, UsuCadMP, UsuContrasenna, rol = row
                 #Crea un objeto EditorVO para cada fila DNI, NombreCompleto...
                 editor = EditorVO()
-                editor.set(DNI)
+                editor.setSSN(SSN)
                 editor.setNombreCompleto(UsuNombreCompleto)
                 editor.setTelefono(UsuTfno)
                 editor.setEmail(UsuEmail)
@@ -47,8 +47,8 @@ class EditorDAO(EditorInterface, Conexion):
                 editor.setNumTarjeta(UsuNumTarjMP)
                 editor.setCvv(UsuCvvMP)
                 editor.setCaducidad(UsuCadMP)
-                editor.setContraseña(UsuContrasenna)
-                editor.setContraseña(rol)
+                editor.setContrasenna(UsuContrasenna)
+                editor.setRol(rol)
                 editores.append(usuario)
 
         except Error as e:
@@ -83,9 +83,9 @@ class EditorDAO(EditorInterface, Conexion):
 
             #Crea un objeto EditorVO para cada fila DNI, NombreCompleto...
             for row in rows:
-                DNI, UsuNombreCompleto, UsuTfno, UsuEmail, UsuTitularMP, UsuNumTarjMP, UsuCvvMP, UsuCadMP, UsuContrasenna,rol, UsuFecha = row
+                SSN, UsuNombreCompleto, UsuTfno, UsuEmail, UsuTitularMP, UsuNumTarjMP, UsuCvvMP, UsuCadMP, UsuContrasenna, UsuFecha,rol = row
                 #Crea un objeto EditorVO para cada fila DNI, NombreCompleto...
-                usuario = EditorVO(DNI=DNI, NombreCompleto=UsuNombreCompleto, Telefono=UsuTfno,Email=UsuEmail, Titular= UsuTitularMP, NumTarjeta= UsuNumTarjMP,Cvv= UsuCvvMP, Caducidad= UsuCadMP, Contraseña=UsuContrasenna, FechaRegistro=UsuFecha, Rol=rol)
+                usuario = EditorVO(SSN=SSN, NombreCompleto=UsuNombreCompleto, Telefono=UsuTfno,Email=UsuEmail, Titular= UsuTitularMP, NumTarjeta= UsuNumTarjMP,Cvv= UsuCvvMP, Caducidad= UsuCadMP, Contraseña=UsuContrasenna, FechaRegistro=UsuFecha, Rol=rol)
                 usuarios.append(usuario)
 
         except Error as e:
@@ -113,7 +113,7 @@ class EditorDAO(EditorInterface, Conexion):
                 print("La base de datos no esta disponible")
 
             cursor = conn.cursor()
-            cursor.execute(self.SQL_INSERT, (usuario.getDNI(),usuario.getNombreCompleto(),usuario.getTelefono(),usuario.getEmail(),usuario.getTitular(),usuario.getNumTarjeta(),usuario.getCvv(),usuario.getCaducidad(),usuario.getContraseña()))
+            cursor.execute(self.SQL_INSERT, (usuario.getDNI(),usuario.getNombreCompleto(),usuario.getTelefono(),usuario.getEmail(),usuario.getTitular(),usuario.getNumTarjeta(),usuario.getCvv(),usuario.getCaducidad(),usuario.getContrasenna(),usuario.getRol()))
             # conn.commit()
             #Asegurarse de que esos cambios se hagan permanentes: conn.commit(). Si conn.autocommit = True no es necesario llamar explícitamente a conn.commit() después de cada inserción, ya que la base de datos confirma automáticamente cada instrucción.
            
@@ -177,7 +177,7 @@ class EditorDAO(EditorInterface, Conexion):
                 print("La base de datos no esta disponible")
 
             cursor = conn.cursor()
-            cursor.execute(self.SQL_UPDATE, (usuario.getNombreCompleto(),usuario.getTelefono(),usuario.getEmail(),usuario.getTitular(),usuario.getNumTarjeta(),usuario.getCvv(),usuario.getCaducidad(),usuario.getContraseña(), usuario.getDNI()))
+            cursor.execute(self.SQL_UPDATE, (usuario.getNombreCompleto(),usuario.getTelefono(),usuario.getEmail(),usuario.getTitular(),usuario.getNumTarjeta(),usuario.getCvv(),usuario.getCaducidad(),usuario.getContrasenna(), usuario.getRol()))
             # conn.commit()
             #Asegurarse de que esos cambios se hagan permanentes: conn.commit(). Si conn.autocommit = True no es necesario llamar explícitamente a conn.commit() después de cada inserción, ya que la base de datos confirma automáticamente cada instrucción.
            
