@@ -24,7 +24,7 @@ class ObjetosInterface(ABC):
         raise NotImplementedError("Método getObjeto no implementado")
     
     @abstractmethod
-    def inesertObjeto(self, objeto: ObjetosVO):
+    def insertObjeto(self, objeto: ObjetosVO):
         """
         Ineserta un nuevo usuario en la base de datos.
         Parametros requeridos: El objeto ObjetosVO a inesertar.

@@ -35,7 +35,7 @@ INSERT INTO tarifas (TipoTarifa, Precio, Duracion) VALUES ('Normal', 10.00, '1 h
 INSERT INTO tarifas (TipoTarifa, Precio, Duracion) VALUES ('Reducida', 7.50, '1 hora');
 INSERT INTO tarifas (TipoTarifa, Precio, Duracion) VALUES ('Grupo', 30.00, '1 hora');
 
-select * from tarifas
+select * from tarifas;
 INSERT INTO juegos (Nombre, Dificultad, Descripcion) VALUES ('Snake', 'Medio', 'Comerse Manzana');
 select * from juegos
 
