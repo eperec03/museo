@@ -18,7 +18,7 @@ class RegistroEntradaVentana(QtWidgets.QMainWindow):
         self.setWindowIcon(QIcon('src/vista/Imagenes/logo.png'))  
         self.coordinador = controlador
         self.enviarBoton.clicked.connect(self.registrarEntrada)
-        self.go_to_ventana_servicios
+        self.enviarBoton.clicked.connect(self.go_to_ventana_servicios)
         # self.BotonAtras.clicked.connect(self.go_back)
         self.show()
 

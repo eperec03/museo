@@ -34,7 +34,7 @@ class ClienteEstandarDAO(ClienteEInterface, Conexion):
                 NumEntrada = row
                 entrada = ClienteEstandarVO()
                 entrada.setNumEntrada(NumEntrada)
-                entrada.setPrecioEntrada(PrecioEntrada)
+                # entrada.setPrecioEntrada(PrecioEntrada)
                 entradas.append(entrada)
 
         except Error as e:
