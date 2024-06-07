@@ -1,6 +1,7 @@
 class ResenasVO:
-    def __init__(self, NumResena=None, IdObra=None, Texto=None, NumEstrellas=None, Visible=None, Fecha=None):
+    def __init__(self, NumResena=None,Titulo=None, IdObra=None, Texto=None, NumEstrellas=None, Visible=None, Fecha=None):
         self.NumResena = NumResena
+        self.Titulo = Titulo
         self.IdObra = IdObra
         self.Texto = Texto
         self.NumEstrellas = NumEstrellas
@@ -12,6 +13,12 @@ class ResenasVO:
 
     def setNumResena(self, NumResena):
         self.NumResena = NumResena
+        
+    def getTitulo(self):
+        return self.Titulo
+
+    def setTitulo(self, Titulo):
+        self.Titulo = Titulo
 
     def getIdObra(self):
         return self.IdObra

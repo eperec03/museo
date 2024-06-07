@@ -679,7 +679,7 @@ DROP TABLE IF EXISTS `obras`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `obras` (
   `IDObra` int NOT NULL auto_increment,
-  `Titulo` varchar(45) NOT NULL,
+  `Titulo` varchar(45) NOT NULL unique,
   `Descripcion` varchar(100) DEFAULT NULL,
   `Fecha` date NULL,
   `Imagen` blob NOT NULL,
@@ -790,7 +790,8 @@ DROP TABLE IF EXISTS `resenas`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `resenas` (
-  `Numresena` int NOT NULL,
+  `Numresena` int NOT NULL auto_increment,
+  `Titulo`varchar(35) NOT NULL unique,
   `IDObra` int NOT NULL,
   `Texto` varchar(1000) NOT NULL,
   `Numestrellas` int NOT NULL,

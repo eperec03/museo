@@ -13,10 +13,10 @@ from dao.ObrasInterface import ObrasInterface
 class ObrasDao(ObrasInterface, Conexion):
     #Todas las operaciones CRUD que sean necesarias
     SQL_SELECT = "SELECT * FROM Obras"
-    SQL_INSERT = "INSERT INTO Obras (Imagen, Titulo, Descripcion, Fecha, IDArtista, IDExposicion) VALUES (?, ?, ?, ?, ?, ?, ?)"
-    SQL_DELETE = "DELETE FROM Obras WHERE IDObra = ?"
-    SQL_UPDATE = "UPDATE Obras SET Imagen= ?, Titulo= ?, Descripcion = ?, Fecha = ?, IDArtista = ?, IDExposicion = ? WHERE IDObra = ?"
-    SQL_FILTER = "SELECT * FROM Obras WHERE IDObra = ?"
+    SQL_INSERT = "INSERT INTO Obras (Titulo, Descripcion, Fecha, Imagen, IDArtista, IDExposicion) VALUES (?, ?, ?, ?, ?, ?)"
+    SQL_DELETE = "DELETE FROM Obras WHERE Titulo = ?"
+    SQL_UPDATE = "UPDATE Obras SET Descripcion= ?, Fecha = ?, Imagen = ?, IDArtista = ?, IDExposicion = ? WHERE Titulo = ?"
+    SQL_FILTER = "SELECT * FROM Obras WHERE Titulo = ?"
 
 
     def getObras(self) -> List[ObrasVO]:
@@ -57,7 +57,7 @@ class ObrasDao(ObrasInterface, Conexion):
         conexion = self.closeConnection(conn)
         return obras
     
-    def getObra(self,Id) -> ObrasVO:
+    def getObra(self,titulo) -> ObrasVO:
         conexion = self.getConnection()
         conn = None
         cursor = None
@@ -69,7 +69,7 @@ class ObrasDao(ObrasInterface, Conexion):
             #Crea un obra para poder ejecutar consultas SQL sobre la conexion abierta
             cursor = conn.cursor()
             #Ejecuta de consulta SQL
-            cursor.execute(self.SQL_FILTER, (Id,)) #Obtiene todas las filas resultantes de la consulta
+            cursor.execute(self.SQL_FILTER, (titulo,)) #Obtiene todas las filas resultantes de la consulta
             #Obtiene todas las filas resultantes de la consulta
             row = cursor.fetchall()
             obra = ObrasVO()
@@ -104,7 +104,7 @@ class ObrasDao(ObrasInterface, Conexion):
             else:
                 print("La base de datos no esta disponible")
             cursor = conn.cursor()
-            cursor.execute(self.SQL_INSERT, (obra.getIdObra(),obra.getImagen(),obra.getTitulo(),obra.getDescripcion(),obra.getFecha(),obra.getIdArtista(),obra.getIdExposicion()))
+            cursor.execute(self.SQL_INSERT, (obra.getTitulo(),obra.getDescripcion(),obra.getFecha(),obra.getImagen(),obra.getIdArtista(),obra.getIdExposicion()))
             conn.commit()
             #Devuelve 1 si la inserción fue exitosa
             rows = cursor.rowcount
@@ -119,7 +119,7 @@ class ObrasDao(ObrasInterface, Conexion):
 
         return rows
 
-    def deleteObra (self, id) -> int:
+    def deleteObra (self, titulo) -> int:
         conexion = self.getConnection()
         conn = None
         cursor = None
@@ -130,7 +130,7 @@ class ObrasDao(ObrasInterface, Conexion):
             else:
                 print("La base de datos no esta disponible")
             cursor = conn.cursor()
-            cursor.execute(self.SQL_DELETE, (id,))
+            cursor.execute(self.SQL_DELETE, (titulo,))
             conn.commit()
             #Devuelve 1 si la inserción fue exitosa
             rows = cursor.rowcount
@@ -160,7 +160,7 @@ class ObrasDao(ObrasInterface, Conexion):
                 print("La base de datos no esta disponible")
 
             cursor = conn.cursor()
-            cursor.execute(self.SQL_UPDATE, (obra.getImagen(),obra.getTitulo(),obra.getDescripcion(),obra.getIdObra(),obra.getFecha(),obra.getIdArtista(),obra.getIdExposicion()))
+            cursor.execute(self.SQL_UPDATE, (obra.getDescripcion(),obra.getFecha(),obra.getImagen(),obra.getIdArtista(),obra.getIdExposicion(),obra.getTitulo()))
             conn.commit()
             #Devuelve 1 si la inserción fue exitosa
             rows = cursor.rowcount
@@ -173,3 +173,33 @@ class ObrasDao(ObrasInterface, Conexion):
         conexion = self.closeConnection(conn)
 
         return rows
+
+obra1 = ObrasVO()
+obra1.setIdObra(1)
+obra1.setTitulo("La Noche Estrellada")
+obra1.setDescripcion("Una pintura famosa de Vincent van Gogh")
+obra1.setFecha("1889-06-01")
+obra1.setImagen("noche_estrellada.jpg")
+obra1.setIdArtista(3)
+obra1.setIdExposicion(4)
+
+obra2 = ObrasVO()
+obra2.setIdObra(2)
+obra2.setTitulo("Mona Lisa")
+obra2.setDescripcion("Una pintura de Leonardo da Vinci")
+obra2.setFecha("1503-10-01")
+obra2.setImagen("mona_lisa.jpg")
+obra2.setIdArtista(2)
+obra2.setIdExposicion(2)
+
+obra3 = ObrasVO()
+obra3.setIdObra(3)
+obra3.setTitulo("El Grito")
+obra3.setDescripcion("Una pintura de Clarita Ule")
+obra3.setFecha("1893-01-01")
+obra3.setImagen("el_grito.jpg")
+obra3.setIdArtista(2)
+obra3.setIdExposicion(3)
+
+a=ObrasDao()
+a.updateObra(obra3)

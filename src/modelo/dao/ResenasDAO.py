@@ -13,10 +13,10 @@ from modelo.dao.ResenasInterface import ResenasInterface
 class ResenasDao(ResenasInterface, Conexion):
     #Todas las operaciones CRUD que sean necesarias
     SQL_SELECT = "SELECT * FROM resenas"
-    SQL_INSERT = "INSERT INTO resenas(NumResena, IDObra, Texto, NumEstrellas, Visible, Fecha) VALUES (?, ?, ?, ?, ?, ?)"
-    SQL_DELETE = "DELETE FROM resenas WHERE NumResena = ?"
-    SQL_UPDATE = "UPDATE resenas SET IDObra= ?, Texto= ?, NumEstrellas = ?, Visible = ?, Fecha = ?, Agotado = ?, IDCatalogo = ? WHERE NumResena = ?"
-    SQL_FILTER = "SELECT * FROM resenas WHERE NumResena = ?"
+    SQL_INSERT = "INSERT INTO resenas(Titulo, IDObra, Texto, NumEstrellas, Visible, Fecha) VALUES (?, ?, ?, ?, ?, ?)"
+    SQL_DELETE = "DELETE FROM resenas WHERE Titulo = ?"
+    SQL_UPDATE = "UPDATE resenas SET IDObra= ?, Texto= ?, NumEstrellas = ?, Visible = ?, Fecha = ?, Agotado = ?, IDCatalogo = ? WHERE Titulo = ?"
+    SQL_FILTER = "SELECT * FROM resenas WHERE Titulo = ?"
 
 
     def getResenas(self) -> List[ResenasVO]:
@@ -36,11 +36,12 @@ class ResenasDao(ResenasInterface, Conexion):
             rows = cursor.fetchall()
             #Itera sobre todas las filas
             for row in rows:
-                NumResena,IDObra,Texto,NumEstrellas,Visible,Fecha= row
+                NumResena,Titulo ,IDObra,Texto,NumEstrellas,Visible,Fecha= row
                 resena = ResenasVO()
                 resena.setNumResena(NumResena)
+                resena.setTitulo(Titulo)
                 resena.setNumEstrellas(NumEstrellas)
-                resena.setIDObra(IDObra)
+                resena.setIdObra(IDObra)
                 resena.setTexto(Texto)
                 resena.setVisible(Visible)
                 resena.setFecha(Fecha)
@@ -72,9 +73,10 @@ class ResenasDao(ResenasInterface, Conexion):
             #Obtiene todas las filas resultantes de la consulta
             row = cursor.fetchall()
             resena = ResenasVO()
-            NumResena,IDObra,Texto,NumEstrellas,Visible,Fecha= row[0]   #Al filtrar por la clave primaria, solo hay 1 resultado almacenado en la 1º pos
+            NumResena,Titulo,IDObra,Texto,NumEstrellas,Visible,Fecha= row[0]   #Al filtrar por la clave primaria, solo hay 1 resultado almacenado en la 1º pos
             resena.setNumResena(NumResena)
-            resena.setIDObra(IDObra)
+            resena.setTitulo(Titulo)
+            resena.setIdObra(IDObra)
             resena.setNumEstrellas(NumEstrellas)
             resena.setVisible(Visible)
             resena.setFecha(Fecha)
@@ -102,7 +104,7 @@ class ResenasDao(ResenasInterface, Conexion):
             else:
                 print("La base de datos no esta disponible")
             cursor = conn.cursor()
-            cursor.execute(self.SQL_INSERT, (resena.getNumResena(),resena.getIdObra(),resena.getTexto(),resena.getNumEstrellas(),resena.getVisible(),resena.getFecha()))
+            cursor.execute(self.SQL_INSERT, (resena.getTitulo(),resena.getIdObra(),resena.getTexto(),resena.getNumEstrellas(),resena.getVisible(),resena.getFecha()))
             conn.commit()
             #Devuelve 1 si la inserción fue exitosa
             rows = cursor.rowcount
@@ -158,7 +160,7 @@ class ResenasDao(ResenasInterface, Conexion):
                 print("La base de datos no esta disponible")
 
             cursor = conn.cursor()
-            cursor.execute(self.SQL_UPDATE, (resena.getIDObra(),resena.getTexto(),resena.getNumEstrellas(),resena.getNumResena(),resena.getVisible()))
+            cursor.execute(self.SQL_UPDATE, (resena.getIdObra(),resena.getTexto(),resena.getNumEstrellas(),resena.getNumResena(),resena.getVisible()))
             conn.commit()
             #Devuelve 1 si la inserción fue exitosa
             rows = cursor.rowcount
@@ -174,11 +176,11 @@ class ResenasDao(ResenasInterface, Conexion):
     
 a=ResenasDao()
 b=ResenasVO()
-b.setNumResena(10100)
+b.setTitulo('Amor incondicional a panceta')
 b.setIdObra(1)
 b.setFecha('2024-12-12')
 b.setNumEstrellas(5)
 b.setTexto('Me encanta panceta')
 b.setVisible(1)
 # a.insertResena(b)
-a.deleteResena(10100)
+print(a.getResenas())

@@ -138,16 +138,16 @@ class SalasDao(SalasInterface, Conexion):
 
         return rows
     
-a=SalasVO()
-a.setIdMapa(1)
-a.setCapacidad(59875)
-a.setNumeroSala(66)
-a.setTematica('El suspenso gordo que nos va a caer')
-b=SalasDao()
-# b.insertSala(a)
-a.setIdMapa(1)
-a.setCapacidad(55)
-a.setNumeroSala(66)
-a.setTematica('El aprobado gordo que nos va a caer :D')
-b.updateSala(a)
+# a=SalasVO()
+# a.setIdMapa(1)
+# a.setCapacidad(59875)
+# a.setNumeroSala(66)
+# a.setTematica('El suspenso gordo que nos va a caer')
+# b=SalasDao()
+# # b.insertSala(a)
+# a.setIdMapa(1)
+# a.setCapacidad(55)
+# a.setNumeroSala(66)
+# a.setTematica('El aprobado gordo que nos va a caer :D')
+# b.updateSala(a)
 
