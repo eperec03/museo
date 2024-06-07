@@ -51,9 +51,15 @@ class ObrasVO:
         self.IdExposicion = IdExposicion
 
 class ObrasExpuestaVO(ObrasVO):
-    def __init__(self, IDObra, Titulo, Descripcion, Fecha, Imagen, IDArtista, IDExposicion, Disponible):
-        super().__init__(IDObra, Titulo, Descripcion, Fecha, Imagen, IDArtista, IDExposicion)
+    def __init__(self, Disponible=None, IDObraexpuesta=None):
+        self.IDObraexpuesta = IDObraexpuesta
         self.Disponible = Disponible
+
+    def get_IDObraexpuesta(self):
+        return self.IDObraexpuesta
+
+    def set_IDObraexpuesta(self, IDObraexpuesta):
+        self.IDObraexpuesta = IDObraexpuesta
 
     def get_Disponible(self):
         return self.Disponible
@@ -62,12 +68,18 @@ class ObrasExpuestaVO(ObrasVO):
         self.Disponible = Disponible
 
 
-class ObrasSubastadaVO(ObrasVO):
-    def __init__(self, IDObra, Titulo, Descripcion, Fecha, Imagen, IDArtista, IDExposicion, PrecioSalida, PrecioVenta, MejorPostor):
-        super().__init__(IDObra, Titulo, Descripcion, Fecha, Imagen, IDArtista, IDExposicion)
+class ObrasSubastadasVO(ObrasVO):
+    def __init__(self ,PrecioSalida=None, PrecioVenta=None, MejorPostor=None, IDObrasubastada=None):
+        self.IDObrasubastada = IDObrasubastada
         self.PrecioSalida = PrecioSalida
         self.PrecioVenta = PrecioVenta
         self.MejorPostor = MejorPostor
+
+    def get_IDObrasubastada(self):
+        return self.IDObrasubastada
+
+    def set_IDObrasubastada(self, IDObrasubastada):
+        self.IDObrasubastada = IDObrasubastada
 
     def get_PrecioSalida(self):
         return self.PrecioSalida
