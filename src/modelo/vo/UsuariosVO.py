@@ -107,7 +107,7 @@ class ClientePremiumVO(UsuarioVO):
 
 class EditorVO(UsuarioVO):
     def __init__(self, SSN=None, UsuNombreCompleto=None, Usutfno=None, UsuEmail=None, UsuTitularMP=None, UsuNumTarjMP=None, UsuCvvMP=None, UsuCadMP=None, UsuContrasenna=None, UsuFecha=None, Rol=None):
-        super().__init__(SSN, UsuNombreCompleto, Usutfno, UsuEmail, UsuTitularMP, UsuNumTarjMP=None, UsuCvvMP, UsuCadMP, UsuContrasenna, UsuFecha)
+        super().__init__(SSN, UsuNombreCompleto, Usutfno, UsuEmail, UsuTitularMP, UsuNumTarjMP, UsuCvvMP, UsuCadMP, UsuContrasenna, UsuFecha)
         self.Rol = Rol
         
     def get_Rol(self):
