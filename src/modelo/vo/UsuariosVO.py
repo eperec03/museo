@@ -73,7 +73,7 @@ class UsuarioVO:
 
 
 class ClientePremiumVO(UsuarioVO):
-    def __init__(self, DNI, UsuNombreCompleto, Usutfno, UsuEmail, UsuTitularMP, UsuNumTarjMP, UsuCvvMP, UsuCadMP, UsuContrasenna, UsuFecha, ObrasAdquiridas, DineroGastado, Penalizacion, TipoTarifa):
+    def __init__(self, DNI=None, UsuNombreCompleto=None, Usutfno=None, UsuEmail=None, UsuTitularMP=None, UsuNumTarjMP=None, UsuCvvMP=None, UsuCadMP=None, UsuContrasenna=None, UsuFecha=None, ObrasAdquiridas=None, DineroGastado=None, Penalizacion=None, TipoTarifa=None):
         super().__init__(DNI, UsuNombreCompleto, Usutfno, UsuEmail, UsuTitularMP, UsuNumTarjMP, UsuCvvMP, UsuCadMP, UsuContrasenna, UsuFecha)
         self.ObrasAdquiridas = ObrasAdquiridas
         self.DineroGastado = DineroGastado
@@ -106,8 +106,8 @@ class ClientePremiumVO(UsuarioVO):
 
 
 class EditorVO(UsuarioVO):
-    def __init__(self, SSN, UsuNombreCompleto, Usutfno, UsuEmail, UsuTitularMP, UsuNumTarjMP, UsuCvvMP, UsuCadMP, UsuContrasenna, UsuFecha, Rol):
-        super().__init__(SSN, UsuNombreCompleto, Usutfno, UsuEmail, UsuTitularMP, UsuNumTarjMP, UsuCvvMP, UsuCadMP, UsuContrasenna, UsuFecha)
+    def __init__(self, SSN=None, UsuNombreCompleto=None, Usutfno=None, UsuEmail=None, UsuTitularMP=None, UsuNumTarjMP=None, UsuCvvMP=None, UsuCadMP=None, UsuContrasenna=None, UsuFecha=None, Rol=None):
+        super().__init__(SSN, UsuNombreCompleto, Usutfno, UsuEmail, UsuTitularMP, UsuNumTarjMP=None, UsuCvvMP, UsuCadMP, UsuContrasenna, UsuFecha)
         self.Rol = Rol
         
     def get_Rol(self):
