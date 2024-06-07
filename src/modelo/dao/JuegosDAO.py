@@ -40,10 +40,10 @@ class JuegosDao(JuegosInterface, Conexion):
             for row in rows:
                 IdJuego,Nombre,Dificultad,Descripcion= row
                 juego = JuegosVO()
-                juego.setIdJuego(IdJuego)
-                juego.setDescripcion(Descripcion)
-                juego.setNombre(Nombre)
-                juego.setDificultad(Dificultad)
+                juego.set_IDJuego(IdJuego)
+                juego.set_Descripcion(Descripcion)
+                juego.set_Nombre(Nombre)
+                juego.set_Dificultad(Dificultad)
                 juegos.append(juego)
 
         except Error as e:
@@ -73,10 +73,10 @@ class JuegosDao(JuegosInterface, Conexion):
             row = cursor.fetchall()
             juego = JuegosVO()
             IdJuego,Nombre,Dificultad,Descripcion= row[0]   #Al filtrar por la clave primaria, solo hay 1 resultado almacenado en la 1º pos
-            juego.setIdJuego(IdJuego)
-            juego.setNombre(Nombre)
-            juego.setDescripcion(Descripcion)
-            juego.setDificultad(Dificultad)
+            juego.set_IDJuego(IdJuego)
+            juego.set_Nombre(Nombre)
+            juego.set_Descripcion(Descripcion)
+            juego.set_Dificultad(Dificultad)
         except Error as e:
             print("Error al seleccionar juego:", e)
         #Se ejecuta siempre

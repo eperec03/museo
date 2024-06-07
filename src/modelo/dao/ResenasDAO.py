@@ -13,7 +13,7 @@ from modelo.dao.ResenasInterface import ResenasInterface
 class ResenasDao(ResenasInterface, Conexion):
     #Todas las operaciones CRUD que sean necesarias
     SQL_SELECT = "SELECT * FROM resenas"
-    SQL_INSERT = "INSERT INTO resenas(NumResena, IDObra, Texto, NumEstrellas, Visible, Fecha) VALUES (?, ?, ?, ?, ?)"
+    SQL_INSERT = "INSERT INTO resenas(NumResena, IDObra, Texto, NumEstrellas, Visible, Fecha) VALUES (?, ?, ?, ?, ?, ?)"
     SQL_DELETE = "DELETE FROM resenas WHERE NumResena = ?"
     SQL_UPDATE = "UPDATE resenas SET IDObra= ?, Texto= ?, NumEstrellas = ?, Visible = ?, Fecha = ?, Agotado = ?, IDCatalogo = ? WHERE NumResena = ?"
     SQL_FILTER = "SELECT * FROM resenas WHERE NumResena = ?"
@@ -174,9 +174,11 @@ class ResenasDao(ResenasInterface, Conexion):
     
 a=ResenasDao()
 b=ResenasVO()
-b.setNumReseña(10100)
+b.setNumResena(10100)
 b.setIdObra(1)
 b.setFecha('2024-12-12')
 b.setNumEstrellas(5)
 b.setTexto('Me encanta panceta')
 b.setVisible(1)
+# a.insertResena(b)
+a.deleteResena(10100)
