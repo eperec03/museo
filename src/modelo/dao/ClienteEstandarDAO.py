@@ -12,7 +12,7 @@ from modelo.dao.ClienteEstandarInterface import *
 class ClienteEstandarDAO(ClienteEInterface, Conexion):
     #Todas las operaciones CRUD que sean necesarias
     SQL_SELECT = "SELECT NumEntrada FROM clienteestandar"
-    SQL_INSERT = "INSERT INTO clienteestandar(NumEntrada) VALUES (?)"
+    SQL_INSERT = "INSERT INTO clienteestandar(NumEntrada, PrecioEntrada) VALUES (?, ?)"
 
 
     def getEntradas(self) -> List[ClienteEstandarVO]:
@@ -34,6 +34,7 @@ class ClienteEstandarDAO(ClienteEInterface, Conexion):
                 NumEntrada = row
                 entrada = ClienteEstandarVO()
                 entrada.setNumEntrada(NumEntrada)
+                entrada.setPrecioEntrada(PrecioEntrada)
                 entradas.append(entrada)
 
         except Error as e:
@@ -58,7 +59,7 @@ class ClienteEstandarDAO(ClienteEInterface, Conexion):
                 print("La base de datos no esta disponible")
 
             cursor = conn.cursor()
-            cursor.execute(self.SQL_INSERT, (clienteestandar.getNumEntrada(),))
+            cursor.execute(self.SQL_INSERT, (clienteestandar.getNumEntrada(),clienteestandar.getPrecioEntrada()))
             conn.commit()
             rows = cursor.rowcount
 
