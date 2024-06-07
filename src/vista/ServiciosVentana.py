@@ -11,11 +11,11 @@ from vista.ElegirUsuarioRegistro import *
 from vista.ElegirUsuario import *
 
 
-class InicioVentana(QtWidgets.QMainWindow):
+class VentanaServicio(QtWidgets.QMainWindow):
     def __init__(self, controlador = None):
         # Importamos el .ui
-        super(InicioVentana, self).__init__()
-        uic.loadUi('src/vista/ui/Principal.ui', self)
+        super(VentanaServicio, self).__init__()
+        uic.loadUi('src/vista/ui/VentanaServicios.ui', self)
         self.setWindowTitle("Museo: ")
         self.setWindowIcon(QIcon('src/vista/Imagenes/logo.png'))  # Reemplaza con la ruta a tu logo
         # Almacena una referencia al controlador

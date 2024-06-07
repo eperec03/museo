@@ -45,9 +45,10 @@ class Logica:
         if error==1:
             messagebox.showwarning("Advertencia", "No existe nadie con ese DNI")
 
+    # def comprobar_entrada(self, mi_e)
 
     def validar_entrada(self, mi_entrada: ClienteEstandarVO):
         #habría que poner más cosas para validar el registtro?
         mi_entrada_dao = ClienteEstandarDAO()
-        mi_entrada_dao.getEntradas()                  
+        mi_entrada_dao.getEntradas()                 
         mi_entrada_dao.insertEntrada(mi_entrada)

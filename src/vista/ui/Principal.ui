@@ -482,7 +482,7 @@ font-family: 'Verdana';
 border-radius: 15px;</string>
     </property>
     <property name="text">
-     <string>INICIAR SESIÓN</string>
+     <string>INICIAR</string>
     </property>
    </widget>
   </widget>
