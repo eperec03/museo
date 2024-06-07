@@ -11,9 +11,9 @@ from dao.ArtistasInterface import ArtistasInterface
 
 class ArtistasDao(ArtistasInterface, Conexion):
     SQL_SELECT = "SELECT * FROM artistas"
-    SQL_INSERT = "INSERT INTO artistas(NombreArtista, FechaNacimiento, FechaMuerte, Descripcion, Corriente) VALUES (?, ?, ?, ?, ?)"
+    SQL_INSERT = "INSERT INTO artistas(NombreArtista, FechaNac, FechaMuerte, Descripcion, Corriente) VALUES (?, ?, ?, ?, ?)"
     SQL_DELETE = "DELETE FROM artistas WHERE NombreArtista = ?"
-    SQL_UPDATE = "UPDATE artistas SET FechaNacimiento= ?, FechaMuerte = ?, Descripcion = ?, Corriente = ? WHERE NombreArtista = ?"
+    SQL_UPDATE = "UPDATE artistas SET FechaNac= ?, FechaMuerte = ?, Descripcion = ?, Corriente = ? WHERE NombreArtista = ?"
     SQL_FILTER = "SELECT * FROM artistas WHERE NombreArtista = ?"
 
     def getArtistas(self) -> List[ArtistasVO]:
@@ -30,8 +30,8 @@ class ArtistasDao(ArtistasInterface, Conexion):
             cursor.execute(self.SQL_SELECT)
             rows = cursor.fetchall()
             for row in rows:
-                IdArtista, NombreArtista, FechaNacimiento, FechaMuerte, Descripcion, Corriente = row
-                artista = ArtistasVO(IdArtista, NombreArtista, FechaNacimiento, FechaMuerte, Descripcion, Corriente)
+                NombreArtista, FechaNac, FechaMuerte, Descripcion, Corriente = row
+                artista = ArtistasVO(NombreArtista, FechaNac, FechaMuerte, Descripcion, Corriente)
                 artistas.append(artista)
         except Error as e:
             print("Error al seleccionar artista:", e)
@@ -55,8 +55,8 @@ class ArtistasDao(ArtistasInterface, Conexion):
             row = cursor.fetchone()
             artista = None
             if row:
-                IdArtista, NombreArtista, FechaNacimiento, FechaMuerte, Descripcion, Corriente = row
-                artista = ArtistasVO(IdArtista, NombreArtista, FechaNacimiento, FechaMuerte, Descripcion, Corriente)
+                NombreArtista, FechaNac, FechaMuerte, Descripcion, Corriente = row
+                artista = ArtistasVO(NombreArtista, FechaNac, FechaMuerte, Descripcion, Corriente)
         except Error as e:
             print("Error al seleccionar artista:", e)
         finally:
@@ -76,7 +76,7 @@ class ArtistasDao(ArtistasInterface, Conexion):
             else:
                 print("La base de datos no esta disponible")
             cursor = conn.cursor()
-            cursor.execute(self.SQL_INSERT, (artista.getNombreArtista(), artista.getFechaNacimiento(), artista.getFechaMuerte(), artista.getDescripcion(), artista.getCorriente()))
+            cursor.execute(self.SQL_INSERT, (artista.getNombreArtista(), artista.getFechaNac(), artista.getFechaMuerte(), artista.getDescripcion(), artista.getCorriente()))
             conn.commit()
             rows = cursor.rowcount
         except Error as e:
@@ -120,7 +120,7 @@ class ArtistasDao(ArtistasInterface, Conexion):
             else:
                 print("La base de datos no esta disponible")
             cursor = conn.cursor()
-            cursor.execute(self.SQL_UPDATE, (artista.getFechaNacimiento(), artista.getFechaMuerte(), artista.getDescripcion(), artista.getCorriente(), artista.getNombreArtista()))
+            cursor.execute(self.SQL_UPDATE, (artista.getFechaNac(), artista.getFechaMuerte(), artista.getDescripcion(), artista.getCorriente(), artista.getNombreArtista()))
             conn.commit()
             rows = cursor.rowcount
         except Error as e:

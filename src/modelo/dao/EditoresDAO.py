@@ -13,9 +13,9 @@ from modelo.dao.EditorInterface import EditorInterface
 class EditorDAO(EditorInterface, Conexion):
     #Todas las operaciones CRUD que sean necesarias
     SQL_SELECT = "SELECT *  FROM editores"
-    SQL_INSERT = "INSERT INTO editores(SSN, Horario, TipoContrato, Estudios VALUES (?, ?, ?, ?)"
+    SQL_INSERT = "INSERT INTO editores(SSN, UsuNombreCompleto, UsuTfno, UsuEmail, UsuTitularMP, UsuCvvMP, UsuNumTarjMP, UsuCadMP, UsuContrasenna, Rol) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)"
     SQL_DELETE = "DELETE FROM editores WHERE SSN = ?"
-    SQL_UPDATE = "UPDATE editores SET Horario = ?, TipoContrato = ?, Estudios = ?,  WHERE SSN = ?"
+    SQL_UPDATE = "UPDATE editores SET Rol = ?,  WHERE SSN = ?"
     SQL_FILTER = "SELECT * FROM editores WHERE SSN = ?"
 
 
