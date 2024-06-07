@@ -76,7 +76,7 @@ DROP TABLE IF EXISTS `catalogo`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `catalogo` (
   `IDCatalogo` int NOT NULL,
-  `Portada` blob NOT NULL,
+  `Imagen` blob NOT NULL,
   PRIMARY KEY (`IDCatalogo`),
   CONSTRAINT `SerCat` FOREIGN KEY (`IDCatalogo`) REFERENCES `servicios` (`IDServicios`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
