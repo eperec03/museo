@@ -186,7 +186,7 @@ class JuegosObrasDao(JuegosObrasInterface, Conexion):
             juegos.set_ruta(juegosObras.get_ruta())
             juegos_dao=JuegosDao()
             juegos_dao.updateJuego(juegos)
-            cursor.execute(self.SQL_UPDATE, (juegosObras.get_IDObra(),juegosObras.get_IDJuegoobra()))
+            cursor.execute(self.SQL_UPDATE, (juegosObras.get_IDObra(),juegosObras.get_IDJuego()))
             conn.commit()
             #Devuelve 1 si la inserción fue exitosa
             rows = cursor.rowcount

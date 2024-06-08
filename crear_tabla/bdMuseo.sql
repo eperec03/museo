@@ -494,6 +494,7 @@ CREATE TABLE `exposiciones` (
   `IDExposiciones` int NOT NULL,
   `Titulo` varchar(45) NOT NULL,
   `Imagen` blob NOT NULL,
+  `Descripcion` text(10000) null,
   `NumSala` int NOT NULL,
   PRIMARY KEY (`IDExposiciones`),
   KEY `ExpSal_idx` (`NumSala`),
@@ -848,7 +849,7 @@ DROP TABLE IF EXISTS `servicios`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `servicios` (
   `IDServicios` int NOT NULL auto_increment,
-  `Nombre` varchar(80) NULL,
+  `Nombre` varchar(80) NOT NULL unique,
   PRIMARY KEY (`IDServicios`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;

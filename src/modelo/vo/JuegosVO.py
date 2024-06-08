@@ -38,16 +38,10 @@ class JuegosVO:
 
 
 class JuegosObrasVO(JuegosVO):
-    def __init__(self, IDJuegoobra=None, IDObra=None):
-        super().__init__(IDJuego=None, Nombre=None, Dificultad=None, Descripcion=None, ruta=None)
-        self.IDJuegoobra = IDJuegoobra
+    def __init__(self, IDJuego=None, Nombre=None, Dificultad=None, Descripcion=None, ruta=None,IDObra=None):
+        super().__init__(IDJuego, Nombre, Dificultad, Descripcion, ruta)
+        self.IDJuegoobra = IDJuego
         self.IDObra = IDObra
-
-    def get_IDJuegoobra(self):
-        return self.IDJuegoobra
-
-    def set_IDJuegoobra(self, IDJuegoobra):
-        self.IDJuegoobra = IDJuegoobra
 
     def get_IDObra(self):
         return self.IDObra
@@ -57,16 +51,10 @@ class JuegosObrasVO(JuegosVO):
 
 
 class JuegosSalasVO(JuegosVO):
-    def __init__(self, IDJuegossalas=None, IDSala=None):
-        super().__init__(IDJuego=None, Nombre=None, Dificultad=None, Descripcion=None, ruta=None)
-        self.IDJuegossalas = IDJuegossalas
+    def __init__(self, IDSala=None,IDJuego=None, Nombre=None, Dificultad=None, Descripcion=None, ruta=None):
+        super().__init__(IDJuego, Nombre, Dificultad, Descripcion, ruta)
+        self.IDJuegossalas = IDJuego
         self.IDSala = IDSala
-
-    def get_IDJuegossalas(self):
-        return self.IDJuegossalas
-
-    def set_IDJuegossalas(self, IDJuegossalas):
-        self.IDJuegossalas = IDJuegossalas
 
     def get_IDSala(self):
         return self.IDSala

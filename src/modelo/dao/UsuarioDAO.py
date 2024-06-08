@@ -64,7 +64,6 @@ class UsuariosDAO(ClientePInterface, Conexion):
         conexion = self.getConnection()
         conn = None
         cursor = None
-        usuarios = []
 
         try:
             if conexion:
@@ -77,10 +76,8 @@ class UsuariosDAO(ClientePInterface, Conexion):
             cursor.execute(self.SQL_FILTER, (dni,)) #Obtiene todas las filas resultantes de la consulta
             #Obtiene todas las filas resultantes de la consulta
             rows = cursor.fetchall()
-            print(rows)
-            DNI, UsuNombreCompleto, UsuTfno, UsuEmail, UsuTitularMP, UsuNumTarjMP, UsuCvvMP, UsuCadMP, UsuContrasenna, UsuFecha = rows[0]
-            usuario = UsuarioVO(DNI=DNI, NombreCompleto=UsuNombreCompleto, Telefono=UsuTfno,Email=UsuEmail, Titular= UsuTitularMP, NumTarjeta= UsuNumTarjMP,Cvv= UsuCvvMP, Caducidad= UsuCadMP, Contraseña=UsuContrasenna, FechaRegistro=UsuFecha)
-            usuarios.append(usuario)
+            DNI, UsuNombreCompleto, UsuTfno, UsuEmail, UsuTitularMP, UsuNumTarjMP, UsuCvvMP, UsuCadMP, UsuContrasenna = rows[0]
+            usuario = UsuarioVO(DNI==DNI, UsuNombreCompleto==UsuNombreCompleto, UsuTfno==UsuTfno,UsuEmail==UsuEmail, UsuTitularMP== UsuTitularMP, UsuNumTarjMP== UsuNumTarjMP,UsuCvvMP== UsuCvvMP, UsuCadMP== UsuCadMP, UsuContrasenna==UsuContrasenna)
 
         except Error as e:
             print("Error al seleccionar usuarios:", e)
@@ -91,7 +88,7 @@ class UsuariosDAO(ClientePInterface, Conexion):
                 #Cierra el cursor para liberar recursos
                 cursor.close()
         conexion = self.closeConnection(conn)
-        return usuarios
+        return usuario
     #se hace el proximo dia
     def insertUsuario (self, usuario: UsuarioVO) -> int:
         conexion = self.getConnection()
@@ -203,7 +200,7 @@ class UsuariosDAO(ClientePInterface, Conexion):
 # usuario_ejemplo.set_UsuFecha("2024-06-07")
 
 # b=UsuariosDAO()
-# # b.insertUsuario(usuario_ejemplo)
+# b.insertUsuario(usuario_ejemplo)
 # # b.eliminateUsuario('12345678A')
 
 # usuario_ejemplo1=UsuarioVO()

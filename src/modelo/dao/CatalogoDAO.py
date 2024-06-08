@@ -18,7 +18,7 @@ class CatalogoDao(CatalogoInterface, Conexion):
     SQL_FILTER = "SELECT * FROM catalogo WHERE IDCatalogo = ?"
 
 
-    def getCatalogo(self) -> List[CatalogoVO]:
+    def getCatalogos(self) -> List[CatalogoVO]:
         conexion = self.getConnection()
         conn = None
         cursor = None

@@ -24,7 +24,7 @@ class ExposicionesInterface(ABC):
         raise NotImplementedError("Método getExposicion no implementado")
     
     @abstractmethod
-    def inesertExposicion(self, exposicion: ExposicionesVO):
+    def insertExposicion(self, exposicion: ExposicionesVO):
         """
         Ineserta un nuevo usuario en la base de datos.
         Parametros requeridos: El objeto ExposicionesVO a inesertar.
