@@ -1,6 +1,7 @@
 class AudioguiasVO:
-    def __init__(self, IdAudio=None, IdObra=None, Audio=None, Duracion=None):
+    def __init__(self, IdAudio=None,Titulo=None, IdObra=None, Audio=None, Duracion=None):
         self.IdAudio = IdAudio
+        self.Titulo=Titulo
         self.IdObra = IdObra
         self.Audio = Audio
         self.Duracion = Duracion
@@ -10,6 +11,12 @@ class AudioguiasVO:
 
     def setIdAudio(self, IdAudio):
         self.IdAudio = IdAudio
+    
+    def getTitulo(self):
+        return self.Titulo
+
+    def setTitulo(self, Titulo):
+        self.Titulo = Titulo
 
     def getIdObra(self):
         return self.IdObra

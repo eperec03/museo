@@ -48,7 +48,8 @@ DROP TABLE IF EXISTS `audioguias`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `audioguias` (
-  `IDAudioguia` int NOT NULL,
+  `IDAudioguia` int NOT NULL auto_increment,
+  `Titulo` varchar(30) not null unique,
   `IDObra` int NOT NULL,
   `Audio` blob NOT NULL,
   `Duracion` time NOT NULL,
@@ -76,6 +77,7 @@ DROP TABLE IF EXISTS `catalogo`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `catalogo` (
   `IDCatalogo` int NOT NULL,
+  `Titulo` varchar(30) not null unique,
   `Imagen` blob NOT NULL,
   PRIMARY KEY (`IDCatalogo`),
   CONSTRAINT `SerCat` FOREIGN KEY (`IDCatalogo`) REFERENCES `servicios` (`IDServicios`) ON DELETE CASCADE ON UPDATE CASCADE

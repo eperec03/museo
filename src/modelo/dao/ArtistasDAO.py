@@ -76,7 +76,7 @@ class ArtistasDao(ArtistasInterface, Conexion):
             else:
                 print("La base de datos no esta disponible")
             cursor = conn.cursor()
-            cursor.execute(self.SQL_INSERT, (artista.getNombreArtista(), artista.getFechaNac(), artista.getFechaMuerte(), artista.getDescripcion(), artista.getCorriente()))
+            cursor.execute(self.SQL_INSERT, (artista.getNombreArtista(), artista.getFechaNacimiento(), artista.getFechaMuerte(), artista.getDescripcion(), artista.getCorriente()))
             conn.commit()
             rows = cursor.rowcount
         except Error as e:
@@ -87,7 +87,7 @@ class ArtistasDao(ArtistasInterface, Conexion):
         conexion = self.closeConnection(conn)
         return rows
 
-    def deleteArtista(self, artista: ArtistasVO) -> int:
+    def deleteArtista(self, Nombre) -> int:
         conexion = self.getConnection()
         conn = None
         cursor = None
@@ -98,7 +98,7 @@ class ArtistasDao(ArtistasInterface, Conexion):
             else:
                 print("La base de datos no esta disponible")
             cursor = conn.cursor()
-            cursor.execute(self.SQL_DELETE, (artista.getNombreArtista(),))
+            cursor.execute(self.SQL_DELETE, (Nombre,))
             conn.commit()
             rows = cursor.rowcount
         except Error as e:
@@ -120,7 +120,7 @@ class ArtistasDao(ArtistasInterface, Conexion):
             else:
                 print("La base de datos no esta disponible")
             cursor = conn.cursor()
-            cursor.execute(self.SQL_UPDATE, (artista.getFechaNac(), artista.getFechaMuerte(), artista.getDescripcion(), artista.getCorriente(), artista.getNombreArtista()))
+            cursor.execute(self.SQL_UPDATE, (artista.getFechaNacimiento(), artista.getFechaMuerte(), artista.getDescripcion(), artista.getCorriente(), artista.getNombreArtista()))
             conn.commit()
             rows = cursor.rowcount
         except Error as e:
@@ -130,4 +130,11 @@ class ArtistasDao(ArtistasInterface, Conexion):
                 cursor.close()
         conexion = self.closeConnection(conn)
         return rows
-
+# a=ArtistasDao()
+# b=ArtistasVO()
+# b.setNombreArtista('Jesus Dominguez')
+# b.setFechaNacimiento('1900-12-12')
+# b.setFechaMuerte('1940-08-12')
+# b.setCorriente('Generacion del 19')
+# b.setDescripcion('Un buen paisano')
+# a.deleteArtista('Jesus Dominguez')

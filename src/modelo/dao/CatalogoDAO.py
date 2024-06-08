@@ -12,10 +12,12 @@ from dao.CatalogoInterface import CatalogoInterface
 class CatalogoDao(CatalogoInterface, Conexion):
     #Todas las operaciones CRUD que sean necesarias
     SQL_SELECT = "SELECT * FROM catalogo"
-    SQL_INSERT = "INSERT INTO catalogo(IDCatalogo, Portada) VALUES (?, ?)"
-    SQL_DELETE = "DELETE FROM catalogo WHERE IDCatalogo = ?"
-    SQL_UPDATE = "UPDATE catalogo SET Portada= ? WHERE IDCatalogo = ?"
-    SQL_FILTER = "SELECT * FROM catalogo WHERE IDCatalogo = ?"
+    SQL_INSERT = "INSERT INTO catalogo(IDCatalogo,Titulo, Imagen) VALUES (?, ?,?)"
+    SQL_DELETE_SERV = "DELETE FROM servicios WHERE Nombre = ?"
+    SQL_UPDATE = "UPDATE catalogo SET Imagen= ? WHERE Titulo = ?"
+    SQL_FILTER = "SELECT * FROM catalogo WHERE Titulo = ?"
+    SQL_INSERT_SERV="INSERT INTO SERVICIOS (Nombre) VALUE (?)"
+    SQL_FILTER_SERV = "SELECT IDServicios FROM Servicios WHERE Nombre=?"
 
 
     def getCatalogos(self) -> List[CatalogoVO]:
@@ -35,9 +37,10 @@ class CatalogoDao(CatalogoInterface, Conexion):
             rows = cursor.fetchall()
             #Itera sobre todas las filas
             for row in rows:
-                IDCatalogo,Portada= row
+                IDCatalogo,Titulo,Portada= row
                 catalogo = CatalogoVO()
-                catalogo.setIDCatalogo(IDCatalogo)
+                catalogo.setIdCatalogo(IDCatalogo)
+                catalogo.setTitulo(Titulo)
                 catalogo.setPortada(Portada)
                 catalogos.append(catalogo)
 
@@ -49,9 +52,9 @@ class CatalogoDao(CatalogoInterface, Conexion):
                 #Cierra el cursor para liberar recursos
                 cursor.close()
         conexion = self.closeConnection(conn)
-        return catalogo
+        return catalogos
     
-    def getCatalogo(self,id) -> CatalogoVO:
+    def getCatalogo(self,Titulo) -> CatalogoVO:
         conexion = self.getConnection()
         conn = None
         cursor = None
@@ -63,12 +66,13 @@ class CatalogoDao(CatalogoInterface, Conexion):
             #Crea un objeto para poder ejecutar consultas SQL sobre la conexion abierta
             cursor = conn.cursor()
             #Ejecuta de consulta SQL
-            cursor.execute(self.SQL_FILTER, (id,)) #Obtiene todas las filas resultantes de la consulta
+            cursor.execute(self.SQL_FILTER, (Titulo,)) #Obtiene todas las filas resultantes de la consulta
             #Obtiene todas las filas resultantes de la consulta
             row = cursor.fetchall()
             catalogo = CatalogoVO()
-            IDCatalogo,Portada= row[0]   #Al filtrar por la clave primaria, solo hay 1 resultado almacenado en la 1º pos
-            catalogo.setIDCatalogo(IDCatalogo)
+            IDCatalogo,Titulo,Portada= row[0]   #Al filtrar por la clave primaria, solo hay 1 resultado almacenado en la 1º pos
+            catalogo.setIdCatalogo(IDCatalogo)
+            catalogo.setTitulo(Titulo)
             catalogo.setPortada(Portada)
         except Error as e:
             print("Error al seleccionar catalogo:", e)
@@ -80,8 +84,7 @@ class CatalogoDao(CatalogoInterface, Conexion):
         conexion = self.closeConnection(conn)
         return catalogo
     
-    #se hace el proximo dia
-    def insertcatalogo (self, catalogo: CatalogoVO) -> int:
+    def insertCatalogo (self, catalogo: CatalogoVO) -> int:
         conexion = self.getConnection()
         conn = None
         cursor = None
@@ -93,7 +96,12 @@ class CatalogoDao(CatalogoInterface, Conexion):
             else:
                 print("La base de datos no esta disponible")
             cursor = conn.cursor()
-            cursor.execute(self.SQL_INSERT, (catalogo.getIDCatalogo(),catalogo.getPortada()))
+            #Primero, lo metemos en servicios:
+            cursor.execute(self.SQL_INSERT_SERV, (catalogo.getTitulo(),))
+            conn.commit()
+            cursor.execute(self.SQL_FILTER_SERV,(catalogo.getTitulo(),))
+            id_serv=cursor.fetchone()[0] 
+            cursor.execute(self.SQL_INSERT, (id_serv,catalogo.getTitulo(),catalogo.getPortada()))
             conn.commit()
             #Devuelve 1 si la inserción fue exitosa
             rows = cursor.rowcount
@@ -108,7 +116,7 @@ class CatalogoDao(CatalogoInterface, Conexion):
 
         return rows
 
-    def deletecatalogo (self, id) -> int:
+    def deleteCatalogo (self, Titulo) -> int:
         conexion = self.getConnection()
         conn = None
         cursor = None
@@ -119,7 +127,8 @@ class CatalogoDao(CatalogoInterface, Conexion):
             else:
                 print("La base de datos no esta disponible")
             cursor = conn.cursor()
-            cursor.execute(self.SQL_DELETE, (id,))
+            #eliminamos en servicios(on delete cascade)
+            cursor.execute(self.SQL_DELETE_SERV, (Titulo,))
             conn.commit()
             #Devuelve 1 si la inserción fue exitosa
             rows = cursor.rowcount
@@ -135,7 +144,7 @@ class CatalogoDao(CatalogoInterface, Conexion):
 
         return rows
 
-    def updatecatalogo(self, catalogo:CatalogoVO) -> int:
+    def updateCatalogo(self, catalogo:CatalogoVO) -> int:
         conexion = self.getConnection()
         conn = None
         cursor = None
@@ -149,7 +158,7 @@ class CatalogoDao(CatalogoInterface, Conexion):
                 print("La base de datos no esta disponible")
 
             cursor = conn.cursor()
-            cursor.execute(self.SQL_UPDATE, (catalogo.getPortada(),catalogo.getIDCatalogo()))
+            cursor.execute(self.SQL_UPDATE, (catalogo.getPortada(),catalogo.getTitulo()))
             conn.commit()
             #Devuelve 1 si la inserción fue exitosa
             rows = cursor.rowcount
@@ -162,3 +171,10 @@ class CatalogoDao(CatalogoInterface, Conexion):
         conexion = self.closeConnection(conn)
 
         return rows
+
+# a=CatalogoDao()
+# b=CatalogoVO()
+# b.setPortada('imagen.png')
+# b.setTitulo('Catalogosisi')
+# # a.insertCatalogo(b)
+# a.deleteCatalogo('Catalogosisi')

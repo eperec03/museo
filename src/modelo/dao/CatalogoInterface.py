@@ -24,7 +24,7 @@ class CatalogoInterface(ABC):
         raise NotImplementedError("Método getCatalogo no implementado")
     
     @abstractmethod
-    def inesertCatalogo(self, catalogo: CatalogoVO):
+    def insertCatalogo(self, catalogo: CatalogoVO):
         """
         Ineserta un nuevo usuario en la base de datos.
         Parametros requeridos: El objeto CatalogoVO a inesertar.
