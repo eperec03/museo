@@ -17,12 +17,12 @@ class InicioVentana(QtWidgets.QMainWindow):
         super(InicioVentana, self).__init__()
         uic.loadUi('src/vista/ui/Principal.ui', self)
         self.setWindowTitle("Museo: ")
-        self.setWindowIcon(QIcon('src/vista/Imagenes/logo.png'))  # Reemplaza con la ruta a tu logo
+        self.setWindowIcon(QIcon('src/vista/Imagenes/logomuseo.png'))  # Reemplaza con la ruta a tu logo
         # Almacena una referencia al controlador
         self.coordinador = controlador
         # "EnviarBoton" es el nombre que se le ha dado al objeto en el .ui
         self.BotonRegistrarse.clicked.connect(self.go_to_window_registro)
-        self.BotonInicioS.clicked.connect(self.go_to_window_objetos)
+        self.BotonInicioS.clicked.connect(self.go_to_window_inicio)
         self.show()
 
     def go_to_window_registro(self):
@@ -38,11 +38,11 @@ class InicioVentana(QtWidgets.QMainWindow):
         self.hide() 
 
     #-------------QUITAR DESPUES DE HABER HECHO LA PRUEBA-----------------------------
-    def go_to_window_objetos(self):
-        self.ventana_inicio = LogicaPruebaScroll()
-        self.ventana_inicio.setCoordinador(self.coordinador)
-        self.ventana_inicio.show()
-        self.hide()
+    # def go_to_window_objetos(self):
+    #     self.ventana_inicio = LogicaPruebaScroll()
+    #     self.ventana_inicio.setCoordinador(self.coordinador)
+    #     self.ventana_inicio.show()
+    #     self.hide()
     #---------------------------------------------------------------------------------- 
 
     def setCoordinador(self, coord) -> None:

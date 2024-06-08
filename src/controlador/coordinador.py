@@ -72,5 +72,10 @@ class Coordinador:
     def actualizarUsuario(self, usuario: ClientePremiumVO) -> None:
        self._model.actualizar_registro(usuario)
     
-    def registrarEntrada(self, usuario: ClienteEstandarVO) -> None:
-       self._model.validar_entrada(usuario)      
+    def registrarEntrada(self, usuario: ClienteEstandarVO) -> bool:
+       if self._model.validar_entrada(usuario):
+          return True      
+   
+    def validarUsuario(self, usuario: ClientePremiumVO) -> bool:
+       if self._model.comprobar_cliente(usuario):
+         return True

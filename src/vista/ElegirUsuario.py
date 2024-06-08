@@ -7,7 +7,7 @@ from tkinter import messagebox
 from PyQt5 import QtWidgets, uic
 from PyQt5.QtWidgets import QMessageBox
 from PyQt5.QtGui import QIcon
-from vista.RegistroClientePVentana import *
+from vista.InicioClientePVentana import *
 from vista.RegistroEntradaVentana import RegistroEntradaVentana
 # from vista.InicioVentana import *
 
@@ -16,7 +16,7 @@ class ElegirUsuario(QtWidgets.QMainWindow):
         super(ElegirUsuario, self).__init__()
         uic.loadUi('src/vista/ui/TipoUsuario.ui', self)
         self.setWindowTitle("Identifícate ")
-        self.setWindowIcon(QIcon('src/vista/Imagenes/logo.png'))
+        self.setWindowIcon(QIcon('src/vista/Imagenes/logomuseo.png'))
         self.coordinador = controlador
         self.BotonCliE.clicked.connect(self.go_to_window_estandar)
         self.BotonCliP.clicked.connect(self.go_to_window_premium)
@@ -31,7 +31,7 @@ class ElegirUsuario(QtWidgets.QMainWindow):
         self.hide()
 
     def go_to_window_premium(self):
-        self.ventana_CliPremium = RegistroClientePVentana()
+        self.ventana_CliPremium = InicioClientePVentana()
         self.ventana_CliPremium.setCoordinador(self.coordinador)
         self.ventana_CliPremium.show()
         self.hide()

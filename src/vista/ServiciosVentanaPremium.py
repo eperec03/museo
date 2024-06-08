@@ -10,11 +10,11 @@ from PyQt5.QtGui import QIcon
 from vista.MapaVentana import *
 
 
-class VentanaServicio(QtWidgets.QMainWindow):
+class VentanaServicioPremium(QtWidgets.QMainWindow):
     def __init__(self, controlador = None):
         # Importamos el .ui
-        super(VentanaServicio, self).__init__()
-        uic.loadUi('src/vista/ui/VentanaServicios.ui', self)
+        super(VentanaServicioPremium, self).__init__()
+        uic.loadUi('src/vista/ui/VentanaServiciosPremium.ui', self)
         self.setWindowTitle("Museo: ")
         self.setWindowIcon(QIcon('src/vista/Imagenes/logomuseo.png'))  # Reemplaza con la ruta a tu logo
         # Almacena una referencia al controlador

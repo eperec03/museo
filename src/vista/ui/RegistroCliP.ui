@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>800</width>
-    <height>600</height>
+    <width>1593</width>
+    <height>846</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -17,10 +17,10 @@
    <widget class="QPushButton" name="enviarBoton">
     <property name="geometry">
      <rect>
-      <x>320</x>
-      <y>500</y>
-      <width>131</width>
-      <height>41</height>
+      <x>740</x>
+      <y>710</y>
+      <width>161</width>
+      <height>51</height>
      </rect>
     </property>
     <property name="palette">
@@ -222,6 +222,14 @@
       </disabled>
      </palette>
     </property>
+    <property name="font">
+     <font>
+      <family>Verdana</family>
+      <pointsize>12</pointsize>
+      <weight>75</weight>
+      <bold>true</bold>
+     </font>
+    </property>
     <property name="cursor">
      <cursorShape>PointingHandCursor</cursorShape>
     </property>
@@ -239,9 +247,9 @@ border-radius: 15px;</string>
    <widget class="QLabel" name="label_3">
     <property name="geometry">
      <rect>
-      <x>230</x>
-      <y>10</y>
-      <width>361</width>
+      <x>470</x>
+      <y>20</y>
+      <width>701</width>
       <height>91</height>
      </rect>
     </property>
@@ -254,16 +262,16 @@ border-radius: 15px;</string>
      </font>
     </property>
     <property name="text">
-     <string>¡REGISTRATE YA!</string>
+     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:48pt;&quot;&gt;¡REGISTRATE YA!&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
     </property>
    </widget>
    <widget class="QLineEdit" name="lineNombre">
     <property name="geometry">
      <rect>
-      <x>120</x>
-      <y>170</y>
-      <width>211</width>
-      <height>31</height>
+      <x>470</x>
+      <y>250</y>
+      <width>231</width>
+      <height>41</height>
      </rect>
     </property>
     <property name="styleSheet">
@@ -274,23 +282,23 @@ background-color: rgb(208, 223, 232);</string>
    <widget class="QLabel" name="label">
     <property name="geometry">
      <rect>
-      <x>130</x>
-      <y>150</y>
-      <width>181</width>
-      <height>16</height>
+      <x>470</x>
+      <y>210</y>
+      <width>221</width>
+      <height>31</height>
      </rect>
     </property>
     <property name="text">
-     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Nombre Completo&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:14pt; font-weight:600;&quot;&gt;Nombre Completo&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
     </property>
    </widget>
    <widget class="QLineEdit" name="lineDni">
     <property name="geometry">
      <rect>
-      <x>120</x>
-      <y>230</y>
-      <width>211</width>
-      <height>31</height>
+      <x>470</x>
+      <y>330</y>
+      <width>231</width>
+      <height>41</height>
      </rect>
     </property>
     <property name="styleSheet">
@@ -301,23 +309,23 @@ background-color: rgb(208, 223, 232);</string>
    <widget class="QLabel" name="label_4">
     <property name="geometry">
      <rect>
-      <x>130</x>
-      <y>210</y>
+      <x>470</x>
+      <y>300</y>
       <width>181</width>
-      <height>16</height>
+      <height>31</height>
      </rect>
     </property>
     <property name="text">
-     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;DNI&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:14pt; font-weight:600;&quot;&gt;DNI&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
     </property>
    </widget>
    <widget class="QLineEdit" name="lineTfno">
     <property name="geometry">
      <rect>
-      <x>120</x>
-      <y>290</y>
-      <width>211</width>
-      <height>31</height>
+      <x>470</x>
+      <y>420</y>
+      <width>231</width>
+      <height>41</height>
      </rect>
     </property>
     <property name="styleSheet">
@@ -328,23 +336,23 @@ background-color: rgb(208, 223, 232);</string>
    <widget class="QLabel" name="label_5">
     <property name="geometry">
      <rect>
-      <x>130</x>
-      <y>330</y>
-      <width>181</width>
-      <height>16</height>
+      <x>470</x>
+      <y>470</y>
+      <width>231</width>
+      <height>51</height>
      </rect>
     </property>
     <property name="text">
-     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Correo electrónico&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:14pt; font-weight:600;&quot;&gt;Correo electrónico&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
     </property>
    </widget>
    <widget class="QLineEdit" name="lineEmail">
     <property name="geometry">
      <rect>
-      <x>120</x>
-      <y>350</y>
-      <width>211</width>
-      <height>31</height>
+      <x>470</x>
+      <y>510</y>
+      <width>231</width>
+      <height>41</height>
      </rect>
     </property>
     <property name="styleSheet">
@@ -355,23 +363,23 @@ background-color: rgb(208, 223, 232);</string>
    <widget class="QLabel" name="label_6">
     <property name="geometry">
      <rect>
-      <x>130</x>
-      <y>270</y>
+      <x>470</x>
+      <y>390</y>
       <width>181</width>
-      <height>16</height>
+      <height>31</height>
      </rect>
     </property>
     <property name="text">
-     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Teléfono&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:14pt; font-weight:600;&quot;&gt;Teléfono&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
     </property>
    </widget>
    <widget class="QLineEdit" name="lineContrasenna">
     <property name="geometry">
      <rect>
-      <x>120</x>
-      <y>410</y>
-      <width>211</width>
-      <height>31</height>
+      <x>470</x>
+      <y>610</y>
+      <width>231</width>
+      <height>41</height>
      </rect>
     </property>
     <property name="styleSheet">
@@ -388,23 +396,23 @@ background-color: rgb(208, 223, 232);</string>
    <widget class="QLabel" name="label_8">
     <property name="geometry">
      <rect>
-      <x>130</x>
-      <y>390</y>
+      <x>470</x>
+      <y>580</y>
       <width>181</width>
-      <height>16</height>
+      <height>31</height>
      </rect>
     </property>
     <property name="text">
-     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Contraseña&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:14pt; font-weight:600;&quot;&gt;Contraseña&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
     </property>
    </widget>
    <widget class="QLineEdit" name="lineTitular">
     <property name="geometry">
      <rect>
-      <x>450</x>
-      <y>200</y>
-      <width>211</width>
-      <height>31</height>
+      <x>900</x>
+      <y>280</y>
+      <width>241</width>
+      <height>41</height>
      </rect>
     </property>
     <property name="styleSheet">
@@ -415,36 +423,36 @@ background-color: rgb(208, 223, 232);</string>
    <widget class="QLabel" name="label_9">
     <property name="geometry">
      <rect>
-      <x>460</x>
-      <y>300</y>
+      <x>900</x>
+      <y>440</y>
       <width>181</width>
-      <height>16</height>
+      <height>31</height>
      </rect>
     </property>
     <property name="text">
-     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Cvv&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:14pt; font-weight:600;&quot;&gt;Cvv&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
     </property>
    </widget>
    <widget class="QLabel" name="label_10">
     <property name="geometry">
      <rect>
-      <x>460</x>
-      <y>240</y>
-      <width>181</width>
-      <height>16</height>
+      <x>900</x>
+      <y>350</y>
+      <width>221</width>
+      <height>31</height>
      </rect>
     </property>
     <property name="text">
-     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Número de Tarjeta&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:14pt; font-weight:600;&quot;&gt;Número de Tarjeta&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
     </property>
    </widget>
    <widget class="QLineEdit" name="lineCvv">
     <property name="geometry">
      <rect>
-      <x>450</x>
-      <y>320</y>
-      <width>211</width>
-      <height>31</height>
+      <x>900</x>
+      <y>470</y>
+      <width>241</width>
+      <height>41</height>
      </rect>
     </property>
     <property name="styleSheet">
@@ -455,10 +463,10 @@ background-color: rgb(208, 223, 232);</string>
    <widget class="QLineEdit" name="lineCad">
     <property name="geometry">
      <rect>
-      <x>450</x>
-      <y>380</y>
-      <width>211</width>
-      <height>31</height>
+      <x>900</x>
+      <y>570</y>
+      <width>241</width>
+      <height>41</height>
      </rect>
     </property>
     <property name="styleSheet">
@@ -469,23 +477,23 @@ background-color: rgb(208, 223, 232);</string>
    <widget class="QLabel" name="label_12">
     <property name="geometry">
      <rect>
-      <x>460</x>
-      <y>360</y>
-      <width>181</width>
-      <height>16</height>
+      <x>900</x>
+      <y>530</y>
+      <width>231</width>
+      <height>41</height>
      </rect>
     </property>
     <property name="text">
-     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Fecha de Caducidad&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:14pt; font-weight:600;&quot;&gt;Fecha de Caducidad&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
     </property>
    </widget>
    <widget class="QLineEdit" name="lineNumTarj">
     <property name="geometry">
      <rect>
-      <x>450</x>
-      <y>260</y>
-      <width>211</width>
-      <height>31</height>
+      <x>900</x>
+      <y>380</y>
+      <width>241</width>
+      <height>41</height>
      </rect>
     </property>
     <property name="styleSheet">
@@ -496,22 +504,22 @@ background-color: rgb(208, 223, 232);</string>
    <widget class="QLabel" name="label_13">
     <property name="geometry">
      <rect>
-      <x>460</x>
-      <y>180</y>
+      <x>900</x>
+      <y>250</y>
       <width>181</width>
-      <height>16</height>
+      <height>31</height>
      </rect>
     </property>
     <property name="text">
-     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Titular&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:14pt; font-weight:600;&quot;&gt;Titular&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
     </property>
    </widget>
    <widget class="QLabel" name="label_7">
     <property name="geometry">
      <rect>
-      <x>140</x>
-      <y>100</y>
-      <width>181</width>
+      <x>410</x>
+      <y>150</y>
+      <width>381</width>
       <height>41</height>
      </rect>
     </property>
@@ -524,15 +532,15 @@ background-color: rgb(208, 223, 232);</string>
      </font>
     </property>
     <property name="text">
-     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:10pt; font-weight:600;&quot;&gt;DATOS PERSONALES&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:22pt; font-weight:600;&quot;&gt;DATOS PERSONALES&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
     </property>
    </widget>
    <widget class="QLabel" name="label_14">
     <property name="geometry">
      <rect>
-      <x>470</x>
-      <y>100</y>
-      <width>181</width>
+      <x>870</x>
+      <y>150</y>
+      <width>361</width>
       <height>41</height>
      </rect>
     </property>
@@ -545,9 +553,56 @@ background-color: rgb(208, 223, 232);</string>
      </font>
     </property>
     <property name="text">
-     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:10pt; font-weight:600;&quot;&gt;DATOS BANCARIOS&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:22pt; font-weight:600;&quot;&gt;DATOS BANCARIOS&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
     </property>
    </widget>
+   <widget class="QLabel" name="fondo">
+    <property name="geometry">
+     <rect>
+      <x>-180</x>
+      <y>-180</y>
+      <width>2001</width>
+      <height>1061</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Bell MT</family>
+      <pointsize>24</pointsize>
+      <weight>50</weight>
+      <bold>false</bold>
+     </font>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="pixmap">
+     <pixmap>../Imagenes/foto.png</pixmap>
+    </property>
+   </widget>
+   <zorder>fondo</zorder>
+   <zorder>enviarBoton</zorder>
+   <zorder>label_3</zorder>
+   <zorder>lineNombre</zorder>
+   <zorder>label</zorder>
+   <zorder>lineDni</zorder>
+   <zorder>label_4</zorder>
+   <zorder>lineTfno</zorder>
+   <zorder>label_5</zorder>
+   <zorder>lineEmail</zorder>
+   <zorder>label_6</zorder>
+   <zorder>lineContrasenna</zorder>
+   <zorder>label_8</zorder>
+   <zorder>lineTitular</zorder>
+   <zorder>label_9</zorder>
+   <zorder>label_10</zorder>
+   <zorder>lineCvv</zorder>
+   <zorder>lineCad</zorder>
+   <zorder>label_12</zorder>
+   <zorder>lineNumTarj</zorder>
+   <zorder>label_13</zorder>
+   <zorder>label_7</zorder>
+   <zorder>label_14</zorder>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
  </widget>

@@ -7,11 +7,12 @@ sys.path.append(r'c:\Users\clara\Documents\2ºUNI\2CUATRI\IS\museo\src\modelo')
 
 from vo.ClienteEstandarVO import  *
 from conexion.conexion2JDBC import Conexion
-from modelo.dao.ClienteEstandarInterface import *
+from dao.ClienteEstandarInterface import *
 
 class ClienteEstandarDAO(ClienteEInterface, Conexion):
     #Todas las operaciones CRUD que sean necesarias
     SQL_SELECT = "SELECT NumEntrada FROM clienteestandar"
+    SQL_FILTER = "SELECT * FROM clienteestandar WHERE NumEntrada = ?"
     SQL_INSERT = "INSERT INTO clienteestandar(NumEntrada, PrecioEntrada) VALUES (?, ?)"
 
 
@@ -74,6 +75,38 @@ class ClienteEstandarDAO(ClienteEInterface, Conexion):
 
         return rows
 
+    def getEntrada(self,num) -> ClienteEstandarVO:
+        conexion = self.getConnection()
+        conn = None
+        cursor = None
+        entradas = []
+
+        try:
+            if conexion:
+                conn = conexion
+            else:
+                print("La base de datos no esta disponible")
+            cursor = conn.cursor()
+            cursor.execute(self.SQL_FILTER, (num,))
+            rows = cursor.fetchall()
+            if len(rows)>0:
+                NumEntrada, PrecioEntrada = rows[0]
+                #Ahora, obtenemos los aributos de la tabla Usuarios:
+                entrada = ClienteEstandarVO()
+                entrada.setNumEntrada(NumEntrada)
+                entrada.setPrecioEntrada(PrecioEntrada)
+                entradas.append(entrada)
+
+        except Error as e:
+            print("Error al seleccionar usuarios:", e)
+
+        #Se ejecuta siempre
+        finally:
+            if cursor:
+                #Cierra el cursor para liberar recursos
+                cursor.close()
+        conexion = self.closeConnection(conn)
+        return entradas
 
 
 
@@ -81,9 +114,9 @@ class ClienteEstandarDAO(ClienteEInterface, Conexion):
 
 
 
+# a = ClienteEstandarDAO()
 
-
-
+# print(a.getEntrada(1)[0].getNumEntrada())
 
 
 

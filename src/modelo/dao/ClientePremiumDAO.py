@@ -8,11 +8,11 @@ sys.path.append(r'c:\Users\clara\Documents\2ºUNI\2CUATRI\IS\museo\src\modelo')
 from vo.UsuariosVO import * 
 from dao.UsuarioDAO import UsuariosDAO
 from conexion.conexion2JDBC import Conexion
-from modelo.dao.ClientePremiumInterface import ClientePInterface
+from dao.ClientePremiumInterface import ClientePInterface
 
 class ClientePremiumDAO(ClientePInterface, Conexion):
     #Todas las operaciones CRUD que sean necesarias
-    SQL_SELECT = "SELECT * FROM Clientespremium"
+    SQL_SELECT = "SELECT * FROM clientespremium"
     SQL_INSERT = "INSERT INTO Clientespremium(DNI, ObrasAdquiridas, DineroGastado, Penalizacion, TipoTarifa) VALUES (?, ?, ?, ?, ?)"
     SQL_UPDATE = "UPDATE clientespremium SET  ObrasAdquiridas = ?, DineroGastado = ?, Penalizacion = ?, TipoTarifa = ? WHERE DNI = ?"
     SQL_FILTER = "SELECT * FROM clientespremium WHERE DNI = ?"
@@ -252,7 +252,7 @@ class ClientePremiumDAO(ClientePInterface, Conexion):
 # cliente2.set_Usutfno("987654321")
 # cliente2.set_UsuEmail("ana.gomez@example.com")
 # cliente2.set_UsuTitularMP("Ana Gómez")
-# cliente2.set_UsuNumTarjMP("6543 2109 8765 4321")
+# cliente2.set_UsuNumTarjMP("6543210987654321")
 # cliente2.set_UsuCvvMP("456")
 # cliente2.set_UsuCadMP("2025-06-30")  
 # cliente2.set_UsuContrasenna("otraContraseñaSegura")
@@ -260,15 +260,14 @@ class ClientePremiumDAO(ClientePInterface, Conexion):
 # cliente2.set_ObrasAdquiridas(15)
 # cliente2.set_DineroGastado(3500.50)
 # cliente2.set_Penalizacion(1)
-# cliente2.set_TipoTarifa("Normal")
 
-a=ClientePremiumDAO()
-# a.insertClienteP(cliente2)
-# a.eliminateClienteP('12345678A')
-print(a.getClientesP())
+# print(cliente2.get_UsuContrasenna())
+# # b=ClientePremiumDAO()
+# # b.insertClienteP(cliente2)
+# # a.eliminateClienteP('12345678A')
 
-
-
+# a = ClientePremiumDAO()
+# print(a.getClienteP("87654321B")[0].get_UsuContrasenna())
 
 
 

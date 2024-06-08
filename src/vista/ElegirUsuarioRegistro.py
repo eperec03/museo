@@ -16,7 +16,7 @@ class ElegirUsuarioRegistro(QtWidgets.QMainWindow):
         super(ElegirUsuarioRegistro, self).__init__()
         uic.loadUi('src/vista/ui/TipoUsuarioRegistro.ui', self)
         self.setWindowTitle("Identifícate ")
-        self.setWindowIcon(QIcon('src/vista/Imagenes/logo.png'))  # Reemplaza con la ruta a tu logo
+        self.setWindowIcon(QIcon('src/vista/Imagenes/logomuseo.png'))  # Reemplaza con la ruta a tu logo
         # Almacena una referencia al controlador
         self.coordinador = controlador
         # "EnviarBoton" es el nombre que se le ha dado al objeto en el .ui

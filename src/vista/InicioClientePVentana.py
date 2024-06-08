@@ -8,32 +8,31 @@ from modelo.vo.UsuariosVO import ClientePremiumVO
 from PyQt5 import QtWidgets, uic
 from PyQt5.QtWidgets import QMessageBox
 from PyQt5.QtGui import QIcon
-
-class RegistroClientePVentana(QtWidgets.QMainWindow):
+from vista.ServiciosVentanaPremium import *
+class InicioClientePVentana(QtWidgets.QMainWindow):
     def __init__(self, controlador = None):
         # Importamos el .ui
-        super(RegistroClientePVentana, self).__init__()
-        uic.loadUi('src/vista/ui/RegistroCliP.ui', self)
-        self.setWindowTitle("REGISTRO DE CLIENTE PREMIUM")
+        super(InicioClientePVentana, self).__init__()
+        uic.loadUi('src/vista/ui/InicioCliP.ui', self)
+        self.setWindowTitle("INICIO DE CLIENTE PREMIUM")
         self.setWindowIcon(QIcon('src/vista/Imagenes/logomuseo.png'))  # Reemplaza con la ruta a tu logo
         # Almacena una referencia al controlador
         self.coordinador = controlador
         # "EnviarBoton" es el nombre que se le ha dado al objeto en el .ui
-        self.enviarBoton.clicked.connect(self.registrarPersona)
+        self.enviarBoton.clicked.connect(self.validarCliente)
         self.show()
+
+    def go_to_window_servicios(self):
+        self.ventana_servicios = VentanaServicioPremium()
+        self.ventana_servicios.setCoordinador(self.coordinador)
+        self.ventana_servicios.show()
+        self.hide()        
 
     def setCoordinador(self, coord) -> None:
         self.coordinador = coord
 
     def limpiar(self):
         self.lineDni.clear()
-        self.lineNombre.clear()
-        self.lineTfno.clear()
-        self.lineEmail.clear()
-        self.lineTitular.clear()
-        self.lineNumTarj.clear()
-        self.lineCvv.clear()
-        self.lineCad.clear()
         self.lineContrasenna.clear()
         # self.lineFecha.clear()
 
@@ -48,20 +47,14 @@ class RegistroClientePVentana(QtWidgets.QMainWindow):
 
     #############################Listeners##############################
 
-    def registrarPersona(self) -> None:
+    def validarCliente(self) -> None:
         try:
             persona = ClientePremiumVO(
                 DNI = self.lineDni.text(),
-                UsuNombreCompleto = self.lineNombre.text(),
-                Usutfno = self.lineTfno.text(),
-                UsuEmail = self.lineEmail.text(),
-                UsuTitularMP = self.lineTitular.text(), 
-                UsuNumTarjMP = self.lineNumTarj.text(),
-                UsuCvvMP = self.lineCvv.text(), 
-                UsuCadMP = self.lineCad.text(), 
                 UsuContrasenna = self.lineContrasenna.text(), 
             )
-            self.coordinador.registrarUsuario(persona)
+            if self.coordinador.validarUsuario(persona) == True:
+                self.go_to_window_servicios()
             self.limpiar()
         except Exception as ex:
             print(ex)
