@@ -4,20 +4,20 @@ sys.path.append(r'c:\Users\clara\Documents\2ºUNI\2CUATRI\IS\src')
 
 import tkinter as tk
 from tkinter import messagebox
-from modelo.vo.ClienteEstandarVO import ClienteEstandarVO
+from modelo.vo.SalasVO import *
 from PyQt5 import QtWidgets, uic
 from PyQt5.QtWidgets import QMessageBox
 from PyQt5.QtGui import QIcon
 from vista.ServiciosVentana import *
 
-class RegistroEntradaVentana(QtWidgets.QMainWindow):
+class MapaVentana(QtWidgets.QMainWindow):
     def __init__(self, controlador = None):
-        super(RegistroEntradaVentana, self).__init__()
-        uic.loadUi('src/vista/ui/RegistroEntrada.ui', self)
-        self.setWindowTitle("REGISTRO SIN CUENTA")
+        super(MapaVentana, self).__init__()
+        uic.loadUi('src/vista/ui/VentanaMapa.ui', self)
+        self.setWindowTitle("MAPA")
         self.setWindowIcon(QIcon('src/vista/Imagenes/logomuseo.png'))  
         self.coordinador = controlador
-        self.enviarBoton.clicked.connect(self.registrarEntrada)
+        # self.enviarBoton.clicked.connect(self.registrarEntrada)
         # self.BotonAtras.clicked.connect(self.go_back)
 
     # def go_back(self):
@@ -26,11 +26,11 @@ class RegistroEntradaVentana(QtWidgets.QMainWindow):
     #     self.ventana_anterior.show()
     #     self.hide()
 
-    def go_to_ventana_servicios(self):
-        self.ventana_servicios = VentanaServicio()
-        self.ventana_servicios.setCoordinador(self.coordinador)
-        self.ventana_servicios.show()
-        self.hide()
+    # def go_to_ventana_servicios(self):
+    #     self.ventana_servicios = VentanaServicio()
+    #     self.ventana_servicios.setCoordinador(self.coordinador)
+    #     self.ventana_servicios.show()
+    #     self.hide()
 
     def setCoordinador(self, coord) -> None:
         self.coordinador = coord
@@ -48,19 +48,6 @@ class RegistroEntradaVentana(QtWidgets.QMainWindow):
     #     self.coordinador = coord
 
     #############################Listeners##############################
-
-    def registrarEntrada(self) -> None:
-        try:
-            persona = ClienteEstandarVO(
-                NumEntrada = self.lineEntrada.text()
-            )
-            if self.coordinador.registrarEntrada(persona)==True:
-                self.go_to_ventana_servicios()
-            self.limpiar()
-        except Exception as ex:
-            print(ex)
-            self.mostrar_advertencia(ex)
-
 
     def mostrar_advertencia(ex):
         mensaje = QMessageBox()

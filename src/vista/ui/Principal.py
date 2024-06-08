@@ -17,14 +17,14 @@ class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         if not MainWindow.objectName():
             MainWindow.setObjectName(u"MainWindow")
-        MainWindow.resize(800, 600)
+        MainWindow.resize(1595, 849)
         MainWindow.setFocusPolicy(Qt.StrongFocus)
         MainWindow.setWindowOpacity(8.000000000000000)
         self.centralwidget = QWidget(MainWindow)
         self.centralwidget.setObjectName(u"centralwidget")
         self.BotonRegistrarse = QPushButton(self.centralwidget)
         self.BotonRegistrarse.setObjectName(u"BotonRegistrarse")
-        self.BotonRegistrarse.setGeometry(QRect(330, 250, 131, 41))
+        self.BotonRegistrarse.setGeometry(QRect(630, 540, 251, 41))
         palette = QPalette()
         brush = QBrush(QColor(255, 255, 255, 255))
         brush.setStyle(Qt.SolidPattern)
@@ -64,6 +64,12 @@ class Ui_MainWindow(object):
         palette.setBrush(QPalette.Disabled, QPalette.PlaceholderText, brush4)
 #endif
         self.BotonRegistrarse.setPalette(palette)
+        font = QFont()
+        font.setFamily(u"Verdana")
+        font.setPointSize(12)
+        font.setBold(True)
+        font.setWeight(75)
+        self.BotonRegistrarse.setFont(font)
         self.BotonRegistrarse.setCursor(QCursor(Qt.PointingHandCursor))
         self.BotonRegistrarse.setStyleSheet(u"background-color: rgb(67, 157, 175);\n"
 "color: rgb(255, 255, 255);\n"
@@ -72,16 +78,16 @@ class Ui_MainWindow(object):
 "border-radius: 15px;")
         self.Titulo = QLabel(self.centralwidget)
         self.Titulo.setObjectName(u"Titulo")
-        self.Titulo.setGeometry(QRect(250, 140, 301, 91))
-        font = QFont()
-        font.setFamily(u"Bell MT")
-        font.setPointSize(24)
-        font.setBold(False)
-        font.setWeight(50)
-        self.Titulo.setFont(font)
+        self.Titulo.setGeometry(QRect(540, 70, 441, 151))
+        font1 = QFont()
+        font1.setFamily(u"Bell MT")
+        font1.setPointSize(24)
+        font1.setBold(False)
+        font1.setWeight(50)
+        self.Titulo.setFont(font1)
         self.BotonInicioS = QPushButton(self.centralwidget)
         self.BotonInicioS.setObjectName(u"BotonInicioS")
-        self.BotonInicioS.setGeometry(QRect(330, 320, 131, 41))
+        self.BotonInicioS.setGeometry(QRect(630, 610, 251, 41))
         palette1 = QPalette()
         palette1.setBrush(QPalette.Active, QPalette.WindowText, brush)
         palette1.setBrush(QPalette.Active, QPalette.Button, brush1)
@@ -117,13 +123,23 @@ class Ui_MainWindow(object):
         palette1.setBrush(QPalette.Disabled, QPalette.PlaceholderText, brush7)
 #endif
         self.BotonInicioS.setPalette(palette1)
+        self.BotonInicioS.setFont(font)
         self.BotonInicioS.setCursor(QCursor(Qt.PointingHandCursor))
         self.BotonInicioS.setStyleSheet(u"background-color: rgb(67, 157, 175);\n"
 "color: rgb(255, 255, 255);\n"
 "font-weight: bold;\n"
 "font-family: 'Verdana';\n"
 "border-radius: 15px;")
+        self.Titulo_2 = QLabel(self.centralwidget)
+        self.Titulo_2.setObjectName(u"Titulo_2")
+        self.Titulo_2.setGeometry(QRect(-130, -100, 1751, 971))
+        self.Titulo_2.setFont(font1)
+        self.Titulo_2.setPixmap(QPixmap(u"../Imagenes/foto.png"))
         MainWindow.setCentralWidget(self.centralwidget)
+        self.Titulo_2.raise_()
+        self.BotonRegistrarse.raise_()
+        self.Titulo.raise_()
+        self.BotonInicioS.raise_()
         self.statusbar = QStatusBar(MainWindow)
         self.statusbar.setObjectName(u"statusbar")
         MainWindow.setStatusBar(self.statusbar)
@@ -136,7 +152,8 @@ class Ui_MainWindow(object):
     def retranslateUi(self, MainWindow):
         MainWindow.setWindowTitle(QCoreApplication.translate("MainWindow", u"MainWindow", None))
         self.BotonRegistrarse.setText(QCoreApplication.translate("MainWindow", u"REGISTRARSE", None))
-        self.Titulo.setText(QCoreApplication.translate("MainWindow", u"\u00a1BIENVENIDOS!", None))
+        self.Titulo.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" font-size:36pt;\">\u00a1BIENVENIDOS!</span></p></body></html>", None))
         self.BotonInicioS.setText(QCoreApplication.translate("MainWindow", u"INICIAR", None))
+        self.Titulo_2.setText("")
     # retranslateUi
 

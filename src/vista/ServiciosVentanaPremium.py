@@ -7,7 +7,7 @@ from tkinter import messagebox
 from PyQt5 import QtWidgets, uic
 from PyQt5.QtWidgets import QMessageBox
 from PyQt5.QtGui import QIcon
-
+from vista.MapaVentana import *
 
 
 class VentanaServicioPremium(QtWidgets.QMainWindow):
@@ -20,15 +20,15 @@ class VentanaServicioPremium(QtWidgets.QMainWindow):
         # Almacena una referencia al controlador
         self.coordinador = controlador
         # "EnviarBoton" es el nombre que se le ha dado al objeto en el .ui
-        # self.BotonRegistrarse.clicked.connect(self.go_to_window_registro)
+        self.BotonMapa.clicked.connect(self.go_to_window_mapa)
         # self.BotonInicioS.clicked.connect(self.go_to_window_inicio)
         self.show()
 
-    # def go_to_window_registro(self):
-    #     self.ventana_registro = ElegirUsuarioRegistro()
-    #     self.ventana_registro.setCoordinador(self.coordinador)
-    #     self.ventana_registro.show()
-    #     self.hide()
+    def go_to_window_mapa(self):
+        self.ventana_registro = MapaVentana()
+        self.ventana_registro.setCoordinador(self.coordinador)
+        self.ventana_registro.show()
+        self.hide()
 
     # def go_to_window_inicio(self):
     #     self.ventana_inicio = ElegirUsuario()

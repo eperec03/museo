@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>800</width>
-    <height>601</height>
+    <width>1594</width>
+    <height>852</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -17,9 +17,9 @@
    <widget class="QLabel" name="label_3">
     <property name="geometry">
      <rect>
-      <x>290</x>
+      <x>530</x>
       <y>140</y>
-      <width>231</width>
+      <width>461</width>
       <height>91</height>
      </rect>
     </property>
@@ -32,16 +32,16 @@
      </font>
     </property>
     <property name="text">
-     <string>¡ENTRA YA!</string>
+     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:48pt;&quot;&gt;¡ENTRA YA!&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
     </property>
    </widget>
    <widget class="QLineEdit" name="lineDni">
     <property name="geometry">
      <rect>
-      <x>290</x>
-      <y>260</y>
-      <width>211</width>
-      <height>31</height>
+      <x>610</x>
+      <y>340</y>
+      <width>261</width>
+      <height>51</height>
      </rect>
     </property>
     <property name="styleSheet">
@@ -52,23 +52,23 @@ background-color: rgb(208, 223, 232);</string>
    <widget class="QLabel" name="label_4">
     <property name="geometry">
      <rect>
-      <x>300</x>
-      <y>240</y>
+      <x>620</x>
+      <y>300</y>
       <width>181</width>
-      <height>16</height>
+      <height>31</height>
      </rect>
     </property>
     <property name="text">
-     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;DNI&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:14pt; font-weight:600;&quot;&gt;DNI&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
     </property>
    </widget>
    <widget class="QLineEdit" name="lineContrasenna">
     <property name="geometry">
      <rect>
-      <x>290</x>
-      <y>330</y>
-      <width>211</width>
-      <height>31</height>
+      <x>610</x>
+      <y>470</y>
+      <width>261</width>
+      <height>51</height>
      </rect>
     </property>
     <property name="styleSheet">
@@ -85,23 +85,23 @@ background-color: rgb(208, 223, 232);</string>
    <widget class="QLabel" name="label_8">
     <property name="geometry">
      <rect>
-      <x>300</x>
-      <y>310</y>
+      <x>620</x>
+      <y>425</y>
       <width>181</width>
-      <height>16</height>
+      <height>41</height>
      </rect>
     </property>
     <property name="text">
-     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Contraseña&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:14pt; font-weight:600;&quot;&gt;Contraseña&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
     </property>
    </widget>
    <widget class="QPushButton" name="enviarBoton">
     <property name="geometry">
      <rect>
-      <x>330</x>
-      <y>390</y>
-      <width>131</width>
-      <height>41</height>
+      <x>660</x>
+      <y>580</y>
+      <width>161</width>
+      <height>51</height>
      </rect>
     </property>
     <property name="palette">
@@ -303,6 +303,14 @@ background-color: rgb(208, 223, 232);</string>
       </disabled>
      </palette>
     </property>
+    <property name="font">
+     <font>
+      <family>Verdana</family>
+      <pointsize>12</pointsize>
+      <weight>75</weight>
+      <bold>true</bold>
+     </font>
+    </property>
     <property name="cursor">
      <cursorShape>PointingHandCursor</cursorShape>
     </property>
@@ -317,6 +325,37 @@ border-radius: 15px;</string>
      <string>ENTRAR</string>
     </property>
    </widget>
+   <widget class="QLabel" name="fondo">
+    <property name="geometry">
+     <rect>
+      <x>-260</x>
+      <y>-230</y>
+      <width>2001</width>
+      <height>1061</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Bell MT</family>
+      <pointsize>24</pointsize>
+      <weight>50</weight>
+      <bold>false</bold>
+     </font>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="pixmap">
+     <pixmap>../Imagenes/foto.png</pixmap>
+    </property>
+   </widget>
+   <zorder>fondo</zorder>
+   <zorder>label_3</zorder>
+   <zorder>lineDni</zorder>
+   <zorder>label_4</zorder>
+   <zorder>lineContrasenna</zorder>
+   <zorder>label_8</zorder>
+   <zorder>enviarBoton</zorder>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
  </widget>

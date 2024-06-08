@@ -14,16 +14,6 @@ from PyQt5.QtGui import *
 from PyQt5.QtWidgets import *
 
 
-# -*- coding: utf-8 -*-
-
-################################################################################
-## Form generated from reading UI file 'VentanaServiciossCakyM.ui'
-##
-## Created by: Qt User Interface Compiler version 5.15.2
-##
-## WARNING! All changes made in this file will be lost when recompiling UI file!
-################################################################################
-
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         if not MainWindow.objectName():

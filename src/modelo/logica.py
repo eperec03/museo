@@ -50,18 +50,19 @@ class Logica:
     def validar_entrada(self, mi_entrada: ClienteEstandarVO):
         #habría que poner más cosas para validar el registtro?
         mi_entrada_dao = ClienteEstandarDAO()
-        mi_entrada_dao.getEntradas()                 
-        mi_entrada_dao.insertEntrada(mi_entrada)
+        if len(mi_entrada_dao.getEntrada(mi_entrada.getNumEntrada()))==0:            
+            messagebox.showwarning("Advertencia", "Número de entrada incorrecto")            
+        else:
+            return True
 
     def comprobar_cliente(self, mi_persona: ClientePremiumVO):
         mi_persona_dao=ClientePremiumDAO()
-        error=2
-        if mi_persona.get_DNI() == mi_persona_dao.getClienteP(mi_persona.get_DNI())[0].get_DNI():            
-            error=1
+        error=1
+        if len(mi_persona_dao.getClienteP(mi_persona.get_DNI()))==0:
+            messagebox.showwarning("Advertencia", "No existe nadie con ese DNI")
+        else:
             if mi_persona.get_UsuContrasenna() == mi_persona_dao.getClienteP(mi_persona.get_DNI())[0].get_UsuContrasenna():
                 error=0
                 return True
-        if error==2:
-            messagebox.showwarning("Advertencia", "No existe nadie con ese DNI")
-        if error==1:
-            messagebox.showwarning("Advertencia", "Contraseña incorrecta")
+            if error==1:
+                messagebox.showwarning("Advertencia", "Contraseña incorrecta")
