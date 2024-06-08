@@ -74,3 +74,6 @@ class Coordinador:
     
     def registrarEntrada(self, usuario: ClienteEstandarVO) -> None:
        self._model.validar_entrada(usuario)      
+   
+    def validarUsuario(self, usuario: ClientePremiumVO) -> None:
+       self._model.comprobar_cliente(usuario)

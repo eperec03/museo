@@ -8,11 +8,11 @@ sys.path.append(r'c:\Users\clara\Documents\2ºUNI\2CUATRI\IS\museo\src\modelo')
 from vo.UsuariosVO import * 
 from dao.UsuarioDAO import UsuariosDAO
 from conexion.conexion2JDBC import Conexion
-from modelo.dao.ClientePremiumInterface import ClientePInterface
+from dao.ClientePremiumInterface import ClientePInterface
 
 class ClientePremiumDAO(ClientePInterface, Conexion):
     #Todas las operaciones CRUD que sean necesarias
-    SQL_SELECT = "SELECT * FROM Clientespremium"
+    SQL_SELECT = "SELECT * FROM clientespremium"
     SQL_INSERT = "INSERT INTO Clientespremium(DNI, ObrasAdquiridas, DineroGastado, Penalizacion, TipoTarifa) VALUES (?, ?, ?, ?, ?)"
     SQL_UPDATE = "UPDATE clientespremium SET  ObrasAdquiridas = ?, DineroGastado = ?, Penalizacion = ?, TipoTarifa = ? WHERE DNI = ?"
     SQL_FILTER = "SELECT * FROM clientespremium WHERE DNI = ?"
@@ -267,7 +267,9 @@ class ClientePremiumDAO(ClientePInterface, Conexion):
 # a.eliminateClienteP('12345678A')
 
 
-
+a = ClientePremiumDAO()
+a.getClientesP()
+a.getClienteP("71311695B")
 
 
 

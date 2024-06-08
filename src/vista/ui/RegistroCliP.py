@@ -169,7 +169,7 @@ class Ui_MainWindow(object):
 
     def retranslateUi(self, MainWindow):
         MainWindow.setWindowTitle(QCoreApplication.translate("MainWindow", u"MainWindow", None))
-        self.enviarBoton.setText(QCoreApplication.translate("MainWindow", u"ENTRAR", None))
+        self.enviarBoton.setText(QCoreApplication.translate("MainWindow", u"REGISTRARSE", None))
         self.label_3.setText(QCoreApplication.translate("MainWindow", u"\u00a1REGISTRATE YA!", None))
         self.label.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" font-weight:600;\">Nombre Completo</span></p></body></html>", None))
         self.label_4.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" font-weight:600;\">DNI</span></p></body></html>", None))

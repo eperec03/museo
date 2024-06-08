@@ -4,41 +4,31 @@ sys.path.append(r'c:\Users\clara\Documents\2ºUNI\2CUATRI\IS\src')
 
 import tkinter as tk
 from tkinter import messagebox
-from modelo.vo.ClienteEstandarVO import ClienteEstandarVO
+from modelo.vo.UsuariosVO import ClientePremiumVO
 from PyQt5 import QtWidgets, uic
 from PyQt5.QtWidgets import QMessageBox
 from PyQt5.QtGui import QIcon
-from vista.ServiciosVentana import *
 
-class RegistroEntradaVentana(QtWidgets.QMainWindow):
+class InicioClientePVentana(QtWidgets.QMainWindow):
     def __init__(self, controlador = None):
-        super(RegistroEntradaVentana, self).__init__()
-        uic.loadUi('src/vista/ui/RegistroEntrada.ui', self)
-        self.setWindowTitle("REGISTRO SIN CUENTA")
-        self.setWindowIcon(QIcon('src/vista/Imagenes/logomuseo.png'))  
+        # Importamos el .ui
+        super(InicioClientePVentana, self).__init__()
+        uic.loadUi('src/vista/ui/InicioCliP.ui', self)
+        self.setWindowTitle("INICIO DE CLIENTE PREMIUM")
+        self.setWindowIcon(QIcon('src/vista/Imagenes/logomuseo.png'))  # Reemplaza con la ruta a tu logo
+        # Almacena una referencia al controlador
         self.coordinador = controlador
-        self.enviarBoton.clicked.connect(self.registrarEntrada)
-        self.enviarBoton.clicked.connect(self.go_to_ventana_servicios)
-        # self.BotonAtras.clicked.connect(self.go_back)
+        # "EnviarBoton" es el nombre que se le ha dado al objeto en el .ui
+        self.enviarBoton.clicked.connect(self.validarCliente)
         self.show()
-
-    # def go_back(self):
-    #     self.ventana_anterior = ElegirUsuario()
-    #     self.ventana_anterior.setCoordinador(self.coordinador)
-    #     self.ventana_anterior.show()
-    #     self.hide()
-
-    def go_to_ventana_servicios(self):
-        self.ventana_servicios = VentanaServicio()
-        self.ventana_servicios.setCoordinador(self.coordinador)
-        self.ventana_servicios.show()
-        self.hide()
 
     def setCoordinador(self, coord) -> None:
         self.coordinador = coord
 
     def limpiar(self):
-        self.lineEntrada.clear()
+        self.lineDni.clear()
+        self.lineContrasenna.clear()
+        # self.lineFecha.clear()
 
     # def setVisible(self, visible: bool) -> None:
     #     if visible:
@@ -51,17 +41,17 @@ class RegistroEntradaVentana(QtWidgets.QMainWindow):
 
     #############################Listeners##############################
 
-    def registrarEntrada(self) -> None:
+    def validarCliente(self) -> None:
         try:
-            persona = ClienteEstandarVO(
-                NumEntrada = self.lineEntrada.text()
+            persona = ClientePremiumVO(
+                DNI = self.lineDni.text(),
+                UsuContrasenna = self.lineContrasenna.text(), 
             )
-            self.coordinador.registrarEntrada(persona)
+            self.coordinador.validarUsuario(persona)
             self.limpiar()
         except Exception as ex:
             print(ex)
             self.mostrar_advertencia(ex)
-
 
     def mostrar_advertencia(ex):
         mensaje = QMessageBox()
