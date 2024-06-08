@@ -128,7 +128,7 @@ CREATE TABLE `clientespremium` (
   `ObrasAdquiridas` text,
   `DineroGastado` float DEFAULT '0',
   `Penalizacion` binary(1) DEFAULT NULL,
-  `TipoTarifa` varchar(15) NOT NULL,
+  `TipoTarifa` varchar(15) DEFAULT NULL,
   PRIMARY KEY (`DNI`),
   KEY `TipoTarifa_idx` (`TipoTarifa`),
   CONSTRAINT `cliPreTar` FOREIGN KEY (`TipoTarifa`) REFERENCES `tarifas` (`TipoTarifa`) ON DELETE RESTRICT ON UPDATE CASCADE,

@@ -13,13 +13,13 @@ from PyQt5.QtCore import *
 from PyQt5.QtGui import *
 from PyQt5.QtWidgets import *
 
-
-
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         if not MainWindow.objectName():
             MainWindow.setObjectName(u"MainWindow")
         MainWindow.resize(800, 600)
+        MainWindow.setFocusPolicy(Qt.StrongFocus)
+        MainWindow.setWindowOpacity(8.000000000000000)
         self.centralwidget = QWidget(MainWindow)
         self.centralwidget.setObjectName(u"centralwidget")
         self.BotonRegistrarse = QPushButton(self.centralwidget)
@@ -72,7 +72,7 @@ class Ui_MainWindow(object):
 "border-radius: 15px;")
         self.Titulo = QLabel(self.centralwidget)
         self.Titulo.setObjectName(u"Titulo")
-        self.Titulo.setGeometry(QRect(250, 150, 291, 91))
+        self.Titulo.setGeometry(QRect(250, 140, 301, 91))
         font = QFont()
         font.setFamily(u"Bell MT")
         font.setPointSize(24)

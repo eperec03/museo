@@ -19,18 +19,18 @@ class Logica:
 
     def validar_registro(self, mi_persona: ClientePremiumVO):
         #habría que poner más cosas para validar el registtro?
-        if '@' in mi_persona.getEmail():
+        if '@' in mi_persona.get_UsuEmail():
             mi_persona_dao = ClientePremiumDAO()
-            mi_persona_dao.getUsuarios()                  
-            mi_persona_dao.insertUsuario(mi_persona)
+            mi_persona_dao.getClientesP()                  
+            mi_persona_dao.insertClienteP(mi_persona)
         else:
             messagebox.showwarning("Advertencia", "El email no es válido")
 
     def eliminar_registro(self, mi_persona: ClientePremiumVO):
         mi_persona_dao=ClientePremiumDAO()
         error=1
-        if mi_persona.getDNI() == mi_persona_dao.getUsuario(mi_persona.getDNI()).getDNI():            
-                mi_persona_dao.eliminateUsuario(mi_persona)
+        if mi_persona.get_DNI() == mi_persona_dao.getClienteP(mi_persona.get_DNI()).get_DNI():            
+                mi_persona_dao.eliminateClienteP(mi_persona)
                 error=0
         if error==1:
             messagebox.showwarning("Advertencia", "No existe nadie con ese DNI")
@@ -39,8 +39,8 @@ class Logica:
         mi_persona_dao=ClientePremiumDAO()
         error=1
         for i in range (len(mi_persona_dao.getUsuarios)):
-            if mi_persona.DNI() == mi_persona_dao.getUsuarios[i].getDNI():            
-                mi_persona_dao.updateUsuario(mi_persona)
+            if mi_persona.DNI() == mi_persona_dao.getUsuarios[i].get_DNI():            
+                mi_persona_dao.updateClienteP(mi_persona)
                 error=0
         if error==1:
             messagebox.showwarning("Advertencia", "No existe nadie con ese DNI")

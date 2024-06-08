@@ -52,14 +52,14 @@ class RegistroClientePVentana(QtWidgets.QMainWindow):
         try:
             persona = ClientePremiumVO(
                 DNI = self.lineDni.text(),
-                NombreCompleto = self.lineNombre.text(),
-                Telefono = self.lineTfno.text(),
-                Email = self.lineEmail.text(),
-                Titular = self.lineTitular.text(), 
-                NumTarjeta = self.lineNumTarj.text(),
-                Cvv = self.lineCvv.text(), 
-                Caducidad = self.lineCad.text(), 
-                Contraseña = self.lineContrasenna.text(), 
+                UsuNombreCompleto = self.lineNombre.text(),
+                Usutfno = self.lineTfno.text(),
+                UsuEmail = self.lineEmail.text(),
+                UsuTitularMP = self.lineTitular.text(), 
+                UsuNumTarjMP = self.lineNumTarj.text(),
+                UsuCvvMP = self.lineCvv.text(), 
+                UsuCadMP = self.lineCad.text(), 
+                UsuContrasenna = self.lineContrasenna.text(), 
             )
             self.coordinador.registrarUsuario(persona)
             self.limpiar()
