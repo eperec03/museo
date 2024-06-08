@@ -35,29 +35,6 @@
      <string>Lista de Objetos</string>
     </property>
    </widget>
-   <widget class="QWidget" name="widget" native="true">
-    <property name="geometry">
-     <rect>
-      <x>570</x>
-      <y>210</y>
-      <width>16</width>
-      <height>161</height>
-     </rect>
-    </property>
-   </widget>
-   <widget class="QScrollBar" name="scrollBar">
-    <property name="geometry">
-     <rect>
-      <x>600</x>
-      <y>120</y>
-      <width>16</width>
-      <height>301</height>
-     </rect>
-    </property>
-    <property name="orientation">
-     <enum>Qt::Vertical</enum>
-    </property>
-   </widget>
    <widget class="QPushButton" name="BotonHome">
     <property name="geometry">
      <rect>
@@ -252,6 +229,29 @@ border-radius: 15px;</string>
     <property name="text">
      <string>🡸</string>
     </property>
+   </widget>
+   <widget class="QScrollArea" name="scrollArea">
+    <property name="geometry">
+     <rect>
+      <x>180</x>
+      <y>150</y>
+      <width>451</width>
+      <height>301</height>
+     </rect>
+    </property>
+    <property name="widgetResizable">
+     <bool>true</bool>
+    </property>
+    <widget class="QWidget" name="scrollAreaWidgetContents">
+     <property name="geometry">
+      <rect>
+       <x>0</x>
+       <y>0</y>
+       <width>449</width>
+       <height>299</height>
+      </rect>
+     </property>
+    </widget>
    </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">
