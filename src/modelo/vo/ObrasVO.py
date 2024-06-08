@@ -1,12 +1,12 @@
 class ObrasVO:
-    def __init__(self, IdObra=None, Titulo=None, Descripcion=None, Fecha=None, Imagen=None, IdArtista=None, IdExposicion=None):
+    def __init__(self, IdObra=None, Titulo=None, Descripcion=None, Fecha=None, Imagen=None, IdArtista=None, NumSala=None):
         self.IdObra = IdObra
         self.Titulo = Titulo
         self.Descripcion = Descripcion
         self.Fecha = Fecha
         self.Imagen = Imagen
         self.IdArtista = IdArtista
-        self.IdExposicion = IdExposicion
+        self.NumSala = NumSala
 
     def getIdObra(self):
         return self.IdObra
@@ -44,11 +44,11 @@ class ObrasVO:
     def setIdArtista(self, IdArtista):
         self.IdArtista = IdArtista
 
-    def getIdExposicion(self):
-        return self.IdExposicion
+    def getNumSala(self):
+        return self.NumSala
 
-    def setIdExposicion(self, IdExposicion):
-        self.IdExposicion = IdExposicion
+    def setNumSala(self, NumSala):
+        self.NumSala = NumSala
 
 class ObrasExpuestaVO(ObrasVO):
     def __init__(self, Disponible=None, IDObraexpuesta=None):
@@ -69,8 +69,8 @@ class ObrasExpuestaVO(ObrasVO):
 
 
 class ObrasSubastadasVO(ObrasVO):
-    def __init__(self ,IdObra=None,IdArtista=None,IdExposicion=None,Imagen=None,Descripcion=None,Titulo=None,Fecha=None,PrecioSalida=None, PrecioVenta=None, MejorPostor=None):
-        super().__init__(IdObra,IdArtista,IdExposicion,Imagen,Descripcion,Titulo,Fecha)
+    def __init__(self ,IdObra=None,IdArtista=None,NumSala=None,Imagen=None,Descripcion=None,Titulo=None,Fecha=None,PrecioSalida=None, PrecioVenta=None, MejorPostor=None):
+        super().__init__(IdObra,IdArtista,NumSala,Imagen,Descripcion,Titulo,Fecha)
         self.PrecioSalida = PrecioSalida
         self.PrecioVenta = PrecioVenta
         self.MejorPostor = MejorPostor

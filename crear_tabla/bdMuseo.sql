@@ -687,12 +687,12 @@ CREATE TABLE `obras` (
   `Fecha` date NULL,
   `Imagen` blob NOT NULL,
   `IDArtista` int NOT NULL,
-  `IDExposicion` int NOT NULL,
+  `NumSala` int NOT NULL,
   PRIMARY KEY (`IDObra`),
-  KEY `ExpOb_idx` (`IDExposicion`),
+  KEY `SalOb_idx` (`NumSala`),
   KEY `ArtObr_idx` (`IDArtista`),
   CONSTRAINT `ArtObr` FOREIGN KEY (`IDArtista`) REFERENCES `artistas` (`IdArtista`) ON UPDATE CASCADE,
-  CONSTRAINT `ExpOb` FOREIGN KEY (`IDExposicion`) REFERENCES `exposiciones` (`IDExposiciones`) ON UPDATE CASCADE
+  CONSTRAINT `SalOb` FOREIGN KEY (`NumSala`) REFERENCES `Salas` (`NumSala`) ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 

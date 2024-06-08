@@ -16,7 +16,14 @@ class ObrasInterface(ABC):
         raise NotImplementedError("Método getObras no implementado")
     
     @abstractmethod
-    def getObra(self,id) ->ObrasVO:
+    def getObraTitulo(self,id) ->ObrasVO:
+        """
+        Recupera la Obra de la base de datos cuyo identificador es id.        
+        Devuelve: objeto ObrasVO.
+        """
+        raise NotImplementedError("Método getObra no implementado")
+    
+    def getObraId(self,id) ->ObrasVO:
         """
         Recupera la Obra de la base de datos cuyo identificador es id.        
         Devuelve: objeto ObrasVO.

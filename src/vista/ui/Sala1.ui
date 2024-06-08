@@ -281,16 +281,6 @@ border-radius: 15px;</string>
      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:48pt;&quot;&gt;SALA 1&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
     </property>
    </widget>
-   <widget class="QTableWidget" name="conjuntoObras">
-    <property name="geometry">
-     <rect>
-      <x>90</x>
-      <y>150</y>
-      <width>961</width>
-      <height>341</height>
-     </rect>
-    </property>
-   </widget>
    <widget class="QLabel" name="tituloobra">
     <property name="geometry">
      <rect>
