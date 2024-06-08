@@ -8,7 +8,7 @@ from modelo.vo.UsuariosVO import ClientePremiumVO
 from PyQt5 import QtWidgets, uic
 from PyQt5.QtWidgets import QMessageBox
 from PyQt5.QtGui import QIcon
-
+from vista.ServiciosVentanaPremium import *
 class InicioClientePVentana(QtWidgets.QMainWindow):
     def __init__(self, controlador = None):
         # Importamos el .ui
@@ -19,8 +19,15 @@ class InicioClientePVentana(QtWidgets.QMainWindow):
         # Almacena una referencia al controlador
         self.coordinador = controlador
         # "EnviarBoton" es el nombre que se le ha dado al objeto en el .ui
-        self.enviarBoton.clicked.connect(self.validarCliente)
+        if self.enviarBoton.clicked.connect(self.validarCliente):
+            self.enviarBoton.clicked.connect(self.go_to_window_servicios)
         self.show()
+
+    def go_to_window_servicios(self):
+        self.ventana_servicios = VentanaServicioPremium()
+        self.ventana_servicios.setCoordinador(self.coordinador)
+        self.ventana_servicios.show()
+        self.hide()        
 
     def setCoordinador(self, coord) -> None:
         self.coordinador = coord
@@ -47,7 +54,8 @@ class InicioClientePVentana(QtWidgets.QMainWindow):
                 DNI = self.lineDni.text(),
                 UsuContrasenna = self.lineContrasenna.text(), 
             )
-            self.coordinador.validarUsuario(persona)
+            if self.coordinador.validarUsuario(persona):
+                return True
             self.limpiar()
         except Exception as ex:
             print(ex)

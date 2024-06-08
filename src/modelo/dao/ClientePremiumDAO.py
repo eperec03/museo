@@ -252,7 +252,7 @@ class ClientePremiumDAO(ClientePInterface, Conexion):
 # cliente2.set_Usutfno("987654321")
 # cliente2.set_UsuEmail("ana.gomez@example.com")
 # cliente2.set_UsuTitularMP("Ana Gómez")
-# cliente2.set_UsuNumTarjMP("6543 2109 8765 4321")
+# cliente2.set_UsuNumTarjMP("6543210987654321")
 # cliente2.set_UsuCvvMP("456")
 # cliente2.set_UsuCadMP("2025-06-30")  
 # cliente2.set_UsuContrasenna("otraContraseñaSegura")
@@ -260,18 +260,14 @@ class ClientePremiumDAO(ClientePInterface, Conexion):
 # cliente2.set_ObrasAdquiridas(15)
 # cliente2.set_DineroGastado(3500.50)
 # cliente2.set_Penalizacion(1)
-# cliente2.set_TipoTarifa("Normal")
 
-# a=ClientePremiumDAO()
-# a.insertClienteP(cliente2)
-# a.eliminateClienteP('12345678A')
+# print(cliente2.get_UsuContrasenna())
+# # b=ClientePremiumDAO()
+# # b.insertClienteP(cliente2)
+# # a.eliminateClienteP('12345678A')
 
-
-a = ClientePremiumDAO()
-a.getClientesP()
-a.getClienteP("71311695B")
-
-
+# a = ClientePremiumDAO()
+# print(a.getClienteP("87654321B")[0].get_UsuContrasenna())
 
 
 

@@ -55,9 +55,13 @@ class Logica:
 
     def comprobar_cliente(self, mi_persona: ClientePremiumVO):
         mi_persona_dao=ClientePremiumDAO()
-        error=1
-        if mi_persona.get_DNI() == mi_persona_dao.getClienteP(mi_persona.get_DNI())[0]:            
-                # if mi_persona.get_UsuContrasenna() == mi_persona_dao.getClienteP(mi_persona.get_UsuContrasenna()).get_UsuContrasenna():
-            error=0
-        if error==1:
+        error=2
+        if mi_persona.get_DNI() == mi_persona_dao.getClienteP(mi_persona.get_DNI())[0].get_DNI():            
+            error=1
+            if mi_persona.get_UsuContrasenna() == mi_persona_dao.getClienteP(mi_persona.get_DNI())[0].get_UsuContrasenna():
+                error=0
+                return True
+        if error==2:
             messagebox.showwarning("Advertencia", "No existe nadie con ese DNI")
+        if error==1:
+            messagebox.showwarning("Advertencia", "Contraseña incorrecta")

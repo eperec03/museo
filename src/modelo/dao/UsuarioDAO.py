@@ -38,15 +38,15 @@ class UsuariosDAO(ClientePInterface, Conexion):
                 DNI, UsuNombreCompleto, UsuTfno, UsuEmail, UsuTitularMP, UsuNumTarjMP, UsuCvvMP, UsuCadMP, UsuContrasenna = row
                 #Crea un objeto UsuarioVO para cada fila DNI, NombreCompleto...
                 usuario = UsuarioVO()
-                usuario.setDNI(DNI)
-                usuario.setNombreCompleto(UsuNombreCompleto)
-                usuario.setTelefono(UsuTfno)
-                usuario.setEmail(UsuEmail)
-                usuario.setTitular(UsuTitularMP)
-                usuario.setNumTarjeta(UsuNumTarjMP)
-                usuario.setCvv(UsuCvvMP)
-                usuario.setCaducidad(UsuCadMP)
-                usuario.setContraseña(UsuContrasenna)
+                usuario.set_DNI(DNI)
+                usuario.set_UsuNombreCompleto(UsuNombreCompleto)
+                usuario.set_Usutfno(UsuTfno)
+                usuario.set_UsuEmail(UsuEmail)
+                usuario.set_UsuTitularMP(UsuTitularMP)
+                usuario.set_UsuNumTarjMP(UsuNumTarjMP)
+                usuario.set_UsuCvvMP(UsuCvvMP)
+                usuario.set_UsuCadMP(UsuCadMP)
+                usuario.set_UsuContrasenna(UsuContrasenna)
                 usuarios.append(usuario)
 
         except Error as e:
@@ -76,9 +76,17 @@ class UsuariosDAO(ClientePInterface, Conexion):
             cursor.execute(self.SQL_FILTER, (dni,)) #Obtiene todas las filas resultantes de la consulta
             #Obtiene todas las filas resultantes de la consulta
             rows = cursor.fetchall()
-            DNI, UsuNombreCompleto, UsuTfno, UsuEmail, UsuTitularMP, UsuNumTarjMP, UsuCvvMP, UsuCadMP, UsuContrasenna = rows[0]
-            usuario = UsuarioVO(DNI==DNI, UsuNombreCompleto==UsuNombreCompleto, UsuTfno==UsuTfno,UsuEmail==UsuEmail, UsuTitularMP== UsuTitularMP, UsuNumTarjMP== UsuNumTarjMP,UsuCvvMP== UsuCvvMP, UsuCadMP== UsuCadMP, UsuContrasenna==UsuContrasenna)
-
+            DNI, UsuNombreCompleto, Usutfno, UsuEmail, UsuTitularMP, UsuNumTarjMP, UsuCvvMP, UsuCadMP, UsuContrasenna = rows[0]
+            usuario = UsuarioVO()
+            usuario.set_DNI(DNI)
+            usuario.set_UsuNombreCompleto(UsuNombreCompleto)
+            usuario.set_Usutfno(Usutfno)
+            usuario.set_UsuEmail(UsuEmail)
+            usuario.set_UsuTitularMP(UsuTitularMP)
+            usuario.set_UsuNumTarjMP(UsuNumTarjMP)
+            usuario.set_UsuCvvMP(UsuCvvMP)
+            usuario.set_UsuCadMP(UsuCadMP)
+            usuario.set_UsuContrasenna(UsuContrasenna)
         except Error as e:
             print("Error al seleccionar usuarios:", e)
 
