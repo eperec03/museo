@@ -21,6 +21,8 @@ class VentanaServicioPremium(QtWidgets.QMainWindow):
         self.coordinador = controlador
         # "EnviarBoton" es el nombre que se le ha dado al objeto en el .ui
         self.BotonMapa.clicked.connect(self.go_to_window_mapa)
+
+        self.BotonCatalogo.clicked.connect(self.go_to_window_objetos)
         # self.BotonInicioS.clicked.connect(self.go_to_window_inicio)
         self.show()
 
@@ -28,6 +30,12 @@ class VentanaServicioPremium(QtWidgets.QMainWindow):
         self.ventana_registro = MapaVentana(ventana_anterior=self)
         self.ventana_registro.setCoordinador(self.coordinador)
         self.ventana_registro.show()
+        self.hide()
+
+    def go_to_window_objetos(self):
+        self.ventana_inicio = LogicaPruebaScroll()
+        self.ventana_inicio.setCoordinador(self.coordinador)
+        self.ventana_inicio.show()
         self.hide()
 
     # def go_to_window_inicio(self):
