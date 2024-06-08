@@ -10,7 +10,7 @@ from PyQt5.QtWidgets import QMessageBox
 from PyQt5.QtGui import QIcon
 from vista.ServiciosVentanaPremium import *
 class InicioClientePVentana(QtWidgets.QMainWindow):
-    def __init__(self, controlador = None):
+    def __init__(self, controlador = None,ventana_anterior=None):
         # Importamos el .ui
         super(InicioClientePVentana, self).__init__()
         uic.loadUi('src/vista/ui/InicioCliP.ui', self)
@@ -19,8 +19,14 @@ class InicioClientePVentana(QtWidgets.QMainWindow):
         # Almacena una referencia al controlador
         self.coordinador = controlador
         # "EnviarBoton" es el nombre que se le ha dado al objeto en el .ui
+        self.ventana_anterior=ventana_anterior
+        self.BotonAtras.clicked.connect(self.go_back)
         self.enviarBoton.clicked.connect(self.validarCliente)
         self.show()
+
+    def go_back(self):
+        self.ventana_anterior.show()    
+        self.destroy()
 
     def go_to_window_servicios(self):
         self.ventana_servicios = VentanaServicioPremium()

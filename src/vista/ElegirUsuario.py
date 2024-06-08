@@ -12,7 +12,7 @@ from vista.RegistroEntradaVentana import RegistroEntradaVentana
 # from vista.InicioVentana import *
 
 class ElegirUsuario(QtWidgets.QMainWindow):
-    def __init__(self, controlador = None):
+    def __init__(self, controlador = None,ventana_anterior=None):
         super(ElegirUsuario, self).__init__()
         uic.loadUi('src/vista/ui/TipoUsuario.ui', self)
         self.setWindowTitle("Identifícate ")
@@ -21,26 +21,25 @@ class ElegirUsuario(QtWidgets.QMainWindow):
         self.BotonCliE.clicked.connect(self.go_to_window_estandar)
         self.BotonCliP.clicked.connect(self.go_to_window_premium)
         #falta poner boton editores
-        # self.BotonAtras.clicked.connect(self.go_back)
+        self.ventana_anterior=ventana_anterior
+        self.BotonAtras.clicked.connect(self.go_back)
         self.show()
 
     def go_to_window_estandar(self):
-        self.ventana_Cliestandar = RegistroEntradaVentana()
+        self.ventana_Cliestandar = RegistroEntradaVentana(ventana_anterior=self)
         self.ventana_Cliestandar.setCoordinador(self.coordinador)
         self.ventana_Cliestandar.show()
         self.hide()
 
     def go_to_window_premium(self):
-        self.ventana_CliPremium = InicioClientePVentana()
+        self.ventana_CliPremium = InicioClientePVentana(ventana_anterior=self)
         self.ventana_CliPremium.setCoordinador(self.coordinador)
         self.ventana_CliPremium.show()
         self.hide()
         
-    # def go_back(self):
-    #     self.ventana_anterior = InicioVentana()
-    #     self.ventana_anterior.setCoordinador(self.coordinador)
-    #     self.ventana_anterior.show()
-    #     self.delete()
+    def go_back(self):
+        self.ventana_anterior.show()    
+        self.destroy()
 
     def setCoordinador(self, coord) -> None:
         self.coordinador = coord

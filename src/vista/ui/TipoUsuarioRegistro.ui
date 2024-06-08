@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>800</width>
-    <height>600</height>
+    <width>1433</width>
+    <height>805</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -239,8 +239,8 @@ border-radius: 15px;</string>
    <widget class="QPushButton" name="BotonEditores">
     <property name="geometry">
      <rect>
-      <x>300</x>
-      <y>310</y>
+      <x>620</x>
+      <y>320</y>
       <width>161</width>
       <height>41</height>
      </rect>
@@ -461,8 +461,8 @@ border-radius: 15px;</string>
    <widget class="QLabel" name="Titulo">
     <property name="geometry">
      <rect>
-      <x>250</x>
-      <y>150</y>
+      <x>560</x>
+      <y>160</y>
       <width>291</width>
       <height>91</height>
      </rect>
@@ -482,8 +482,8 @@ border-radius: 15px;</string>
    <widget class="QPushButton" name="BotonCliP">
     <property name="geometry">
      <rect>
-      <x>300</x>
-      <y>240</y>
+      <x>620</x>
+      <y>250</y>
       <width>161</width>
       <height>41</height>
      </rect>
@@ -701,6 +701,35 @@ border-radius: 15px;</string>
      <string>CLIENTE PREMIUM</string>
     </property>
    </widget>
+   <widget class="QLabel" name="Titulo_2">
+    <property name="geometry">
+     <rect>
+      <x>-230</x>
+      <y>-10</y>
+      <width>2011</width>
+      <height>801</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Bell MT</family>
+      <pointsize>24</pointsize>
+      <weight>50</weight>
+      <bold>false</bold>
+     </font>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="pixmap">
+     <pixmap>../Imagenes/foto.png</pixmap>
+    </property>
+   </widget>
+   <zorder>Titulo_2</zorder>
+   <zorder>BotonAtras</zorder>
+   <zorder>BotonEditores</zorder>
+   <zorder>Titulo</zorder>
+   <zorder>BotonCliP</zorder>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
  </widget>

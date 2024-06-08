@@ -498,7 +498,7 @@ font-family: 'Verdana';
 border-radius: 15px;</string>
     </property>
     <property name="text">
-     <string>INICIAR</string>
+     <string>INICIAR SESIÓN</string>
     </property>
    </widget>
    <widget class="QLabel" name="Titulo_2">
@@ -532,8 +532,6 @@ border-radius: 15px;</string>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
  </widget>
- <resources>
-  <include location="../../../../museoB/src/vista/Imagenes/imagenes.qrc"/>
- </resources>
+ <resources/>
  <connections/>
 </ui>

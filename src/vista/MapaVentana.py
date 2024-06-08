@@ -11,20 +11,19 @@ from PyQt5.QtGui import QIcon
 from vista.ServiciosVentana import *
 
 class MapaVentana(QtWidgets.QMainWindow):
-    def __init__(self, controlador = None):
+    def __init__(self, controlador = None, ventana_anterior=None):
         super(MapaVentana, self).__init__()
         uic.loadUi('src/vista/ui/VentanaMapa.ui', self)
         self.setWindowTitle("MAPA")
         self.setWindowIcon(QIcon('src/vista/Imagenes/logomuseo.png'))  
         self.coordinador = controlador
         # self.enviarBoton.clicked.connect(self.registrarEntrada)
-        # self.BotonAtras.clicked.connect(self.go_back)
+        self.ventana_anterior = ventana_anterior
+        self.BotonHome.clicked.connect(self.go_back)
 
-    # def go_back(self):
-    #     self.ventana_anterior = ElegirUsuario()
-    #     self.ventana_anterior.setCoordinador(self.coordinador)
-    #     self.ventana_anterior.show()
-    #     self.hide()
+    def go_back(self):
+        self.ventana_anterior.show()
+        self.destroy()
 
     # def go_to_ventana_servicios(self):
     #     self.ventana_servicios = VentanaServicio()

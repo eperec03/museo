@@ -26,13 +26,13 @@ class InicioVentana(QtWidgets.QMainWindow):
         self.show()
 
     def go_to_window_registro(self):
-        self.ventana_registro = ElegirUsuarioRegistro()
+        self.ventana_registro = ElegirUsuarioRegistro(ventana_anterior=self)
         self.ventana_registro.setCoordinador(self.coordinador)
         self.ventana_registro.show()
         self.hide()
 
     def go_to_window_inicio(self):
-        self.ventana_inicio = ElegirUsuario()
+        self.ventana_inicio = ElegirUsuario(ventana_anterior=self)
         self.ventana_inicio.setCoordinador(self.coordinador)
         self.ventana_inicio.show()
         self.hide() 

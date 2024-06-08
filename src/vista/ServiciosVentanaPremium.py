@@ -25,7 +25,7 @@ class VentanaServicioPremium(QtWidgets.QMainWindow):
         self.show()
 
     def go_to_window_mapa(self):
-        self.ventana_registro = MapaVentana()
+        self.ventana_registro = MapaVentana(ventana_anterior=self)
         self.ventana_registro.setCoordinador(self.coordinador)
         self.ventana_registro.show()
         self.hide()

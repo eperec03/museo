@@ -11,7 +11,7 @@ from vista.RegistroClientePVentana import *
 # from vista.InicioVentana import *
 
 class ElegirUsuarioRegistro(QtWidgets.QMainWindow):
-    def __init__(self, controlador = None):
+    def __init__(self, controlador = None,ventana_anterior=None):
         # Importamos el .ui
         super(ElegirUsuarioRegistro, self).__init__()
         uic.loadUi('src/vista/ui/TipoUsuarioRegistro.ui', self)
@@ -20,8 +20,9 @@ class ElegirUsuarioRegistro(QtWidgets.QMainWindow):
         # Almacena una referencia al controlador
         self.coordinador = controlador
         # "EnviarBoton" es el nombre que se le ha dado al objeto en el .ui
+        self.ventana_anterior=ventana_anterior
         self.BotonCliP.clicked.connect(self.go_to_window_premium)
-        # self.BotonAtras.clicked.connect(self.go_back)
+        self.BotonAtras.clicked.connect(self.go_back)
         self.show()
 
     def go_to_window_premium(self):
@@ -30,11 +31,9 @@ class ElegirUsuarioRegistro(QtWidgets.QMainWindow):
         self.ventana_Cliestandar.show()
         self.hide()
         
-    # def go_back(self):
-    #     self.ventana_anterior = InicioVentana()
-    #     self.ventana_anterior.setCoordinador(self.coordinador)
-    #     self.ventana_anterior.show()
-    #     self.delete()
+    def go_back(self):
+        self.ventana_anterior.show()    
+        self.destroy()
 
     def setCoordinador(self, coord) -> None:
         self.coordinador = coord
