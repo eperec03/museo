@@ -116,3 +116,21 @@ class EditorVO(UsuarioVO):
     def set_Rol(self, Rol):
         self.Rol = Rol
 
+cliente1 = ClientePremiumVO()
+
+cliente1.set_DNI("12345678A")
+cliente1.set_UsuNombreCompleto("Juan Pérez")
+cliente1.set_Usutfno("123456789")
+cliente1.set_UsuEmail("juan.perez@example.com")
+cliente1.set_UsuTitularMP("Juan Pérez")
+cliente1.set_UsuNumTarjMP("1234 5678 9012 3456")
+cliente1.set_UsuCvvMP("123")
+cliente1.set_UsuCadMP("2024-12-31")  
+cliente1.set_UsuContrasenna("miContraseñaSegura")
+cliente1.set_UsuFecha("2024-06-01")  
+cliente1.set_ObrasAdquiridas(10)
+cliente1.set_DineroGastado(2500.75)
+cliente1.set_Penalizacion(0)
+cliente1.set_TipoTarifa("Reducida")
+
+print(cliente1.get_UsuContrasenna())
