@@ -927,7 +927,7 @@ CREATE TABLE `usuarios` (
   `Usutfno` varchar(9) NOT NULL,
   `UsuEmail` varchar(50) NOT NULL,
   `UsuTitularMP` varchar(50) NOT NULL,
-  `UsuNumTarjMP` varchar(16) NOT NULL,
+  `UsuNumTarjMP` varchar(45) NOT NULL,
   `UsuCvvMP` int NOT NULL,
   `UsuCadMP` date NOT NULL,
   `UsuContrasenna` varchar(100) NOT NULL,

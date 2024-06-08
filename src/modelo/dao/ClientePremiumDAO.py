@@ -80,26 +80,26 @@ class ClientePremiumDAO(ClientePInterface, Conexion):
             cursor = conn.cursor()
             cursor.execute(self.SQL_FILTER, (dni,))
             rows = cursor.fetchall()
-            DNI,ObrasAdquiridas,DineroGastado,Penalizacion,TipoTarifa= rows[0]
-            #Ahora, obtenemos los aributos de la tabla Usuarios:
-            usu_dao=UsuariosDAO()
-            usu_vo=usu_dao.getUsuario(DNI)
-            clipremium = ClientePremiumVO()
-            clipremium.set_DNI(DNI)
-            clipremium.set_UsuNombreCompleto(usu_vo.get_UsuNombreCompleto())
-            clipremium.set_Usutfno(usu_vo.get_Usutfno())
-            clipremium.set_UsuEmail(usu_vo.get_UsuEmail())
-            clipremium.set_UsuTitularMP(usu_vo.get_UsuTitularMP())
-            clipremium.set_UsuNumTarjMP(usu_vo.get_UsuNumTarjMP())
-            clipremium.set_UsuCvvMP(usu_vo.get_UsuCvvMP())
-            clipremium.set_UsuCadMP(usu_vo.get_UsuCadMP())
-            clipremium.set_UsuContrasenna(usu_vo.get_UsuContrasenna())
-            clipremium.set_ObrasAdquiridas(ObrasAdquiridas)
-            clipremium.set_DineroGastado(DineroGastado)
-            clipremium.set_Penalizacion(Penalizacion)
-            clipremium.set_TipoTarifa(TipoTarifa)
-            clientes.append(clipremium)
-
+            if len(rows)>0:
+                DNI,ObrasAdquiridas,DineroGastado,Penalizacion,TipoTarifa= rows[0]
+                #Ahora, obtenemos los aributos de la tabla Usuarios:
+                usu_dao=UsuariosDAO()
+                usu_vo=usu_dao.getUsuario(DNI)
+                clipremium = ClientePremiumVO()
+                clipremium.set_DNI(DNI)
+                clipremium.set_UsuNombreCompleto(usu_vo.get_UsuNombreCompleto())
+                clipremium.set_Usutfno(usu_vo.get_Usutfno())
+                clipremium.set_UsuEmail(usu_vo.get_UsuEmail())
+                clipremium.set_UsuTitularMP(usu_vo.get_UsuTitularMP())
+                clipremium.set_UsuNumTarjMP(usu_vo.get_UsuNumTarjMP())
+                clipremium.set_UsuCvvMP(usu_vo.get_UsuCvvMP())
+                clipremium.set_UsuCadMP(usu_vo.get_UsuCadMP())
+                clipremium.set_UsuContrasenna(usu_vo.get_UsuContrasenna())
+                clipremium.set_ObrasAdquiridas(ObrasAdquiridas)
+                clipremium.set_DineroGastado(DineroGastado)
+                clipremium.set_Penalizacion(Penalizacion)
+                clipremium.set_TipoTarifa(TipoTarifa)
+                clientes.append(clipremium)
         except Error as e:
             print("Error al seleccionar usuarios:", e)
 
@@ -137,8 +137,6 @@ class ClientePremiumDAO(ClientePInterface, Conexion):
             usu_vo.set_UsuContrasenna(usuario.get_UsuContrasenna())
             usu_dao=UsuariosDAO()
             usu_dao.insertUsuario(usu_vo)
-            cursor.execute(self.SQL_INSERT, (usuario.getDNI(),usuario.getNombreCompleto(),usuario.getTelefono(),usuario.getEmail(),usuario.getTitular(),usuario.getNumTarjeta(),usuario.getCvv(),usuario.getCaducidad(),usuario.getContrasenna(),usuario.getObrasAdquiridas, usuario.getDineroGastado, usuario.getPenalizacion(), usuario.getTipoTarifa()))
-            conn.commit()
             #Ahora, ya podemos meter nuestros datos en Editor
             cursor.execute(self.SQL_INSERT, (usuario.get_DNI(),usuario.get_ObrasAdquiridas(),usuario.get_DineroGastado(),usuario.get_Penalizacion(),usuario.get_TipoTarifa()))
             conn.commit()
@@ -230,9 +228,43 @@ class ClientePremiumDAO(ClientePInterface, Conexion):
         return rows
 
 
+# cliente1 = ClientePremiumVO()
 
+# cliente1.set_DNI("12345678A")
+# cliente1.set_UsuNombreCompleto("Juan Pérez")
+# cliente1.set_Usutfno("123456789")
+# cliente1.set_UsuEmail("juan.perez@example.com")
+# cliente1.set_UsuTitularMP("Juan Pérez")
+# cliente1.set_UsuNumTarjMP("1234 5678 9012 3456")
+# cliente1.set_UsuCvvMP("123")
+# cliente1.set_UsuCadMP("2024-12-31")  
+# cliente1.set_UsuContrasenna("miContraseñaSegura")
+# cliente1.set_UsuFecha("2024-06-01")  
+# cliente1.set_ObrasAdquiridas(10)
+# cliente1.set_DineroGastado(2500.75)
+# cliente1.set_Penalizacion(0)
+# cliente1.set_TipoTarifa("Reducida")
 
+cliente2 = ClientePremiumVO()
 
+cliente2.set_DNI("87654321B")
+cliente2.set_UsuNombreCompleto("Ana Gómez")
+cliente2.set_Usutfno("987654321")
+cliente2.set_UsuEmail("ana.gomez@example.com")
+cliente2.set_UsuTitularMP("Ana Gómez")
+cliente2.set_UsuNumTarjMP("6543 2109 8765 4321")
+cliente2.set_UsuCvvMP("456")
+cliente2.set_UsuCadMP("2025-06-30")  
+cliente2.set_UsuContrasenna("otraContraseñaSegura")
+cliente2.set_UsuFecha("2024-06-02")  
+cliente2.set_ObrasAdquiridas(15)
+cliente2.set_DineroGastado(3500.50)
+cliente2.set_Penalizacion(1)
+cliente2.set_TipoTarifa("Normal")
+
+a=ClientePremiumDAO()
+# a.insertClienteP(cliente2)
+# a.eliminateClienteP('12345678A')
 
 
 
