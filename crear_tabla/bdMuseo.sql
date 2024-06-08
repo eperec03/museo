@@ -122,10 +122,10 @@ DROP TABLE IF EXISTS `clientespremium`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `clientespremium` (
+  `DNI` varchar(9) NOT NULL,
   `ObrasAdquiridas` text,
   `DineroGastado` float DEFAULT '0',
   `Penalizacion` binary(1) DEFAULT NULL,
-  `DNI` varchar(9) NOT NULL,
   `TipoTarifa` varchar(15) NOT NULL,
   PRIMARY KEY (`DNI`),
   KEY `TipoTarifa_idx` (`TipoTarifa`),

@@ -8,34 +8,34 @@ from vo.UsuariosVO import ClientePremiumVO
 """ La interface permite acceder a distintos tipos de fuentes de datos. """
 class ClientePInterface(ABC):
     @abstractmethod
-    def getUsuarios(self) -> List[ClientePremiumVO]:
+    def getClientesP(self) -> List[ClientePremiumVO]:
         """
-        Recupera todos los usuarios de la base de datos.        
+        Recupera todos los ClientePs de la base de datos.        
         Devuelve: List[UserDTO]: Una lista de objetos UserDTO.
         """
-        raise NotImplementedError("Método getUsuarios no implementado")
+        raise NotImplementedError("Método getClientePs no implementado")
     
     @abstractmethod
-    def insertUsuario(self, usuario: ClientePremiumVO):
+    def insertClienteP(self, ClienteP: ClientePremiumVO):
         """
-        Inserta un nuevo usuario en la base de datos.
+        Inserta un nuevo ClienteP en la base de datos.
         Parametros requeridos: El objeto ClientePremiumVO a insertar.
         Devuelve: int: 1 si fue exitoso
         """
-        raise NotImplementedError("Método insertUsuario no implementado")
+        raise NotImplementedError("Método insertClienteP no implementado")
     
     @abstractmethod
-    def eliminateUsuario(self, usuario: ClientePremiumVO):
+    def eliminateClienteP(self, ClienteP: ClientePremiumVO):
         """
-        Elimina un nuevo usuario en la base de datos.
+        Elimina un nuevo ClienteP en la base de datos.
         Parametros requeridos: El objeto ClientePremiumVO para borrar.
         """
-        raise NotImplementedError("Método eliminateUsuario no implementado")
+        raise NotImplementedError("Método eliminateClienteP no implementado")
 
     @abstractmethod
-    def updateUsuario(self, usuario: ClientePremiumVO):
+    def updateClienteP(self, ClienteP: ClientePremiumVO):
         """
-        Actualiza el usuario que tenga el mismo dni que el que se le pasa en la base de datos.
+        Actualiza el ClienteP que tenga el mismo dni que el que se le pasa en la base de datos.
         Parametros requeridos: El objeto ClientePremiumVO a actualizar.
         """
-        raise NotImplementedError("Método updateUsuario no implementado")
+        raise NotImplementedError("Método updateClienteP no implementado")
