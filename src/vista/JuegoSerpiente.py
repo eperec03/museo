@@ -1,6 +1,7 @@
 import turtle
 import time
 import random
+import os
 
 delay = 0.1
 
@@ -14,7 +15,17 @@ wn.title("Snake Game by @TokyoEdTech")
 wn.setup(width=600, height=600)
 wn.tracer(0) # Turns off the screen updates
 
-wn.bgpic(r'C:\Users\clara\Documents\2ºUNI\2CUATRI\IS\museo\src\vista\Imagenes\monalisa.gif')
+paths = [
+    r'C:\Users\eripe\OneDrive\Documentos\ERI ULE\2º\SEGUNDO CUATRI\IS\PROYECTO\src\vista\Imagenes\monalisa.gif',
+    r'C:\Users\clara\Documents\2ºUNI\2CUATRI\IS\museo\src\vista\Imagenes\monalisa.gif'
+]
+
+# Check and set the background image
+for path in paths:
+    if os.path.exists(path):
+        wn.bgpic(path)
+        break
+
 # Snake head
 head = turtle.Turtle()
 head.speed(0)

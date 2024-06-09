@@ -1,6 +1,7 @@
 import sys
 # #sys.path.append(r'C:\Users\eripe\OneDrive\Documentos\ERI ULE\2º\SEGUNDO CUATRI\IS\PROYECTO\src\modelo')
 sys.path.append(r'c:\Users\clara\Documents\2ºUNI\2CUATRI\IS\src')
+import os
 
 import subprocess
 import tkinter as tk
@@ -9,7 +10,10 @@ from PyQt5 import QtWidgets, uic
 from PyQt5.QtWidgets import QMessageBox
 from PyQt5.QtGui import QIcon
 from vista.MapaVentana import *
-
+paths = [
+    r'C:\Users\eripe\OneDrive\Documentos\ERI ULE\2º\SEGUNDO CUATRI\IS\PROYECTO\src\vista\JuegoSerpiente.py',
+    r'C:\Users\clara\Documents\2ºUNI\2CUATRI\IS\museo\src\vista\JuegoSerpiente.py'
+]
 
 class VentanaJuegos(QtWidgets.QMainWindow):
     def __init__(self, controlador = None, ventana_anterior=None):
@@ -31,7 +35,10 @@ class VentanaJuegos(QtWidgets.QMainWindow):
         self.destroy()
 
     def go_to_snake1(self):
-        subprocess.run(["python", r"C:\Users\clara\Documents\2ºUNI\2CUATRI\IS\museo\src\vista\JuegoSerpiente.py"])
+        for path in paths:
+            if os.path.exists(path):
+                subprocess.run(["python", path])
+                break
         # self.hide()
 
     # def go_to_window_inicio(self):
