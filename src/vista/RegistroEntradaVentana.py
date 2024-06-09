@@ -26,7 +26,7 @@ class RegistroEntradaVentana(QtWidgets.QMainWindow):
         self.destroy()
 
     def go_to_ventana_servicios(self):
-        self.ventana_servicios = VentanaServicio()
+        self.ventana_servicios = VentanaServicio(ventana_anterior=self)
         self.ventana_servicios.setCoordinador(self.coordinador)
         self.ventana_servicios.show()
         self.hide()
