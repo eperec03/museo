@@ -63,7 +63,7 @@ class Coordinador:
    ##############################################
 
    def registrarUsuario(self, usuario: ClientePremiumVO) -> None:
-      self._model.validar_registro(usuario)
+      self._model.validar_registro_editor(usuario)
    #aqui van los metodos de lo que hacen los 'botones'
 
    def eliminarUsuario(self, usuario: ClientePremiumVO) -> None:
@@ -79,6 +79,9 @@ class Coordinador:
    def validarUsuario(self, usuario: ClientePremiumVO) -> bool:
       if self._model.comprobar_cliente(usuario):
          return True
+
+   def registrarEditor(self, usuario: EditorVO) -> None:
+      self._model.validar_registro(usuario)
 
    def obtener_todos_objetos(self):
       return self._model.select_objetos()

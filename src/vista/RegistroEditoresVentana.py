@@ -4,17 +4,17 @@ sys.path.append(r'c:\Users\clara\Documents\2ºUNI\2CUATRI\IS\src')
 
 import tkinter as tk
 from tkinter import messagebox
-from modelo.vo.UsuariosVO import ClientePremiumVO
+from modelo.vo.UsuariosVO import *
 from PyQt5 import QtWidgets, uic
 from PyQt5.QtWidgets import QMessageBox
 from PyQt5.QtGui import QIcon
 
-class RegistroClientePVentana(QtWidgets.QMainWindow):
+class RegistroEditoresVentana(QtWidgets.QMainWindow):
     def __init__(self, controlador = None, ventana_anterior=None):
         # Importamos el .ui
-        super(RegistroClientePVentana, self).__init__()
-        uic.loadUi('src/vista/ui/RegistroCliP.ui', self)
-        self.setWindowTitle("REGISTRO DE CLIENTE PREMIUM")
+        super(RegistroEditoresVentana, self).__init__()
+        uic.loadUi('src/vista/ui/RegistroEditores.ui', self)
+        self.setWindowTitle("REGISTRO DE EDITOR")
         self.setWindowIcon(QIcon('src/vista/Imagenes/logomuseo.png'))  # Reemplaza con la ruta a tu logo
         # Almacena una referencia al controlador
         self.coordinador = controlador
@@ -55,7 +55,7 @@ class RegistroClientePVentana(QtWidgets.QMainWindow):
 
     def registrarPersona(self) -> None:
         try:
-            persona = ClientePremiumVO(
+            persona = EditorVO(
                 DNI = self.lineDni.text(),
                 UsuNombreCompleto = self.lineNombre.text(),
                 Usutfno = self.lineTfno.text(),
@@ -65,6 +65,7 @@ class RegistroClientePVentana(QtWidgets.QMainWindow):
                 UsuCvvMP = self.lineCvv.text(), 
                 UsuCadMP = self.lineCad.text(), 
                 UsuContrasenna = self.lineContrasenna.text(), 
+                Rol=self.lineRol.text()
             )
             self.coordinador.registrarUsuario(persona)
             self.limpiar()

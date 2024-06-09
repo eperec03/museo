@@ -6,6 +6,7 @@ import tkinter as tk
 from tkinter import messagebox
 from modelo.vo.UsuariosVO import *
 from modelo.dao.ClientePremiumDAO import *
+from modelo.dao.EditoresDAO import *
 from modelo.vo.ClienteEstandarVO import *
 from modelo.dao.ClienteEstandarDAO import *
 from controlador.coordinador import Coordinador
@@ -70,3 +71,11 @@ class Logica:
     def select_objetos(self):
         a=ObjetosDao()
         return a.getObjetos()
+    
+    def validar_registro_editor(self, mi_persona: EditorVO):
+        #habría que poner más cosas para validar el registtro?
+        if '@' in mi_persona.get_UsuEmail():
+            mi_persona_dao = EditorDAO()
+            mi_persona_dao.insertUsuario(mi_persona)
+        else:
+            messagebox.showwarning("Advertencia", "El email no es válido")
