@@ -30,7 +30,7 @@ class InicioClientePVentana(QtWidgets.QMainWindow):
         self.destroy()
 
     def go_to_window_servicios(self):
-        self.ventana_servicios = VentanaServicioPremium()
+        self.ventana_servicios = VentanaServicioPremium(ventana_anterior=self)
         self.ventana_servicios.setCoordinador(self.coordinador)
         self.ventana_servicios.show()
         self.hide()        

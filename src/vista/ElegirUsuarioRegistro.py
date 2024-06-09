@@ -26,7 +26,7 @@ class ElegirUsuarioRegistro(QtWidgets.QMainWindow):
         self.show()
 
     def go_to_window_premium(self):
-        self.ventana_Cliestandar = RegistroClientePVentana()
+        self.ventana_Cliestandar = RegistroClientePVentana(ventana_anterior=self)
         self.ventana_Cliestandar.setCoordinador(self.coordinador)
         self.ventana_Cliestandar.show()
         self.hide()

@@ -74,9 +74,15 @@
      <rect>
       <x>600</x>
       <y>190</y>
-      <width>91</width>
-      <height>111</height>
+      <width>81</width>
+      <height>121</height>
      </rect>
+    </property>
+    <property name="maximumSize">
+     <size>
+      <width>411</width>
+      <height>16777215</height>
+     </size>
     </property>
     <property name="font">
      <font>
@@ -96,7 +102,7 @@
    <widget class="QPushButton" name="enviarBotonJuego1">
     <property name="geometry">
      <rect>
-      <x>580</x>
+      <x>570</x>
       <y>320</y>
       <width>131</width>
       <height>41</height>
@@ -543,6 +549,19 @@ border-radius: 15px;</string>
     </property>
     <property name="text">
      <string>🡸</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="pushButton">
+    <property name="geometry">
+     <rect>
+      <x>590</x>
+      <y>370</y>
+      <width>93</width>
+      <height>28</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Obra</string>
     </property>
    </widget>
   </widget>

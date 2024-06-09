@@ -25,7 +25,6 @@ class VentanaServicioPremium(QtWidgets.QMainWindow):
         self.BotonJuegos.clicked.connect(self.go_to_window_juegos)    
         # self.BotonCatalogo.clicked.connect(self.go_to_window_objetos)
         # self.BotonInicioS.clicked.connect(self.go_to_window_inicio)
-        self.show()
         self.ventana_anterior=ventana_anterior
         self.BotonAtras.clicked.connect(self.go_back)
 
