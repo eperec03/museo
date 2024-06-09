@@ -10,7 +10,7 @@ from PyQt5.QtWidgets import QMessageBox
 from PyQt5.QtGui import QIcon
 
 class RegistroClientePVentana(QtWidgets.QMainWindow):
-    def __init__(self, controlador = None):
+    def __init__(self, controlador = None, ventana_anterior=None):
         # Importamos el .ui
         super(RegistroClientePVentana, self).__init__()
         uic.loadUi('src/vista/ui/RegistroCliP.ui', self)
@@ -20,7 +20,12 @@ class RegistroClientePVentana(QtWidgets.QMainWindow):
         self.coordinador = controlador
         # "EnviarBoton" es el nombre que se le ha dado al objeto en el .ui
         self.enviarBoton.clicked.connect(self.registrarPersona)
-        self.show()
+        self.ventana_anterior=ventana_anterior
+        self.BotonAtras.clicked.connect(self.go_back)
+
+    def go_back(self):
+        self.ventana_anterior.show()
+        self.destroy()
 
     def setCoordinador(self, coord) -> None:
         self.coordinador = coord

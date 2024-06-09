@@ -9,6 +9,7 @@ from PyQt5 import QtWidgets, uic
 from PyQt5.QtWidgets import QMessageBox
 from PyQt5.QtGui import QIcon
 from vista.ServiciosVentanaPremium import *
+
 class InicioClientePVentana(QtWidgets.QMainWindow):
     def __init__(self, controlador = None,ventana_anterior=None):
         # Importamos el .ui

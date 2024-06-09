@@ -14,16 +14,17 @@ from PyQt5.QtGui import *
 from PyQt5.QtWidgets import *
 
 
+
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         if not MainWindow.objectName():
             MainWindow.setObjectName(u"MainWindow")
-        MainWindow.resize(800, 600)
+        MainWindow.resize(1703, 865)
         self.centralwidget = QWidget(MainWindow)
         self.centralwidget.setObjectName(u"centralwidget")
         self.BotonJuegos = QPushButton(self.centralwidget)
         self.BotonJuegos.setObjectName(u"BotonJuegos")
-        self.BotonJuegos.setGeometry(QRect(320, 410, 161, 41))
+        self.BotonJuegos.setGeometry(QRect(780, 610, 201, 51))
         palette = QPalette()
         brush = QBrush(QColor(255, 255, 255, 255))
         brush.setStyle(Qt.SolidPattern)
@@ -63,6 +64,12 @@ class Ui_MainWindow(object):
         palette.setBrush(QPalette.Disabled, QPalette.PlaceholderText, brush4)
 #endif
         self.BotonJuegos.setPalette(palette)
+        font = QFont()
+        font.setFamily(u"Verdana")
+        font.setPointSize(12)
+        font.setBold(True)
+        font.setWeight(75)
+        self.BotonJuegos.setFont(font)
         self.BotonJuegos.setCursor(QCursor(Qt.PointingHandCursor))
         self.BotonJuegos.setStyleSheet(u"background-color: rgb(67, 157, 175);\n"
 "color: rgb(255, 255, 255);\n"
@@ -71,16 +78,16 @@ class Ui_MainWindow(object):
 "border-radius: 15px;")
         self.Titulo = QLabel(self.centralwidget)
         self.Titulo.setObjectName(u"Titulo")
-        self.Titulo.setGeometry(QRect(170, 80, 521, 91))
-        font = QFont()
-        font.setFamily(u"Bell MT")
-        font.setPointSize(24)
-        font.setBold(False)
-        font.setWeight(50)
-        self.Titulo.setFont(font)
+        self.Titulo.setGeometry(QRect(370, 80, 1001, 91))
+        font1 = QFont()
+        font1.setFamily(u"Bell MT")
+        font1.setPointSize(24)
+        font1.setBold(False)
+        font1.setWeight(50)
+        self.Titulo.setFont(font1)
         self.BotonExposicioes = QPushButton(self.centralwidget)
         self.BotonExposicioes.setObjectName(u"BotonExposicioes")
-        self.BotonExposicioes.setGeometry(QRect(320, 340, 161, 41))
+        self.BotonExposicioes.setGeometry(QRect(780, 480, 201, 51))
         palette1 = QPalette()
         palette1.setBrush(QPalette.Active, QPalette.WindowText, brush)
         palette1.setBrush(QPalette.Active, QPalette.Button, brush1)
@@ -116,6 +123,7 @@ class Ui_MainWindow(object):
         palette1.setBrush(QPalette.Disabled, QPalette.PlaceholderText, brush7)
 #endif
         self.BotonExposicioes.setPalette(palette1)
+        self.BotonExposicioes.setFont(font)
         self.BotonExposicioes.setCursor(QCursor(Qt.PointingHandCursor))
         self.BotonExposicioes.setStyleSheet(u"background-color: rgb(67, 157, 175);\n"
 "color: rgb(255, 255, 255);\n"
@@ -124,7 +132,7 @@ class Ui_MainWindow(object):
 "border-radius: 15px;")
         self.BotonMapa = QPushButton(self.centralwidget)
         self.BotonMapa.setObjectName(u"BotonMapa")
-        self.BotonMapa.setGeometry(QRect(320, 200, 161, 41))
+        self.BotonMapa.setGeometry(QRect(780, 210, 201, 51))
         palette2 = QPalette()
         palette2.setBrush(QPalette.Active, QPalette.WindowText, brush)
         palette2.setBrush(QPalette.Active, QPalette.Button, brush1)
@@ -160,15 +168,16 @@ class Ui_MainWindow(object):
         palette2.setBrush(QPalette.Disabled, QPalette.PlaceholderText, brush10)
 #endif
         self.BotonMapa.setPalette(palette2)
+        self.BotonMapa.setFont(font)
         self.BotonMapa.setCursor(QCursor(Qt.PointingHandCursor))
         self.BotonMapa.setStyleSheet(u"background-color: rgb(67, 157, 175);\n"
 "color: rgb(255, 255, 255);\n"
 "font-weight: bold;\n"
 "font-family: 'Verdana';\n"
 "border-radius: 15px;")
-        self.BotonCliP = QPushButton(self.centralwidget)
-        self.BotonCliP.setObjectName(u"BotonCliP")
-        self.BotonCliP.setGeometry(QRect(320, 270, 161, 41))
+        self.BotonCatalogo = QPushButton(self.centralwidget)
+        self.BotonCatalogo.setObjectName(u"BotonCatalogo")
+        self.BotonCatalogo.setGeometry(QRect(780, 350, 201, 51))
         palette3 = QPalette()
         palette3.setBrush(QPalette.Active, QPalette.WindowText, brush)
         palette3.setBrush(QPalette.Active, QPalette.Button, brush1)
@@ -203,16 +212,17 @@ class Ui_MainWindow(object):
 #if QT_VERSION >= QT_VERSION_CHECK(5, 12, 0)
         palette3.setBrush(QPalette.Disabled, QPalette.PlaceholderText, brush13)
 #endif
-        self.BotonCliP.setPalette(palette3)
-        self.BotonCliP.setCursor(QCursor(Qt.PointingHandCursor))
-        self.BotonCliP.setStyleSheet(u"background-color: rgb(67, 157, 175);\n"
+        self.BotonCatalogo.setPalette(palette3)
+        self.BotonCatalogo.setFont(font)
+        self.BotonCatalogo.setCursor(QCursor(Qt.PointingHandCursor))
+        self.BotonCatalogo.setStyleSheet(u"background-color: rgb(67, 157, 175);\n"
 "color: rgb(255, 255, 255);\n"
 "font-weight: bold;\n"
 "font-family: 'Verdana';\n"
 "border-radius: 15px;")
-        self.BotonJuegos_2 = QPushButton(self.centralwidget)
-        self.BotonJuegos_2.setObjectName(u"BotonJuegos_2")
-        self.BotonJuegos_2.setGeometry(QRect(320, 480, 161, 41))
+        self.BotonSubastas = QPushButton(self.centralwidget)
+        self.BotonSubastas.setObjectName(u"BotonSubastas")
+        self.BotonSubastas.setGeometry(QRect(780, 740, 201, 51))
         palette4 = QPalette()
         palette4.setBrush(QPalette.Active, QPalette.WindowText, brush)
         palette4.setBrush(QPalette.Active, QPalette.Button, brush1)
@@ -247,14 +257,79 @@ class Ui_MainWindow(object):
 #if QT_VERSION >= QT_VERSION_CHECK(5, 12, 0)
         palette4.setBrush(QPalette.Disabled, QPalette.PlaceholderText, brush16)
 #endif
-        self.BotonJuegos_2.setPalette(palette4)
-        self.BotonJuegos_2.setCursor(QCursor(Qt.PointingHandCursor))
-        self.BotonJuegos_2.setStyleSheet(u"background-color: rgb(67, 157, 175);\n"
+        self.BotonSubastas.setPalette(palette4)
+        self.BotonSubastas.setFont(font)
+        self.BotonSubastas.setCursor(QCursor(Qt.PointingHandCursor))
+        self.BotonSubastas.setStyleSheet(u"background-color: rgb(67, 157, 175);\n"
 "color: rgb(255, 255, 255);\n"
 "font-weight: bold;\n"
 "font-family: 'Verdana';\n"
 "border-radius: 15px;")
+        self.foto = QLabel(self.centralwidget)
+        self.foto.setObjectName(u"foto")
+        self.foto.setGeometry(QRect(-40, -100, 1841, 1091))
+        font2 = QFont()
+        font2.setFamily(u"Bell MT")
+        font2.setPointSize(22)
+        font2.setBold(False)
+        font2.setWeight(50)
+        self.foto.setFont(font2)
+        self.foto.setPixmap(QPixmap(u"../Imagenes/foto.png"))
+        self.BotonAtras = QPushButton(self.centralwidget)
+        self.BotonAtras.setObjectName(u"BotonAtras")
+        self.BotonAtras.setGeometry(QRect(20, 20, 41, 31))
+        palette5 = QPalette()
+        palette5.setBrush(QPalette.Active, QPalette.WindowText, brush1)
+        brush17 = QBrush(QColor(208, 223, 232, 255))
+        brush17.setStyle(Qt.SolidPattern)
+        palette5.setBrush(QPalette.Active, QPalette.Button, brush17)
+        palette5.setBrush(QPalette.Active, QPalette.Text, brush1)
+        palette5.setBrush(QPalette.Active, QPalette.ButtonText, brush1)
+        palette5.setBrush(QPalette.Active, QPalette.Base, brush17)
+        palette5.setBrush(QPalette.Active, QPalette.Window, brush17)
+        brush18 = QBrush(QColor(67, 157, 175, 128))
+        brush18.setStyle(Qt.NoBrush)
+#if QT_VERSION >= QT_VERSION_CHECK(5, 12, 0)
+        palette5.setBrush(QPalette.Active, QPalette.PlaceholderText, brush18)
+#endif
+        palette5.setBrush(QPalette.Inactive, QPalette.WindowText, brush1)
+        palette5.setBrush(QPalette.Inactive, QPalette.Button, brush17)
+        palette5.setBrush(QPalette.Inactive, QPalette.Text, brush1)
+        palette5.setBrush(QPalette.Inactive, QPalette.ButtonText, brush1)
+        palette5.setBrush(QPalette.Inactive, QPalette.Base, brush17)
+        palette5.setBrush(QPalette.Inactive, QPalette.Window, brush17)
+        brush19 = QBrush(QColor(67, 157, 175, 128))
+        brush19.setStyle(Qt.NoBrush)
+#if QT_VERSION >= QT_VERSION_CHECK(5, 12, 0)
+        palette5.setBrush(QPalette.Inactive, QPalette.PlaceholderText, brush19)
+#endif
+        palette5.setBrush(QPalette.Disabled, QPalette.WindowText, brush1)
+        palette5.setBrush(QPalette.Disabled, QPalette.Button, brush17)
+        palette5.setBrush(QPalette.Disabled, QPalette.Text, brush1)
+        palette5.setBrush(QPalette.Disabled, QPalette.ButtonText, brush1)
+        palette5.setBrush(QPalette.Disabled, QPalette.Base, brush17)
+        palette5.setBrush(QPalette.Disabled, QPalette.Window, brush17)
+        brush20 = QBrush(QColor(67, 157, 175, 128))
+        brush20.setStyle(Qt.NoBrush)
+#if QT_VERSION >= QT_VERSION_CHECK(5, 12, 0)
+        palette5.setBrush(QPalette.Disabled, QPalette.PlaceholderText, brush20)
+#endif
+        self.BotonAtras.setPalette(palette5)
+        self.BotonAtras.setCursor(QCursor(Qt.PointingHandCursor))
+        self.BotonAtras.setStyleSheet(u"background-color: rgb(208, 223, 232);\n"
+"color:rgb(67, 157, 175);\n"
+"font-weight: bold;\n"
+"font-family: 'Verdana';\n"
+"border-radius: 15px;")
         MainWindow.setCentralWidget(self.centralwidget)
+        self.foto.raise_()
+        self.BotonJuegos.raise_()
+        self.Titulo.raise_()
+        self.BotonExposicioes.raise_()
+        self.BotonMapa.raise_()
+        self.BotonCatalogo.raise_()
+        self.BotonSubastas.raise_()
+        self.BotonAtras.raise_()
         self.statusbar = QStatusBar(MainWindow)
         self.statusbar.setObjectName(u"statusbar")
         MainWindow.setStatusBar(self.statusbar)
@@ -267,10 +342,12 @@ class Ui_MainWindow(object):
     def retranslateUi(self, MainWindow):
         MainWindow.setWindowTitle(QCoreApplication.translate("MainWindow", u"MainWindow", None))
         self.BotonJuegos.setText(QCoreApplication.translate("MainWindow", u"JUEGOS", None))
-        self.Titulo.setText(QCoreApplication.translate("MainWindow", u"\u00bfA QU\u00c9 DESEA ACCEDER?", None))
+        self.Titulo.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" font-size:48pt;\">\u00bfA QU\u00c9 DESEA ACCEDER?</span></p></body></html>", None))
         self.BotonExposicioes.setText(QCoreApplication.translate("MainWindow", u"EXPOSICIONES", None))
         self.BotonMapa.setText(QCoreApplication.translate("MainWindow", u"MAPA", None))
-        self.BotonCliP.setText(QCoreApplication.translate("MainWindow", u"CAT\u00c1LOGO", None))
-        self.BotonJuegos_2.setText(QCoreApplication.translate("MainWindow", u"SUBASTAS", None))
+        self.BotonCatalogo.setText(QCoreApplication.translate("MainWindow", u"CAT\u00c1LOGO", None))
+        self.BotonSubastas.setText(QCoreApplication.translate("MainWindow", u"SUBASTAS", None))
+        self.foto.setText("")
+        self.BotonAtras.setText(QCoreApplication.translate("MainWindow", u"\ud83e\udc78", None))
     # retranslateUi
 

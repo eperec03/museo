@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1428</width>
-    <height>825</height>
+    <width>1704</width>
+    <height>866</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -17,9 +17,9 @@
    <widget class="QLabel" name="Titulo">
     <property name="geometry">
      <rect>
-      <x>570</x>
+      <x>580</x>
       <y>160</y>
-      <width>291</width>
+      <width>551</width>
       <height>91</height>
      </rect>
     </property>
@@ -32,16 +32,16 @@
      </font>
     </property>
     <property name="text">
-     <string>¿QUIÉN ERES?</string>
+     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:48pt;&quot;&gt;¿QUIÉN ERES?&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
     </property>
    </widget>
    <widget class="QPushButton" name="BotonCliP">
     <property name="geometry">
      <rect>
-      <x>630</x>
-      <y>330</y>
-      <width>161</width>
-      <height>41</height>
+      <x>730</x>
+      <y>480</y>
+      <width>261</width>
+      <height>51</height>
      </rect>
     </property>
     <property name="palette">
@@ -242,6 +242,14 @@
        </colorrole>
       </disabled>
      </palette>
+    </property>
+    <property name="font">
+     <font>
+      <family>Verdana</family>
+      <pointsize>12</pointsize>
+      <weight>75</weight>
+      <bold>true</bold>
+     </font>
     </property>
     <property name="cursor">
      <cursorShape>PointingHandCursor</cursorShape>
@@ -260,10 +268,10 @@ border-radius: 15px;</string>
    <widget class="QPushButton" name="BotonCliE">
     <property name="geometry">
      <rect>
-      <x>630</x>
-      <y>260</y>
-      <width>161</width>
-      <height>41</height>
+      <x>730</x>
+      <y>360</y>
+      <width>261</width>
+      <height>51</height>
      </rect>
     </property>
     <property name="palette">
@@ -464,6 +472,14 @@ border-radius: 15px;</string>
        </colorrole>
       </disabled>
      </palette>
+    </property>
+    <property name="font">
+     <font>
+      <family>Verdana</family>
+      <pointsize>12</pointsize>
+      <weight>75</weight>
+      <bold>true</bold>
+     </font>
     </property>
     <property name="cursor">
      <cursorShape>PointingHandCursor</cursorShape>
@@ -704,10 +720,10 @@ border-radius: 15px;</string>
    <widget class="QPushButton" name="BotonEditores">
     <property name="geometry">
      <rect>
-      <x>630</x>
-      <y>400</y>
-      <width>161</width>
-      <height>41</height>
+      <x>730</x>
+      <y>600</y>
+      <width>261</width>
+      <height>51</height>
      </rect>
     </property>
     <property name="palette">
@@ -909,6 +925,14 @@ border-radius: 15px;</string>
       </disabled>
      </palette>
     </property>
+    <property name="font">
+     <font>
+      <family>Verdana</family>
+      <pointsize>12</pointsize>
+      <weight>75</weight>
+      <bold>true</bold>
+     </font>
+    </property>
     <property name="cursor">
      <cursorShape>PointingHandCursor</cursorShape>
     </property>
@@ -926,10 +950,10 @@ border-radius: 15px;</string>
    <widget class="QLabel" name="Titulo_2">
     <property name="geometry">
      <rect>
-      <x>-230</x>
-      <y>-20</y>
-      <width>1701</width>
-      <height>861</height>
+      <x>-60</x>
+      <y>-90</y>
+      <width>1931</width>
+      <height>991</height>
      </rect>
     </property>
     <property name="font">
