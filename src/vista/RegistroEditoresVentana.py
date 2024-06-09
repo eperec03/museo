@@ -31,7 +31,7 @@ class RegistroEditoresVentana(QtWidgets.QMainWindow):
         self.coordinador = coord
 
     def limpiar(self):
-        self.lineDni.clear()
+        self.lineSSN.clear()
         self.lineNombre.clear()
         self.lineTfno.clear()
         self.lineEmail.clear()
@@ -40,6 +40,7 @@ class RegistroEditoresVentana(QtWidgets.QMainWindow):
         self.lineCvv.clear()
         self.lineCad.clear()
         self.lineContrasenna.clear()
+        self.lineRol.clear()
         # self.lineFecha.clear()
 
     # def setVisible(self, visible: bool) -> None:
@@ -56,7 +57,7 @@ class RegistroEditoresVentana(QtWidgets.QMainWindow):
     def registrarPersona(self) -> None:
         try:
             persona = EditorVO(
-                DNI = self.lineDni.text(),
+                SSN = self.lineSSN.text(),
                 UsuNombreCompleto = self.lineNombre.text(),
                 Usutfno = self.lineTfno.text(),
                 UsuEmail = self.lineEmail.text(),

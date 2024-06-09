@@ -292,7 +292,7 @@ background-color: rgb(208, 223, 232);</string>
      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:14pt; font-weight:600;&quot;&gt;Nombre Completo&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
     </property>
    </widget>
-   <widget class="QLineEdit" name="lineDni">
+   <widget class="QLineEdit" name="lineSSN">
     <property name="geometry">
      <rect>
       <x>480</x>
@@ -316,7 +316,7 @@ background-color: rgb(208, 223, 232);</string>
      </rect>
     </property>
     <property name="text">
-     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:14pt; font-weight:600;&quot;&gt;DNI&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:14pt; font-weight:600;&quot;&gt;SSN&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
     </property>
    </widget>
    <widget class="QLineEdit" name="lineTfno">
@@ -840,7 +840,7 @@ background-color: rgb(208, 223, 232);</string>
    <zorder>label_3</zorder>
    <zorder>lineNombre</zorder>
    <zorder>label</zorder>
-   <zorder>lineDni</zorder>
+   <zorder>lineSSN</zorder>
    <zorder>label_4</zorder>
    <zorder>lineTfno</zorder>
    <zorder>label_5</zorder>
