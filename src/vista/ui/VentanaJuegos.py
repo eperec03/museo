@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 ################################################################################
-## Form generated from reading UI file 'InicioCliPsDaqhI.ui'
+## Form generated from reading UI file 'VentanaJuegossjWLHm.ui'
 ##
 ## Created by: Qt User Interface Compiler version 5.15.2
 ##
@@ -18,38 +18,34 @@ class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         if not MainWindow.objectName():
             MainWindow.setObjectName(u"MainWindow")
-        MainWindow.resize(1690, 857)
+        MainWindow.resize(1701, 865)
         self.centralwidget = QWidget(MainWindow)
         self.centralwidget.setObjectName(u"centralwidget")
-        self.label_3 = QLabel(self.centralwidget)
-        self.label_3.setObjectName(u"label_3")
-        self.label_3.setGeometry(QRect(670, 200, 461, 91))
+        self.Titulo = QLabel(self.centralwidget)
+        self.Titulo.setObjectName(u"Titulo")
+        self.Titulo.setGeometry(QRect(690, 70, 321, 91))
         font = QFont()
         font.setFamily(u"Bell MT")
         font.setPointSize(24)
         font.setBold(False)
         font.setWeight(50)
-        self.label_3.setFont(font)
-        self.lineDni = QLineEdit(self.centralwidget)
-        self.lineDni.setObjectName(u"lineDni")
-        self.lineDni.setGeometry(QRect(750, 400, 261, 51))
-        self.lineDni.setStyleSheet(u"border-radius: 15px;\n"
-"background-color: rgb(208, 223, 232);")
-        self.label_4 = QLabel(self.centralwidget)
-        self.label_4.setObjectName(u"label_4")
-        self.label_4.setGeometry(QRect(760, 360, 181, 31))
-        self.lineContrasenna = QLineEdit(self.centralwidget)
-        self.lineContrasenna.setObjectName(u"lineContrasenna")
-        self.lineContrasenna.setGeometry(QRect(750, 530, 261, 51))
-        self.lineContrasenna.setStyleSheet(u"border-radius: 15px;\n"
-"background-color: rgb(208, 223, 232);")
-        self.lineContrasenna.setEchoMode(QLineEdit.Password)
-        self.label_8 = QLabel(self.centralwidget)
-        self.label_8.setObjectName(u"label_8")
-        self.label_8.setGeometry(QRect(760, 485, 181, 41))
-        self.enviarBoton = QPushButton(self.centralwidget)
-        self.enviarBoton.setObjectName(u"enviarBoton")
-        self.enviarBoton.setGeometry(QRect(800, 640, 161, 51))
+        self.Titulo.setFont(font)
+        self.verticalScrollBar = QScrollBar(self.centralwidget)
+        self.verticalScrollBar.setObjectName(u"verticalScrollBar")
+        self.verticalScrollBar.setGeometry(QRect(1550, 170, 20, 611))
+        self.verticalScrollBar.setOrientation(Qt.Vertical)
+        self.Titulo_2 = QLabel(self.centralwidget)
+        self.Titulo_2.setObjectName(u"Titulo_2")
+        self.Titulo_2.setGeometry(QRect(330, 230, 211, 41))
+        self.Titulo_2.setFont(font)
+        self.Titulo_3 = QLabel(self.centralwidget)
+        self.Titulo_3.setObjectName(u"Titulo_3")
+        self.Titulo_3.setGeometry(QRect(600, 190, 91, 111))
+        self.Titulo_3.setFont(font)
+        self.Titulo_3.setPixmap(QPixmap(u"../Imagenes/monalisa.jpg"))
+        self.enviarBotonJuego1 = QPushButton(self.centralwidget)
+        self.enviarBotonJuego1.setObjectName(u"enviarBotonJuego1")
+        self.enviarBotonJuego1.setGeometry(QRect(580, 320, 131, 41))
         palette = QPalette()
         brush = QBrush(QColor(255, 255, 255, 255))
         brush.setStyle(Qt.SolidPattern)
@@ -88,27 +84,22 @@ class Ui_MainWindow(object):
 #if QT_VERSION >= QT_VERSION_CHECK(5, 12, 0)
         palette.setBrush(QPalette.Disabled, QPalette.PlaceholderText, brush4)
 #endif
-        self.enviarBoton.setPalette(palette)
+        self.enviarBotonJuego1.setPalette(palette)
         font1 = QFont()
         font1.setFamily(u"Verdana")
-        font1.setPointSize(12)
+        font1.setPointSize(10)
         font1.setBold(True)
         font1.setWeight(75)
-        self.enviarBoton.setFont(font1)
-        self.enviarBoton.setCursor(QCursor(Qt.PointingHandCursor))
-        self.enviarBoton.setStyleSheet(u"background-color: rgb(67, 157, 175);\n"
+        self.enviarBotonJuego1.setFont(font1)
+        self.enviarBotonJuego1.setCursor(QCursor(Qt.PointingHandCursor))
+        self.enviarBotonJuego1.setStyleSheet(u"background-color: rgb(67, 157, 175);\n"
 "color: rgb(255, 255, 255);\n"
 "font-weight: bold;\n"
 "font-family: 'Verdana';\n"
 "border-radius: 15px;")
-        self.fondo = QLabel(self.centralwidget)
-        self.fondo.setObjectName(u"fondo")
-        self.fondo.setGeometry(QRect(-70, -220, 2001, 1061))
-        self.fondo.setFont(font)
-        self.fondo.setPixmap(QPixmap(u"../Imagenes/foto.png"))
         self.BotonAtras = QPushButton(self.centralwidget)
         self.BotonAtras.setObjectName(u"BotonAtras")
-        self.BotonAtras.setGeometry(QRect(30, 30, 51, 41))
+        self.BotonAtras.setGeometry(QRect(20, 10, 41, 31))
         palette1 = QPalette()
         palette1.setBrush(QPalette.Active, QPalette.WindowText, brush1)
         brush5 = QBrush(QColor(208, 223, 232, 255))
@@ -153,14 +144,6 @@ class Ui_MainWindow(object):
 "font-family: 'Verdana';\n"
 "border-radius: 15px;")
         MainWindow.setCentralWidget(self.centralwidget)
-        self.fondo.raise_()
-        self.label_3.raise_()
-        self.lineDni.raise_()
-        self.label_4.raise_()
-        self.lineContrasenna.raise_()
-        self.label_8.raise_()
-        self.enviarBoton.raise_()
-        self.BotonAtras.raise_()
         self.statusbar = QStatusBar(MainWindow)
         self.statusbar.setObjectName(u"statusbar")
         MainWindow.setStatusBar(self.statusbar)
@@ -172,12 +155,10 @@ class Ui_MainWindow(object):
 
     def retranslateUi(self, MainWindow):
         MainWindow.setWindowTitle(QCoreApplication.translate("MainWindow", u"MainWindow", None))
-        self.label_3.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" font-size:48pt;\">\u00a1ENTRA YA!</span></p></body></html>", None))
-        self.label_4.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" font-size:14pt; font-weight:600;\">DNI</span></p></body></html>", None))
-        self.lineContrasenna.setInputMask("")
-        self.label_8.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" font-size:14pt; font-weight:600;\">Contrase\u00f1a</span></p></body></html>", None))
-        self.enviarBoton.setText(QCoreApplication.translate("MainWindow", u"ENTRAR", None))
-        self.fondo.setText("")
+        self.Titulo.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" font-size:48pt;\">JUEGOS</span></p></body></html>", None))
+        self.Titulo_2.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p>Snake Game</p></body></html>", None))
+        self.Titulo_3.setText("")
+        self.enviarBotonJuego1.setText(QCoreApplication.translate("MainWindow", u"JUGAR", None))
         self.BotonAtras.setText(QCoreApplication.translate("MainWindow", u"\ud83e\udc78", None))
     # retranslateUi
 

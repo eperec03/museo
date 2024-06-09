@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>794</width>
-    <height>649</height>
+    <width>1686</width>
+    <height>850</height>
    </rect>
   </property>
   <property name="font">
@@ -26,10 +26,10 @@
    <widget class="QPushButton" name="enviarBoton">
     <property name="geometry">
      <rect>
-      <x>330</x>
-      <y>330</y>
-      <width>131</width>
-      <height>41</height>
+      <x>830</x>
+      <y>600</y>
+      <width>141</width>
+      <height>51</height>
      </rect>
     </property>
     <property name="palette">
@@ -231,6 +231,14 @@
       </disabled>
      </palette>
     </property>
+    <property name="font">
+     <font>
+      <family>Verdana</family>
+      <pointsize>12</pointsize>
+      <weight>75</weight>
+      <bold>true</bold>
+     </font>
+    </property>
     <property name="cursor">
      <cursorShape>PointingHandCursor</cursorShape>
     </property>
@@ -248,10 +256,10 @@ border-radius: 15px;</string>
    <widget class="QLineEdit" name="lineEntrada">
     <property name="geometry">
      <rect>
-      <x>290</x>
-      <y>270</y>
-      <width>211</width>
-      <height>41</height>
+      <x>790</x>
+      <y>520</y>
+      <width>221</width>
+      <height>51</height>
      </rect>
     </property>
     <property name="styleSheet">
@@ -262,14 +270,14 @@ background-color: rgb(208, 223, 232);</string>
    <widget class="QLabel" name="label">
     <property name="geometry">
      <rect>
-      <x>300</x>
-      <y>250</y>
+      <x>800</x>
+      <y>490</y>
       <width>181</width>
-      <height>16</height>
+      <height>31</height>
      </rect>
     </property>
     <property name="text">
-     <string>Nº ENTRADA</string>
+     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;Nº ENTRADA&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
     </property>
    </widget>
    <widget class="QLabel" name="label_2">
@@ -296,9 +304,9 @@ background-color: rgb(208, 223, 232);</string>
    <widget class="QLabel" name="label_3">
     <property name="geometry">
      <rect>
-      <x>280</x>
-      <y>160</y>
-      <width>231</width>
+      <x>680</x>
+      <y>150</y>
+      <width>451</width>
       <height>91</height>
      </rect>
     </property>
@@ -311,7 +319,7 @@ background-color: rgb(208, 223, 232);</string>
      </font>
     </property>
     <property name="text">
-     <string>¡ENTRA YA!</string>
+     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:48pt;&quot;&gt;¡ENTRA YA!&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
     </property>
    </widget>
    <widget class="QPushButton" name="BotonAtras">
@@ -536,6 +544,37 @@ border-radius: 15px;</string>
      <string>🡸</string>
     </property>
    </widget>
+   <widget class="QLabel" name="foto">
+    <property name="geometry">
+     <rect>
+      <x>-50</x>
+      <y>-210</y>
+      <width>1841</width>
+      <height>1091</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Bell MT</family>
+      <pointsize>22</pointsize>
+      <weight>50</weight>
+      <bold>false</bold>
+     </font>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="pixmap">
+     <pixmap>../Imagenes/foto.png</pixmap>
+    </property>
+   </widget>
+   <zorder>foto</zorder>
+   <zorder>enviarBoton</zorder>
+   <zorder>lineEntrada</zorder>
+   <zorder>label</zorder>
+   <zorder>label_2</zorder>
+   <zorder>label_3</zorder>
+   <zorder>BotonAtras</zorder>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
  </widget>

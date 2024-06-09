@@ -14,12 +14,11 @@ from PyQt5.QtGui import *
 from PyQt5.QtWidgets import *
 
 
-
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         if not MainWindow.objectName():
             MainWindow.setObjectName(u"MainWindow")
-        MainWindow.resize(800, 600)
+        MainWindow.resize(1703, 865)
         self.centralwidget = QWidget(MainWindow)
         self.centralwidget.setObjectName(u"centralwidget")
         self.BotonAtras = QPushButton(self.centralwidget)
@@ -72,7 +71,7 @@ class Ui_MainWindow(object):
 "border-radius: 15px;")
         self.BotonEditores = QPushButton(self.centralwidget)
         self.BotonEditores.setObjectName(u"BotonEditores")
-        self.BotonEditores.setGeometry(QRect(300, 310, 161, 41))
+        self.BotonEditores.setGeometry(QRect(730, 610, 241, 51))
         palette1 = QPalette()
         brush5 = QBrush(QColor(255, 255, 255, 255))
         brush5.setStyle(Qt.SolidPattern)
@@ -110,6 +109,12 @@ class Ui_MainWindow(object):
         palette1.setBrush(QPalette.Disabled, QPalette.PlaceholderText, brush8)
 #endif
         self.BotonEditores.setPalette(palette1)
+        font = QFont()
+        font.setFamily(u"Verdana")
+        font.setPointSize(12)
+        font.setBold(True)
+        font.setWeight(75)
+        self.BotonEditores.setFont(font)
         self.BotonEditores.setCursor(QCursor(Qt.PointingHandCursor))
         self.BotonEditores.setStyleSheet(u"background-color: rgb(67, 157, 175);\n"
 "color: rgb(255, 255, 255);\n"
@@ -118,16 +123,16 @@ class Ui_MainWindow(object):
 "border-radius: 15px;")
         self.Titulo = QLabel(self.centralwidget)
         self.Titulo.setObjectName(u"Titulo")
-        self.Titulo.setGeometry(QRect(250, 150, 291, 91))
-        font = QFont()
-        font.setFamily(u"Bell MT")
-        font.setPointSize(24)
-        font.setBold(False)
-        font.setWeight(50)
-        self.Titulo.setFont(font)
+        self.Titulo.setGeometry(QRect(560, 160, 551, 91))
+        font1 = QFont()
+        font1.setFamily(u"Bell MT")
+        font1.setPointSize(24)
+        font1.setBold(False)
+        font1.setWeight(50)
+        self.Titulo.setFont(font1)
         self.BotonCliP = QPushButton(self.centralwidget)
         self.BotonCliP.setObjectName(u"BotonCliP")
-        self.BotonCliP.setGeometry(QRect(300, 240, 161, 41))
+        self.BotonCliP.setGeometry(QRect(730, 470, 241, 51))
         palette2 = QPalette()
         palette2.setBrush(QPalette.Active, QPalette.WindowText, brush5)
         palette2.setBrush(QPalette.Active, QPalette.Button, brush)
@@ -163,13 +168,24 @@ class Ui_MainWindow(object):
         palette2.setBrush(QPalette.Disabled, QPalette.PlaceholderText, brush11)
 #endif
         self.BotonCliP.setPalette(palette2)
+        self.BotonCliP.setFont(font)
         self.BotonCliP.setCursor(QCursor(Qt.PointingHandCursor))
         self.BotonCliP.setStyleSheet(u"background-color: rgb(67, 157, 175);\n"
 "color: rgb(255, 255, 255);\n"
 "font-weight: bold;\n"
 "font-family: 'Verdana';\n"
 "border-radius: 15px;")
+        self.Titulo_2 = QLabel(self.centralwidget)
+        self.Titulo_2.setObjectName(u"Titulo_2")
+        self.Titulo_2.setGeometry(QRect(-90, -20, 2011, 901))
+        self.Titulo_2.setFont(font1)
+        self.Titulo_2.setPixmap(QPixmap(u"../Imagenes/foto.png"))
         MainWindow.setCentralWidget(self.centralwidget)
+        self.Titulo_2.raise_()
+        self.BotonAtras.raise_()
+        self.BotonEditores.raise_()
+        self.Titulo.raise_()
+        self.BotonCliP.raise_()
         self.statusbar = QStatusBar(MainWindow)
         self.statusbar.setObjectName(u"statusbar")
         MainWindow.setStatusBar(self.statusbar)
@@ -183,7 +199,8 @@ class Ui_MainWindow(object):
         MainWindow.setWindowTitle(QCoreApplication.translate("MainWindow", u"MainWindow", None))
         self.BotonAtras.setText(QCoreApplication.translate("MainWindow", u"\ud83e\udc78", None))
         self.BotonEditores.setText(QCoreApplication.translate("MainWindow", u"EDITOR", None))
-        self.Titulo.setText(QCoreApplication.translate("MainWindow", u"\u00bfQUI\u00c9N ERES?", None))
+        self.Titulo.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" font-size:48pt;\">\u00bfQUI\u00c9N ERES?</span></p></body></html>", None))
         self.BotonCliP.setText(QCoreApplication.translate("MainWindow", u"CLIENTE PREMIUM", None))
+        self.Titulo_2.setText("")
     # retranslateUi
 

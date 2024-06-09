@@ -23,6 +23,7 @@ class InicioVentana(QtWidgets.QMainWindow):
         # "EnviarBoton" es el nombre que se le ha dado al objeto en el .ui
         self.BotonRegistrarse.clicked.connect(self.go_to_window_registro)
         self.BotonInicioS.clicked.connect(self.go_to_window_inicio)
+
         self.show()
 
     def go_to_window_registro(self):

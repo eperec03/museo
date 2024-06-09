@@ -2,29 +2,27 @@ import sys
 # #sys.path.append(r'C:\Users\eripe\OneDrive\Documentos\ERI ULE\2º\SEGUNDO CUATRI\IS\PROYECTO\src\modelo')
 sys.path.append(r'c:\Users\clara\Documents\2ºUNI\2CUATRI\IS\src')
 
+import subprocess
 import tkinter as tk
 from tkinter import messagebox
 from PyQt5 import QtWidgets, uic
 from PyQt5.QtWidgets import QMessageBox
 from PyQt5.QtGui import QIcon
 from vista.MapaVentana import *
-from vista.VentanaJuegos import *
 
 
-class VentanaServicio(QtWidgets.QMainWindow):
+class VentanaJuegos(QtWidgets.QMainWindow):
     def __init__(self, controlador = None, ventana_anterior=None):
         # Importamos el .ui
-        super(VentanaServicio, self).__init__()
-        uic.loadUi('src/vista/ui/VentanaServicios.ui', self)
+        super(VentanaJuegos, self).__init__()
+        uic.loadUi('src/vista/ui/VentanaJuegos.ui', self)
         self.setWindowTitle("Museo: ")
         self.setWindowIcon(QIcon('src/vista/Imagenes/logomuseo.png'))  # Reemplaza con la ruta a tu logo
         # Almacena una referencia al controlador
         self.coordinador = controlador
         # "EnviarBoton" es el nombre que se le ha dado al objeto en el .ui
-        self.BotonMapa.clicked.connect(self.go_to_window_mapa)
-        self.BotonJuegos.clicked.connect(self.go_to_window_juegos)    
+        self.enviarBotonJuego1.clicked.connect(self.go_to_snake1)
         # self.BotonInicioS.clicked.connect(self.go_to_window_inicio)
-        self.show()
         self.ventana_anterior=ventana_anterior
         self.BotonAtras.clicked.connect(self.go_back)
 
@@ -32,18 +30,9 @@ class VentanaServicio(QtWidgets.QMainWindow):
         self.ventana_anterior.show()
         self.destroy()
 
-    def go_to_window_juegos(self):
-        self.ventana_registro = VentanaJuegos(ventana_anterior=self)
-        self.ventana_registro.setCoordinador(self.coordinador)
-        self.ventana_registro.show()
-        self.hide()
-
-
-    def go_to_window_mapa(self):
-        self.ventana_registro = MapaVentana()
-        self.ventana_registro.setCoordinador(self.coordinador)
-        self.ventana_registro.show()
-        self.hide()
+    def go_to_snake1(self):
+        subprocess.run(["python", r"C:\Users\clara\Documents\2ºUNI\2CUATRI\IS\museo\src\vista\JuegoSerpiente.py"])
+        # self.hide()
 
     # def go_to_window_inicio(self):
     #     self.ventana_inicio = ElegirUsuario()

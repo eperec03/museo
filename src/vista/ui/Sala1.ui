@@ -6,38 +6,14 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1140</width>
-    <height>718</height>
+    <width>1681</width>
+    <height>851</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>MainWindow</string>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <widget class="QLabel" name="Titulo_2">
-    <property name="geometry">
-     <rect>
-      <x>0</x>
-      <y>-80</y>
-      <width>1321</width>
-      <height>851</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <family>Bell MT</family>
-      <pointsize>24</pointsize>
-      <weight>50</weight>
-      <bold>false</bold>
-     </font>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-    <property name="pixmap">
-     <pixmap>../Imagenes/fotofondo1.png</pixmap>
-    </property>
-   </widget>
    <widget class="QPushButton" name="BotonHome">
     <property name="geometry">
      <rect>
@@ -307,19 +283,6 @@ border-radius: 15px;</string>
      <bool>true</bool>
     </property>
    </widget>
-  </widget>
-  <widget class="QMenuBar" name="menubar">
-   <property name="geometry">
-    <rect>
-     <x>0</x>
-     <y>0</y>
-     <width>1140</width>
-     <height>26</height>
-    </rect>
-   </property>
-   <property name="nativeMenuBar">
-    <bool>false</bool>
-   </property>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
  </widget>

@@ -8,10 +8,11 @@ from PyQt5 import QtWidgets, uic
 from PyQt5.QtWidgets import QMessageBox
 from PyQt5.QtGui import QIcon
 from vista.MapaVentana import *
-
+from vista.LogicaPruebaScroll import *
+from vista.VentanaJuegos import *
 
 class VentanaServicioPremium(QtWidgets.QMainWindow):
-    def __init__(self, controlador = None):
+    def __init__(self, controlador = None, ventana_anterior=None):
         # Importamos el .ui
         super(VentanaServicioPremium, self).__init__()
         uic.loadUi('src/vista/ui/VentanaServiciosPremium.ui', self)
@@ -21,10 +22,22 @@ class VentanaServicioPremium(QtWidgets.QMainWindow):
         self.coordinador = controlador
         # "EnviarBoton" es el nombre que se le ha dado al objeto en el .ui
         self.BotonMapa.clicked.connect(self.go_to_window_mapa)
-
-        self.BotonCatalogo.clicked.connect(self.go_to_window_objetos)
+        self.BotonJuegos.clicked.connect(self.go_to_window_juegos)    
+        # self.BotonCatalogo.clicked.connect(self.go_to_window_objetos)
         # self.BotonInicioS.clicked.connect(self.go_to_window_inicio)
         self.show()
+        self.ventana_anterior=ventana_anterior
+        self.BotonAtras.clicked.connect(self.go_back)
+
+    def go_back(self):
+        self.ventana_anterior.show()
+        self.destroy()
+
+    def go_to_window_juegos(self):
+        self.ventana_registro = VentanaJuegos(ventana_anterior=self)
+        self.ventana_registro.setCoordinador(self.coordinador)
+        self.ventana_registro.show()
+        self.hide()
 
     def go_to_window_mapa(self):
         self.ventana_registro = MapaVentana(ventana_anterior=self)
@@ -32,11 +45,11 @@ class VentanaServicioPremium(QtWidgets.QMainWindow):
         self.ventana_registro.show()
         self.hide()
 
-    def go_to_window_objetos(self):
-        self.ventana_inicio = LogicaPruebaScroll()
-        self.ventana_inicio.setCoordinador(self.coordinador)
-        self.ventana_inicio.show()
-        self.hide()
+    # def go_to_window_objetos(self):
+    #     self.ventana_inicio = LogicaPruebaScroll()
+    #     self.ventana_inicio.setCoordinador(self.coordinador)
+    #     self.ventana_inicio.show()
+    #     self.hide()
 
     # def go_to_window_inicio(self):
     #     self.ventana_inicio = ElegirUsuario()
