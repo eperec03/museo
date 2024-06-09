@@ -17,9 +17,9 @@
    <widget class="QLabel" name="Titulo">
     <property name="geometry">
      <rect>
-      <x>300</x>
-      <y>20</y>
-      <width>231</width>
+      <x>250</x>
+      <y>10</y>
+      <width>271</width>
       <height>91</height>
      </rect>
     </property>
@@ -48,8 +48,8 @@
    <widget class="QScrollBar" name="scrollBar">
     <property name="geometry">
      <rect>
-      <x>600</x>
-      <y>120</y>
+      <x>630</x>
+      <y>80</y>
       <width>21</width>
       <height>351</height>
      </rect>
@@ -58,6 +58,29 @@
      <enum>Qt::Vertical</enum>
     </property>
    </widget>
+   <widget class="QScrollArea" name="scrollArea">
+    <property name="geometry">
+     <rect>
+      <x>140</x>
+      <y>80</y>
+      <width>491</width>
+      <height>351</height>
+     </rect>
+    </property>
+    <property name="widgetResizable">
+     <bool>true</bool>
+    </property>
+    <widget class="QWidget" name="scrollAreaWidgetContents">
+     <property name="geometry">
+      <rect>
+       <x>0</x>
+       <y>0</y>
+       <width>489</width>
+       <height>349</height>
+      </rect>
+     </property>
+    </widget>
+   </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">
@@ -65,7 +88,7 @@
      <x>0</x>
      <y>0</y>
      <width>800</width>
-     <height>21</height>
+     <height>26</height>
     </rect>
    </property>
   </widget>

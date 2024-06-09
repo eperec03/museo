@@ -1,74 +1,78 @@
 import sys
-import sqlite3
-from PyQt5.QtWidgets import QApplication, QMainWindow, QLabel, QVBoxLayout, QWidget
-from main_window import Ui_MainWindow
+sys.path.append(r'C:\Users\eripe\OneDrive\Documentos\ERI ULE\2º\SEGUNDO CUATRI\IS\PROYECTO\src')
 
-class MainWindow(QMainWindow):
-    def __init__(self):
-        super().__init__()
+import sqlite3
+from PyQt5.QtWidgets import QApplication, QMainWindow, QLabel, QVBoxLayout, QWidget, QHBoxLayout, QScrollArea
+from PyQt5.QtGui import QIcon, QPixmap
+from PyQt5 import uic
+from controlador.coordinador import Coordinador
+from modelo.logica import Logica
+
+class VentanaCatalogo(QMainWindow):
+    def __init__(self, controlador=None, ventana_anterior=None):
+        super(VentanaCatalogo, self).__init__()
         uic.loadUi('src/vista/ui/PruebaScroll.ui', self)
-        self.setupUi(self)
+        self.setWindowTitle("Catalogo")
+        self.setWindowIcon(QIcon('src/vista/Imagenes/logomuseo.png'))
+        self.coordinador = controlador
+        try:
+            self.scrollArea = self.findChild(QScrollArea, 'scrollArea')
+            self.scrollAreaWidgetContents = QWidget()
+            self.scrollArea.setWidget(self.scrollAreaWidgetContents)
+        except Exception as e:
+            print(f"Error finding scroll area or its contents: {e}")
+            return
         self.load_data()
 
-        # Conectar el botón de refrescar a la función
-        self.refreshButton.clicked.connect(self.refresh_data)
-
+    def setCoordinador(self, coord) -> None:
+        self.coordinador = coord
+        
     def load_data(self):
-        # Conectar a la base de datos SQLite
-        conexion = self.getConnection()
-        conn = None
-        cursor = None
-        try:
-            if conexion:
-                conn = conexion
+        objetos = self.coordinador.obtener_todos_objetos()
+        print(f"Fetched {len(objetos)} objects from the database.")
+
+        layout = QVBoxLayout()  # Mover la creación del layout fuera del bucle
+
+        for objeto in objetos:
+            NombreObjeto = objeto.getNombreObjeto()
+            Imagen = objeto.getImagen()
+            obra_widget = QWidget()
+            obra_layout = QHBoxLayout()
+
+            if Imagen is not None:
+                pixmap = QPixmap(Imagen)
+                imagen_label = QLabel()
+                imagen_label.setPixmap(pixmap)
+                imagen_label.setFixedSize(100, 100)
+                imagen_label.setScaledContents(True)
+
+                texto_label = QLabel(f"{NombreObjeto}")
+
+                obra_layout.addWidget(imagen_label)
+                obra_layout.addWidget(texto_label)
+                obra_widget.setLayout(obra_layout)
+
+                layout.addWidget(obra_widget)
             else:
-                # Obtener todas las obras de arte
-                cursor.execute('SELECT * FROM objetos')
-                obras = cursor.fetchall()
+                print("Error: Image path is None for object:", NombreObjeto)
 
-                # Crear un layout para el widget contenedor
-                layout = QVBoxLayout()
-
-                # Añadir una etiqueta para cada obra de arte
-                for objeto in objetos:
-                    IDObjeto, NombreObjeto, Imagen, Precio, Tipo, Inspiracion, Existencias, Agotado, IDCatalogo = objeto
-                    # Crear un widget contenedor para la imagen y el texto
-                    obra_widget = QWidget()
-                    obra_layout = QHBoxLayout()
-
-                    # Añadir la imagen
-                    pixmap = QPixmap(Imagen)
-                    imagen_label = QLabel()
-                    imagen_label.setPixmap(pixmap)
-                    imagen_label.setFixedSize(100, 100)  # Ajustar el tamaño de la imagen si es necesario
-                    imagen_label.setScaledContents(True)
-
-                    # Añadir el texto
-                    texto_label = QLabel(f"{NombreObjeto}")
-
-                    # Añadir imagen y texto al layout del contenedor
-                    obra_layout.addWidget(imagen_label)
-                    obra_layout.addWidget(texto_label)
-                    obra_widget.setLayout(obra_layout)
-
-                    # Añadir el contenedor al layout principal
-                    layout.addWidget(obra_widget)
-
-                # Configurar el widget contenedor
-                self.scrollAreaWidgetContents.setLayout(layout)
-
-                # Cerrar la conexión
-                conn.close()
-
+        self.scrollAreaWidgetContents.setLayout(layout)
 
     def refresh_data(self):
-        # Limpiar el layout actual
-        for i in reversed(range(self.scrollAreaWidgetContents.layout().count())):
-            self.scrollAreaWidgetContents.layout().itemAt(i).widget().setParent(None)
+        layout = self.scrollAreaWidgetContents.layout()
+        if layout:
+            while layout.count():
+                child = layout.takeAt(0)
+                if child.widget():
+                    child.widget().deleteLater()
 
-        # Recargar los datos
         self.load_data()
 
-
-
-
+if __name__ == '__main__':
+    app = QApplication(sys.argv)
+    c = Coordinador()
+    logica = Logica()
+    c.setModel(logica)
+    ex = VentanaCatalogo(controlador=c)
+    ex.show()
+    sys.exit(app.exec_())

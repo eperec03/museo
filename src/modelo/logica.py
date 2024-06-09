@@ -9,7 +9,7 @@ from modelo.dao.ClientePremiumDAO import *
 from modelo.vo.ClienteEstandarVO import *
 from modelo.dao.ClienteEstandarDAO import *
 from controlador.coordinador import Coordinador
-
+from dao.ObjetosDAO import *
 class Logica:
     def __init__(self):
         self._mi_coordinador = None
@@ -66,3 +66,7 @@ class Logica:
                 return True
             if error==1:
                 messagebox.showwarning("Advertencia", "Contraseña incorrecta")
+
+    def select_objetos(self):
+        a=ObjetosDao()
+        return a.getObjetos()

@@ -24,9 +24,11 @@ UPDATE JuegosObras SET IDObra = 1 WHERE IDJuegoObra=5;
 select * from subastas;
 
 INSERT INTO SERVICIOS (Nombre) value('Catalogo');
-INSERT INTO Catalogo (IdCatalogo,Titulo,Imagen) value(6,'Prueba','a');
+INSERT INTO Catalogo (IdCatalogo,Titulo,Imagen) value(5,'Prueba','a');
 
 select * from objetos;
+INSERT INTO objetos (NombreObjeto, imagen, precio, tipo, inspiracion, existencias, agotado, IDCatalogo) 
+VALUES ('Jarron', load_file('C:/ProgramData/MySQL/MySQL Server 8.0/Uploads/jarron.jpg'), 500, 'Decoracion', 'Inspiracion', 1, b'1', 5);
 
 select * from usuarios;
 

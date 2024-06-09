@@ -652,7 +652,7 @@ DROP TABLE IF EXISTS `objetos`;
 CREATE TABLE `objetos` (
   `IDObjeto` int NOT NULL auto_increment,
   `NombreObjeto` varchar(30) not null unique,
-  `imagen` blob NOT NULL,
+  `imagen` varchar(1000) NOT NULL,
   `precio` float NOT NULL,
   `tipo` varchar(45) NOT NULL,
   `inspiracion` varchar(45) NOT NULL,
