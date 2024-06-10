@@ -108,8 +108,8 @@ class Coordinador:
    def obtener_todos_exposiciones(self):
       return self._model.select_exposiciones()
 
-   def obtener_artista(self):
-      return self._model.select_artista_nombre()
+   def obtener_artista(self,obra):
+      return self._model.select_artista_nombre(obra)
 
    def actualizarSala(self, sala: SalasVO) -> None:
       self._model.actualizar_sala(sala)

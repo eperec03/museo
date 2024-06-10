@@ -34,44 +34,62 @@ class VentanaSala1(QMainWindow):
         layout = QVBoxLayout()
 
         for obra in obras:
-            artista= self.coordinador.obtener_artista(obra.getIdArtista())
+            artista = self.coordinador.obtener_artista(obra.getIdArtista())
             Titulo = obra.getTitulo()
-            Imagen = obra.getImagen()
+            Imagen = obra.getImagen()  # Esta debería ser la ruta de la imagen
+            print(Imagen)
+            NombreArtista = artista.getNombreArtista() if artista else "Desconocido"
 
             obra_widget = QWidget()
             obra_layout = QHBoxLayout()
 
             if Imagen is not None:
-                pixmap = QPixmap(Imagen)
-                imagen_label = QLabel()
-                imagen_label.setPixmap(pixmap)
-                imagen_label.setFixedSize(100, 100)
-                imagen_label.setScaledContents(True)
+                # Verificar la ruta de la imagen y tratar de cargar la imagen
+                print(f"Trying to load image at path: {Imagen}")
+                try:
+                    pixmap = QPixmap(Imagen)
+                    if pixmap.isNull():
+                        print(f"Error: Cannot load image at path: {Imagen}")
+                        # Usa una imagen de respaldo si la imagen no se puede cargar
+                        Imagen = 'src/vista/Imagenes/placeholder.png'
+                        pixmap = QPixmap(Imagen)
+                        if pixmap.isNull():
+                            print(f"Error: Cannot load placeholder image at path: {Imagen}")
+                            continue
 
-                texto_label = QLabel(f"{Nombreobra}")
-                precio_label = QLabel(f"Precio: ${Precio:.2f}")
-                
-                texto_label.setStyleSheet("font-size: 16px; font-weight: bold; margin-left: 10px;")
-                precio_label.setStyleSheet("font-size: 14px; color: green; margin-left: 10px;")
+                    imagen_label = QLabel()
+                    imagen_label.setPixmap(pixmap)
+                    imagen_label.setFixedSize(100, 100)
+                    imagen_label.setScaledContents(True)
 
-                boton_info = QPushButton("Más Información")
-                boton_info.clicked.connect(lambda _, obj=obra: self.mostrar_info(obj))
-                
-                obra_layout.addWidget(imagen_label)
-                obra_layout.addWidget(texto_label)
-                obra_layout.addWidget(precio_label)
-                obra_layout.addWidget(boton_info)
-                obra_widget.setLayout(obra_layout)
+                    texto_label = QLabel(f"Título: {Titulo}")
+                    artista_label = QLabel(f"Artista: {NombreArtista}")
+                    
+                    texto_label.setStyleSheet("font-size: 16px; font-weight: bold; margin-left: 10px;")
+                    artista_label.setStyleSheet("font-size: 14px; color: green; margin-left: 10px;")
 
-                layout.addWidget(obra_widget)
+                    boton_info = QPushButton("Más Información")
+                    boton_info.clicked.connect(lambda _, obj=obra: self.mostrar_info(obj))
+                    
+                    obra_layout.addWidget(imagen_label)
+                    obra_layout.addWidget(texto_label)
+                    obra_layout.addWidget(artista_label)
+                    obra_layout.addWidget(boton_info)
+                    obra_widget.setLayout(obra_layout)
+
+                    layout.addWidget(obra_widget)
+                except Exception as e:
+                    print(f"Exception occurred while loading image: {e}")
             else:
-                print("Error: Image path is None for object:", Nombreobra)
+                print("Error: Image path is None for object:", Titulo)
 
         self.scrollAreaWidgetContents.setLayout(layout)
 
+
+
     def mostrar_info(self, obra):
         # Aquí puedes definir qué hacer cuando se haga clic en el botón "Más Información"
-        print(f"Mostrando más información sobre el obra: {obra.getNombreobra()}")
+        print(f"Mostrando más información sobre el obra: {obra.getTitulo()}")
 
     def refresh_data(self):
         layout = self.scrollAreaWidgetContents.layout()

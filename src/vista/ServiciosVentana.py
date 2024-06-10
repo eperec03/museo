@@ -9,6 +9,7 @@ from PyQt5.QtWidgets import QMessageBox
 from PyQt5.QtGui import QIcon
 from vista.MapaVentana import MapaVentana
 from vista.VentanaJuegos import *
+from vista.ExposicionVentana import *
 
 
 class VentanaServicio(QtWidgets.QMainWindow):
@@ -22,7 +23,8 @@ class VentanaServicio(QtWidgets.QMainWindow):
         self.coordinador = controlador
         # "EnviarBoton" es el nombre que se le ha dado al objeto en el .ui
         self.BotonMapa.clicked.connect(self.go_to_window_mapa)
-        self.BotonJuegos.clicked.connect(self.go_to_window_juegos)    
+        self.BotonJuegos.clicked.connect(self.go_to_window_juegos)   
+        self.BotonExposiciones.clicked.connect(self.go_to_window_exposiciones) 
         # self.BotonInicioS.clicked.connect(self.go_to_window_inicio)
         self.show()
         self.ventana_anterior=ventana_anterior
@@ -51,6 +53,12 @@ class VentanaServicio(QtWidgets.QMainWindow):
     #     self.ventana_inicio.show()
     #     self.hide()       
 
+    def go_to_window_exposiciones(self):
+        self.ventana_registro = VentanaExposiciones(ventana_anterior=self,controlador=self.coordinador)
+        self.ventana_registro.setCoordinador(self.coordinador)
+        self.ventana_registro.show()
+        self.hide()
+
     def setCoordinador(self, coord) -> None:
         self.coordinador = coord
 
@@ -58,7 +66,7 @@ class VentanaServicio(QtWidgets.QMainWindow):
 
     def mostrar_advertencia(ex):
         mensaje = QMessageBox()
-        mensaje.setIcon(QMessageBox.Warning)
+        mensaje.setIcon(QMessageBox.warning)
         mensaje.setText("Error")
         mensaje.setInformativeText(str(ex))
         mensaje.setWindowTitle("Advertencia")
