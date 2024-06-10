@@ -14,7 +14,7 @@ class ActualizarSala(QtWidgets.QMainWindow):
         # Importamos el .ui
         super().__init__()
         uic.loadUi('src/vista/ui/ActualizarSalas.ui', self)
-        self.setWindowTitle("ACTUALIZAR SalaS")
+        self.setWindowTitle("ACTUALIZAR SALAS")
         self.setWindowIcon(QIcon('src/vista/Imagenes/logomuseo.png'))  # Reemplaza con la ruta a tu logo
         # Almacena una referencia al controlador
         self.coordinador = controlador
@@ -34,15 +34,17 @@ class ActualizarSala(QtWidgets.QMainWindow):
         self.NumeroSala_entrada.clear()
         self.Capacidad_entrada.clear()
         self.Tematica_entrada.clear()
+        self.IDMapa_entrada.clear()
 
     def actualizarSala(self) -> None:
         try:
-            sala = SalasVO(
-                NumSala = self.NumeroSala_entrada.text(),
+            Sala = SalasVO(
+                NumeroSala = self.NumeroSala_entrada.text(),
                 Capacidad = self.Capacidad_entrada.text(),
-                Tematica = self.Tematica_entrada.text()
+                Tematica = self.Tematica_entrada.text(),
+                IdMapa = self.IDMapa_entrada.text()
                 )
-            self.coordinador.actualizarSala(sala)
+            self.coordinador.actualizarSalas(Sala)
             self.limpiar()
         except Exception as ex:
             print(ex)

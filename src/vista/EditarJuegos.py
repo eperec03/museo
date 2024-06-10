@@ -8,7 +8,7 @@ from PyQt5 import QtWidgets, uic
 from PyQt5.QtWidgets import QMessageBox
 from PyQt5.QtGui import QIcon
 from vista.MenuEditor import *
-from vista.ActualizarJuegos import *
+from vista.ActualizaJuegos import *
 
 class EditarJuegos(QtWidgets.QMainWindow):
     def __init__(self, controlador = None,ventana_anterior=None):
@@ -45,8 +45,8 @@ class EditarJuegos(QtWidgets.QMainWindow):
         self.hide()
 
     def go_actualizar(self):
-        self.ventana_actualizar = ActualizarJuego()
-        self.ventana_actualizar.setCoordinador(self)
+        self.ventana_actualizar = ActualizarJuego(self)
+        self.ventana_actualizar.setCoordinador(self.coordinador)
         self.ventana_actualizar.show()
         self.hide()
 

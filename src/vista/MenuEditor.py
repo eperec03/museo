@@ -22,8 +22,8 @@ from vista.EditarJuegos import *
 from vista.EditarObras import *
 from vista.EditarObjetos import *
 from vista.MenuEditor import *
-from vista.ActualizarSala import *
-from vista.ActualizarCatalogo import *
+from vista.ActualizaSalas import *
+from vista.ActualizaCatalogo import *
 
 
 class MenuEditor(QtWidgets.QMainWindow):
