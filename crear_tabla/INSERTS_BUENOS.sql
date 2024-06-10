@@ -11,7 +11,13 @@ INSERT INTO `artistas` (`NombreArtista`, `FechaNac`, `FechaMuerte`, `Descripcion
 VALUES 
 ('Pablo Picasso', '1881-10-25', '1973-04-08', 'Pablo Picasso, pintor y escultor español.', 'Cubismo'),
 ('Leonardo da Vinci', '1452-04-15', '1519-05-02', 'Leonardo da Vinci, artista y científico italiano.', 'Renacimiento'),
-('Frida Kahlo', '1907-07-06', '1954-07-13', 'Frida Kahlo, pintora mexicana.', 'Surrealismo');
+('Frida Kahlo', '1907-07-06', '1954-07-13', 'Frida Kahlo, pintora mexicana.', 'Surrealismo'),
+('Vincent van Gogh', '1853-03-30', '1890-07-29', 'Vincent van Gogh, pintor postimpresionista neerlandés.', 'Postimpresionismo'),
+('Claude Monet', '1840-11-14', '1926-12-05', 'Claude Monet, pintor francés, fundador del impresionismo.', 'Impresionismo'),
+('Salvador Dalí', '1904-05-11', '1989-01-23', 'Salvador Dalí, pintor surrealista español.', 'Surrealismo'),
+('Andy Warhol', '1928-08-06', '1987-02-22', 'Andy Warhol, artista estadounidense, figura principal del pop art.', 'Pop Art'),
+('Henri Matisse', '1869-12-31', '1954-11-03', 'Henri Matisse, pintor, dibujante y escultor francés.', 'Fauvismo'),
+('Jackson Pollock', '1912-01-28', '1956-08-11', 'Jackson Pollock, pintor estadounidense, figura principal del expresionismo abstracto.', 'Expresionismo Abstracto');
 
 
 insert into servicios (Nombre) values ('MAPA');
@@ -44,7 +50,10 @@ VALUES
 ('Guernica', 'Pintura de Pablo Picasso', '1937-06-04', 'C:\\ProgramData\\MySQL\\MySQL Server 8.0\\Uploads\\guernica.jpg', 1, 1),
 ('La Gioconda', 'El retrato de Lisa Gherardini, esposa de Francesco del Giocondo.', '1503-01-01', 'C:\\ProgramData\\MySQL\\MySQL Server 8.0\\Uploads\\monalisa.jpg', 2, 2),
 ('La Última Cena', 'Fresco de Leonardo da Vinci', '1498-01-01', 'C:\\ProgramData\\MySQL\\MySQL Server 8.0\\Uploads\\ultimacena.jpg', 2, 2),
-('Las Dos Fridas', 'Pintura de Frida Kahlo', '1939-01-01', 'C:\\ProgramData\\MySQL\\MySQL Server 8.0\\Uploads\\dosfridas.jpg', 3, 3);
+('Las Dos Fridas', 'Pintura de Frida Kahlo', '1939-01-01', 'C:\\ProgramData\\MySQL\\MySQL Server 8.0\\Uploads\\dosfridas.jpg', 3, 3),
+('Starry Night', 'Pintura de Vincent van Gogh', '1889-06-01', 'C:\\ProgramData\\MySQL\\MySQL Server 8.0\\Uploads\\starrynight.jpg', 4, 1),
+('Water Lilies', 'Serie de pinturas de Claude Monet', '1920-01-01', 'C:\\ProgramData\\MySQL\\MySQL Server 8.0\\Uploads\\waterlilies.jpg', 5, 1),
+('The Persistence of Memory', 'Pintura de Salvador Dalí', '1931-01-01', 'C:\\ProgramData\\MySQL\\MySQL Server 8.0\\Uploads\\persistenceofmemory.jpg', 6, 2);
 
 INSERT INTO `clienteestandar` (`NumEntrada`, `PrecioEntrada`) VALUES
 ('E0001', 10.50),
@@ -167,5 +176,16 @@ VALUES
 SHOW VARIABLES LIKE 'secure_file_priv';
 insert into audioguias (Titulo,IDObra,Audio,Duracion) VALUES ('Audio Gioconda',2,"C:\ProgramData\MySQL\MySQL Server 8.0\Uploads\audio_monalisa.mp3", '00:00:45');
 
-select * from salas;
-select * from exposiciones;
+INSERT INTO `subastas` (`Fecha`, `Titulo`, `Descripcion`) VALUES
+('2023-01-15', 'Subasta de Invierno', 'Subasta de arte y antigüedades de invierno'),
+('2023-02-20', 'Subasta de Primavera', 'Subasta de arte contemporáneo y moderno'),
+('2023-03-25', 'Subasta de Arte Impresionista', 'Subasta de obras impresionistas y post-impresionistas'),
+('2023-04-10', 'Subasta de Joyas', 'Subasta de joyas exclusivas y relojes'),
+('2023-05-05', 'Subasta de Verano', 'Subasta de arte y esculturas de verano'),
+('2023-06-18', 'Subasta de Fotografía', 'Subasta de fotografías históricas y contemporáneas'),
+('2023-07-22', 'Subasta de Otoño', 'Subasta de arte y muebles antiguos'),
+('2023-08-30', 'Subasta de Pintura Moderna', 'Subasta de pinturas modernas y abstractas'),
+('2023-09-14', 'Subasta de Arte Latinoamericano', 'Subasta de arte y esculturas de América Latina'),
+('2023-10-28', 'Subasta de Fin de Año', 'Subasta de fin de año con una variedad de colecciones');
+
+

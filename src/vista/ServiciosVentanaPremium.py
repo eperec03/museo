@@ -10,6 +10,8 @@ from PyQt5.QtGui import QIcon
 from vista.MapaVentana import *
 from vista.ExposicionVentana import *
 from vista.VentanaJuegos import *
+from vista.VentanaSubastas import *
+from vista.Catalogo import *
 
 class VentanaServicioPremium(QtWidgets.QMainWindow):
     def __init__(self, controlador = None, ventana_anterior=None):
@@ -23,9 +25,9 @@ class VentanaServicioPremium(QtWidgets.QMainWindow):
         # "EnviarBoton" es el nombre que se le ha dado al objeto en el .ui
         self.BotonMapa.clicked.connect(self.go_to_window_mapa)
         self.BotonJuegos.clicked.connect(self.go_to_window_juegos)    
-        # self.BotonCatalogo.clicked.connect(self.go_to_window_objetos)
+        self.BotonCatalogo.clicked.connect(self.go_to_window_objetos)
         self.BotonExposiciones.clicked.connect(self.go_to_window_exposiciones) 
-        # self.BotonInicioS.clicked.connect(self.go_to_window_inicio)
+        self.BotonSubastas.clicked.connect(self.go_to_window_subastas)
         self.ventana_anterior=ventana_anterior
         self.BotonAtras.clicked.connect(self.go_back)
 
@@ -45,22 +47,22 @@ class VentanaServicioPremium(QtWidgets.QMainWindow):
         self.ventana_registro.show()
         self.hide()
 
-    # def go_to_window_objetos(self):
-    #     self.ventana_inicio = LogicaPruebaScroll()
-    #     self.ventana_inicio.setCoordinador(self.coordinador)
-    #     self.ventana_inicio.show()
-    #     self.hide()
+    def go_to_window_objetos(self):
+        self.ventana_inicio = VentanaCatalogo()
+        self.ventana_inicio.setCoordinador(self.coordinador)
+        self.ventana_inicio.show()
+        self.hide()
 
     def go_to_window_exposiciones(self):
         self.ventana_registro = VentanaExposiciones(controlador=self.coordinador, ventana_anterior=self)
         self.ventana_registro.show()
         self.hide()
 
-    # def go_to_window_inicio(self):
-    #     self.ventana_inicio = ElegirUsuario()
-    #     self.ventana_inicio.setCoordinador(self.coordinador)
-    #     self.ventana_inicio.show()
-    #     self.hide()       
+    def go_to_window_subastas(self):
+        self.ventana_registro = VentanaSubastas(ventana_anterior=self)
+        self.ventana_registro.setCoordinador(self.coordinador)
+        self.ventana_registro.show()
+        self.hide()   
 
     def setCoordinador(self, coord) -> None:
         self.coordinador = coord

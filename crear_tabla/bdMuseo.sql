@@ -25,8 +25,8 @@ CREATE TABLE `artistas` (
   `NombreArtista` varchar(50) NOT NULL,
   `FechaNac` date NOT NULL,
   `FechaMuerte` date DEFAULT NULL,
-  `Descripcion` varchar(100) DEFAULT NULL,
-  `Corriente` varchar(20) DEFAULT NULL,
+  `Descripcion` varchar(1000) DEFAULT NULL,
+  `Corriente` varchar(200) DEFAULT NULL,
   PRIMARY KEY (`IdArtista`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -879,6 +879,7 @@ CREATE TABLE `subastas` (
   PRIMARY KEY (`IDSubasta`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
+
 
 --
 -- Dumping data for table `subastas`

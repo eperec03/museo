@@ -34,6 +34,8 @@ from modelo.vo.SalasVO import *
 from modelo.dao.SalasDAO import *
 from modelo.vo.CatalogoVO import *
 from modelo.dao.CatalogoDAO import *
+from modelo.vo.SubastasVO import *
+from modelo.dao.SubastasDAO import *
 
 from controlador.coordinador import Coordinador
 from dao.ObrasDAO import *
@@ -206,9 +208,17 @@ class Logica:
         a=ExposicionesDao()
         return a.getExposiciones()
     
-    def select_obras(self):
+    def select_subastas(self):
+        a=SubastasDao()
+        return a.getSubastas()
+    
+    def select_obras_1(self):
         a=ObrasDao()
-        return a.getObras()
+        return a.getObrasFiltro(1)
+    
+    def select_obras_2(self):
+        a=ObrasDao()
+        return a.getObrasFiltro(2)
     
     def select_artista_nombre(self,id):
         a=ArtistasDao()

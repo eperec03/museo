@@ -114,6 +114,9 @@ class Coordinador:
 
    def obtener_todos_exposiciones(self):
       return self._model.select_exposiciones()
+   
+   def obtener_todos_subastas(self):
+      return self._model.select_subastas()
 
    def obtener_artista(self,obra):
       return self._model.select_artista_nombre(obra)
@@ -142,8 +145,11 @@ class Coordinador:
    def actualizarExposiciones(self, exposicion: ExposicionesVO) -> None:
       self._model.actualizar_exposicion(exposicion)
 
-   def obtener_todas_obras(self):
-      return self._model.select_obras()
+   def obtener_todas_obras_1(self):
+      return self._model.select_obras_1()
+   
+   def obtener_todas_obras_2(self):
+      return self._model.select_obras_2()
 
    def eliminarExposiciones(self, exposicion: ExposicionesVO) -> None:
       self._model.eliminar_exposicion(exposicion)
