@@ -11,7 +11,7 @@ from modelo.logica import Logica
 class VentanaCatalogo(QMainWindow):
     def __init__(self, controlador=None, ventana_anterior=None):
         super(VentanaCatalogo, self).__init__()
-        uic.loadUi('src/vista/ui/PruebaScroll.ui', self)
+        uic.loadUi('src/vista/ui/Catalogo.ui', self)
         self.setWindowTitle("Catalogo")
         self.setWindowIcon(QIcon('src/vista/Imagenes/logomuseo.png'))
         self.coordinador = controlador

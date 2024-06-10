@@ -9,12 +9,12 @@ from PyQt5 import QtWidgets, uic
 from PyQt5.QtWidgets import QMessageBox
 from PyQt5.QtGui import QIcon
 
-class CrearJuego(QtWidgets.QMainWindow):
+class CrearObjetos(QtWidgets.QMainWindow):
     def __init__(self, controlador = None, ventana_anterior=None):
         # Importamos el .ui
         super().__init__()
-        uic.loadUi('src/vista/ui/CrearJuegos.ui', self)
-        self.setWindowTitle("CREAR JUEGOS")
+        uic.loadUi('src/vista/ui/CrearObjetos.ui', self)
+        self.setWindowTitle("CREAR OBJETOS")
         self.setWindowIcon(QIcon('src/vista/Imagenes/logomuseo.png'))  # Reemplaza con la ruta a tu logo
         # Almacena una referencia al controlador
         self.coordinador = controlador

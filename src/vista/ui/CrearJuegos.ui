@@ -14,7 +14,7 @@
    <string>MainWindow</string>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <widget class="QPushButton" name="BotonEditarJuego">
+   <widget class="QPushButton" name="BotonCrearJuego">
     <property name="geometry">
      <rect>
       <x>710</x>
@@ -241,7 +241,7 @@ font-family: 'Verdana';
 border-radius: 15px;</string>
     </property>
     <property name="text">
-     <string>EDITAR JUEGO</string>
+     <string>CREAR JUEGO</string>
     </property>
    </widget>
    <widget class="QLabel" name="Titulo">
@@ -262,13 +262,13 @@ border-radius: 15px;</string>
      </font>
     </property>
     <property name="text">
-     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:48pt;&quot;&gt;EDITAR JUEGOS&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:48pt;&quot;&gt;CREAR JUEGOS&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
     </property>
    </widget>
    <widget class="QLineEdit" name="Descripcion_entrada">
     <property name="geometry">
      <rect>
-      <x>620</x>
+      <x>500</x>
       <y>400</y>
       <width>161</width>
       <height>41</height>
@@ -296,7 +296,7 @@ background-color: rgb(208, 223, 232);</string>
    <widget class="QLabel" name="label_8">
     <property name="geometry">
      <rect>
-      <x>830</x>
+      <x>710</x>
       <y>340</y>
       <width>211</width>
       <height>41</height>
@@ -323,7 +323,7 @@ background-color: rgb(208, 223, 232);</string>
    <widget class="QLineEdit" name="Ruta_entrada">
     <property name="geometry">
      <rect>
-      <x>850</x>
+      <x>730</x>
       <y>400</y>
       <width>171</width>
       <height>41</height>
@@ -377,7 +377,7 @@ background-color: rgb(208, 223, 232);</string>
    <widget class="QLabel" name="label_2">
     <property name="geometry">
      <rect>
-      <x>600</x>
+      <x>480</x>
       <y>340</y>
       <width>211</width>
       <height>41</height>
@@ -620,6 +620,33 @@ border-radius: 15px;</string>
     </property>
     <property name="text">
      <string>🡸</string>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="IdObra_entrada">
+    <property name="geometry">
+     <rect>
+      <x>960</x>
+      <y>400</y>
+      <width>171</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">border-radius: 15px;
+background-color: rgb(208, 223, 232);</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_9">
+    <property name="geometry">
+     <rect>
+      <x>940</x>
+      <y>340</y>
+      <width>211</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:14pt; font-weight:600;&quot;&gt;IdObra&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
     </property>
    </widget>
   </widget>

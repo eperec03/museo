@@ -105,6 +105,9 @@ class Coordinador:
    def obtener_todos_objetos(self):
       return self._model.select_objetos()
 
+   def obtener_artista(self):
+      return self._model.select_artista_nombre()
+
    def actualizarSala(self, sala: SalasVO) -> None:
       self._model.actualizar_sala(sala)
 
@@ -164,3 +167,9 @@ class Coordinador:
 
    def crearExposiciones(self, exposicion: ExposicionesVO) -> None:
       self._model.crear_exposiciones(exposicion)
+
+   def crearJuegos(self, juego: JuegosObrasVO) -> None:
+      self._model.crear_juegos(juego)
+
+   def crearObjetos(self, objeto:ObjetosVO) -> None:
+      self._model.crear_objetos(objeto)

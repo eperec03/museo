@@ -10,6 +10,7 @@ from PyQt5.QtGui import QIcon
 from vista.MenuEditor import *
 from vista.ActualizaExposiciones import *
 from vista.CrearExposiciones import *
+from vista.CrearExposiciones import *
 from vista.EliminarExposiciones import *
 
 class EditarExposiciones(QtWidgets.QMainWindow):
@@ -36,18 +37,19 @@ class EditarExposiciones(QtWidgets.QMainWindow):
 
     def go_crear(self):
         self.ventana_crear = CrearExposicion(ventana_anterior=self)
+        self.ventana_crear = CrearExposicion(ventana_anterior=self)
         self.ventana_crear.setCoordinador(self.coordinador)
         self.ventana_crear.show()
         self.hide()
 
     def go_eliminar(self):
-        self.ventana_eliminar = EliminarExposicion()
+        self.ventana_eliminar = EliminarExposiciones(ventana_anterior=self)
         self.ventana_eliminar.setCoordinador(self.coordinador)
         self.ventana_eliminar.show()
         self.hide()
 
     def go_actualizar(self):
-        self.ventana_actualizar = ActualizarExposicion()
+        self.ventana_actualizar = ActualizarExposicion(ventana_anterior=self)
         self.ventana_actualizar.setCoordinador(self.coordinador)
         self.ventana_actualizar.show()
         self.hide()

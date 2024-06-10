@@ -187,9 +187,9 @@ class Logica:
         a=ObrasDao()
         return a.getObras()
     
-    def select_artistas(self,id):
+    def select_artista_nombre(self,id):
         a=ArtistasDao()
-        return a.getArtista()
+        return a.getArtistaNombre(id)
     
     
     def validar_registro_editor(self, mi_persona: EditorVO):
@@ -282,3 +282,11 @@ class Logica:
     def crear_exposiciones(self, exposicion: ExposicionesVO):
         exposicion_dao = ExposicionesDao()
         exposicion_dao.insertExposicion(exposicion)
+
+    def crear_juegos(self, juego: JuegosObrasVO):
+        juegos_dao = JuegosObrasDao()
+        juegos_dao.insertJuegosObras(juego)
+
+    def crear_objetos(self, objeto: ObjetosVO):
+        objetos_dao = ObjetosDao()
+        objetos_dao.insertObjeto(objeto)
