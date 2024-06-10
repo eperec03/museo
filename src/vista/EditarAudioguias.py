@@ -10,8 +10,7 @@ from PyQt5.QtGui import QIcon
 from vista.MenuEditor import *
 from vista.ActualizaAudioguias import *
 from vista.EliminarAudioguias import *
-from vista.CrearAudioguías import *
-from vista.CrearAudioguias import CrearAudioguias
+from vista.CrearAudioguias import *
 from vista.EliminarAudioguias import *
 
 class EditarAudioguias(QtWidgets.QMainWindow):
