@@ -67,7 +67,7 @@
     </property>
     <property name="maximumSize">
      <size>
-      <width>411</width>
+      <width>700</width>
       <height>16777215</height>
      </size>
     </property>
@@ -835,6 +835,17 @@ border-radius: 15px;</string>
 background-color: rgb(208, 223, 232);</string>
     </property>
    </widget>
+   <zorder>Titulo</zorder>
+   <zorder>Titulo_2</zorder>
+   <zorder>enviarBotonJuego1</zorder>
+   <zorder>BotonAtras</zorder>
+   <zorder>pushButton</zorder>
+   <zorder>lineNombre</zorder>
+   <zorder>label</zorder>
+   <zorder>botonJugar</zorder>
+   <zorder>label_2</zorder>
+   <zorder>lineObra</zorder>
+   <zorder>Titulo_3</zorder>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
  </widget>
