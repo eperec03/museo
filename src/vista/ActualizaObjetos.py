@@ -31,7 +31,6 @@ class ActualizarObjeto(QtWidgets.QMainWindow):
         self.coordinador = coord
 
     def limpiar(self):
-        self.IDObjeto_entrada.clear()
         self.NombreObjeto_entrada.clear()
         self.Imagen_entrada.clear()
         self.Precio_entrada.clear()
@@ -44,10 +43,9 @@ class ActualizarObjeto(QtWidgets.QMainWindow):
     def actualizarObjeto(self) -> None:
         try:
             Objeto = ObjetosVO(
-                IDObjeto = self.IDObjeto_entrada.text(),
                 NombreObjeto = self.NombreObjeto_entrada.text(),
                 Imagen = self.Imagen_entrada.text(),
-                FechaNac = self.Precio_entrada.text(),
+                Precio = self.Precio_entrada.text(),
                 Tipo = self.Tipo_entrada.text(), 
                 Inspiracion = self.Inspiracion_entrada.text(),
                 Existencias = self.Existencias_entrada.text(),
