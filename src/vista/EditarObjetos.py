@@ -41,7 +41,7 @@ class EditarObjetos(QtWidgets.QMainWindow):
         self.hide()
 
     def go_eliminar(self):
-        self.ventana_eliminar = EliminarObjetos(ventana_anterior=self)
+        self.ventana_eliminar = EliminarObjeto(ventana_anterior=self)
         self.ventana_eliminar.setCoordinador(self.coordinador)
         self.ventana_eliminar.show()
         self.hide()

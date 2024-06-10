@@ -36,7 +36,7 @@ class EliminarAudioguia(QtWidgets.QMainWindow):
     def eliminarAudioguia(self) -> None:
         try:
             Audioguia = AudioguiasVO(
-                Titulo = self.NombreAudioguia_entrada.text(),
+                Titulo = self.Titulo_entrada.text(),
                 )
             self.coordinador.eliminarAudioguias(Audioguia)
             self.limpiar()

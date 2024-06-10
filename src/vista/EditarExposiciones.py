@@ -43,7 +43,7 @@ class EditarExposiciones(QtWidgets.QMainWindow):
         self.hide()
 
     def go_eliminar(self):
-        self.ventana_eliminar = EliminarExposiciones(ventana_anterior=self)
+        self.ventana_eliminar = EliminarExposicion(ventana_anterior=self)
         self.ventana_eliminar.setCoordinador(self.coordinador)
         self.ventana_eliminar.show()
         self.hide()

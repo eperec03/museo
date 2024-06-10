@@ -8,26 +8,22 @@ from PyQt5 import QtWidgets, uic
 from PyQt5.QtWidgets import QMessageBox
 from PyQt5.QtGui import QIcon
 from vista.MenuEditor import *
-from vista.ActualizaAudioguias import *
-from vista.EliminarAudioguias import *
-from vista.CrearAudioguias import *
-from vista.EliminarAudioguias import *
+from vista.ActualizaSalas import *
 
-class EditarAudioguias(QtWidgets.QMainWindow):
+
+
+class EditarSalas(QtWidgets.QMainWindow):
     def __init__(self, controlador = None,ventana_anterior=None):
         # Importamos el .ui
         super().__init__()
-        uic.loadUi('src/vista/ui/MenuEdicionAudioguias.ui', self)
-        self.setWindowTitle("EDICIÓN DE AUDIOGUÍAS")
+        uic.loadUi('src/vista/ui/MenuEdicionSalas.ui', self)
+        self.setWindowTitle("EDICIÓN DE SALAS")
         self.setWindowIcon(QIcon('src/vista/Imagenes/logomuseo.png'))  # Reemplaza con la ruta a tu logo
         # Almacena una referencia al controlador
         self.coordinador = controlador
         # "EnviarBoton" es el nombre que se le ha dado al objeto en el .ui
         self.ventana_anterior=ventana_anterior
         self.BotonAtras.clicked.connect(self.go_back)
-        self.BotonCrear.clicked.connect(self.go_crear)
-        self.BotonEliminar.clicked.connect(self.go_eliminar)
-        # self.BotonEliminar.clicked.connect(self.go_eliminar)
         self.BotonActualizar.clicked.connect(self.go_actualizar)
         
         self.show()
@@ -36,24 +32,8 @@ class EditarAudioguias(QtWidgets.QMainWindow):
         self.ventana_anterior.show()    
         self.destroy()      
 
-    def go_crear(self):
-        self.ventana_crear = CrearAudioguias()
-        self.ventana_crear.setCoordinador(self)
-        self.ventana_crear = CrearAudioguias(ventana_anterior=self)
-        self.ventana_crear.setCoordinador(self.coordinador)
-        self.ventana_crear.show()
-        self.hide()
-
-    def go_eliminar(self):
-        self.ventana_eliminar = EliminarAudioguia()
-        self.ventana_eliminar.setCoordinador(self)
-        self.ventana_eliminar = EliminarAudioguia(ventana_anterior=self)
-        self.ventana_eliminar.setCoordinador(self.coordinador)
-        self.ventana_eliminar.show()
-        self.hide()
-
     def go_actualizar(self):
-        self.ventana_actualizar = ActualizarAudioguia(ventana_anterior=self)
+        self.ventana_actualizar = ActualizarSala(ventana_anterior=self)
         self.ventana_actualizar.setCoordinador(self.coordinador)
         self.ventana_actualizar.show()
         self.hide()
@@ -63,7 +43,7 @@ class EditarAudioguias(QtWidgets.QMainWindow):
 
     def mostrar_advertencia(ex):
         mensaje = QMessageBox()
-        mensaje.setIcon(QMessageBox.warning)
+        mensaje.setIcon(QMessageBox.Warning)
         mensaje.setText("Error")
         mensaje.setInformativeText(str(ex))
         mensaje.setWindowTitle("Advertencia")

@@ -16,9 +16,7 @@ class ExposicionesDao(ExposicionesInterface, Conexion):
     SQL_INSERT = "INSERT INTO exposiciones(IDExposiciones, Titulo, Imagen, Descripcion, NumSala) VALUES (?, ?, ?, ?, ?)"
     SQL_UPDATE = "UPDATE exposiciones SET  Imagen= ?, Descripcion = ?, NumSala = ? WHERE Titulo = ?"
     SQL_FILTER = "SELECT * FROM exposiciones WHERE Titulo = ?"
-    SQL_INSERT_SERV = "INSERT INTO Servicios(Nombre) VALUES (?)"
-    SQL_SELECT_SERV = "SELECT IDServicios FROM servicios WHERE Nombre = ?"
-    SQL_DELETE_SERV = "DELETE FROM Servicios WHERE IdServicios = ?"
+    SQL_DELETE_SERV = "DELETE FROM exposiciones WHERE Titulo = ?"
 
     def getExposiciones(self) -> List[ExposicionesVO]:
         conexion = self.getConnection()

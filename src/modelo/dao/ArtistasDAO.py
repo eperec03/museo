@@ -173,6 +173,7 @@ class ArtistasDao(ArtistasInterface, Conexion):
                 cursor.close()
         conexion = self.closeConnection(conn)
         return artista
+    
 # a=ArtistasDao()
 # b=ArtistasVO()
 # b.setNombreArtista('Jesus Dominguez')

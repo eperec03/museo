@@ -3,9 +3,9 @@ from typing import List
 
 import sys
 sys.path.append(r'C:\Users\eripe\OneDrive\Documentos\ERI ULE\2º\SEGUNDO CUATRI\IS\PROYECTO\src\modelo')
-sys.path.append(r'c:\Users\clara\Documents\2ºUNI\2CUATRI\IS\museoTrabajo\src\modelo')
+sys.path.append(r'c:\Users\clara\Documents\2ºUNI\2CUATRI\IS\museo\src\modelo')
 
-from vo.JuegosVO import JuegosVO 
+from vo.JuegosVO import *
 from conexion.conexion2JDBC import Conexion
 from dao.JuegosInterface import JuegosInterface
 # Creamos la clase UsuarioDAO que manejará las operaciones de acceso a datos para los usuarios
@@ -15,10 +15,9 @@ class JuegosDao(JuegosInterface, Conexion):
     SQL_SELECT = "SELECT * FROM juegos"
     SQL_INSERT = "INSERT INTO juegos(IdJuego, Nombre, Dificultad, Descripcion, Ruta) VALUES (?, ?, ?, ?, ?)"
     SQL_INSERT_SERV = "INSERT INTO Servicios(Nombre) VALUES (?)"
-    SQL_SELECT_SERV = "SELECT IDServicios FROM servicios WHERE Nombre = ?"
-    SQL_DELETE_SERV = "DELETE FROM Servicios WHERE IdServicios = ?"
+    SQL_DELETE_SERV = "DELETE FROM Juegos WHERE IdJuego = ?"
     SQL_UPDATE = "UPDATE juegos SET Nombre= ?, Dificultad= ?, Descripcion = ? WHERE IdJuego = ?"
-    SQL_FILTER = "SELECT * FROM juegos WHERE Nombre = ?"
+    SQL_FILTER = "SELECT * FROM juegos WHERE IdJuego = ?"
 
 
     def getJuegos(self) -> List[JuegosVO]:
@@ -57,7 +56,7 @@ class JuegosDao(JuegosInterface, Conexion):
         conexion = self.closeConnection(conn)
         return juegos
     
-    def getJuego(self,Nombre) -> JuegosVO:
+    def getJuego(self,IdJuego) -> JuegosVO:
         conexion = self.getConnection()
         conn = None
         cursor = None
@@ -69,7 +68,7 @@ class JuegosDao(JuegosInterface, Conexion):
             #Crea un objeto para poder ejecutar consultas SQL sobre la conexion abierta
             cursor = conn.cursor()
             #Ejecuta de consulta SQL
-            cursor.execute(self.SQL_FILTER, (Nombre,)) #Obtiene todas las filas resultantes de la consulta
+            cursor.execute(self.SQL_FILTER, (IdJuego,)) #Obtiene todas las filas resultantes de la consulta
             #Obtiene todas las filas resultantes de la consulta
             row = cursor.fetchall()
             juego = JuegosVO()
@@ -77,9 +76,10 @@ class JuegosDao(JuegosInterface, Conexion):
                 IdJuego,Nombre,Dificultad,Descripcion,ruta= row[0]   #Al filtrar por la clave primaria, solo hay 1 resultado almacenado en la 1º pos
                 juego.set_IDJuego(IdJuego)
                 juego.set_Nombre(Nombre)
-                juego.set_Descripcion(Descripcion)
                 juego.set_Dificultad(Dificultad)
+                juego.set_Descripcion(Descripcion)
                 juego.set_ruta(ruta)
+
         except Error as e:
             print("Error al seleccionar juego:", e)
         #Se ejecuta siempre
@@ -124,7 +124,7 @@ class JuegosDao(JuegosInterface, Conexion):
 
         return rows
 
-    def deleteJuego (self, Nombre) -> int:
+    def deleteJuego (self, IdJuego) -> int:
         conexion = self.getConnection()
         conn = None
         cursor = None
@@ -136,16 +136,13 @@ class JuegosDao(JuegosInterface, Conexion):
                 print("La base de datos no esta disponible")
             cursor = conn.cursor()
             #Primero, buscamos el identificador del servicio con el nombre (es unico)
-            cursor.execute(self.SQL_SELECT_SERV, (Nombre,))
-            identificador_servicio = cursor.fetchone()[0] 
+            cursor.execute(self.SQL_DELETE_SERV, (IdJuego,))
             #Ahora, eliminamos el servicio de la tabla servicios (hay on delete cascade)
-            cursor.execute(self.SQL_DELETE_SERV, (identificador_servicio,))
             conn.commit()
             #Devuelve 1 si la inserción fue exitosa
             rows = cursor.rowcount
         except Error as e:
             print("Error al eliminar juego:", e)
-
 
         finally:
             if cursor:
@@ -186,6 +183,6 @@ class JuegosDao(JuegosInterface, Conexion):
 
         return rows
     
-# a=JuegosDao()
-# print(a.getJuegos())
+a=JuegosDao()
+print(a.deleteJuego('26'))
 # # print(a.getJuego('Memory de Arte'))

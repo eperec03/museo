@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>800</width>
-    <height>600</height>
+    <width>1703</width>
+    <height>845</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -17,9 +17,9 @@
    <widget class="QLabel" name="Titulo">
     <property name="geometry">
      <rect>
-      <x>240</x>
+      <x>580</x>
       <y>20</y>
-      <width>321</width>
+      <width>531</width>
       <height>91</height>
      </rect>
     </property>
@@ -32,14 +32,14 @@
      </font>
     </property>
     <property name="text">
-     <string>EDITAR SALAS</string>
+     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:48pt;&quot;&gt;EDITAR SALAS&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
     </property>
    </widget>
    <widget class="QLineEdit" name="NumeroSala_entrada">
     <property name="geometry">
      <rect>
-      <x>160</x>
-      <y>200</y>
+      <x>610</x>
+      <y>230</y>
       <width>161</width>
       <height>41</height>
      </rect>
@@ -52,10 +52,10 @@ background-color: rgb(208, 223, 232);</string>
    <widget class="QPushButton" name="BotonEditarSala">
     <property name="geometry">
      <rect>
-      <x>320</x>
-      <y>450</y>
-      <width>161</width>
-      <height>41</height>
+      <x>760</x>
+      <y>470</y>
+      <width>201</width>
+      <height>51</height>
      </rect>
     </property>
     <property name="palette">
@@ -257,6 +257,14 @@ background-color: rgb(208, 223, 232);</string>
       </disabled>
      </palette>
     </property>
+    <property name="font">
+     <font>
+      <family>Verdana</family>
+      <pointsize>12</pointsize>
+      <weight>75</weight>
+      <bold>true</bold>
+     </font>
+    </property>
     <property name="cursor">
      <cursorShape>PointingHandCursor</cursorShape>
     </property>
@@ -274,8 +282,8 @@ border-radius: 15px;</string>
    <widget class="QLabel" name="label">
     <property name="geometry">
      <rect>
-      <x>130</x>
-      <y>140</y>
+      <x>580</x>
+      <y>170</y>
       <width>211</width>
       <height>41</height>
      </rect>
@@ -287,8 +295,8 @@ border-radius: 15px;</string>
    <widget class="QLabel" name="label_2">
     <property name="geometry">
      <rect>
-      <x>140</x>
-      <y>270</y>
+      <x>590</x>
+      <y>300</y>
       <width>211</width>
       <height>41</height>
      </rect>
@@ -300,8 +308,8 @@ border-radius: 15px;</string>
    <widget class="QLineEdit" name="Capacidad_entrada">
     <property name="geometry">
      <rect>
-      <x>160</x>
-      <y>320</y>
+      <x>610</x>
+      <y>350</y>
       <width>171</width>
       <height>41</height>
      </rect>
@@ -314,8 +322,8 @@ background-color: rgb(208, 223, 232);</string>
    <widget class="QLineEdit" name="Tematica_entrada">
     <property name="geometry">
      <rect>
-      <x>480</x>
-      <y>320</y>
+      <x>930</x>
+      <y>350</y>
       <width>171</width>
       <height>41</height>
      </rect>
@@ -328,8 +336,8 @@ background-color: rgb(208, 223, 232);</string>
    <widget class="QLabel" name="label_3">
     <property name="geometry">
      <rect>
-      <x>460</x>
-      <y>270</y>
+      <x>910</x>
+      <y>300</y>
       <width>211</width>
       <height>41</height>
      </rect>
@@ -563,8 +571,8 @@ border-radius: 15px;</string>
    <widget class="QLineEdit" name="IDMapa_entrada">
     <property name="geometry">
      <rect>
-      <x>480</x>
-      <y>200</y>
+      <x>930</x>
+      <y>230</y>
       <width>161</width>
       <height>41</height>
      </rect>
@@ -577,8 +585,8 @@ background-color: rgb(208, 223, 232);</string>
    <widget class="QLabel" name="label_4">
     <property name="geometry">
      <rect>
-      <x>450</x>
-      <y>140</y>
+      <x>900</x>
+      <y>170</y>
       <width>211</width>
       <height>41</height>
      </rect>
@@ -587,16 +595,6 @@ background-color: rgb(208, 223, 232);</string>
      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:14pt; font-weight:600;&quot;&gt;ID Mapa&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
     </property>
    </widget>
-  </widget>
-  <widget class="QMenuBar" name="menubar">
-   <property name="geometry">
-    <rect>
-     <x>0</x>
-     <y>0</y>
-     <width>800</width>
-     <height>26</height>
-    </rect>
-   </property>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
  </widget>

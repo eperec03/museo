@@ -38,7 +38,7 @@ class EliminarObjeto(QtWidgets.QMainWindow):
             Objeto = ObjetosVO(
                 NombreObjeto = self.NombreObjeto_entrada.text(),
                 )
-            self.coordinador.eliminarObjetos(Objeto)
+            self.coordinador.eliminarObjeto(Objeto)
             self.limpiar()
         except Exception as ex:
             print(ex)

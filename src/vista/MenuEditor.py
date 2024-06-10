@@ -20,7 +20,7 @@ from vista.EditarAudioguias import *
 from vista.EditarExposiciones import *
 from vista.EditarJuegos import *
 from vista.EditarObras import *
-from vista.EditarObjetos import *
+from vista.EditarObjetos import EditarObjetos
 
 from vista.MenuEditor import *
 
