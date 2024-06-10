@@ -22,7 +22,7 @@ class MapaVentana(QtWidgets.QMainWindow):
         self.coordinador = controlador
         # self.enviarBoton.clicked.connect(self.registrarEntrada)
         self.ventana_anterior = ventana_anterior
-        self.BotonHome.clicked.connect(self.go_back)
+        self.BotonAtras.clicked.connect(self.go_back)
         self.boton_sala1.clicked.connect(self.go_to_sala1)
         self.mini_sala1.clicked.connect(self.go_to_sala1)
         self.boton_sala2.clicked.connect(self.go_to_sala2)

@@ -106,7 +106,7 @@ class EditorDAO(EditorInterface, Conexion):
                 #Cierra el cursor para liberar recursos
                 cursor.close()
         conexion = self.closeConnection(conn)
-        return editor
+        return editores
     
     def insertEditor (self, usuario: EditorVO) -> int:
         conexion = self.getConnection()

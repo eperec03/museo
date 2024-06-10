@@ -19,7 +19,7 @@ class RegistroEditoresVentana(QtWidgets.QMainWindow):
         # Almacena una referencia al controlador
         self.coordinador = controlador
         # "EnviarBoton" es el nombre que se le ha dado al objeto en el .ui
-        self.enviarBoton.clicked.connect(self.registrarPersona)
+        self.enviarBoton.clicked.connect(self.registrarEditor)
         self.ventana_anterior=ventana_anterior
         self.BotonAtras.clicked.connect(self.go_back)
 
@@ -54,7 +54,7 @@ class RegistroEditoresVentana(QtWidgets.QMainWindow):
 
     #############################Listeners##############################
 
-    def registrarPersona(self) -> None:
+    def registrarEditor(self) -> None:
         try:
             persona = EditorVO(
                 DNI = self.lineSSN.text(),
@@ -70,6 +70,7 @@ class RegistroEditoresVentana(QtWidgets.QMainWindow):
             )
             self.coordinador.registrarEditor(persona)
             self.limpiar()
+            
         except Exception as ex:
             print(ex)
             self.mostrar_advertencia(ex)
