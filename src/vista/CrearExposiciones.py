@@ -1,25 +1,25 @@
 import sys
 sys.path.append(r'C:\Users\eripe\OneDrive\Documentos\ERI ULE\2º\SEGUNDO CUATRI\IS\PROYECTO\src')
-sys.path.append(r'c:\Users\clara\Documents\2ºUNI\2CUATRI\IS\src')
+sys.path.append(r'c:\Users\clara\Documents\2ºUNI\2CUATRI\IS\museo\src')
 
 import tkinter as tk
 from tkinter import messagebox
-from modelo.vo.AudioguiasVO import AudioguiasVO
+from modelo.vo.ExposicionesVO import ExposicionesVO
 from PyQt5 import QtWidgets, uic
 from PyQt5.QtWidgets import QMessageBox
 from PyQt5.QtGui import QIcon
 
-class ActualizarAudioguia(QtWidgets.QMainWindow):
+class CrearExposicion(QtWidgets.QMainWindow):
     def __init__(self, controlador = None, ventana_anterior=None):
         # Importamos el .ui
         super().__init__()
-        uic.loadUi('src/vista/ui/ActualizarAudioguias.ui', self)
-        self.setWindowTitle("ACTUALIZAR AUDIOGUÍAS")
+        uic.loadUi('src/vista/ui/CrearExposiciones.ui', self)
+        self.setWindowTitle("CREAR EXPOSICIONES")
         self.setWindowIcon(QIcon('src/vista/Imagenes/logomuseo.png'))  # Reemplaza con la ruta a tu logo
         # Almacena una referencia al controlador
         self.coordinador = controlador
         # "EnviarBoton" es el nombre que se le ha dado al objeto en el .ui
-        self.BotonEditarAudioguia.clicked.connect(self.actualizarAudioguia)
+        self.BotonEditarExposicion.clicked.connect(self.crearExposicion)
         self.ventana_anterior=ventana_anterior
         self.BotonAtras.clicked.connect(self.go_back)
 
@@ -32,19 +32,19 @@ class ActualizarAudioguia(QtWidgets.QMainWindow):
 
     def limpiar(self):
         self.Titulo_entrada.clear()
-        self.IDObra_entrada.clear()
-        self.Audio_entrada.clear()
-        self.Duracion_entrada.clear()
+        self.Imagen_entrada.clear()
+        self.Descripcion_entrada.clear()
+        self.NumeroSala_entrada.clear()
 
-    def actualizarAudioguia(self) -> None:
+    def crearExposicion(self) -> None:
         try:
-            Audioguia = AudioguiasVO(
+            Exposicion = ExposicionesVO(
                 Titulo = self.Titulo_entrada.text(),
-                IdObra = self.IDObra_entrada.text(),
-                Audio = self.Audio_entrada.text(),
-                Duracion = self.Duracion_entrada.text()
+                Imagen = self.Imagen_entrada.text(),
+                Descripcion = self.Descripcion_entrada.text(),
+                NumSala = self.NumeroSala_entrada.text()
                 )
-            self.coordinador.actualizarAudioguias(Audioguia)
+            self.coordinador.crearExposiciones(Exposicion)
             self.limpiar()
         except Exception as ex:
             print(ex)

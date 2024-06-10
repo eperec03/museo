@@ -9,6 +9,7 @@ from PyQt5.QtWidgets import QMessageBox
 from PyQt5.QtGui import QIcon
 from vista.MenuEditor import *
 from vista.ActualizaAudioguias import *
+from vista.CrearAudioguias import CrearAudioguias
 
 class EditarAudioguias(QtWidgets.QMainWindow):
     def __init__(self, controlador = None,ventana_anterior=None):
@@ -23,7 +24,11 @@ class EditarAudioguias(QtWidgets.QMainWindow):
         self.ventana_anterior=ventana_anterior
         self.BotonAtras.clicked.connect(self.go_back)
         self.BotonCrear.clicked.connect(self.go_crear)
+<<<<<<< HEAD
+        # self.BotonEliminar.clicked.connect(self.go_eliminar)
+=======
         self.BotonEliminar.clicked.connect(self.go_eliminar)
+>>>>>>> d5de759b16fa402da08f86f42353be2c4812646b
         self.BotonActualizar.clicked.connect(self.go_actualizar)
         
         self.show()
@@ -33,8 +38,13 @@ class EditarAudioguias(QtWidgets.QMainWindow):
         self.destroy()      
 
     def go_crear(self):
+<<<<<<< HEAD
+        self.ventana_crear = CrearAudioguias(ventana_anterior=self)
+        self.ventana_crear.setCoordinador(self.coordinador)
+=======
         self.ventana_crear = CrearAudioguias()
         self.ventana_crear.setCoordinador(self)
+>>>>>>> d5de759b16fa402da08f86f42353be2c4812646b
         self.ventana_crear.show()
         self.hide()
 
@@ -45,8 +55,8 @@ class EditarAudioguias(QtWidgets.QMainWindow):
         self.hide()
 
     def go_actualizar(self):
-        self.ventana_actualizar = ActualizarAudioguia(self)
-        self.ventana_actualizar.setCoordinador(self)
+        self.ventana_actualizar = ActualizarAudioguia(ventana_anterior=self)
+        self.ventana_actualizar.setCoordinador(self.coordinador)
         self.ventana_actualizar.show()
         self.hide()
 
@@ -55,7 +65,7 @@ class EditarAudioguias(QtWidgets.QMainWindow):
 
     def mostrar_advertencia(ex):
         mensaje = QMessageBox()
-        mensaje.setIcon(QMessageBox.Warning)
+        mensaje.setIcon(QMessageBox.warning)
         mensaje.setText("Error")
         mensaje.setInformativeText(str(ex))
         mensaje.setWindowTitle("Advertencia")

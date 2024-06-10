@@ -4,22 +4,22 @@ sys.path.append(r'c:\Users\clara\Documents\2ºUNI\2CUATRI\IS\src')
 
 import tkinter as tk
 from tkinter import messagebox
-from modelo.vo.AudioguiasVO import AudioguiasVO
+from modelo.vo.JuegosVO import JuegosVO
 from PyQt5 import QtWidgets, uic
 from PyQt5.QtWidgets import QMessageBox
 from PyQt5.QtGui import QIcon
 
-class CrearAudioguía(QtWidgets.QMainWindow):
+class CrearJuego(QtWidgets.QMainWindow):
     def __init__(self, controlador = None, ventana_anterior=None):
         # Importamos el .ui
         super().__init__()
-        uic.loadUi('src/vista/ui/CrearAudioguías.ui', self)
-        self.setWindowTitle("CREAR AUDIOGUÍAS")
+        uic.loadUi('src/vista/ui/CrearJuegos.ui', self)
+        self.setWindowTitle("CREAR JUEGOS")
         self.setWindowIcon(QIcon('src/vista/Imagenes/logomuseo.png'))  # Reemplaza con la ruta a tu logo
         # Almacena una referencia al controlador
         self.coordinador = controlador
         # "EnviarBoton" es el nombre que se le ha dado al objeto en el .ui
-        self.BotonEditarAudioguia.clicked.connect(self.CrearAudioguía)
+        self.BotonEditarJuego.clicked.connect(self.crearJuego)
         self.ventana_anterior=ventana_anterior
         self.BotonAtras.clicked.connect(self.go_back)
 
@@ -31,22 +31,22 @@ class CrearAudioguía(QtWidgets.QMainWindow):
         self.coordinador = coord
 
     def limpiar(self):
-        self.IDAudioguia_entrada.clear()
-        self.Titulo_entrada.clear()
-        self.IDObra_entrada.clear()
-        self.Audio_entrada.clear()
-        self.Duracion_entrada.clear()
+        self.IDJuego_entrada.clear()
+        self.Nombre_entrada.clear()
+        self.Descripcion_entrada.clear()
+        self.Dificultad_entrada.clear()
+        self.Ruta_entrada.clear()
 
-    def actualizarAudioguia(self) -> None:
+    def actualizarJuego(self) -> None:
         try:
-            Audioguia = AudioguiasVO(
-                IDAudioguia = self.IDAudioguia_entrada.text(),
-                Titulo = self.NombreAudioguia_entrada.text(),
-                IDObra = self.IDObra_entrada.text(),
-                Audio = self.Audio_entrada.text(),
-                Duracion = self.Duracion_entrada.text()
+            Juego = JuegosVO(
+                IDJuego = self.IDJuego_entrada.text(),
+                Nombre = self.Nombre_entrada.text(),
+                Descripcion = self.Descripcion_entrada.text(),
+                Dificultad = self.Dificultad_entrada.text(),
+                ruta = self.Ruta_entrada.text()
                 )
-            self.coordinador.actualizarAudioguia(Audioguia)
+            self.coordinador.actualizarJuegos(Juego)
             self.limpiar()
         except Exception as ex:
             print(ex)
