@@ -4,22 +4,22 @@ sys.path.append(r'c:\Users\clara\Documents\2ºUNI\2CUATRI\IS\src')
 
 import tkinter as tk
 from tkinter import messagebox
-from modelo.vo.ObrasVO import ObrasVO
+from modelo.vo.ExposicionesVO import ExposicionesVO
 from PyQt5 import QtWidgets, uic
 from PyQt5.QtWidgets import QMessageBox
 from PyQt5.QtGui import QIcon
 
-class ActualizarObra(QtWidgets.QMainWindow):
+class EliminarExposicion(QtWidgets.QMainWindow):
     def __init__(self, controlador = None, ventana_anterior=None):
         # Importamos el .ui
         super().__init__()
-        uic.loadUi('src/vista/ui/ActualizarObras.ui', self)
-        self.setWindowTitle("ACTUALIZAR OBRAS")
-        self.setWindowIcon(QIcon('src/vista/Imagenes/logomuseo.png'))  # Reemplaza con la ruta a tu logo
+        uic.loadUi('src/vista/ui/EliminarExposiciones.ui', self)
+        self.setWindowTitle("ELIMINAR EXPOSICIONES")
+        self.setWindowIcon(QIcon('src/vista/Descripciones/logomuseo.png'))  # Reemplaza con la ruta a tu logo
         # Almacena una referencia al controlador
         self.coordinador = controlador
-        # "EnviarBoton" es el nombre que se le ha dado al Obra en el .ui
-        self.BotonEditarObra.clicked.connect(self.actualizarObra)
+        # "EnviarBoton" es el nombre que se le ha dado al objeto en el .ui
+        self.BotonEditarExposicion.clicked.connect(self.eliminarExposicion)
         self.ventana_anterior=ventana_anterior
         self.BotonAtras.clicked.connect(self.go_back)
 
@@ -31,24 +31,22 @@ class ActualizarObra(QtWidgets.QMainWindow):
         self.coordinador = coord
 
     def limpiar(self):
-        self.NombreObra_entrada.clear()
+        self.IDExposicion_entrada.clear()
+        self.Titulo_entrada.clear()
         self.Imagen_entrada.clear()
         self.Descripcion_entrada.clear()
-        self.Fecha_entrada.clear()
-        self.IdArtista_entrada.clear()
-        self.IdExposicion_entrada.clear()
+        self.NumeroSala_entrada.clear()
 
-    def actualizarObra(self) -> None:
+    def eliminarExposicion(self) -> None:
         try:
-            Obra = ObrasVO(
-                NombreObra = self.NombreObra_entrada.text(),
+            Exposicion = ExposicionesVO(
+                IdExposicion = self.IDExposicion_entrada.text(),
+                Titulo = self.Titulo_entrada.text(),
                 Imagen = self.Imagen_entrada.text(),
                 Descripcion = self.Descripcion_entrada.text(),
-                Fecha = self.Fecha_entrada.text(), 
-                IdArtista = self.IdArtista_entrada.text(),
-                IdExposicion = self.IdExposicion_entrada.text()
+                NumSala = self.NumeroSala_entrada.text()
                 )
-            self.coordinador.actualizarObras(Obra)
+            self.coordinador.eliminarExposiciones(Exposicion)
             self.limpiar()
         except Exception as ex:
             print(ex)

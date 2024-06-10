@@ -9,17 +9,17 @@ from PyQt5 import QtWidgets, uic
 from PyQt5.QtWidgets import QMessageBox
 from PyQt5.QtGui import QIcon
 
-class ActualizarObra(QtWidgets.QMainWindow):
+class EliminarObra(QtWidgets.QMainWindow):
     def __init__(self, controlador = None, ventana_anterior=None):
         # Importamos el .ui
         super().__init__()
-        uic.loadUi('src/vista/ui/ActualizarObras.ui', self)
-        self.setWindowTitle("ACTUALIZAR OBRAS")
-        self.setWindowIcon(QIcon('src/vista/Imagenes/logomuseo.png'))  # Reemplaza con la ruta a tu logo
+        uic.loadUi('src/vista/ui/EliminarObras.ui', self)
+        self.setWindowTitle("ELIMINAR OBRAS")
+        self.setWindowIcon(QIcon('src/vista/Descripciones/logomuseo.png'))  # Reemplaza con la ruta a tu logo
         # Almacena una referencia al controlador
         self.coordinador = controlador
-        # "EnviarBoton" es el nombre que se le ha dado al Obra en el .ui
-        self.BotonEditarObra.clicked.connect(self.actualizarObra)
+        # "EnviarBoton" es el nombre que se le ha dado al objeto en el .ui
+        self.BotonEditarObra.clicked.connect(self.eliminarObra)
         self.ventana_anterior=ventana_anterior
         self.BotonAtras.clicked.connect(self.go_back)
 
@@ -31,6 +31,7 @@ class ActualizarObra(QtWidgets.QMainWindow):
         self.coordinador = coord
 
     def limpiar(self):
+        self.IDObra_entrada.clear()
         self.NombreObra_entrada.clear()
         self.Imagen_entrada.clear()
         self.Descripcion_entrada.clear()
@@ -38,9 +39,10 @@ class ActualizarObra(QtWidgets.QMainWindow):
         self.IdArtista_entrada.clear()
         self.IdExposicion_entrada.clear()
 
-    def actualizarObra(self) -> None:
+    def eliminarObra(self) -> None:
         try:
             Obra = ObrasVO(
+                IdObra = self.IDObra_entrada.text(),
                 NombreObra = self.NombreObra_entrada.text(),
                 Imagen = self.Imagen_entrada.text(),
                 Descripcion = self.Descripcion_entrada.text(),
@@ -48,7 +50,7 @@ class ActualizarObra(QtWidgets.QMainWindow):
                 IdArtista = self.IdArtista_entrada.text(),
                 IdExposicion = self.IdExposicion_entrada.text()
                 )
-            self.coordinador.actualizarObras(Obra)
+            self.coordinador.eliminarObras(Obra)
             self.limpiar()
         except Exception as ex:
             print(ex)

@@ -98,72 +98,65 @@ class Logica:
     def actualizar_sala(self, sala: SalasVO):
         sala_dao=SalasDao()
         error=1
-        for i in range (len(sala_dao.getSalas())):
-            if sala.NumeroSala == sala_dao.getSalas()[i].getNumeroSala():            
-                sala_dao.updateSala(sala)
-                error=0
+        if sala.getNumeroSala() == sala_dao.getSala(sala.getNumeroSala()).getNumeroSala():            
+            sala_dao.updateSala(sala)
+            error=0
         if error==1:
             messagebox.showwarning("Advertencia", "No existe ese NumeroSala")
 
     def actualizar_catalogo(self, catalogo: CatalogoVO):
         catalogo_dao=CatalogoDao()
         error=1
-        for i in range (len(catalogo_dao.getCatalogo())):
-            if catalogo.IdCatalogo == catalogo_dao.getCatalogos()[i].getIdCatalogo():            
-                catalogo_dao.updateCatalogo(catalogo)
-                error=0
+        if catalogo.getTitulo() == catalogo_dao.getCatalogo(catalogo.getTitulo()).getTitulo():            
+            catalogo_dao.updateCatalogo(catalogo)
+            error=0
         if error==1:
             messagebox.showwarning("Advertencia", "No existe ese IDCatalogo")
 
     def actualizar_juego(self, juego: JuegosVO):
         juego_dao=JuegosDao()
         error=1
-        for i in range (len(juego_dao.getJuegos())):
-            if juego.NumeroSala() == juego_dao.getJuegos()[i].get_IDJuego():            
-                juego_dao.updateJuego(juego)
-                error=0
+        if juego.get_IDJuego() == juego_dao.getJuego(juego.get_Nombre()).get_IDJuego():            
+            juego_dao.updateJuego(juego)
+            error=0
         if error==1:
             messagebox.showwarning("Advertencia", "No existe ese IDJuego")
     
     def actualizar_objeto(self, objeto: ObjetosVO):
         objeto_dao=ObjetosDao()
         error=1
-        for i in range (len(objeto_dao.getObjetos())):
-            if objeto.IdObjeto == objeto_dao.getObjetos()[i].getIdObjeto():            
-                objeto_dao.updateObjeto(objeto)
-                error=0
+        if objeto.getNombreObjeto() == objeto_dao.getObjeto(objeto.getNombreObjeto()).getNombreObjeto():            
+            objeto_dao.updateObjeto(objeto)
+            error=0
         if error==1:
             messagebox.showwarning("Advertencia", "No existe ese IDObjeto")
     
     def actualizar_obra(self, obra: ObrasVO):
         obra_dao=ObrasDao()
         error=1
-        for i in range (len(obra_dao.getObras())):
-            if obra.IdObra == obra_dao.getObras()[i].getIdObra():            
-                obra_dao.updateObra(obra)
-                error=0
+        if obra.getTitulo() == obra_dao.getObraTitulo(obra.getTitulo()).getTitulo():            
+            obra_dao.updateObra(obra)
+            error=0
         if error==1:
             messagebox.showwarning("Advertencia", "No existe ese IDObra")
     
     def actualizar_artista(self, artista: ArtistasVO):
         artista_dao=ArtistasDao()
         error=1
-        for i in range (len(artista_dao.getArtistas())):
-            if artista.IdArtista == artista_dao.getArtistas()[i].getIdArtista():            
-                artista_dao.updateArtista(artista)
-                error=0
+        if artista.getNombreArtista() == artista_dao.getArtista(artista.getNombreArtista()).getNombreArtista():            
+            artista_dao.updateArtista(artista)
+            error=0
         if error==1:
-            messagebox.showwarning("Advertencia", "No existe ese IDArtista")
+            messagebox.showwarning("Advertencia", "No existe ese nombre de artista.")
 
     def actualizar_audioguia(self, audioguia: AudioguiasVO):
         audioguia_dao=AudioguiasDao()
         error=1
-        for i in range (len(audioguia_dao.getAudioguias())):
-            if audioguia.IdAudio == audioguia_dao.getAudioguias()[i].getIdAudio():            
-                audioguia_dao.updateAudioguia(audioguia)
-                error=0
+        if audioguia.getTitulo() == audioguia_dao.getAudioguia(audioguia.getTitulo()).getTitulo():            
+            audioguia_dao.updateAudioguia(audioguia)
+            error=0
         if error==1:
-            messagebox.showwarning("Advertencia", "No existe ese IDAudioguia")
+            messagebox.showwarning("Advertencia", "No existe ese título de audioguia.")
 
     def actualizar_exposicion(self, exposicion: ExposicionesVO):
         exposicion_dao=ExposicionesDao()

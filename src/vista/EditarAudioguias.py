@@ -45,7 +45,7 @@ class EditarAudioguias(QtWidgets.QMainWindow):
     #     self.hide()
 
     def go_actualizar(self):
-        self.ventana_actualizar = ActualizarAudioguia()
+        self.ventana_actualizar = ActualizarAudioguia(self)
         self.ventana_actualizar.setCoordinador(self)
         self.ventana_actualizar.show()
         self.hide()
