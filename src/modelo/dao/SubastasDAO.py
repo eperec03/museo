@@ -70,11 +70,12 @@ class SubastasDao(SubastasInterface, Conexion):
             #Obtiene todas las filas resultantes de la consulta
             row = cursor.fetchall()
             subasta = SubastasVO()
-            IDSubasta,Titulo,Descripcion,Fecha = row[0]   #Al filtrar por la clave primaria, solo hay 1 resultado almacenado en la 1º pos
-            subasta.setIdSubastas(IDSubasta)
-            subasta.setTitulo(Titulo)
-            subasta.setFecha(Fecha)
-            subasta.setDescripcion(Descripcion)
+            if len(row)>0:
+                IDSubasta,Titulo,Descripcion,Fecha = row[0]   #Al filtrar por la clave primaria, solo hay 1 resultado almacenado en la 1º pos
+                subasta.setIdSubastas(IDSubasta)
+                subasta.setTitulo(Titulo)
+                subasta.setFecha(Fecha)
+                subasta.setDescripcion(Descripcion)
         except Error as e:
             print("Error al seleccionar subasta:", e)
         #Se ejecuta siempre

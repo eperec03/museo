@@ -20,7 +20,7 @@ class EditorDAO(EditorInterface, Conexion):
     SQL_DELETE_USU = "DELETE FROM Usuarios WHERE DNI = ?"
 
 
-    def getUsuarios(self) -> List[EditorVO]:
+    def getEditores(self) -> List[EditorVO]:
         conexion = self.getConnection()
         conn = None
         cursor = None
@@ -65,10 +65,11 @@ class EditorDAO(EditorInterface, Conexion):
         conexion = self.closeConnection(conn)
         return editores
     
-    def getFiltroUsuarios(self,dni) -> List[EditorVO]:
+    def getEditor(self,dni) -> List[EditorVO]:
         conexion = self.getConnection()
         conn = None
         cursor = None
+        editores = []
         try:
             if conexion:
                 conn = conexion
@@ -79,21 +80,23 @@ class EditorDAO(EditorInterface, Conexion):
             #Ejecuta de consulta SQL
             cursor.execute(self.SQL_FILTER, (dni,)) 
             rows = cursor.fetchall()
-            SSN, rol = rows[0]
-            #Ahora, cogemos el resto de atributos de la tabla usuarios:
-            usu_dao=UsuariosDAO()
-            usu_vo=usu_dao.getUsuario(SSN)
-            editor = EditorVO()
-            editor.set_DNI(SSN)
-            editor.set_UsuNombreCompleto(usu_vo.get_UsuNombreCompleto())
-            editor.set_Usutfno(usu_vo.get_Usutfno())
-            editor.set_UsuEmail(usu_vo.get_UsuEmail())
-            editor.set_UsuTitularMP(usu_vo.get_UsuTitularMP())
-            editor.set_UsuNumTarjMP(usu_vo.get_UsuNumTarjMP())
-            editor.set_UsuCvvMP(usu_vo.get_UsuCvvMP())
-            editor.set_UsuCadMP(usu_vo.get_UsuCadMP())
-            editor.set_UsuContrasenna(usu_vo.get_UsuContrasenna())
-            editor.set_Rol(rol)
+            if len(rows)>0:
+                SSN, rol = rows[0]
+                #Ahora, cogemos el resto de atributos de la tabla usuarios:
+                usu_dao=UsuariosDAO()
+                usu_vo=usu_dao.getUsuario(SSN)
+                editor = EditorVO()
+                editor.set_DNI(SSN)
+                editor.set_UsuNombreCompleto(usu_vo.get_UsuNombreCompleto())
+                editor.set_Usutfno(usu_vo.get_Usutfno())
+                editor.set_UsuEmail(usu_vo.get_UsuEmail())
+                editor.set_UsuTitularMP(usu_vo.get_UsuTitularMP())
+                editor.set_UsuNumTarjMP(usu_vo.get_UsuNumTarjMP())
+                editor.set_UsuCvvMP(usu_vo.get_UsuCvvMP())
+                editor.set_UsuCadMP(usu_vo.get_UsuCadMP())
+                editor.set_UsuContrasenna(usu_vo.get_UsuContrasenna())
+                editor.set_Rol(rol)
+                editores.append(editor)
         except Error as e:
             print("Error al seleccionar usuarios:", e)
 
@@ -105,7 +108,7 @@ class EditorDAO(EditorInterface, Conexion):
         conexion = self.closeConnection(conn)
         return editor
     
-    def insertUsuario (self, usuario: EditorVO) -> int:
+    def insertEditor (self, usuario: EditorVO) -> int:
         conexion = self.getConnection()
         conn = None
         cursor = None
@@ -144,7 +147,7 @@ class EditorDAO(EditorInterface, Conexion):
 
         return rows
 
-    def eliminateUsuario (self,SSN) -> int:
+    def eliminateEditor (self,SSN) -> int:
         conexion = self.getConnection()
         conn = None
         cursor = None
@@ -175,7 +178,7 @@ class EditorDAO(EditorInterface, Conexion):
 
         return rows
 
-    def updateUsuario  (self, usuario:EditorVO) -> int:
+    def updateEditor  (self, usuario:EditorVO) -> int:
         conexion = self.getConnection()
         conn = None
         cursor = None

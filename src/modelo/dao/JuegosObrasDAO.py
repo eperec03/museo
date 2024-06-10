@@ -85,14 +85,15 @@ class JuegosObrasDao(JuegosObrasInterface, Conexion):
             cursor.execute(self.SQL_FILTER, (juego_vo.get_IDJuego(),)) #Obtiene todas las filas resultantes de la consulta
             row = cursor.fetchall()
             juegoObras = JuegosObrasVO()
-            IDJuegoObra,IDObra= row[0]= row[0]   #Al filtrar por la clave primaria, solo hay 1 resultado almacenado en la 1º pos
-            juegoObras.set_IDJuego(IDJuegoObra)
-            juegoObras.set_IDObra(IDObra)
-            juegoObras.set_Nombre(juego_vo.get_Nombre())
-            juegoObras.set_Dificultad(juego_vo.get_Dificultad())
-            juegoObras.set_Descripcion(juego_vo.get_Descripcion())
-            juegoObras.set_ruta(juego_vo.get_ruta())
-            juegos.append(juegoObras)
+            if len(row)>0:
+                IDJuegoObra,IDObra= row[0]= row[0]   #Al filtrar por la clave primaria, solo hay 1 resultado almacenado en la 1º pos
+                juegoObras.set_IDJuego(IDJuegoObra)
+                juegoObras.set_IDObra(IDObra)
+                juegoObras.set_Nombre(juego_vo.get_Nombre())
+                juegoObras.set_Dificultad(juego_vo.get_Dificultad())
+                juegoObras.set_Descripcion(juego_vo.get_Descripcion())
+                juegoObras.set_ruta(juego_vo.get_ruta())
+                juegos.append(juegoObras)
 
         except Error as e:
             print("Error al seleccionar JuegosObras:", e)

@@ -70,13 +70,14 @@ class ExposicionesDao(ExposicionesInterface, Conexion):
             #Obtiene todas las filas resultantes de la consulta
             row = cursor.fetchall()
             exposicion = ExposicionesVO()
-            IDExposiciones,Titulo,Imagen,Descripcion,NumSala= row[0]   #Al filtrar por la clave primaria, solo hay 1 resultado almacenado en la 1º pos
-            exposicion.setIdExposicion(IDExposiciones)
-            exposicion.setTitulo(Titulo)
-            exposicion.setDescripcion(Descripcion)
-            exposicion.setImagen(Imagen)
-            exposicion.setNumSala(NumSala)
-            
+            if len(row)>0:
+                IDExposiciones,Titulo,Imagen,Descripcion,NumSala= row[0]   #Al filtrar por la clave primaria, solo hay 1 resultado almacenado en la 1º pos
+                exposicion.setIdExposicion(IDExposiciones)
+                exposicion.setTitulo(Titulo)
+                exposicion.setDescripcion(Descripcion)
+                exposicion.setImagen(Imagen)
+                exposicion.setNumSala(NumSala)
+                
         except Error as e:
             print("Error al seleccionar exposicion:", e)
         #Se ejecuta siempre
