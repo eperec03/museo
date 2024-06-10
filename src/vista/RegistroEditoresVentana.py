@@ -73,6 +73,7 @@ class RegistroEditoresVentana(QtWidgets.QMainWindow):
         except Exception as ex:
             print(ex)
             self.mostrar_advertencia(ex)
+            self.go_back()
 
     def mostrar_advertencia(ex):
         mensaje = QMessageBox()
