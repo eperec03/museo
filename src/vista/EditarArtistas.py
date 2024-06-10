@@ -26,7 +26,7 @@ class EditarArtistas(QtWidgets.QMainWindow):
         self.BotonAtras.clicked.connect(self.go_back)
         self.BotonCrear.clicked.connect(self.go_crear)
         self.BotonEliminar.clicked.connect(self.go_eliminar)
-        # self.BotonActualizar.clicked.connect(self.go_actualizar)
+        self.BotonActualizar.clicked.connect(self.go_actualizar)
         
         self.show()
 
@@ -47,7 +47,7 @@ class EditarArtistas(QtWidgets.QMainWindow):
         self.hide()
 
     def go_actualizar(self):
-        self.ventana_actualizar = ActualizarArtista()
+        self.ventana_actualizar = ActualizarArtista(ventana_anterior=self)
         self.ventana_actualizar.setCoordinador(self.coordinador)
         self.ventana_actualizar.show()
         self.hide()
