@@ -257,7 +257,7 @@ border-radius: 15px;</string>
 background-color: rgb(208, 223, 232);</string>
     </property>
    </widget>
-   <widget class="QLineEdit" name="IDObra_entrada">
+   <widget class="QLineEdit" name="IDObjeto_entrada">
     <property name="geometry">
      <rect>
       <x>90</x>
