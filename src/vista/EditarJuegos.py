@@ -34,19 +34,19 @@ class EditarJuegos(QtWidgets.QMainWindow):
         self.destroy()      
 
     def go_crear(self):
-        self.ventana_crear = CrearJuegos()
-        self.ventana_crear.setCoordinador(self)
+        self.ventana_crear = CrearJuegos(ventana_anterior=self)
+        self.ventana_crear.setCoordinador(self.coordinador)
         self.ventana_crear.show()
         self.hide()
 
     def go_eliminar(self):
-        self.ventana_eliminar = EliminarJuego()
-        self.ventana_eliminar.setCoordinador(self)
+        self.ventana_eliminar = EliminarJuego(ventana_anterior=self)
+        self.ventana_eliminar.setCoordinador(self.coordinador)
         self.ventana_eliminar.show()
         self.hide()
 
     def go_actualizar(self):
-        self.ventana_actualizar = ActualizarJuego(self)
+        self.ventana_actualizar = ActualizarJuego(ventana_anterior=self)
         self.ventana_actualizar.setCoordinador(self.coordinador)
         self.ventana_actualizar.show()
         self.hide()

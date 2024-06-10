@@ -14,14 +14,16 @@ from PyQt5 import QtWidgets, uic
 from PyQt5.QtWidgets import QMessageBox
 from PyQt5.QtGui import QIcon
 from vista.RegistroEditoresVentana import *
+
 from vista.EditarArtistas import *
 from vista.EditarAudioguias import *
 from vista.EditarExposiciones import *
-
 from vista.EditarJuegos import *
 from vista.EditarObras import *
 from vista.EditarObjetos import *
+
 from vista.MenuEditor import *
+
 from vista.ActualizaSalas import *
 from vista.ActualizaCatalogo import *
 
