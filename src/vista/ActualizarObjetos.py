@@ -54,7 +54,7 @@ class ActualizarObjeto(QtWidgets.QMainWindow):
                 Agotado = self.Tipo_entrada.text(), 
                 IdCatalogo = self.IDCatalogo_entrada.text()
                 )
-            self.coordinador.actualizarObjeto(Objeto)
+            self.coordinador.actualizarObjetos(Objeto)
             self.limpiar()
         except Exception as ex:
             print(ex)

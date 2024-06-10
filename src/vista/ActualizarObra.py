@@ -50,7 +50,7 @@ class ActualizarObra(QtWidgets.QMainWindow):
                 IdArtista = self.IdArtista_entrada.text(),
                 IdExposicion = self.IdExposicion_entrada.text()
                 )
-            self.coordinador.actualizarObra(Obra)
+            self.coordinador.actualizarObras(Obra)
             self.limpiar()
         except Exception as ex:
             print(ex)

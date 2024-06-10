@@ -46,7 +46,7 @@ class ActualizarJuego(QtWidgets.QMainWindow):
                 Dificultad = self.Dificultad_entrada.text(),
                 ruta = self.Ruta_entrada.text()
                 )
-            self.coordinador.actualizarJuego(Juego)
+            self.coordinador.actualizarJuegos(Juego)
             self.limpiar()
         except Exception as ex:
             print(ex)

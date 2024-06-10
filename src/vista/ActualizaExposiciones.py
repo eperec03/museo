@@ -41,12 +41,12 @@ class ActualizarExposicion(QtWidgets.QMainWindow):
         try:
             Exposicion = ExposicionesVO(
                 IdExposicion = self.IDExposicion_entrada.text(),
-                Titulo = self.NombreExposicion_entrada.text(),
+                Titulo = self.Titulo_entrada.text(),
                 Imagen = self.Imagen_entrada.text(),
                 Descripcion = self.Descripcion_entrada.text(),
                 NumSala = self.NumeroSala_entrada.text()
                 )
-            self.coordinador.actualizarExposicion(Exposicion)
+            self.coordinador.actualizarExposiciones(Exposicion)
             self.limpiar()
         except Exception as ex:
             print(ex)

@@ -44,7 +44,7 @@ class ActualizarSala(QtWidgets.QMainWindow):
                 Tematica = self.Tematica_entrada.text(),
                 IdMapa = self.IDMapa_entrada.text()
                 )
-            self.coordinador.actualizarSala(Sala)
+            self.coordinador.actualizarSalas(Sala)
             self.limpiar()
         except Exception as ex:
             print(ex)
