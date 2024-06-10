@@ -4,22 +4,22 @@ sys.path.append(r'c:\Users\clara\Documents\2ºUNI\2CUATRI\IS\src')
 
 import tkinter as tk
 from tkinter import messagebox
-from modelo.vo.ObjetosVO import ObjetosVO
+from modelo.vo.AudioguiasVO import AudioguiasVO
 from PyQt5 import QtWidgets, uic
 from PyQt5.QtWidgets import QMessageBox
 from PyQt5.QtGui import QIcon
 
-class CrearObjeto(QtWidgets.QMainWindow):
+class CrearAudioguias(QtWidgets.QMainWindow):
     def __init__(self, controlador = None, ventana_anterior=None):
         # Importamos el .ui
         super().__init__()
-        uic.loadUi('src/vista/ui/CrearObjetos.ui', self)
-        self.setWindowTitle("CREAR OBJETOS")
+        uic.loadUi('src/vista/ui/CrearAudioguias.ui', self)
+        self.setWindowTitle("CREAR AUDIOGUÍAS")
         self.setWindowIcon(QIcon('src/vista/Imagenes/logomuseo.png'))  # Reemplaza con la ruta a tu logo
         # Almacena una referencia al controlador
         self.coordinador = controlador
         # "EnviarBoton" es el nombre que se le ha dado al objeto en el .ui
-        self.BotonEditarObjeto.clicked.connect(self.crearObjeto)
+        self.BotonCrearAudioguia.clicked.connect(self.crearAudioguia)
         self.ventana_anterior=ventana_anterior
         self.BotonAtras.clicked.connect(self.go_back)
 
@@ -31,24 +31,20 @@ class CrearObjeto(QtWidgets.QMainWindow):
         self.coordinador = coord
 
     def limpiar(self):
-        self.NombreObjeto_entrada.clear()
-        self.Imagen_entrada.clear()
-        self.Precio_entrada.clear()
-        self.Tipo_entrada.clear()
-        self.Inspiracion_entrada.clear()
-        self.Existencias_entrada.clear()
+        self.NombreAudioguia_entrada.clear()
+        self.IDObra_entrada.clear()
+        self.Audio_entrada.clear()
+        self.Duracion_entrada.clear()
 
-    def crearObjeto(self) -> None:
+    def crearAudioguia(self) -> None:
         try:
-            Objeto = ObjetosVO(
-                NombreObjeto = self.NombreObjeto_entrada.text(),
-                Imagen = self.Imagen_entrada.text(),
-                Precio = self.Precio_entrada.text(),
-                Tipo = self.Tipo_entrada.text(), 
-                Inspiracion = self.Inspiracion_entrada.text(),
-                Existencias = self.Existencias_entrada.text(),
+            Audioguia = AudioguiasVO(
+                Titulo = self.NombreAudioguia_entrada.text(),
+                IdObra = self.IDObra_entrada.text(),
+                Audio = self.Audio_entrada.text(),
+                Duracion = self.Duracion_entrada.text()
                 )
-            self.coordinador.crearObjetos(Objeto)
+            self.coordinador.crearAudioguia(Audioguia)
             self.limpiar()
         except Exception as ex:
             print(ex)

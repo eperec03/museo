@@ -1,25 +1,25 @@
 import sys
 sys.path.append(r'C:\Users\eripe\OneDrive\Documentos\ERI ULE\2º\SEGUNDO CUATRI\IS\PROYECTO\src')
-sys.path.append(r'c:\Users\clara\Documents\2ºUNI\2CUATRI\IS\src')
+sys.path.append(r'c:\Users\clara\Documents\2ºUNI\2CUATRI\IS\museo\src')
 
 import tkinter as tk
 from tkinter import messagebox
-from modelo.vo.ObjetosVO import ObjetosVO
+from modelo.vo.ExposicionesVO import ExposicionesVO
 from PyQt5 import QtWidgets, uic
 from PyQt5.QtWidgets import QMessageBox
 from PyQt5.QtGui import QIcon
 
-class CrearObjeto(QtWidgets.QMainWindow):
+class CrearExposicion(QtWidgets.QMainWindow):
     def __init__(self, controlador = None, ventana_anterior=None):
         # Importamos el .ui
         super().__init__()
-        uic.loadUi('src/vista/ui/CrearObjetos.ui', self)
-        self.setWindowTitle("CREAR OBJETOS")
+        uic.loadUi('src/vista/ui/CrearExposiciones.ui', self)
+        self.setWindowTitle("CREAR EXPOSICIONES")
         self.setWindowIcon(QIcon('src/vista/Imagenes/logomuseo.png'))  # Reemplaza con la ruta a tu logo
         # Almacena una referencia al controlador
         self.coordinador = controlador
         # "EnviarBoton" es el nombre que se le ha dado al objeto en el .ui
-        self.BotonEditarObjeto.clicked.connect(self.crearObjeto)
+        self.BotonEditarExposicion.clicked.connect(self.crearExposicion)
         self.ventana_anterior=ventana_anterior
         self.BotonAtras.clicked.connect(self.go_back)
 
@@ -31,24 +31,20 @@ class CrearObjeto(QtWidgets.QMainWindow):
         self.coordinador = coord
 
     def limpiar(self):
-        self.NombreObjeto_entrada.clear()
+        self.Titulo_entrada.clear()
         self.Imagen_entrada.clear()
-        self.Precio_entrada.clear()
-        self.Tipo_entrada.clear()
-        self.Inspiracion_entrada.clear()
-        self.Existencias_entrada.clear()
+        self.Descripcion_entrada.clear()
+        self.NumeroSala_entrada.clear()
 
-    def crearObjeto(self) -> None:
+    def crearExposicion(self) -> None:
         try:
-            Objeto = ObjetosVO(
-                NombreObjeto = self.NombreObjeto_entrada.text(),
+            Exposicion = ExposicionesVO(
+                Titulo = self.Titulo_entrada.text(),
                 Imagen = self.Imagen_entrada.text(),
-                Precio = self.Precio_entrada.text(),
-                Tipo = self.Tipo_entrada.text(), 
-                Inspiracion = self.Inspiracion_entrada.text(),
-                Existencias = self.Existencias_entrada.text(),
+                Descripcion = self.Descripcion_entrada.text(),
+                NumSala = self.NumeroSala_entrada.text()
                 )
-            self.coordinador.crearObjetos(Objeto)
+            self.coordinador.crearExposiciones(Exposicion)
             self.limpiar()
         except Exception as ex:
             print(ex)

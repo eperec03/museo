@@ -41,7 +41,7 @@ class EditarJuegos(QtWidgets.QMainWindow):
         self.hide()
 
     def go_eliminar(self):
-        self.ventana_eliminar = EliminarJuegos()
+        self.ventana_eliminar = EliminarJuego()
         self.ventana_eliminar.setCoordinador(self)
         self.ventana_eliminar = EliminarJuego(ventana_anterior=self)
         self.ventana_eliminar.setCoordinador(self.coordinador)

@@ -11,6 +11,7 @@ from vista.MenuEditor import *
 from vista.ActualizaObra import *
 from vista.EliminarObras import *
 
+
 class EditarObras(QtWidgets.QMainWindow):
     def __init__(self, controlador = None,ventana_anterior=None):
         # Importamos el .ui

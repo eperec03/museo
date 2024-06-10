@@ -28,13 +28,22 @@ class ArtistasDao(ArtistasInterface, Conexion):
                 conn = conexion
             else:
                 print("La base de datos no esta disponible")
+            #Crea un obra para poder ejecutar consultas SQL sobre la conexion abierta
             cursor = conn.cursor()
-            cursor.execute(self.SQL_SELECT)
+            #Ejecuta de consulta SQL
+            cursor.execute(self.SQL_SELECT) #Obtiene todas las filas resultantes de la consulta
             rows = cursor.fetchall()
             for row in rows:
-                NombreArtista, FechaNac, FechaMuerte, Descripcion, Corriente = row
-                artista = ArtistasVO(NombreArtista, FechaNac, FechaMuerte, Descripcion, Corriente)
+                IdArtista, NombreArtista, FechaNac, FechaMuerte, Descripcion, Corriente = row
+                artista = ArtistasVO()
+                artista.setIdArtista(IdArtista)
+                artista.setNombreArtista(NombreArtista)
+                artista.setFechaNacimiento(FechaNac)
+                artista.setFechaMuerte(FechaMuerte)
+                artista.setDescripcion(Descripcion)
+                artista.setCorriente(Corriente)
                 artistas.append(artista)
+
         except Error as e:
             print("Error al seleccionar artista:", e)
         finally:
@@ -54,43 +63,27 @@ class ArtistasDao(ArtistasInterface, Conexion):
                 print("La base de datos no esta disponible")
             cursor = conn.cursor()
             cursor.execute(self.SQL_FILTER, (NombreArtista,))
-            row = cursor.fetchone()
-            artista = None
-            if row:
-                NombreArtista, FechaNac, FechaMuerte, Descripcion, Corriente = row
-                artista = ArtistasVO(NombreArtista, FechaNac, FechaMuerte, Descripcion, Corriente)
+            row = cursor.fetchall()
+            artista = ArtistasVO()
+            if len(row)>0:
+                IdArtista, NombreArtista, FechaNac, FechaMuerte, Descripcion, Corriente = row[0]
+                artista.setIdArtista(IdArtista)
+                artista.setNombreArtista(NombreArtista)
+                artista.setFechaNacimiento(FechaNac)
+                artista.setFechaMuerte(FechaMuerte)
+                artista.setDescripcion(Descripcion)
+                artista.setCorriente(Corriente)
+
         except Error as e:
             print("Error al seleccionar artista:", e)
+
         finally:
             if cursor:
                 cursor.close()
         conexion = self.closeConnection(conn)
+
         return artista
     
-    def getArtistaNombre(self, IDArtista) -> ArtistasVO:
-        conexion = self.getConnection()
-        conn = None
-        cursor = None
-        try:
-            if conexion:
-                conn = conexion
-            else:
-                print("La base de datos no esta disponible")
-            cursor = conn.cursor()
-            cursor.execute(self.SQL_FILTER_NOMBRE, (IDArtista,))
-            row = cursor.fetchone()
-            artista = None
-            if row:
-                IDArtista, FechaNac, FechaMuerte, Descripcion, Corriente = row
-                artista = ArtistasVO(IDArtista, FechaNac, FechaMuerte, Descripcion, Corriente)
-        except Error as e:
-            print("Error al seleccionar artista:", e)
-        finally:
-            if cursor:
-                cursor.close()
-        conexion = self.closeConnection(conn)
-        return artista
-
     def insertArtista(self, artista: ArtistasVO) -> int:
         conexion = self.getConnection()
         conn = None
@@ -156,6 +149,30 @@ class ArtistasDao(ArtistasInterface, Conexion):
                 cursor.close()
         conexion = self.closeConnection(conn)
         return rows
+    
+    def getArtistaNombre(self, IDArtista) -> ArtistasVO:
+        conexion = self.getConnection()
+        conn = None
+        cursor = None
+        try:
+            if conexion:
+                conn = conexion
+            else:
+                print("La base de datos no esta disponible")
+            cursor = conn.cursor()
+            cursor.execute(self.SQL_FILTER_NOMBRE, (IDArtista,))
+            row = cursor.fetchone()
+            artista = None
+            if row:
+                IDArtista, FechaNac, FechaMuerte, Descripcion, Corriente = row
+                artista = ArtistasVO(IDArtista, FechaNac, FechaMuerte, Descripcion, Corriente)
+        except Error as e:
+            print("Error al seleccionar artista:", e)
+        finally:
+            if cursor:
+                cursor.close()
+        conexion = self.closeConnection(conn)
+        return artista
 # a=ArtistasDao()
 # b=ArtistasVO()
 # b.setNombreArtista('Jesus Dominguez')
@@ -163,4 +180,6 @@ class ArtistasDao(ArtistasInterface, Conexion):
 # b.setFechaMuerte('1940-08-12')
 # b.setCorriente('Generacion del 19')
 # b.setDescripcion('Un buen paisano')
-# a.deleteArtista('Jesus Dominguez')
+# # a.deleteArtista('Jesus Dominguez')
+# # print(a.getArtistas())
+# print(a.getArtista('frida kahlo'))

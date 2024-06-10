@@ -58,7 +58,6 @@ CREATE TABLE `audioguias` (
   CONSTRAINT `ObraAud` FOREIGN KEY (`IDObra`) REFERENCES `obras` (`IDObra`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
-insert into audioguias (Titulo,IDObra,Audio,Duracion) VALUES ('Audio Gioconda',2,"C:\ProgramData\MySQL\MySQL Server 8.0\Uploads\audio_monalisa.mp3", '00:00:45')
 --
 -- Dumping data for table `audioguias`
 --
@@ -657,7 +656,7 @@ CREATE TABLE `objetos` (
   `tipo` varchar(45) NOT NULL,
   `inspiracion` varchar(45) NOT NULL,
   `existencias` int NOT NULL,
-  `agotado` binary(1) NOT NULL,
+  `agotado` binary(1) NULL,
   `IDCatalogo` int NOT NULL,
   PRIMARY KEY (`IDObjeto`),
   CONSTRAINT `CatObj` FOREIGN KEY (`IDCatalogo`) REFERENCES `catalogo` (`IDCatalogo`) ON DELETE RESTRICT ON UPDATE CASCADE

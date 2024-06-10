@@ -14,7 +14,7 @@
    <string>MainWindow</string>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <widget class="QPushButton" name="BotonEditarAudioguia">
+   <widget class="QPushButton" name="BotonCrearAudioguia">
     <property name="geometry">
      <rect>
       <x>680</x>
@@ -241,7 +241,7 @@ font-family: 'Verdana';
 border-radius: 15px;</string>
     </property>
     <property name="text">
-     <string>EDITAR AUDIOGUÍA</string>
+     <string>CREAR AUDIOGUÍA</string>
     </property>
    </widget>
    <widget class="QLabel" name="Titulo">
@@ -262,7 +262,7 @@ border-radius: 15px;</string>
      </font>
     </property>
     <property name="text">
-     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:48pt;&quot;&gt;EDITAR AUDIOGUÍAS&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:48pt;&quot;&gt;CREAR AUDIOGUÍAS&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
     </property>
    </widget>
    <widget class="QLineEdit" name="IDObra_entrada">
@@ -282,7 +282,7 @@ background-color: rgb(208, 223, 232);</string>
    <widget class="QLineEdit" name="Audio_entrada">
     <property name="geometry">
      <rect>
-      <x>620</x>
+      <x>630</x>
       <y>390</y>
       <width>161</width>
       <height>41</height>
@@ -293,7 +293,7 @@ background-color: rgb(208, 223, 232);</string>
 background-color: rgb(208, 223, 232);</string>
     </property>
    </widget>
-   <widget class="QLineEdit" name="Titulo_entrada">
+   <widget class="QLineEdit" name="NombreAudioguia_entrada">
     <property name="geometry">
      <rect>
       <x>620</x>
