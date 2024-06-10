@@ -4,22 +4,22 @@ sys.path.append(r'c:\Users\clara\Documents\2ºUNI\2CUATRI\IS\src')
 
 import tkinter as tk
 from tkinter import messagebox
-from modelo.vo.JuegosVO import JuegosVO
+from modelo.vo.ObjetosVO import ObjetosVO
 from PyQt5 import QtWidgets, uic
 from PyQt5.QtWidgets import QMessageBox
 from PyQt5.QtGui import QIcon
 
-class EliminarJuego(QtWidgets.QMainWindow):
+class EliminarObjeto(QtWidgets.QMainWindow):
     def __init__(self, controlador = None, ventana_anterior=None):
         # Importamos el .ui
         super().__init__()
-        uic.loadUi('src/vista/ui/EliminarJuegos.ui', self)
-        self.setWindowTitle("ELIMINAR JUEGOS")
+        uic.loadUi('src/vista/ui/EliminarObjetos.ui', self)
+        self.setWindowTitle("ELIMINAR OBJETOS")
         self.setWindowIcon(QIcon('src/vista/Descripciones/logomuseo.png'))  # Reemplaza con la ruta a tu logo
         # Almacena una referencia al controlador
         self.coordinador = controlador
         # "EnviarBoton" es el nombre que se le ha dado al objeto en el .ui
-        self.BotonEditarJuego.clicked.connect(self.eliminarJuego)
+        self.BotonEditarObjeto.clicked.connect(self.eliminarObjeto)
         self.ventana_anterior=ventana_anterior
         self.BotonAtras.clicked.connect(self.go_back)
 
@@ -31,22 +31,30 @@ class EliminarJuego(QtWidgets.QMainWindow):
         self.coordinador = coord
 
     def limpiar(self):
-        self.IDJuego_entrada.clear()
-        self.Nombre_entrada.clear()
-        self.Descripcion_entrada.clear()
-        self.Dificultad_entrada.clear()
-        self.Ruta_entrada.clear()
+        self.IDObjeto_entrada.clear()
+        self.NombreObjeto_entrada.clear()
+        self.Imagen_entrada.clear()
+        self.Precio_entrada.clear()
+        self.Tipo_entrada.clear()
+        self.Inspiracion_entrada.clear()
+        self.Existencias_entrada.clear()
+        self.Agotado_entrada.clear()
+        self.IDCatalogo_entrada.clear()
 
-    def eliminarJuego(self) -> None:
+    def eliminarObjeto(self) -> None:
         try:
-            Juego = JuegosVO(
-                IDJuego = self.IDJuego_entrada.text(),
-                Nombre = self.Nombre_entrada.text(),
-                Descripcion = self.Descripcion_entrada.text(),
-                Dificultad = self.Dificultad_entrada.text(),
-                ruta = self.Ruta_entrada.text()
+            Objeto = ObjetosVO(
+                IDObjeto = self.IDObjeto_entrada.text(),
+                NombreObjeto = self.NombreObjeto_entrada.text(),
+                Imagen = self.Imagen_entrada.text(),
+                FechaNac = self.Precio_entrada.text(),
+                Tipo = self.Tipo_entrada.text(), 
+                Inspiracion = self.Inspiracion_entrada.text(),
+                Existencias = self.Existencias_entrada.text(),
+                Agotado = self.Tipo_entrada.text(), 
+                IdCatalogo = self.IDCatalogo_entrada.text()
                 )
-            self.coordinador.eliminarJuegos(Juego)
+            self.coordinador.eliminarObjetos(Objeto)
             self.limpiar()
         except Exception as ex:
             print(ex)

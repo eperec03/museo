@@ -131,4 +131,28 @@ class Coordinador:
 
    def obtener_todas_obras(self):
       return self._model.select_obras()
+
+   def eliminarExposiciones(self, exposicion: ExposicionesVO) -> None:
+      self._model.eliminar_exposicion(exposicion)
+
+   def eliminarSala(self, sala: SalasVO) -> None:
+      self._model.eliminar_sala(sala)
+
+   def eliminarArtista(self, artista: ArtistasVO) -> None:
+      self._model.eliminar_artista(artista)
+
+   def eliminarObjeto(self, objeto: ObjetosVO) -> None:
+      self._model.eliminar_objeto(objeto)
+
+   def eliminarObras(self, obra: ObrasVO) -> None:
+      self._model.eliminar_obra(obra)
+
+   def eliminarJuegos(self, juego: JuegosVO) -> None:
+      self._model.eliminar_juego(juego)
+
+   def eliminarCatalogo(self, catalogo: CatalogoVO) -> None:
+      self._model.eliminar_catalogo(catalogo)
+
+   def eliminarAudioguias(self, audioguia: AudioguiasVO) -> None:
+      self._model.eliminar_audioguia(audioguia)
    
