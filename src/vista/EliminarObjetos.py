@@ -31,28 +31,12 @@ class EliminarObjeto(QtWidgets.QMainWindow):
         self.coordinador = coord
 
     def limpiar(self):
-        self.IDObjeto_entrada.clear()
         self.NombreObjeto_entrada.clear()
-        self.Imagen_entrada.clear()
-        self.Precio_entrada.clear()
-        self.Tipo_entrada.clear()
-        self.Inspiracion_entrada.clear()
-        self.Existencias_entrada.clear()
-        self.Agotado_entrada.clear()
-        self.IDCatalogo_entrada.clear()
 
     def eliminarObjeto(self) -> None:
         try:
             Objeto = ObjetosVO(
-                IDObjeto = self.IDObjeto_entrada.text(),
                 NombreObjeto = self.NombreObjeto_entrada.text(),
-                Imagen = self.Imagen_entrada.text(),
-                FechaNac = self.Precio_entrada.text(),
-                Tipo = self.Tipo_entrada.text(), 
-                Inspiracion = self.Inspiracion_entrada.text(),
-                Existencias = self.Existencias_entrada.text(),
-                Agotado = self.Tipo_entrada.text(), 
-                IdCatalogo = self.IDCatalogo_entrada.text()
                 )
             self.coordinador.eliminarObjetos(Objeto)
             self.limpiar()

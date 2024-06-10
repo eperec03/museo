@@ -41,15 +41,20 @@ class EditarArtistas(QtWidgets.QMainWindow):
         self.hide()
 
     def go_eliminar(self):
-        self.ventana_eliminar = EliminarArtista()
+        self.ventana_eliminar = EliminarArtistas()
         self.ventana_eliminar.setCoordinador(self)
         self.ventana_eliminar.show()
         self.hide()
 
-    def go_actualizar(self):
-        self.ventana_actualizar = ActualizarArtista()
-        self.ventana_actualizar.setCoordinador(self)
-        self.ventana_actualizar.show()
+    # def go_actualizar(self):
+    #     self.ventana_actualizar = ActualizarArtista()
+    #     self.ventana_actualizar.setCoordinador(self)
+    #     self.ventana_actualizar.show()
+    #     self.hide()
+    def go_eliminar(self):
+        self.ventana_eliminar = EliminarArtista()
+        self.ventana_eliminar.setCoordinador(self)
+        self.ventana_eliminar.show()
         self.hide()
 
     def setCoordinador(self, coord) -> None:
