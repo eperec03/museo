@@ -8,6 +8,7 @@ from PyQt5 import QtWidgets, uic
 from PyQt5.QtWidgets import QMessageBox
 from PyQt5.QtGui import QIcon
 from vista.MenuEditor import *
+from vista.ActualizaAudioguias import *
 
 class EditarAudioguias(QtWidgets.QMainWindow):
     def __init__(self, controlador = None,ventana_anterior=None):
@@ -21,8 +22,8 @@ class EditarAudioguias(QtWidgets.QMainWindow):
         # "EnviarBoton" es el nombre que se le ha dado al objeto en el .ui
         self.ventana_anterior=ventana_anterior
         self.BotonAtras.clicked.connect(self.go_back)
-        self.BotonCrear.clicked.connect(self.go_crear)
-        self.BotonEliminar.clicked.connect(self.go_eliminar)
+        # self.BotonCrear.clicked.connect(self.go_crear)
+        # self.BotonEliminar.clicked.connect(self.go_eliminar)
         self.BotonActualizar.clicked.connect(self.go_actualizar)
         
         self.show()
@@ -31,20 +32,20 @@ class EditarAudioguias(QtWidgets.QMainWindow):
         self.ventana_anterior.show()    
         self.destroy()      
 
-    def go_crear(self):
-        self.ventana_crear = CrearAudioguias()
-        self.ventana_crear.setCoordinador(self)
-        self.ventana_crear.show()
-        self.hide()
+    # def go_crear(self):
+    #     self.ventana_crear = CrearAudioguias()
+    #     self.ventana_crear.setCoordinador(self)
+    #     self.ventana_crear.show()
+    #     self.hide()
 
-    def go_eliminar(self):
-        self.ventana_eliminar = EliminarAudioguias()
-        self.ventana_eliminar.setCoordinador(self)
-        self.ventana_eliminar.show()
-        self.hide()
+    # def go_eliminar(self):
+    #     self.ventana_eliminar = EliminarAudioguias()
+    #     self.ventana_eliminar.setCoordinador(self)
+    #     self.ventana_eliminar.show()
+    #     self.hide()
 
     def go_actualizar(self):
-        self.ventana_actualizar = ActualizarAudioguias()
+        self.ventana_actualizar = ActualizarAudioguia()
         self.ventana_actualizar.setCoordinador(self)
         self.ventana_actualizar.show()
         self.hide()

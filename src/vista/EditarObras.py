@@ -8,6 +8,7 @@ from PyQt5 import QtWidgets, uic
 from PyQt5.QtWidgets import QMessageBox
 from PyQt5.QtGui import QIcon
 from vista.MenuEditor import *
+from vista.ActualizarObra import *
 
 class EditarObras(QtWidgets.QMainWindow):
     def __init__(self, controlador = None,ventana_anterior=None):
@@ -32,19 +33,19 @@ class EditarObras(QtWidgets.QMainWindow):
         self.destroy()      
 
     def go_crear(self):
-        self.ventana_crear = CrearObras()
+        # self.ventana_crear = CrearObras()
         self.ventana_crear.setCoordinador(self)
         self.ventana_crear.show()
         self.hide()
 
     def go_eliminar(self):
-        self.ventana_eliminar = EliminarObras()
+        # self.ventana_eliminar = EliminarObras()
         self.ventana_eliminar.setCoordinador(self)
         self.ventana_eliminar.show()
         self.hide()
 
     def go_actualizar(self):
-        self.ventana_actualizar = ActualizarObras()
+        self.ventana_actualizar = ActualizarObra()
         self.ventana_actualizar.setCoordinador(self)
         self.ventana_actualizar.show()
         self.hide()

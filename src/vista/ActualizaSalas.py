@@ -50,7 +50,7 @@ class ActualizarSala(QtWidgets.QMainWindow):
 
     def mostrar_advertencia(ex):
         mensaje = QMessageBox()
-        mensaje.setIcon(QMessageBox.Warning)
+        mensaje.setIcon(QMessageBox.warning)
         mensaje.setText("Error")
         mensaje.setInformativeText(str(ex))
         mensaje.setWindowTitle("Advertencia")

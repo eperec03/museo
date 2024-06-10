@@ -8,6 +8,7 @@ from PyQt5 import QtWidgets, uic
 from PyQt5.QtWidgets import QMessageBox
 from PyQt5.QtGui import QIcon
 from vista.MenuEditor import *
+from vista.ActualizaArtistas import *
 
 class EditarArtistas(QtWidgets.QMainWindow):
     def __init__(self, controlador = None,ventana_anterior=None):
@@ -21,8 +22,8 @@ class EditarArtistas(QtWidgets.QMainWindow):
         # "EnviarBoton" es el nombre que se le ha dado al objeto en el .ui
         self.ventana_anterior=ventana_anterior
         self.BotonAtras.clicked.connect(self.go_back)
-        self.BotonCrear.clicked.connect(self.go_crear)
-        self.BotonEliminar.clicked.connect(self.go_eliminar)
+        # self.BotonCrear.clicked.connect(self.go_crear)
+        # self.BotonEliminar.clicked.connect(self.go_eliminar)
         self.BotonActualizar.clicked.connect(self.go_actualizar)
         
         self.show()
@@ -31,20 +32,20 @@ class EditarArtistas(QtWidgets.QMainWindow):
         self.ventana_anterior.show()    
         self.destroy()      
 
-    def go_crear(self):
-        self.ventana_crear = CrearArtistas()
-        self.ventana_crear.setCoordinador(self)
-        self.ventana_crear.show()
-        self.hide()
+    # def go_crear(self):
+    #     self.ventana_crear = CrearArtistas()
+    #     self.ventana_crear.setCoordinador(self)
+    #     self.ventana_crear.show()
+    #     self.hide()
 
-    def go_eliminar(self):
-        self.ventana_eliminar = EliminarArtistas()
-        self.ventana_eliminar.setCoordinador(self)
-        self.ventana_eliminar.show()
-        self.hide()
+    # def go_eliminar(self):
+    #     self.ventana_eliminar = EliminarArtistas()
+    #     self.ventana_eliminar.setCoordinador(self)
+    #     self.ventana_eliminar.show()
+    #     self.hide()
 
     def go_actualizar(self):
-        self.ventana_actualizar = ActualizarArtistas()
+        self.ventana_actualizar = ActualizarArtista()
         self.ventana_actualizar.setCoordinador(self)
         self.ventana_actualizar.show()
         self.hide()
@@ -54,7 +55,7 @@ class EditarArtistas(QtWidgets.QMainWindow):
 
     def mostrar_advertencia(ex):
         mensaje = QMessageBox()
-        mensaje.setIcon(QMessageBox.Warning)
+        mensaje.setIcon(QMessageBox.warning)
         mensaje.setText("Error")
         mensaje.setInformativeText(str(ex))
         mensaje.setWindowTitle("Advertencia")

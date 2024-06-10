@@ -4,7 +4,7 @@ sys.path.append(r'c:\Users\clara\Documents\2ºUNI\2CUATRI\IS\src')
 
 import tkinter as tk
 from tkinter import messagebox
-from modelo.vo.CatalogosVO import CatalogosVO
+from modelo.vo.CatalogoVO import *
 from PyQt5 import QtWidgets, uic
 from PyQt5.QtWidgets import QMessageBox
 from PyQt5.QtGui import QIcon
@@ -33,11 +33,11 @@ class ActualizarCatalogo(QtWidgets.QMainWindow):
     def limpiar(self):
         self.IDCatalogo_entrada.clear()
         self.Titulo_entrada.clear()
-        self.Portada_entrada.clear())
+        self.Portada_entrada.clear()
 
     def actualizarCatalogo(self) -> None:
         try:
-            Catalogo = CatalogosVO(
+            Catalogo = CatalogoVO(
                 IdCatalogo = self.IDCatalogo_entrada.text(),
                 Titulo = self.NombreCatalogo_entrada.text(),
                 Portada = self.Portada_entrada.text(),
@@ -50,7 +50,7 @@ class ActualizarCatalogo(QtWidgets.QMainWindow):
 
     def mostrar_advertencia(ex):
         mensaje = QMessageBox()
-        mensaje.setIcon(QMessageBox.Warning)
+        mensaje.setIcon(QMessageBox.warning)
         mensaje.setText("Error")
         mensaje.setInformativeText(str(ex))
         mensaje.setWindowTitle("Advertencia")

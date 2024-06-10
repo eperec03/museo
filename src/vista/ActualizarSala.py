@@ -34,15 +34,15 @@ class ActualizarSala(QtWidgets.QMainWindow):
         self.NumeroSala_entrada.clear()
         self.Capacidad_entrada.clear()
         self.Tematica_entrada.clear()
-        self.IdMapa_entrada.clear()
+        self.IDMapa_entrada.clear()
 
     def actualizarSala(self) -> None:
         try:
             Sala = SalasVO(
                 NumeroSala = self.NumeroSala_entrada.text(),
-                Capacidad = self.NombreSala_entrada.text(),
+                Capacidad = self.Capacidad_entrada.text(),
                 Tematica = self.Tematica_entrada.text(),
-                IdMapa = self.IdMapa_entrada.text()
+                IdMapa = self.IDMapa_entrada.text()
                 )
             self.coordinador.actualizarSala(Sala)
             self.limpiar()
@@ -52,7 +52,7 @@ class ActualizarSala(QtWidgets.QMainWindow):
 
     def mostrar_advertencia(ex):
         mensaje = QMessageBox()
-        mensaje.setIcon(QMessageBox.Warning)
+        mensaje.setIcon(QMessageBox.warning)
         mensaje.setText("Error")
         mensaje.setInformativeText(str(ex))
         mensaje.setWindowTitle("Advertencia")
