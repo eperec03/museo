@@ -14,7 +14,7 @@
    <string>MainWindow</string>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <widget class="QPushButton" name="BotonEditarSala">
+   <widget class="QPushButton" name="BotonEditarObra">
     <property name="geometry">
      <rect>
       <x>760</x>
@@ -241,7 +241,7 @@ font-family: 'Verdana';
 border-radius: 15px;</string>
     </property>
     <property name="text">
-     <string>EDITAR SALA</string>
+     <string>EDITAR OBRA</string>
     </property>
    </widget>
    <widget class="QLabel" name="Titulo">
@@ -649,6 +649,7 @@ border-radius: 15px;</string>
      <string>🡸</string>
     </property>
    </widget>
+<<<<<<< HEAD
    <widget class="QLabel" name="fondo">
     <property name="geometry">
      <rect>
@@ -689,6 +690,18 @@ border-radius: 15px;</string>
    <zorder>Imagen_entrada</zorder>
    <zorder>label_8</zorder>
    <zorder>BotonAtras</zorder>
+=======
+  </widget>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>1701</width>
+     <height>26</height>
+    </rect>
+   </property>
+>>>>>>> 2aa75706c855b3f41f36b89ea4d37adb950de114
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
  </widget>
