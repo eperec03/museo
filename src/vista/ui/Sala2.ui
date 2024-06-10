@@ -14,7 +14,7 @@
    <string>MainWindow</string>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <widget class="QPushButton" name="BotonHome">
+   <widget class="QPushButton" name="BotonAtras">
     <property name="geometry">
      <rect>
       <x>30</x>
@@ -324,7 +324,7 @@ border-radius: 15px;</string>
     </widget>
    </widget>
    <zorder>Titulo_2</zorder>
-   <zorder>BotonHome</zorder>
+   <zorder>BotonAtras</zorder>
    <zorder>Titulo</zorder>
    <zorder>tituloobra</zorder>
    <zorder>scrollArea</zorder>

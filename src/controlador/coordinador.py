@@ -76,7 +76,6 @@ class Coordinador:
 
    def registrarUsuario(self, usuario: ClientePremiumVO) -> None:
       self._model.validar_registro(usuario)
-   #aqui van los metodos de lo que hacen los 'botones'
 
    def registrarEditor(self, usuario: EditorVO) -> None:
       self._model.validar_registroEditor(usuario)
@@ -105,9 +104,6 @@ class Coordinador:
    # def validarObra(self, obra: ObrasVO) -> bool:
    #    if self._model.comprobar_obra(obra):
    #       return True
-
-   def registrarEditor(self, usuario: EditorVO) -> None:
-      self._model.validar_registro(usuario)
 
    def obtener_todos_objetos(self):
       return self._model.select_objetos()

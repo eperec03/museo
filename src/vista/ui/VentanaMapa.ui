@@ -3223,7 +3223,7 @@ border-radius: 15px;</string>
      <string>SALA 7</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="BotonHome">
+   <widget class="QPushButton" name="BotonAtras">
     <property name="geometry">
      <rect>
       <x>40</x>
@@ -3486,7 +3486,7 @@ border-radius: 15px;</string>
    <zorder>boton_sala5</zorder>
    <zorder>boton_sala6</zorder>
    <zorder>boton_sala7</zorder>
-   <zorder>BotonHome</zorder>
+   <zorder>BotonAtras</zorder>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
  </widget>
