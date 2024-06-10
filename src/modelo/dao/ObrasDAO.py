@@ -221,7 +221,8 @@ class ObrasDao(ObrasInterface, Conexion):
 # obra1.setFecha("1889-06-01")
 # obra1.setImagen("noche_estrellada.jpg")
 # obra1.setIdArtista(3)
-# obra1.setNumSala(4)
+# obra1.setNumSala(2)
+
 
 # obra2 = ObrasVO()
 # obra2.setIdObra(2)
@@ -242,4 +243,4 @@ class ObrasDao(ObrasInterface, Conexion):
 # obra3.setNumSala(103)
 
 # a=ObrasDao()
-# a.insertObra(obra3)
+# print(a.getObraTitulo('La Gioconda'))

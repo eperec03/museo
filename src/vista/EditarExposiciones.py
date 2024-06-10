@@ -9,6 +9,7 @@ from PyQt5.QtWidgets import QMessageBox
 from PyQt5.QtGui import QIcon
 from vista.MenuEditor import *
 from vista.ActualizaExposiciones import *
+from vista.CrearExposiciones import *
 from vista.EliminarExposiciones import *
 
 class EditarExposiciones(QtWidgets.QMainWindow):
@@ -34,13 +35,13 @@ class EditarExposiciones(QtWidgets.QMainWindow):
         self.destroy()      
 
     def go_crear(self):
-        self.ventana_crear = CrearExposiciones()
+        self.ventana_crear = CrearExposicion(ventana_anterior=self)
         self.ventana_crear.setCoordinador(self.coordinador)
         self.ventana_crear.show()
         self.hide()
 
     def go_eliminar(self):
-        self.ventana_eliminar = EliminarExposiciones()
+        self.ventana_eliminar = EliminarExposicion()
         self.ventana_eliminar.setCoordinador(self.coordinador)
         self.ventana_eliminar.show()
         self.hide()

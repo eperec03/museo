@@ -1,5 +1,6 @@
 use museo;
 
+
 INSERT INTO tarifas (TipoTarifa, Precio, Duracion) VALUES ('Normal', 10.00, '1 hora');
 INSERT INTO tarifas (TipoTarifa, Precio, Duracion) VALUES ('Reducida', 7.50, '1 hora');
 INSERT INTO tarifas (TipoTarifa, Precio, Duracion) VALUES ('Grupo', 30.00, '1 hora');
@@ -159,3 +160,7 @@ VALUES
 ('Funda Portatil', 'C:\\ProgramData\\MySQL\\MySQL Server 8.0\\Uploads\\funda_portatil.jpg', 18.00, 'Accesorios', 'Arte Digital', 20, 0, 5);
 
 SHOW VARIABLES LIKE 'secure_file_priv';
+insert into audioguias (Titulo,IDObra,Audio,Duracion) VALUES ('Audio Gioconda',2,"C:\ProgramData\MySQL\MySQL Server 8.0\Uploads\audio_monalisa.mp3", '00:00:45');
+
+select * from salas;
+select * from exposiciones;

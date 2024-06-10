@@ -78,6 +78,7 @@ class ExposicionesDao(ExposicionesInterface, Conexion):
             exposicion.setDescripcion(Descripcion)
             exposicion.setImagen(Imagen)
             exposicion.setNumSala(NumSala)
+            
         except Error as e:
             print("Error al seleccionar exposicion:", e)
         #Se ejecuta siempre
