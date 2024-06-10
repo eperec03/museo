@@ -15,6 +15,7 @@ class VentanaCatalogo(QMainWindow):
         self.setWindowTitle("Catalogo")
         self.setWindowIcon(QIcon('src/vista/Imagenes/logomuseo.png'))
         self.coordinador = controlador
+        self.ventana_anterior = ventana_anterior
         try:
             self.scrollArea = self.findChild(QScrollArea, 'scrollArea')
             self.scrollAreaWidgetContents = QWidget()

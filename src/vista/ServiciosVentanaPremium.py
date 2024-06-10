@@ -48,8 +48,7 @@ class VentanaServicioPremium(QtWidgets.QMainWindow):
         self.hide()
 
     def go_to_window_objetos(self):
-        self.ventana_inicio = VentanaCatalogo()
-        self.ventana_inicio.setCoordinador(self.coordinador)
+        self.ventana_inicio = VentanaCatalogo(controlador=self.coordinador,ventana_anterior=self)
         self.ventana_inicio.show()
         self.hide()
 
