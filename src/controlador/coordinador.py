@@ -105,6 +105,9 @@ class Coordinador:
    def obtener_todos_objetos(self):
       return self._model.select_objetos()
 
+   def obtener_artista(self):
+      return self._model.select_artista_nombre()
+
    def actualizarSala(self, sala: SalasVO) -> None:
       self._model.actualizar_sala(sala)
 

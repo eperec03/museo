@@ -15,7 +15,7 @@ class ArtistasDao(ArtistasInterface, Conexion):
     SQL_DELETE = "DELETE FROM artistas WHERE NombreArtista = ?"
     SQL_UPDATE = "UPDATE artistas SET FechaNac= ?, FechaMuerte = ?, Descripcion = ?, Corriente = ? WHERE NombreArtista = ?"
     SQL_FILTER = "SELECT * FROM artistas WHERE NombreArtista = ?"
-    SQL_FILTER = "SELECT * FROM artistas WHERE NombreArtista = ?"
+    SQL_FILTER_NOMBRE = "SELECT * FROM artistas WHERE IDArtista = ?"
 
 
     def getArtistas(self) -> List[ArtistasVO]:
@@ -67,6 +67,30 @@ class ArtistasDao(ArtistasInterface, Conexion):
         conexion = self.closeConnection(conn)
         return artista
     
+    def getArtistaNombre(self, IDArtista) -> ArtistasVO:
+        conexion = self.getConnection()
+        conn = None
+        cursor = None
+        try:
+            if conexion:
+                conn = conexion
+            else:
+                print("La base de datos no esta disponible")
+            cursor = conn.cursor()
+            cursor.execute(self.SQL_FILTER_NOMBRE, (IDArtista,))
+            row = cursor.fetchone()
+            artista = None
+            if row:
+                IDArtista, FechaNac, FechaMuerte, Descripcion, Corriente = row
+                artista = ArtistasVO(IDArtista, FechaNac, FechaMuerte, Descripcion, Corriente)
+        except Error as e:
+            print("Error al seleccionar artista:", e)
+        finally:
+            if cursor:
+                cursor.close()
+        conexion = self.closeConnection(conn)
+        return artista
+
     def insertArtista(self, artista: ArtistasVO) -> int:
         conexion = self.getConnection()
         conn = None

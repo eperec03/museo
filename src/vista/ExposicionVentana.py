@@ -11,7 +11,7 @@ from vista.MapaVentana import *
 from PyQt5 import QtCore
 from PyQt5.QtCore import pyqtSlot, Qt
 
-class VentanaSala1(QtWidgets.QMainWindow):
+class VentanaExposiciones(QtWidgets.QMainWindow):
     def __init__(self, controlador=None):
         super(VentanaSala1, self).__init__()
         uic.loadUi('src/vista/ui/Sala1.ui', self)
