@@ -92,6 +92,10 @@ class Coordinador:
       if self._model.comprobar_cliente(usuario):
          return True
       
+   def validarEditores(self, editores: EditorVO) -> bool:
+      if self._model.comprobar_editor(editores):
+         return True
+      
    def validarJuego(self, juego: JuegosObrasVO, obra:ObrasVO) -> str:
       return self._model.comprobar_juego(juego, obra)
       
@@ -107,6 +111,9 @@ class Coordinador:
 
    def obtener_todos_exposiciones(self):
       return self._model.select_exposiciones()
+   
+   def obtener_todos_subastas(self):
+      return self._model.select_subastas()
 
    def obtener_artista(self,obra):
       return self._model.select_artista_nombre(obra)

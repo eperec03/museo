@@ -73,14 +73,15 @@ class ResenasDao(ResenasInterface, Conexion):
             #Obtiene todas las filas resultantes de la consulta
             row = cursor.fetchall()
             resena = ResenasVO()
-            NumResena,Titulo,IDObra,Texto,NumEstrellas,Visible,Fecha= row[0]   #Al filtrar por la clave primaria, solo hay 1 resultado almacenado en la 1º pos
-            resena.setNumResena(NumResena)
-            resena.setTitulo(Titulo)
-            resena.setIdObra(IDObra)
-            resena.setNumEstrellas(NumEstrellas)
-            resena.setVisible(Visible)
-            resena.setFecha(Fecha)
-            resena.setTexto(Texto)
+            if len(row)>0:
+                NumResena,Titulo,IDObra,Texto,NumEstrellas,Visible,Fecha= row[0]   #Al filtrar por la clave primaria, solo hay 1 resultado almacenado en la 1º pos
+                resena.setNumResena(NumResena)
+                resena.setTitulo(Titulo)
+                resena.setIdObra(IDObra)
+                resena.setNumEstrellas(NumEstrellas)
+                resena.setVisible(Visible)
+                resena.setFecha(Fecha)
+                resena.setTexto(Texto)
         except Error as e:
             print("Error al seleccionar resena:", e)
         #Se ejecuta siempre

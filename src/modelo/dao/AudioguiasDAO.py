@@ -70,12 +70,13 @@ class AudioguiasDao(AudioguiasInterface, Conexion):
             #Obtiene todas las filas resultantes de la consulta
             row = cursor.fetchall()
             audioguia = AudioguiasVO()
-            IDAudioguia,Titulo,IDObra,Audio,Duracion= row[0]   #Al filtrar por la clave primaria, solo hay 1 resultado almacenado en la 1º pos
-            audioguia.setIdAudio(IDAudioguia)
-            audioguia.setTitulo(Titulo)
-            audioguia.setIdObra(IDObra)
-            audioguia.setDuracion(Duracion)
-            audioguia.setAudio(Audio)
+            if len(row)>0:
+                IDAudioguia,Titulo,IDObra,Audio,Duracion= row[0]   #Al filtrar por la clave primaria, solo hay 1 resultado almacenado en la 1º pos
+                audioguia.setIdAudio(IDAudioguia)
+                audioguia.setTitulo(Titulo)
+                audioguia.setIdObra(IDObra)
+                audioguia.setDuracion(Duracion)
+                audioguia.setAudio(Audio)
         except Error as e:
             print("Error al seleccionar Audioguia:", e)
         #Se ejecuta siempre

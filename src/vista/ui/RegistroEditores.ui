@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1683</width>
-    <height>845</height>
+    <width>1703</width>
+    <height>862</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -18,7 +18,7 @@
     <property name="geometry">
      <rect>
       <x>760</x>
-      <y>710</y>
+      <y>770</y>
       <width>161</width>
       <height>51</height>
      </rect>
@@ -410,7 +410,7 @@ background-color: rgb(208, 223, 232);</string>
     <property name="geometry">
      <rect>
       <x>970</x>
-      <y>250</y>
+      <y>290</y>
       <width>241</width>
       <height>41</height>
      </rect>
@@ -424,7 +424,7 @@ background-color: rgb(208, 223, 232);</string>
     <property name="geometry">
      <rect>
       <x>970</x>
-      <y>380</y>
+      <y>420</y>
       <width>181</width>
       <height>31</height>
      </rect>
@@ -437,7 +437,7 @@ background-color: rgb(208, 223, 232);</string>
     <property name="geometry">
      <rect>
       <x>970</x>
-      <y>300</y>
+      <y>340</y>
       <width>221</width>
       <height>31</height>
      </rect>
@@ -450,7 +450,7 @@ background-color: rgb(208, 223, 232);</string>
     <property name="geometry">
      <rect>
       <x>970</x>
-      <y>420</y>
+      <y>460</y>
       <width>241</width>
       <height>41</height>
      </rect>
@@ -464,7 +464,7 @@ background-color: rgb(208, 223, 232);</string>
     <property name="geometry">
      <rect>
       <x>970</x>
-      <y>510</y>
+      <y>550</y>
       <width>241</width>
       <height>41</height>
      </rect>
@@ -478,7 +478,7 @@ background-color: rgb(208, 223, 232);</string>
     <property name="geometry">
      <rect>
       <x>970</x>
-      <y>470</y>
+      <y>510</y>
       <width>231</width>
       <height>41</height>
      </rect>
@@ -491,7 +491,7 @@ background-color: rgb(208, 223, 232);</string>
     <property name="geometry">
      <rect>
       <x>970</x>
-      <y>330</y>
+      <y>370</y>
       <width>241</width>
       <height>41</height>
      </rect>
@@ -505,7 +505,7 @@ background-color: rgb(208, 223, 232);</string>
     <property name="geometry">
      <rect>
       <x>970</x>
-      <y>210</y>
+      <y>250</y>
       <width>181</width>
       <height>31</height>
      </rect>
@@ -805,8 +805,8 @@ border-radius: 15px;</string>
    <widget class="QLineEdit" name="lineRol">
     <property name="geometry">
      <rect>
-      <x>970</x>
-      <y>600</y>
+      <x>730</x>
+      <y>700</y>
       <width>231</width>
       <height>41</height>
      </rect>
@@ -825,8 +825,8 @@ background-color: rgb(208, 223, 232);</string>
    <widget class="QLabel" name="label_15">
     <property name="geometry">
      <rect>
-      <x>970</x>
-      <y>560</y>
+      <x>730</x>
+      <y>660</y>
       <width>231</width>
       <height>41</height>
      </rect>

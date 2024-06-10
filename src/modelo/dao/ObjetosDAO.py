@@ -65,16 +65,17 @@ class ObjetosDao(ObjetosInterface, Conexion):
             cursor.execute(self.SQL_FILTER, (nombre_objeto,))  # Obtiene las filas resultantes de la consulta
             row = cursor.fetchall()
             objeto = ObjetosVO()
-            IDObjeto, NombreObjeto, Imagen, Precio, Tipo, Inspiracion, Existencias, Agotado, IDCatalogo = row[0]  # Al filtrar por la clave primaria, solo hay 1 resultado
-            objeto.setIdObjeto(IDObjeto)
-            objeto.setNombreObjeto(NombreObjeto)
-            objeto.setImagen(Imagen)
-            objeto.setPrecio(Precio)
-            objeto.setTipo(Tipo)
-            objeto.setInspiracion(Inspiracion)
-            objeto.setExistencias(Existencias)
-            objeto.setAgotado(Agotado)
-            objeto.setIdCatalogo(IDCatalogo)
+            if len(row)>0:
+                IDObjeto, NombreObjeto, Imagen, Precio, Tipo, Inspiracion, Existencias, Agotado, IDCatalogo = row[0]  # Al filtrar por la clave primaria, solo hay 1 resultado
+                objeto.setIdObjeto(IDObjeto)
+                objeto.setNombreObjeto(NombreObjeto)
+                objeto.setImagen(Imagen)
+                objeto.setPrecio(Precio)
+                objeto.setTipo(Tipo)
+                objeto.setInspiracion(Inspiracion)
+                objeto.setExistencias(Existencias)
+                objeto.setAgotado(Agotado)
+                objeto.setIdCatalogo(IDCatalogo)
         except Error as e:
             print("Error al seleccionar objeto:", e)
         finally:

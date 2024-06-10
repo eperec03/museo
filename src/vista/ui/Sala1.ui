@@ -273,33 +273,6 @@ border-radius: 15px;</string>
      <bool>true</bool>
     </property>
    </widget>
-   <widget class="QLabel" name="Titulo_2">
-    <property name="geometry">
-     <rect>
-      <x>-320</x>
-      <y>-130</y>
-      <width>2141</width>
-      <height>1101</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <family>Bell MT</family>
-      <pointsize>24</pointsize>
-      <weight>50</weight>
-      <bold>false</bold>
-     </font>
-    </property>
-    <property name="autoFillBackground">
-     <bool>false</bool>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-    <property name="pixmap">
-     <pixmap>../Imagenes/sala.png</pixmap>
-    </property>
-   </widget>
    <widget class="QScrollArea" name="scrollArea">
     <property name="geometry">
      <rect>
@@ -323,11 +296,30 @@ border-radius: 15px;</string>
      </property>
     </widget>
    </widget>
-   <zorder>Titulo_2</zorder>
-   <zorder>BotonHome</zorder>
-   <zorder>Titulo</zorder>
-   <zorder>tituloobra</zorder>
-   <zorder>scrollArea</zorder>
+   <widget class="QLabel" name="foto">
+    <property name="geometry">
+     <rect>
+      <x>-80</x>
+      <y>-140</y>
+      <width>1841</width>
+      <height>1091</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Bell MT</family>
+      <pointsize>22</pointsize>
+      <weight>50</weight>
+      <bold>false</bold>
+     </font>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="pixmap">
+     <pixmap>../Imagenes/foto.png</pixmap>
+    </property>
+   </widget>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
  </widget>

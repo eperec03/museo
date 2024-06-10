@@ -31,14 +31,14 @@ class EliminarArtista(QtWidgets.QMainWindow):
         self.coordinador = coord
 
     def limpiar(self):
-        self.NombreArtista_entrada.clear()
+        self.Nombre_entrada.clear()
 
     def eliminarArtista(self) -> None:
         try:
             Artista = ArtistasVO(
-                NombreArtista = self.NombreArtista_entrada.text(),
+                NombreArtista = self.Nombre_entrada.text(),
                 )
-            self.coordinador.eliminarArtistas(Artista)
+            self.coordinador.eliminarArtista(Artista)
             self.limpiar()
         except Exception as ex:
             print(ex)

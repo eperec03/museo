@@ -34,6 +34,8 @@ from modelo.vo.SalasVO import *
 from modelo.dao.SalasDAO import *
 from modelo.vo.CatalogoVO import *
 from modelo.dao.CatalogoDAO import *
+from modelo.vo.SubastasVO import *
+from modelo.dao.SubastasDAO import *
 
 from controlador.coordinador import Coordinador
 from dao.ObrasDAO import *
@@ -90,6 +92,18 @@ class Logica:
             messagebox.showwarning("Advertencia", "No existe nadie con ese DNI")
         else:
             if mi_persona.get_UsuContrasenna() == mi_persona_dao.getClienteP(mi_persona.get_DNI())[0].get_UsuContrasenna():
+                error=0
+                return True
+            if error==1:
+                messagebox.showwarning("Advertencia", "Contraseña incorrecta")
+
+    def comprobar_editor(self, editor: EditorVO):  
+        editor_dao=EditorDAO()
+        error=1
+        if len(editor_dao.getEditor(editor.get_DNI()))==0:
+            messagebox.showwarning("Advertencia", "No existe nadie con ese DNI")
+        else:
+            if editor.get_UsuContrasenna() == editor_dao.getEditor(editor.get_DNI())[0].get_UsuContrasenna():
                 error=0
                 return True
             if error==1:
@@ -187,6 +201,12 @@ class Logica:
         a=ExposicionesDao()
         return a.getExposiciones()
     
+    def select_subastas(self):
+        a=SubastasDao()
+        return a.getSubastas()
+
+    def select_obras(self):
+    
     def select_obras_1(self):
         a=ObrasDao()
         return a.getObrasFiltro(1)
@@ -215,8 +235,8 @@ class Logica:
     def eliminar_obra(self, obra: ObrasVO):
         obra_dao=ObrasDao()
         error=1
-        if obra.getTitulo() == obra_dao.getObraTitulo(obra.getTitulo()).getTitulo():            
-            obra_dao.deleteObra(obra)
+        if obra.getTitulo() == obra_dao.getObraTitulo(obra.getTitulo())[0].getTitulo():            
+            obra_dao.deleteObra(obra.getTitulo())
             error=0
         if error==1:
             messagebox.showwarning("Advertencia", "No existe ese IDObra")
@@ -242,17 +262,20 @@ class Logica:
     def eliminar_juego(self, juego: JuegosVO):
         juego_dao=JuegosDao()
         error=1
-        if juego.get_IDJuego() == juego_dao.getJuego(juego.get_Nombre()).get_IDJuego():            
-            juego_dao.deleteJuego(juego)
+        print(juego.get_IDJuego())
+        print(juego_dao.getJuego(juego.get_IDJuego()).get_IDJuego())
+        if juego.get_IDJuego() == juego_dao.getJuego(juego.get_IDJuego()).get_IDJuego():            
             error=0
-        if error==1:
+            print('h')
+            juego_dao.deleteJuego(juego.get_IDJuego())
+        else:
             messagebox.showwarning("Advertencia", "No existe ese IDJuego")
     
     def eliminar_objeto(self, objeto: ObjetosVO):
         objeto_dao=ObjetosDao()
         error=1
         if objeto.getNombreObjeto() == objeto_dao.getObjeto(objeto.getNombreObjeto()).getNombreObjeto():            
-            objeto_dao.deleteObjeto(objeto)
+            objeto_dao.deleteObjeto(objeto.getNombreObjeto())
             error=0
         if error==1:
             messagebox.showwarning("Advertencia", "No existe ese IDObjeto")
@@ -261,7 +284,7 @@ class Logica:
         artista_dao=ArtistasDao()
         error=1
         if artista.getNombreArtista() == artista_dao.getArtista(artista.getNombreArtista()).getNombreArtista():            
-            artista_dao.deleteArtista(artista)
+            artista_dao.deleteArtista(artista.getNombreArtista())
             error=0
         if error==1:
             messagebox.showwarning("Advertencia", "No existe ese nombre de artista.")
@@ -270,7 +293,7 @@ class Logica:
         audioguia_dao=AudioguiasDao()
         error=1
         if audioguia.getTitulo() == audioguia_dao.getAudioguia(audioguia.getTitulo()).getTitulo():            
-            audioguia_dao.deleteAudioguia(audioguia)
+            audioguia_dao.deleteAudioguia(audioguia.getTitulo())
             error=0
         if error==1:
             messagebox.showwarning("Advertencia", "No existe ese título de audioguia.")
@@ -279,10 +302,11 @@ class Logica:
         exposicion_dao=ExposicionesDao()
         error=1
         if exposicion.getTitulo() == exposicion_dao.getExposicion(exposicion.getTitulo()).getTitulo():            
-            exposicion_dao.deleteExposicion(exposicion)
+            exposicion_dao.deleteExposicion(exposicion.getTitulo())
             error=0
         if error==1:
             messagebox.showwarning("Advertencia", "No existe ese título")
+ 
     def crear_audioguias(self, audio: AudioguiasVO):
         audio_dao = AudioguiasDao()
         audio_dao.insertAudioguia(audio)

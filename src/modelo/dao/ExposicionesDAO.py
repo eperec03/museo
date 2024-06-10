@@ -16,9 +16,7 @@ class ExposicionesDao(ExposicionesInterface, Conexion):
     SQL_INSERT = "INSERT INTO exposiciones(IDExposiciones, Titulo, Imagen, Descripcion, NumSala) VALUES (?, ?, ?, ?, ?)"
     SQL_UPDATE = "UPDATE exposiciones SET  Imagen= ?, Descripcion = ?, NumSala = ? WHERE Titulo = ?"
     SQL_FILTER = "SELECT * FROM exposiciones WHERE Titulo = ?"
-    SQL_INSERT_SERV = "INSERT INTO Servicios(Nombre) VALUES (?)"
-    SQL_SELECT_SERV = "SELECT IDServicios FROM servicios WHERE Nombre = ?"
-    SQL_DELETE_SERV = "DELETE FROM Servicios WHERE IdServicios = ?"
+    SQL_DELETE_SERV = "DELETE FROM exposiciones WHERE Titulo = ?"
 
     def getExposiciones(self) -> List[ExposicionesVO]:
         conexion = self.getConnection()
@@ -72,13 +70,14 @@ class ExposicionesDao(ExposicionesInterface, Conexion):
             #Obtiene todas las filas resultantes de la consulta
             row = cursor.fetchall()
             exposicion = ExposicionesVO()
-            IDExposiciones,Titulo,Imagen,Descripcion,NumSala= row[0]   #Al filtrar por la clave primaria, solo hay 1 resultado almacenado en la 1º pos
-            exposicion.setIdExposicion(IDExposiciones)
-            exposicion.setTitulo(Titulo)
-            exposicion.setDescripcion(Descripcion)
-            exposicion.setImagen(Imagen)
-            exposicion.setNumSala(NumSala)
-            
+            if len(row)>0:
+                IDExposiciones,Titulo,Imagen,Descripcion,NumSala= row[0]   #Al filtrar por la clave primaria, solo hay 1 resultado almacenado en la 1º pos
+                exposicion.setIdExposicion(IDExposiciones)
+                exposicion.setTitulo(Titulo)
+                exposicion.setDescripcion(Descripcion)
+                exposicion.setImagen(Imagen)
+                exposicion.setNumSala(NumSala)
+                
         except Error as e:
             print("Error al seleccionar exposicion:", e)
         #Se ejecuta siempre

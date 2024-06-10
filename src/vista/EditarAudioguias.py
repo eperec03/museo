@@ -37,7 +37,7 @@ class EditarAudioguias(QtWidgets.QMainWindow):
         self.destroy()      
 
     def go_crear(self):
-        self.ventana_crear = CrearAudioguia()
+        self.ventana_crear = CrearAudioguias()
         self.ventana_crear.setCoordinador(self)
         self.ventana_crear = CrearAudioguias(ventana_anterior=self)
         self.ventana_crear.setCoordinador(self.coordinador)
@@ -47,7 +47,7 @@ class EditarAudioguias(QtWidgets.QMainWindow):
     def go_eliminar(self):
         self.ventana_eliminar = EliminarAudioguia()
         self.ventana_eliminar.setCoordinador(self)
-        self.ventana_eliminar = EliminarAudioguias(ventana_anterior=self)
+        self.ventana_eliminar = EliminarAudioguia(ventana_anterior=self)
         self.ventana_eliminar.setCoordinador(self.coordinador)
         self.ventana_eliminar.show()
         self.hide()

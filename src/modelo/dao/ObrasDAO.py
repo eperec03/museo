@@ -114,15 +114,16 @@ class ObrasDao(ObrasInterface, Conexion):
             row = cursor.fetchall()
             obra = ObrasVO()
             if len(row)>0:
-                IdObra,Imagen,Titulo,Descripcion, Fecha, IdArtista, NumSala= row[0]   #Al filtrar por la clave primaria, solo hay 1 resultado almacenado en la 1º pos
+                IdObra,Titulo,Descripcion, Fecha,Imagen, IdArtista, NumSala= row[0]   #Al filtrar por la clave primaria, solo hay 1 resultado almacenado en la 1º pos
                 obra.setIdObra(IdObra)
-                obra.setImagen(Imagen)
-                obra.setDescripcion(Descripcion)
                 obra.setTitulo(Titulo)
+                obra.setDescripcion(Descripcion)
                 obra.setFecha(Fecha)
+                obra.setImagen(Imagen)
                 obra.setIdArtista(IdArtista)
                 obra.setNumSala(NumSala)
                 obras.append(obra)
+                
         except Error as e:
             print("Error al seleccionar obra:", e)
         #Se ejecuta siempre
@@ -133,7 +134,7 @@ class ObrasDao(ObrasInterface, Conexion):
         conexion = self.closeConnection(conn)
         return obras
     
-    def getObraId(self,titulo) -> ObrasVO:
+    def getObraId(self,IdObra) -> ObrasVO:
         conexion = self.getConnection()
         conn = None
         cursor = None
@@ -145,18 +146,19 @@ class ObrasDao(ObrasInterface, Conexion):
             #Crea un obra para poder ejecutar consultas SQL sobre la conexion abierta
             cursor = conn.cursor()
             #Ejecuta de consulta SQL
-            cursor.execute(self.SQL_FILTER_ID, (titulo,)) #Obtiene todas las filas resultantes de la consulta
+            cursor.execute(self.SQL_FILTER_ID, (IdObra,)) #Obtiene todas las filas resultantes de la consulta
             #Obtiene todas las filas resultantes de la consulta
             row = cursor.fetchall()
             obra = ObrasVO()
-            IdObra,Imagen,Titulo,Descripcion, Fecha, IdArtista, NumSala= row[0]   #Al filtrar por la clave primaria, solo hay 1 resultado almacenado en la 1º pos
-            obra.setIdObra(IdObra)
-            obra.setImagen(Imagen)
-            obra.setDescripcion(Descripcion)
-            obra.setTitulo(Titulo)
-            obra.setFecha(Fecha)
-            obra.setIdArtista(IdArtista)
-            obra.setNumSala(NumSala)
+            if len(row)>0:
+                IdObra,Imagen,Titulo,Descripcion, Fecha, IdArtista, NumSala= row[0]   #Al filtrar por la clave primaria, solo hay 1 resultado almacenado en la 1º pos
+                obra.setIdObra(IdObra)
+                obra.setImagen(Imagen)
+                obra.setDescripcion(Descripcion)
+                obra.setTitulo(Titulo)
+                obra.setFecha(Fecha)
+                obra.setIdArtista(IdArtista)
+                obra.setNumSala(NumSala)
         except Error as e:
             print("Error al seleccionar obra:", e)
         #Se ejecuta siempre
