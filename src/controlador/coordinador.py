@@ -4,6 +4,7 @@ sys.path.append(r'c:\Users\clara\Documents\2ºUNI\2CUATRI\IS\museo\src')
 
 from modelo.vo.UsuariosVO import *
 from modelo.vo.ClienteEstandarVO import *
+from modelo.vo.JuegosVO import *
 
 
 class Coordinador:
@@ -78,6 +79,10 @@ class Coordinador:
 
    def validarUsuario(self, usuario: ClientePremiumVO) -> bool:
       if self._model.comprobar_cliente(usuario):
+         return True
+      
+   def validarJuego(self, usuario: JuegosObrasVO) -> bool:
+      if self._model.comprobar_juego(usuario):
          return True
 
    def registrarEditor(self, usuario: EditorVO) -> None:

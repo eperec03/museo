@@ -10,6 +10,8 @@ from PyQt5 import QtWidgets, uic
 from PyQt5.QtWidgets import QMessageBox
 from PyQt5.QtGui import QIcon
 from vista.MapaVentana import *
+from modelo.vo.JuegosVO import *
+
 paths = [
     r'C:\Users\eripe\OneDrive\Documentos\ERI ULE\2º\SEGUNDO CUATRI\IS\PROYECTO\src\vista\JuegoSerpiente.py',
     r'C:\Users\clara\Documents\2ºUNI\2CUATRI\IS\museo\src\vista\JuegoSerpiente.py'
@@ -26,6 +28,7 @@ class VentanaJuegos(QtWidgets.QMainWindow):
         self.coordinador = controlador
         # "EnviarBoton" es el nombre que se le ha dado al objeto en el .ui
         self.enviarBotonJuego1.clicked.connect(self.go_to_snake1)
+        self.BotonJugar.clicked.connect(self.validarJuego)
         # self.BotonInicioS.clicked.connect(self.go_to_window_inicio)
         self.ventana_anterior=ventana_anterior
         self.BotonAtras.clicked.connect(self.go_back)
@@ -51,6 +54,20 @@ class VentanaJuegos(QtWidgets.QMainWindow):
         self.coordinador = coord
 
     #############################Listeners##############################
+
+
+    def validarJuego(self) -> None:
+        try:
+            persona = JuegosObrasVO(
+                Nombre = self.lineNombre.text(),
+            )
+            if self.coordinador.validarUsuario(persona) == True:
+                self.go_to_window_servicios()
+            self.limpiar()
+        except Exception as ex:
+            print(ex)
+            self.mostrar_advertencia(ex)
+
 
     def mostrar_advertencia(ex):
         mensaje = QMessageBox()

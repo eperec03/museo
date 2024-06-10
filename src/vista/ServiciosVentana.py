@@ -7,7 +7,7 @@ from tkinter import messagebox
 from PyQt5 import QtWidgets, uic
 from PyQt5.QtWidgets import QMessageBox
 from PyQt5.QtGui import QIcon
-from vista.MapaVentana import *
+from vista.MapaVentana import MapaVentana
 from vista.VentanaJuegos import *
 
 
@@ -40,7 +40,7 @@ class VentanaServicio(QtWidgets.QMainWindow):
 
 
     def go_to_window_mapa(self):
-        self.ventana_registro = MapaVentana()
+        self.ventana_registro = MapaVentana(ventana_anterior=self)
         self.ventana_registro.setCoordinador(self.coordinador)
         self.ventana_registro.show()
         self.hide()
