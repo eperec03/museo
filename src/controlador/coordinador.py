@@ -107,6 +107,9 @@ class Coordinador:
 
    def obtener_todos_exposiciones(self):
       return self._model.select_exposiciones()
+   
+   def obtener_todos_subastas(self):
+      return self._model.select_subastas()
 
    def obtener_artista(self,obra):
       return self._model.select_artista_nombre(obra)
