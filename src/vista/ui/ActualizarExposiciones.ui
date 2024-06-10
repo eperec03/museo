@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1698</width>
-    <height>899</height>
+    <width>801</width>
+    <height>597</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -17,8 +17,8 @@
    <widget class="QLabel" name="Titulo">
     <property name="geometry">
      <rect>
-      <x>520</x>
-      <y>110</y>
+      <x>210</x>
+      <y>50</y>
       <width>911</width>
       <height>91</height>
      </rect>
@@ -32,14 +32,14 @@
      </font>
     </property>
     <property name="text">
-     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:48pt;&quot;&gt;EDITAR EXPOSICIONES&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;EDITAR EXPOSICIONES&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
     </property>
    </widget>
    <widget class="QLabel" name="label_2">
     <property name="geometry">
      <rect>
-      <x>630</x>
-      <y>430</y>
+      <x>80</x>
+      <y>300</y>
       <width>211</width>
       <height>41</height>
      </rect>
@@ -51,8 +51,8 @@
    <widget class="QLineEdit" name="Titulo_entrada">
     <property name="geometry">
      <rect>
-      <x>650</x>
-      <y>340</y>
+      <x>100</x>
+      <y>210</y>
       <width>171</width>
       <height>41</height>
      </rect>
@@ -65,8 +65,8 @@ background-color: rgb(208, 223, 232);</string>
    <widget class="QLineEdit" name="Imagen_entrada">
     <property name="geometry">
      <rect>
-      <x>1040</x>
-      <y>340</y>
+      <x>490</x>
+      <y>210</y>
       <width>171</width>
       <height>41</height>
      </rect>
@@ -79,8 +79,8 @@ background-color: rgb(208, 223, 232);</string>
    <widget class="QLineEdit" name="Descripcion_entrada">
     <property name="geometry">
      <rect>
-      <x>660</x>
-      <y>480</y>
+      <x>110</x>
+      <y>350</y>
       <width>161</width>
       <height>41</height>
      </rect>
@@ -93,8 +93,8 @@ background-color: rgb(208, 223, 232);</string>
    <widget class="QLabel" name="label_8">
     <property name="geometry">
      <rect>
-      <x>1020</x>
-      <y>430</y>
+      <x>470</x>
+      <y>300</y>
       <width>211</width>
       <height>41</height>
      </rect>
@@ -106,8 +106,8 @@ background-color: rgb(208, 223, 232);</string>
    <widget class="QLabel" name="label_4">
     <property name="geometry">
      <rect>
-      <x>1020</x>
-      <y>290</y>
+      <x>470</x>
+      <y>160</y>
       <width>211</width>
       <height>41</height>
      </rect>
@@ -119,8 +119,8 @@ background-color: rgb(208, 223, 232);</string>
    <widget class="QPushButton" name="BotonEditarExposicion">
     <property name="geometry">
      <rect>
-      <x>790</x>
-      <y>610</y>
+      <x>240</x>
+      <y>480</y>
       <width>281</width>
       <height>51</height>
      </rect>
@@ -182,15 +182,6 @@ background-color: rgb(208, 223, 232);</string>
          </color>
         </brush>
        </colorrole>
-       <colorrole role="PlaceholderText">
-        <brush brushstyle="NoBrush">
-         <color alpha="128">
-          <red>255</red>
-          <green>255</green>
-          <blue>255</blue>
-         </color>
-        </brush>
-       </colorrole>
       </active>
       <inactive>
        <colorrole role="WindowText">
@@ -244,15 +235,6 @@ background-color: rgb(208, 223, 232);</string>
           <red>67</red>
           <green>157</green>
           <blue>175</blue>
-         </color>
-        </brush>
-       </colorrole>
-       <colorrole role="PlaceholderText">
-        <brush brushstyle="NoBrush">
-         <color alpha="128">
-          <red>255</red>
-          <green>255</green>
-          <blue>255</blue>
          </color>
         </brush>
        </colorrole>
@@ -312,15 +294,6 @@ background-color: rgb(208, 223, 232);</string>
          </color>
         </brush>
        </colorrole>
-       <colorrole role="PlaceholderText">
-        <brush brushstyle="NoBrush">
-         <color alpha="128">
-          <red>255</red>
-          <green>255</green>
-          <blue>255</blue>
-         </color>
-        </brush>
-       </colorrole>
       </disabled>
      </palette>
     </property>
@@ -349,8 +322,8 @@ border-radius: 15px;</string>
    <widget class="QLineEdit" name="NumeroSala_entrada">
     <property name="geometry">
      <rect>
-      <x>1040</x>
-      <y>480</y>
+      <x>490</x>
+      <y>350</y>
       <width>171</width>
       <height>41</height>
      </rect>
@@ -363,8 +336,8 @@ background-color: rgb(208, 223, 232);</string>
    <widget class="QLabel" name="label_3">
     <property name="geometry">
      <rect>
-      <x>630</x>
-      <y>290</y>
+      <x>80</x>
+      <y>160</y>
       <width>211</width>
       <height>41</height>
      </rect>
@@ -439,15 +412,6 @@ background-color: rgb(208, 223, 232);</string>
          </color>
         </brush>
        </colorrole>
-       <colorrole role="PlaceholderText">
-        <brush brushstyle="NoBrush">
-         <color alpha="128">
-          <red>67</red>
-          <green>157</green>
-          <blue>175</blue>
-         </color>
-        </brush>
-       </colorrole>
       </active>
       <inactive>
        <colorrole role="WindowText">
@@ -501,15 +465,6 @@ background-color: rgb(208, 223, 232);</string>
           <red>208</red>
           <green>223</green>
           <blue>232</blue>
-         </color>
-        </brush>
-       </colorrole>
-       <colorrole role="PlaceholderText">
-        <brush brushstyle="NoBrush">
-         <color alpha="128">
-          <red>67</red>
-          <green>157</green>
-          <blue>175</blue>
          </color>
         </brush>
        </colorrole>
@@ -569,15 +524,6 @@ background-color: rgb(208, 223, 232);</string>
          </color>
         </brush>
        </colorrole>
-       <colorrole role="PlaceholderText">
-        <brush brushstyle="NoBrush">
-         <color alpha="128">
-          <red>67</red>
-          <green>157</green>
-          <blue>175</blue>
-         </color>
-        </brush>
-       </colorrole>
       </disabled>
      </palette>
     </property>
@@ -595,42 +541,6 @@ border-radius: 15px;</string>
      <string>🡸</string>
     </property>
    </widget>
-   <widget class="QLabel" name="fondo">
-    <property name="geometry">
-     <rect>
-      <x>10</x>
-      <y>-10</y>
-      <width>2001</width>
-      <height>1061</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <family>Bell MT</family>
-      <pointsize>24</pointsize>
-      <weight>50</weight>
-      <bold>false</bold>
-     </font>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-    <property name="pixmap">
-     <pixmap>../Imagenes/foto.png</pixmap>
-    </property>
-   </widget>
-   <zorder>fondo</zorder>
-   <zorder>Titulo</zorder>
-   <zorder>label_2</zorder>
-   <zorder>Titulo_entrada</zorder>
-   <zorder>Imagen_entrada</zorder>
-   <zorder>Descripcion_entrada</zorder>
-   <zorder>label_8</zorder>
-   <zorder>label_4</zorder>
-   <zorder>BotonEditarExposicion</zorder>
-   <zorder>NumeroSala_entrada</zorder>
-   <zorder>label_3</zorder>
-   <zorder>BotonAtras</zorder>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
  </widget>

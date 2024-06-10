@@ -294,11 +294,7 @@ border-radius: 15px;</string>
     </property>
    </widget>
    <zorder>foto</zorder>
-<<<<<<< HEAD
    <zorder>BotonAtras</zorder>
-=======
-   <zorder>BotonHome</zorder>
->>>>>>> 38d60e20a38ef826d43b73fd70be13cd8e41dbfb
    <zorder>Titulo</zorder>
    <zorder>tituloobra</zorder>
    <zorder>scrollArea</zorder>
