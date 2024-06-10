@@ -219,7 +219,7 @@ border-radius: 15px;</string>
      </rect>
     </property>
     <property name="text">
-     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:14pt; font-weight:600;&quot;&gt;ID Exposición&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:14pt; font-weight:600;&quot;&gt;Título Exposición&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
     </property>
    </widget>
    <widget class="QLabel" name="Titulo">
@@ -243,7 +243,7 @@ border-radius: 15px;</string>
      <string>ELIMINAR EXPOSICIONES</string>
     </property>
    </widget>
-   <widget class="QLineEdit" name="IDExposicion_entrada">
+   <widget class="QLineEdit" name="Titulo_entrada">
     <property name="geometry">
      <rect>
       <x>310</x>

@@ -32,19 +32,11 @@ class EliminarJuego(QtWidgets.QMainWindow):
 
     def limpiar(self):
         self.IDJuego_entrada.clear()
-        self.Nombre_entrada.clear()
-        self.Descripcion_entrada.clear()
-        self.Dificultad_entrada.clear()
-        self.Ruta_entrada.clear()
 
     def eliminarJuego(self) -> None:
         try:
             Juego = JuegosVO(
                 IDJuego = self.IDJuego_entrada.text(),
-                Nombre = self.Nombre_entrada.text(),
-                Descripcion = self.Descripcion_entrada.text(),
-                Dificultad = self.Dificultad_entrada.text(),
-                ruta = self.Ruta_entrada.text()
                 )
             self.coordinador.eliminarJuegos(Juego)
             self.limpiar()

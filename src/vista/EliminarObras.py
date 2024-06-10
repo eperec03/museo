@@ -31,24 +31,12 @@ class EliminarObra(QtWidgets.QMainWindow):
         self.coordinador = coord
 
     def limpiar(self):
-        self.IDObra_entrada.clear()
-        self.NombreObra_entrada.clear()
-        self.Imagen_entrada.clear()
-        self.Descripcion_entrada.clear()
-        self.Fecha_entrada.clear()
-        self.IdArtista_entrada.clear()
-        self.IdExposicion_entrada.clear()
+        self.Titulo_entrada.clear()
 
     def eliminarObra(self) -> None:
         try:
             Obra = ObrasVO(
-                IdObra = self.IDObra_entrada.text(),
-                NombreObra = self.NombreObra_entrada.text(),
-                Imagen = self.Imagen_entrada.text(),
-                Descripcion = self.Descripcion_entrada.text(),
-                Fecha = self.Fecha_entrada.text(), 
-                IdArtista = self.IdArtista_entrada.text(),
-                IdExposicion = self.IdExposicion_entrada.text()
+                Titulo = self.Titulo_entrada.text()
                 )
             self.coordinador.eliminarObras(Obra)
             self.limpiar()

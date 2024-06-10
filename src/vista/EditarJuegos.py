@@ -9,6 +9,7 @@ from PyQt5.QtWidgets import QMessageBox
 from PyQt5.QtGui import QIcon
 from vista.MenuEditor import *
 from vista.ActualizaJuegos import *
+from vista.EliminarJuegos import *
 
 class EditarJuegos(QtWidgets.QMainWindow):
     def __init__(self, controlador = None,ventana_anterior=None):
@@ -22,8 +23,8 @@ class EditarJuegos(QtWidgets.QMainWindow):
         # "EnviarBoton" es el nombre que se le ha dado al objeto en el .ui
         self.ventana_anterior=ventana_anterior
         self.BotonAtras.clicked.connect(self.go_back)
-        # self.BotonCrear.clicked.connect(self.go_crear)
-        # self.BotonEliminar.clicked.connect(self.go_eliminar)
+        self.BotonCrear.clicked.connect(self.go_crear)
+        self.BotonEliminar.clicked.connect(self.go_eliminar)
         self.BotonActualizar.clicked.connect(self.go_actualizar)
         
         self.show()
@@ -33,13 +34,13 @@ class EditarJuegos(QtWidgets.QMainWindow):
         self.destroy()      
 
     def go_crear(self):
-        # self.ventana_crear = CrearJuegos()
+        self.ventana_crear = CrearJuegos()
         self.ventana_crear.setCoordinador(self)
         self.ventana_crear.show()
         self.hide()
 
     def go_eliminar(self):
-        # self.ventana_eliminar = EliminarJuegos()
+        self.ventana_eliminar = EliminarJuego()
         self.ventana_eliminar.setCoordinador(self)
         self.ventana_eliminar.show()
         self.hide()

@@ -17,8 +17,8 @@
    <widget class="QPushButton" name="BotonEditarObra">
     <property name="geometry">
      <rect>
-      <x>300</x>
-      <y>370</y>
+      <x>330</x>
+      <y>360</y>
       <width>161</width>
       <height>41</height>
      </rect>
@@ -212,21 +212,21 @@ border-radius: 15px;</string>
    <widget class="QLabel" name="label">
     <property name="geometry">
      <rect>
-      <x>270</x>
-      <y>180</y>
+      <x>300</x>
+      <y>170</y>
       <width>211</width>
       <height>41</height>
      </rect>
     </property>
     <property name="text">
-     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:14pt; font-weight:600;&quot;&gt;ID Obras&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:14pt; font-weight:600;&quot;&gt;Título Obra&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
     </property>
    </widget>
    <widget class="QLabel" name="Titulo">
     <property name="geometry">
      <rect>
-      <x>240</x>
-      <y>60</y>
+      <x>270</x>
+      <y>50</y>
       <width>341</width>
       <height>91</height>
      </rect>
@@ -243,11 +243,11 @@ border-radius: 15px;</string>
      <string>ELIMINAR OBRAS</string>
     </property>
    </widget>
-   <widget class="QLineEdit" name="IDObra_entrada">
+   <widget class="QLineEdit" name="Titulo_entrada">
     <property name="geometry">
      <rect>
-      <x>300</x>
-      <y>240</y>
+      <x>330</x>
+      <y>230</y>
       <width>161</width>
       <height>41</height>
      </rect>

@@ -31,22 +31,12 @@ class EliminarArtista(QtWidgets.QMainWindow):
         self.coordinador = coord
 
     def limpiar(self):
-        self.IDArtista_entrada.clear()
         self.NombreArtista_entrada.clear()
-        self.Descripcion_entrada.clear()
-        self.FechaNacimiento_entrada.clear()
-        self.FechaMuerte_entrada.clear()
-        self.Corriente_entrada.clear()
 
     def eliminarArtista(self) -> None:
         try:
             Artista = ArtistasVO(
-                IDArtista = self.IDArtista_entrada.text(),
                 NombreArtista = self.NombreArtista_entrada.text(),
-                Descripcion = self.Descripcion_entrada.text(),
-                FechaNac = self.FechaNacimiento_entrada.text(),
-                FechaMuerte = self.FechaMuerte_entrada.text(), 
-                Corriente = self.Corriente_entrada.text(),
                 )
             self.coordinador.eliminarArtistas(Artista)
             self.limpiar()

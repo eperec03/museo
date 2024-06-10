@@ -31,7 +31,6 @@ class ActualizarAudioguia(QtWidgets.QMainWindow):
         self.coordinador = coord
 
     def limpiar(self):
-        self.IDAudioguia_entrada.clear()
         self.Titulo_entrada.clear()
         self.IDObra_entrada.clear()
         self.Audio_entrada.clear()
@@ -40,7 +39,6 @@ class ActualizarAudioguia(QtWidgets.QMainWindow):
     def actualizarAudioguia(self) -> None:
         try:
             Audioguia = AudioguiasVO(
-                IDAudioguia = self.IDAudioguia_entrada.text(),
                 Titulo = self.NombreAudioguia_entrada.text(),
                 IDObra = self.IDObra_entrada.text(),
                 Audio = self.Audio_entrada.text(),
