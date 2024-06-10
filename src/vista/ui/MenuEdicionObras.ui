@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>800</width>
-    <height>600</height>
+    <width>1687</width>
+    <height>855</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -17,8 +17,8 @@
    <widget class="QPushButton" name="BotonEliminar">
     <property name="geometry">
      <rect>
-      <x>260</x>
-      <y>290</y>
+      <x>700</x>
+      <y>460</y>
       <width>271</width>
       <height>41</height>
      </rect>
@@ -221,6 +221,14 @@
        </colorrole>
       </disabled>
      </palette>
+    </property>
+    <property name="font">
+     <font>
+      <family>Verdana</family>
+      <pointsize>12</pointsize>
+      <weight>75</weight>
+      <bold>true</bold>
+     </font>
     </property>
     <property name="cursor">
      <cursorShape>PointingHandCursor</cursorShape>
@@ -239,9 +247,9 @@ border-radius: 15px;</string>
    <widget class="QLabel" name="Titulo">
     <property name="geometry">
      <rect>
-      <x>100</x>
-      <y>50</y>
-      <width>601</width>
+      <x>280</x>
+      <y>210</y>
+      <width>1191</width>
       <height>91</height>
      </rect>
     </property>
@@ -254,14 +262,14 @@ border-radius: 15px;</string>
      </font>
     </property>
     <property name="text">
-     <string>MENÚ DE EDICIÓN DE OBRAS</string>
+     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:48pt;&quot;&gt;MENÚ DE EDICIÓN DE OBRAS&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
     </property>
    </widget>
    <widget class="QPushButton" name="BotonCrear">
     <property name="geometry">
      <rect>
-      <x>260</x>
-      <y>190</y>
+      <x>700</x>
+      <y>360</y>
       <width>271</width>
       <height>41</height>
      </rect>
@@ -464,6 +472,14 @@ border-radius: 15px;</string>
        </colorrole>
       </disabled>
      </palette>
+    </property>
+    <property name="font">
+     <font>
+      <family>Verdana</family>
+      <pointsize>12</pointsize>
+      <weight>75</weight>
+      <bold>true</bold>
+     </font>
     </property>
     <property name="cursor">
      <cursorShape>PointingHandCursor</cursorShape>
@@ -482,8 +498,8 @@ border-radius: 15px;</string>
    <widget class="QPushButton" name="BotonActualizar">
     <property name="geometry">
      <rect>
-      <x>260</x>
-      <y>390</y>
+      <x>700</x>
+      <y>560</y>
       <width>271</width>
       <height>41</height>
      </rect>
@@ -686,6 +702,14 @@ border-radius: 15px;</string>
        </colorrole>
       </disabled>
      </palette>
+    </property>
+    <property name="font">
+     <font>
+      <family>Verdana</family>
+      <pointsize>12</pointsize>
+      <weight>75</weight>
+      <bold>true</bold>
+     </font>
     </property>
     <property name="cursor">
      <cursorShape>PointingHandCursor</cursorShape>
@@ -923,16 +947,36 @@ border-radius: 15px;</string>
      <string>🡸</string>
     </property>
    </widget>
-  </widget>
-  <widget class="QMenuBar" name="menubar">
-   <property name="geometry">
-    <rect>
-     <x>0</x>
-     <y>0</y>
-     <width>800</width>
-     <height>26</height>
-    </rect>
-   </property>
+   <widget class="QLabel" name="foto">
+    <property name="geometry">
+     <rect>
+      <x>-80</x>
+      <y>-210</y>
+      <width>1841</width>
+      <height>1091</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Bell MT</family>
+      <pointsize>22</pointsize>
+      <weight>50</weight>
+      <bold>false</bold>
+     </font>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="pixmap">
+     <pixmap>../Imagenes/foto.png</pixmap>
+    </property>
+   </widget>
+   <zorder>foto</zorder>
+   <zorder>BotonEliminar</zorder>
+   <zorder>Titulo</zorder>
+   <zorder>BotonCrear</zorder>
+   <zorder>BotonActualizar</zorder>
+   <zorder>BotonAtras</zorder>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
  </widget>
