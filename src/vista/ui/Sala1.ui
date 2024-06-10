@@ -273,6 +273,33 @@ border-radius: 15px;</string>
      <bool>true</bool>
     </property>
    </widget>
+   <widget class="QLabel" name="Titulo_2">
+    <property name="geometry">
+     <rect>
+      <x>-320</x>
+      <y>-130</y>
+      <width>1861</width>
+      <height>1101</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Bell MT</family>
+      <pointsize>24</pointsize>
+      <weight>50</weight>
+      <bold>false</bold>
+     </font>
+    </property>
+    <property name="autoFillBackground">
+     <bool>false</bool>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="pixmap">
+     <pixmap>../Imagenes/sala.png</pixmap>
+    </property>
+   </widget>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
  </widget>

@@ -3,14 +3,19 @@ sys.path.append(r'C:\Users\eripe\OneDrive\Documentos\ERI ULE\2º\SEGUNDO CUATRI\
 sys.path.append(r'c:\Users\clara\Documents\2ºUNI\2CUATRI\IS\museo\src')
 
 import tkinter as tk
+
 from tkinter import messagebox
-from modelo.vo.UsuariosVO import *
+
 from modelo.dao.ClientePremiumDAO import *
 from modelo.dao.EditoresDAO import *
-from modelo.vo.ClienteEstandarVO import *
+from modelo.dao.ObrasDAO import *
 from modelo.dao.ClienteEstandarDAO import *
-from controlador.coordinador import Coordinador
 from dao.ObjetosDAO import *
+from dao.JuegosObrasDAO import *
+from dao.ArtistasDAO import *
+
+from modelo.vo.UsuariosVO import *
+from modelo.vo.ClienteEstandarVO import *
 from modelo.vo.JuegosVO import *
 from dao.JuegosObrasDAO import *
 from modelo.vo.ArtistasVO import *
@@ -29,6 +34,8 @@ from modelo.vo.SalasVO import *
 from modelo.dao.SalasDAO import *
 from modelo.vo.CatalogoVO import *
 from modelo.dao.CatalogoDAO import *
+
+from controlador.coordinador import Coordinador
 
 class Logica:
     def __init__(self):
@@ -180,6 +187,15 @@ class Logica:
     def select_objetos(self):
         a=ObjetosDao()
         return a.getObjetos()
+    
+    def select_objetos(self):
+        a=ObrasDao()
+        return a.getObras()
+    
+    def select_artistas(self,id):
+        a=ArtistasDao()
+        return a.getArtista()
+    
     
     def validar_registro_editor(self, mi_persona: EditorVO):
         #habría que poner más cosas para validar el registtro?

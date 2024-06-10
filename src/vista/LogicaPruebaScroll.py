@@ -2,7 +2,7 @@ import sys
 sys.path.append(r'C:\Users\eripe\OneDrive\Documentos\ERI ULE\2º\SEGUNDO CUATRI\IS\PROYECTO\src')
 
 import sqlite3
-from PyQt5.QtWidgets import QApplication, QMainWindow, QLabel, QVBoxLayout, QWidget, QHBoxLayout, QScrollArea
+from PyQt5.QtWidgets import QApplication, QMainWindow, QLabel, QVBoxLayout, QWidget, QHBoxLayout, QScrollArea, QPushButton
 from PyQt5.QtGui import QIcon, QPixmap
 from PyQt5 import uic
 from controlador.coordinador import Coordinador
@@ -31,13 +31,14 @@ class VentanaCatalogo(QMainWindow):
         objetos = self.coordinador.obtener_todos_objetos()
         print(f"Fetched {len(objetos)} objects from the database.")
 
-        layout = QVBoxLayout()  # Mover la creación del layout fuera del bucle
+        layout = QVBoxLayout()
 
         for objeto in objetos:
             NombreObjeto = objeto.getNombreObjeto()
             Imagen = objeto.getImagen()
-            obra_widget = QWidget()
-            obra_layout = QHBoxLayout()
+            Precio = objeto.getPrecio()
+            objeto_widget = QWidget()
+            objeto_layout = QHBoxLayout()
 
             if Imagen is not None:
                 pixmap = QPixmap(Imagen)
@@ -47,16 +48,29 @@ class VentanaCatalogo(QMainWindow):
                 imagen_label.setScaledContents(True)
 
                 texto_label = QLabel(f"{NombreObjeto}")
+                precio_label = QLabel(f"Precio: ${Precio:.2f}")
+                
+                texto_label.setStyleSheet("font-size: 16px; font-weight: bold; margin-left: 10px;")
+                precio_label.setStyleSheet("font-size: 14px; color: green; margin-left: 10px;")
 
-                obra_layout.addWidget(imagen_label)
-                obra_layout.addWidget(texto_label)
-                obra_widget.setLayout(obra_layout)
+                boton_info = QPushButton("Más Información")
+                boton_info.clicked.connect(lambda _, obj=objeto: self.mostrar_info(obj))
+                
+                objeto_layout.addWidget(imagen_label)
+                objeto_layout.addWidget(texto_label)
+                objeto_layout.addWidget(precio_label)
+                objeto_layout.addWidget(boton_info)
+                objeto_widget.setLayout(objeto_layout)
 
-                layout.addWidget(obra_widget)
+                layout.addWidget(objeto_widget)
             else:
                 print("Error: Image path is None for object:", NombreObjeto)
 
         self.scrollAreaWidgetContents.setLayout(layout)
+
+    def mostrar_info(self, objeto):
+        # Aquí puedes definir qué hacer cuando se haga clic en el botón "Más Información"
+        print(f"Mostrando más información sobre el objeto: {objeto.getNombreObjeto()}")
 
     def refresh_data(self):
         layout = self.scrollAreaWidgetContents.layout()

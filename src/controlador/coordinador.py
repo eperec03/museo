@@ -125,3 +125,7 @@ class Coordinador:
    #actualizarCatalogo
    #actualizarAudioguia
    #actualizarExposiciones
+   
+   def obtener_todas_obras(self):
+      return self._model.select_obras()
+   
