@@ -446,7 +446,7 @@ background-color: rgb(208, 223, 232);</string>
 background-color: rgb(208, 223, 232);</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="BotonHome">
+   <widget class="QPushButton" name="BotonAtras">
     <property name="geometry">
      <rect>
       <x>20</x>
