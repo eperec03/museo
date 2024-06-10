@@ -134,11 +134,11 @@ class Logica:
     def actualizar_obra(self, obra: ObrasVO):
         obra_dao=ObrasDao()
         error=1
-        if obra.getTitulo() == obra_dao.getObraTitulo(obra.getTitulo()).getTitulo():            
+        if obra.getTitulo() == obra_dao.getObraTitulo(obra.getTitulo())[0].getTitulo():            
             obra_dao.updateObra(obra)
             error=0
         if error==1:
-            messagebox.showwarning("Advertencia", "No existe ese IDObra")
+            messagebox.showwarning("Advertencia", "No existe ese Titulo")
     
     def actualizar_artista(self, artista: ArtistasVO):
         artista_dao=ArtistasDao()
