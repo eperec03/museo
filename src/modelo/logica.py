@@ -275,3 +275,18 @@ class Logica:
             error=0
         if error==1:
             messagebox.showwarning("Advertencia", "No existe ese título")
+    def crear_audioguias(self, audio: AudioguiasVO):
+        audio_dao = AudioguiasDao()
+        audio_dao.insertAudioguia(audio)
+
+    def crear_exposiciones(self, exposicion: ExposicionesVO):
+        exposicion_dao = ExposicionesDao()
+        exposicion_dao.insertExposicion(exposicion)
+
+    def crear_juegos(self, juego: JuegosObrasVO):
+        juegos_dao = JuegosObrasDao()
+        juegos_dao.insertJuegosObras(juego)
+
+    def crear_objetos(self, objeto: ObjetosVO):
+        objetos_dao = ObjetosDao()
+        objetos_dao.insertObjeto(objeto)

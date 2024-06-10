@@ -161,3 +161,15 @@ class Coordinador:
    
    def crearArtistas(self, artista: ArtistasVO) -> None:
       self._model.crear_artistas(artista)
+   
+   def crearAudioguia(self, audio: AudioguiasVO) -> None:
+      self._model.crear_audioguias(audio)
+
+   def crearExposiciones(self, exposicion: ExposicionesVO) -> None:
+      self._model.crear_exposiciones(exposicion)
+
+   def crearJuegos(self, juego: JuegosObrasVO) -> None:
+      self._model.crear_juegos(juego)
+
+   def crearObjetos(self, objeto:ObjetosVO) -> None:
+      self._model.crear_objetos(objeto)

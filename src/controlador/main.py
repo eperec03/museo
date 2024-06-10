@@ -12,7 +12,6 @@ from PyQt5 import QtWidgets, uic
 
 from vista.RegistroClientePVentana import *
 from vista.RegistroEntradaVentana import *
-from vista.EliminarUsuarioVentana import *
 from vista.InicioVentana import *
 
 from controlador.coordinador import Coordinador

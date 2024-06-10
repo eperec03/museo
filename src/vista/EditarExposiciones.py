@@ -35,7 +35,6 @@ class EditarExposiciones(QtWidgets.QMainWindow):
         self.destroy()      
 
     def go_crear(self):
-        self.ventana_crear = CrearExposiciones()
         self.ventana_crear = CrearExposicion(ventana_anterior=self)
         self.ventana_crear.setCoordinador(self.coordinador)
         self.ventana_crear.show()
