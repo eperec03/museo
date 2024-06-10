@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1682</width>
-    <height>849</height>
+    <width>1689</width>
+    <height>857</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -57,30 +57,6 @@
     </property>
     <property name="pixmap">
      <pixmap>../Imagenes/mapa.png</pixmap>
-    </property>
-   </widget>
-   <widget class="QLabel" name="Titulo_2">
-    <property name="geometry">
-     <rect>
-      <x>220</x>
-      <y>10</y>
-      <width>1321</width>
-      <height>851</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <family>Bell MT</family>
-      <pointsize>24</pointsize>
-      <weight>50</weight>
-      <bold>false</bold>
-     </font>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-    <property name="pixmap">
-     <pixmap>../Imagenes/fotofondo1.png</pixmap>
     </property>
    </widget>
    <widget class="QPushButton" name="mini_sala1">
@@ -3469,7 +3445,31 @@ border-radius: 15px;</string>
      <string>🡸</string>
     </property>
    </widget>
-   <zorder>Titulo_2</zorder>
+   <widget class="QLabel" name="foto">
+    <property name="geometry">
+     <rect>
+      <x>-100</x>
+      <y>-150</y>
+      <width>1841</width>
+      <height>1091</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Bell MT</family>
+      <pointsize>22</pointsize>
+      <weight>50</weight>
+      <bold>false</bold>
+     </font>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="pixmap">
+     <pixmap>../Imagenes/foto.png</pixmap>
+    </property>
+   </widget>
+   <zorder>foto</zorder>
    <zorder>Titulo</zorder>
    <zorder>mapa</zorder>
    <zorder>mini_sala1</zorder>

@@ -70,10 +70,11 @@ class CatalogoDao(CatalogoInterface, Conexion):
             #Obtiene todas las filas resultantes de la consulta
             row = cursor.fetchall()
             catalogo = CatalogoVO()
-            IDCatalogo,Titulo,Portada= row[0]   #Al filtrar por la clave primaria, solo hay 1 resultado almacenado en la 1º pos
-            catalogo.setIdCatalogo(IDCatalogo)
-            catalogo.setTitulo(Titulo)
-            catalogo.setPortada(Portada)
+            if len(row)>0:
+                IDCatalogo,Titulo,Portada= row[0]   #Al filtrar por la clave primaria, solo hay 1 resultado almacenado en la 1º pos
+                catalogo.setIdCatalogo(IDCatalogo)
+                catalogo.setTitulo(Titulo)
+                catalogo.setPortada(Portada)
         except Error as e:
             print("Error al seleccionar catalogo:", e)
         #Se ejecuta siempre

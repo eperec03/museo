@@ -92,6 +92,10 @@ class Coordinador:
       if self._model.comprobar_cliente(usuario):
          return True
       
+   def validarEditores(self, editores: EditorVO) -> bool:
+      if self._model.comprobar_editor(editores):
+         return True
+      
    def validarJuego(self, juego: JuegosObrasVO, obra:ObrasVO) -> str:
       return self._model.comprobar_juego(juego, obra)
       

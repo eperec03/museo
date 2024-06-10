@@ -95,6 +95,18 @@ class Logica:
             if error==1:
                 messagebox.showwarning("Advertencia", "Contraseña incorrecta")
 
+    def comprobar_editor(self, editor: EditorVO):  
+        editor_dao=EditorDAO()
+        error=1
+        if len(editor_dao.getEditor(editor.get_DNI()))==0:
+            messagebox.showwarning("Advertencia", "No existe nadie con ese DNI")
+        else:
+            if editor.get_UsuContrasenna() == editor_dao.getEditor(editor.get_DNI())[0].get_UsuContrasenna():
+                error=0
+                return True
+            if error==1:
+                messagebox.showwarning("Advertencia", "Contraseña incorrecta")
+
     def actualizar_sala(self, sala: SalasVO):
         sala_dao=SalasDao()
         error=1
