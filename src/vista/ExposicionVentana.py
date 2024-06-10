@@ -26,7 +26,7 @@ class VentanaExposiciones(QtWidgets.QMainWindow):
 
     def initUI(self):
         # Crear una tabla
-        self.tableWidget = QTableWidget(self)
+        self.tableWidget = QTableWidget() #self
         self.tableWidget.setColumnCount(3)
         self.tableWidget.setRowCount(4)
 
