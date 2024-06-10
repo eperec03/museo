@@ -183,7 +183,7 @@ class Logica:
         a=ObjetosDao()
         return a.getObjetos()
     
-    def select_objetos(self):
+    def select_obras(self):
         a=ObrasDao()
         return a.getObras()
     
@@ -203,3 +203,75 @@ class Logica:
     def crear_artistas(self, artista: ArtistasVO):
         artista_dao = ArtistasDao()
         artista_dao.insertArtista(artista)
+
+    def eliminar_obra(self, obra: ObrasVO):
+        obra_dao=ObrasDao()
+        error=1
+        if obra.getTitulo() == obra_dao.getObraTitulo(obra.getTitulo()).getTitulo():            
+            obra_dao.deleteObra(obra)
+            error=0
+        if error==1:
+            messagebox.showwarning("Advertencia", "No existe ese IDObra")
+
+    def eliminar_sala(self, sala: SalasVO):
+        sala_dao=SalasDao()
+        error=1
+        if sala.getNumeroSala() == sala_dao.getSala(sala.getNumeroSala()).getNumeroSala():            
+            sala_dao.deleteSala(sala)
+            error=0
+        if error==1:
+            messagebox.showwarning("Advertencia", "No existe ese NumeroSala")
+
+    def eliminar_catalogo(self, catalogo: CatalogoVO):
+        catalogo_dao=CatalogoDao()
+        error=1
+        if catalogo.getTitulo() == catalogo_dao.getCatalogo(catalogo.getTitulo()).getTitulo():            
+            catalogo_dao.deleteCatalogo(catalogo)
+            error=0
+        if error==1:
+            messagebox.showwarning("Advertencia", "No existe ese IDCatalogo")
+
+    def eliminar_juego(self, juego: JuegosVO):
+        juego_dao=JuegosDao()
+        error=1
+        if juego.get_IDJuego() == juego_dao.getJuego(juego.get_Nombre()).get_IDJuego():            
+            juego_dao.deleteJuego(juego)
+            error=0
+        if error==1:
+            messagebox.showwarning("Advertencia", "No existe ese IDJuego")
+    
+    def eliminar_objeto(self, objeto: ObjetosVO):
+        objeto_dao=ObjetosDao()
+        error=1
+        if objeto.getNombreObjeto() == objeto_dao.getObjeto(objeto.getNombreObjeto()).getNombreObjeto():            
+            objeto_dao.deleteObjeto(objeto)
+            error=0
+        if error==1:
+            messagebox.showwarning("Advertencia", "No existe ese IDObjeto")
+    
+    def eliminar_artista(self, artista: ArtistasVO):
+        artista_dao=ArtistasDao()
+        error=1
+        if artista.getNombreArtista() == artista_dao.getArtista(artista.getNombreArtista()).getNombreArtista():            
+            artista_dao.deleteArtista(artista)
+            error=0
+        if error==1:
+            messagebox.showwarning("Advertencia", "No existe ese nombre de artista.")
+
+    def eliminar_audioguia(self, audioguia: AudioguiasVO):
+        audioguia_dao=AudioguiasDao()
+        error=1
+        if audioguia.getTitulo() == audioguia_dao.getAudioguia(audioguia.getTitulo()).getTitulo():            
+            audioguia_dao.deleteAudioguia(audioguia)
+            error=0
+        if error==1:
+            messagebox.showwarning("Advertencia", "No existe ese título de audioguia.")
+
+    def eliminar_exposicion(self, exposicion: ExposicionesVO):
+        exposicion_dao=ExposicionesDao()
+        error=1
+        if exposicion.getTitulo() == exposicion_dao.getExposicion(exposicion.getTitulo()).getTitulo():            
+            exposicion_dao.deleteExposicion(exposicion)
+            error=0
+        if error==1:
+            messagebox.showwarning("Advertencia", "No existe ese título")
