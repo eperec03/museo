@@ -167,12 +167,11 @@ class Logica:
     def actualizar_exposicion(self, exposicion: ExposicionesVO):
         exposicion_dao=ExposicionesDao()
         error=1
-        for i in range (len(exposicion_dao.getExposiciones())):
-            if exposicion.IdExposicion == exposicion_dao.getExposiciones()[i].getIdExposicion():            
-                exposicion_dao.updateSala(exposicion)
-                error=0
+        if exposicion.getTitulo() == exposicion_dao.getExposicion(exposicion.getTitulo()).getTitulo():            
+            exposicion_dao.updateExposicion(exposicion)
+            error=0
         if error==1:
-            messagebox.showwarning("Advertencia", "No existe ese IDExposicion")
+            messagebox.showwarning("Advertencia", "No existe ese título")
 
 
     def comprobar_juego(self, mi_juego: JuegosObrasVO):

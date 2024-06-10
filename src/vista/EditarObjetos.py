@@ -8,7 +8,7 @@ from PyQt5 import QtWidgets, uic
 from PyQt5.QtWidgets import QMessageBox
 from PyQt5.QtGui import QIcon
 from vista.MenuEditor import *
-from vista.ActualizarObjetos import *
+from vista.ActualizaObjetos import *
 
 class EditarObjetos(QtWidgets.QMainWindow):
     def __init__(self, controlador = None,ventana_anterior=None):
