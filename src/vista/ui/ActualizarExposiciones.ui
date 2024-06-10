@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>800</width>
-    <height>600</height>
+    <width>1698</width>
+    <height>899</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -17,8 +17,8 @@
    <widget class="QLabel" name="Titulo">
     <property name="geometry">
      <rect>
-      <x>170</x>
-      <y>40</y>
+      <x>730</x>
+      <y>80</y>
       <width>481</width>
       <height>91</height>
      </rect>
@@ -38,8 +38,8 @@
    <widget class="QLabel" name="label_2">
     <property name="geometry">
      <rect>
-      <x>180</x>
-      <y>290</y>
+      <x>650</x>
+      <y>360</y>
       <width>211</width>
       <height>41</height>
      </rect>
@@ -51,8 +51,8 @@
    <widget class="QLineEdit" name="Titulo_entrada">
     <property name="geometry">
      <rect>
-      <x>320</x>
-      <y>220</y>
+      <x>670</x>
+      <y>270</y>
       <width>171</width>
       <height>41</height>
      </rect>
@@ -65,8 +65,8 @@ background-color: rgb(208, 223, 232);</string>
    <widget class="QLineEdit" name="Imagen_entrada">
     <property name="geometry">
      <rect>
-      <x>550</x>
-      <y>220</y>
+      <x>1060</x>
+      <y>270</y>
       <width>171</width>
       <height>41</height>
      </rect>
@@ -79,8 +79,8 @@ background-color: rgb(208, 223, 232);</string>
    <widget class="QLineEdit" name="Descripcion_entrada">
     <property name="geometry">
      <rect>
-      <x>210</x>
-      <y>350</y>
+      <x>680</x>
+      <y>410</y>
       <width>161</width>
       <height>41</height>
      </rect>
@@ -93,8 +93,8 @@ background-color: rgb(208, 223, 232);</string>
    <widget class="QLabel" name="label_8">
     <property name="geometry">
      <rect>
-      <x>420</x>
-      <y>290</y>
+      <x>1040</x>
+      <y>360</y>
       <width>211</width>
       <height>41</height>
      </rect>
@@ -103,38 +103,24 @@ background-color: rgb(208, 223, 232);</string>
      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:14pt; font-weight:600;&quot;&gt;Número Sala&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
     </property>
    </widget>
-   <widget class="QLineEdit" name="IDExposicion_entrada">
-    <property name="geometry">
-     <rect>
-      <x>100</x>
-      <y>220</y>
-      <width>161</width>
-      <height>41</height>
-     </rect>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">border-radius: 15px;
-background-color: rgb(208, 223, 232);</string>
-    </property>
-   </widget>
    <widget class="QLabel" name="label_4">
     <property name="geometry">
      <rect>
-      <x>530</x>
-      <y>160</y>
+      <x>1040</x>
+      <y>220</y>
       <width>211</width>
       <height>41</height>
      </rect>
     </property>
     <property name="text">
-     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:14pt; font-weight:600;&quot;&gt;Imagen&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:14pt; font-weight:600;&quot;&gt;Link de la imagen&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
     </property>
    </widget>
    <widget class="QPushButton" name="BotonEditarExposicion">
     <property name="geometry">
      <rect>
-      <x>330</x>
-      <y>480</y>
+      <x>850</x>
+      <y>550</y>
       <width>161</width>
       <height>41</height>
      </rect>
@@ -355,8 +341,8 @@ border-radius: 15px;</string>
    <widget class="QLineEdit" name="NumeroSala_entrada">
     <property name="geometry">
      <rect>
-      <x>440</x>
-      <y>350</y>
+      <x>1060</x>
+      <y>410</y>
       <width>171</width>
       <height>41</height>
      </rect>
@@ -366,24 +352,11 @@ border-radius: 15px;</string>
 background-color: rgb(208, 223, 232);</string>
     </property>
    </widget>
-   <widget class="QLabel" name="label">
-    <property name="geometry">
-     <rect>
-      <x>70</x>
-      <y>160</y>
-      <width>211</width>
-      <height>41</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:14pt; font-weight:600;&quot;&gt;ID Exposición&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-    </property>
-   </widget>
    <widget class="QLabel" name="label_3">
     <property name="geometry">
      <rect>
-      <x>300</x>
-      <y>160</y>
+      <x>650</x>
+      <y>220</y>
       <width>211</width>
       <height>41</height>
      </rect>
@@ -614,13 +587,49 @@ border-radius: 15px;</string>
      <string>🡸</string>
     </property>
    </widget>
+   <widget class="QLabel" name="fondo">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>-10</y>
+      <width>2001</width>
+      <height>1061</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Bell MT</family>
+      <pointsize>24</pointsize>
+      <weight>50</weight>
+      <bold>false</bold>
+     </font>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="pixmap">
+     <pixmap>../Imagenes/foto.png</pixmap>
+    </property>
+   </widget>
+   <zorder>fondo</zorder>
+   <zorder>Titulo</zorder>
+   <zorder>label_2</zorder>
+   <zorder>Titulo_entrada</zorder>
+   <zorder>Imagen_entrada</zorder>
+   <zorder>Descripcion_entrada</zorder>
+   <zorder>label_8</zorder>
+   <zorder>label_4</zorder>
+   <zorder>BotonEditarExposicion</zorder>
+   <zorder>NumeroSala_entrada</zorder>
+   <zorder>label_3</zorder>
+   <zorder>BotonAtras</zorder>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>800</width>
+     <width>1698</width>
      <height>26</height>
     </rect>
    </property>

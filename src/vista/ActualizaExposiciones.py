@@ -31,7 +31,6 @@ class ActualizarExposicion(QtWidgets.QMainWindow):
         self.coordinador = coord
 
     def limpiar(self):
-        self.IDExposicion_entrada.clear()
         self.Titulo_entrada.clear()
         self.Imagen_entrada.clear()
         self.Descripcion_entrada.clear()
@@ -40,7 +39,6 @@ class ActualizarExposicion(QtWidgets.QMainWindow):
     def actualizarExposicion(self) -> None:
         try:
             Exposicion = ExposicionesVO(
-                IdExposicion = self.IDExposicion_entrada.text(),
                 Titulo = self.Titulo_entrada.text(),
                 Imagen = self.Imagen_entrada.text(),
                 Descripcion = self.Descripcion_entrada.text(),

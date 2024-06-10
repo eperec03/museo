@@ -31,7 +31,6 @@ class ActualizarObra(QtWidgets.QMainWindow):
         self.coordinador = coord
 
     def limpiar(self):
-        self.IDObra_entrada.clear()
         self.NombreObra_entrada.clear()
         self.Imagen_entrada.clear()
         self.Descripcion_entrada.clear()
@@ -42,7 +41,6 @@ class ActualizarObra(QtWidgets.QMainWindow):
     def actualizarObra(self) -> None:
         try:
             Obra = ObrasVO(
-                IdObra = self.IDObra_entrada.text(),
                 NombreObra = self.NombreObra_entrada.text(),
                 Imagen = self.Imagen_entrada.text(),
                 Descripcion = self.Descripcion_entrada.text(),
