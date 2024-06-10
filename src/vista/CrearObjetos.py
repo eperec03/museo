@@ -19,7 +19,7 @@ class CrearObjeto(QtWidgets.QMainWindow):
         # Almacena una referencia al controlador
         self.coordinador = controlador
         # "EnviarBoton" es el nombre que se le ha dado al objeto en el .ui
-        self.BotonEditarObjeto.clicked.connect(self.crearObjeto)
+        self.BotonCrearObjetos.clicked.connect(self.crearObjeto)
         self.ventana_anterior=ventana_anterior
         self.BotonAtras.clicked.connect(self.go_back)
 

@@ -173,3 +173,6 @@ class Coordinador:
 
    def crearObjetos(self, objeto:ObjetosVO) -> None:
       self._model.crear_objetos(objeto)
+
+   def crearObras(self, obras:ObrasVO) -> None:
+      self._model.crear_obras(obras)

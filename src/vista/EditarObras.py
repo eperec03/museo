@@ -10,6 +10,7 @@ from PyQt5.QtGui import QIcon
 from vista.MenuEditor import *
 from vista.ActualizaObra import *
 from vista.EliminarObras import *
+from vista.CrearObras import *
 
 
 class EditarObras(QtWidgets.QMainWindow):
@@ -35,7 +36,7 @@ class EditarObras(QtWidgets.QMainWindow):
         self.destroy()      
 
     def go_crear(self):
-        self.ventana_crear = CrearObras(ventana_anterior=self)
+        self.ventana_crear = CreaObras(ventana_anterior=self)
         self.ventana_crear.setCoordinador(self.coordinador)
         self.ventana_crear.show()
         self.hide()
