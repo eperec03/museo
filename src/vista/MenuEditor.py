@@ -14,14 +14,16 @@ from PyQt5 import QtWidgets, uic
 from PyQt5.QtWidgets import QMessageBox
 from PyQt5.QtGui import QIcon
 from vista.RegistroEditoresVentana import *
+
 from vista.EditarArtistas import *
 from vista.EditarAudioguias import *
 from vista.EditarExposiciones import *
-
 from vista.EditarJuegos import *
 from vista.EditarObras import *
 from vista.EditarObjetos import *
+
 from vista.MenuEditor import *
+
 from vista.ActualizaSalas import *
 from vista.ActualizaCatalogo import *
 
@@ -96,7 +98,7 @@ class MenuEditor(QtWidgets.QMainWindow):
         self.hide()
 
     def go_audioguias(self):
-        self.ventana_audioguias = EditarAudioguias(ventana_anterior=self)
+        self.ventana_audioguias = EditarAudioguias(controlador= self.coordinador,ventana_anterior=self)
         self.ventana_audioguias.setCoordinador(self.coordinador)
         self.ventana_audioguias.show()
         self.hide()

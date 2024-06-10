@@ -31,14 +31,12 @@ class ActualizarCatalogo(QtWidgets.QMainWindow):
         self.coordinador = coord
 
     def limpiar(self):
-        self.IDCatalogo_entrada.clear()
         self.Titulo_entrada.clear()
         self.Portada_entrada.clear()
 
     def actualizarCatalogo(self) -> None:
         try:
             Catalogo = CatalogoVO(
-                IdCatalogo = self.IDCatalogo_entrada.text(),
                 Titulo = self.NombreCatalogo_entrada.text(),
                 Portada = self.Portada_entrada.text(),
                 )

@@ -31,7 +31,6 @@ class ActualizarArtista(QtWidgets.QMainWindow):
         self.coordinador = coord
 
     def limpiar(self):
-        self.IDArtista_entrada.clear()
         self.NombreArtista_entrada.clear()
         self.Descripcion_entrada.clear()
         self.FechaNacimiento_entrada.clear()
@@ -41,7 +40,6 @@ class ActualizarArtista(QtWidgets.QMainWindow):
     def actualizarArtista(self) -> None:
         try:
             artista = ArtistasVO(
-                IDArtista = self.IDArtista_entrada.text(),
                 NombreArtista = self.NombreArtista_entrada.text(),
                 Descripcion = self.Descripcion_entrada.text(),
                 FechaNac = self.FechaNacimiento_entrada.text(),
