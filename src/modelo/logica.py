@@ -36,6 +36,7 @@ from modelo.vo.CatalogoVO import *
 from modelo.dao.CatalogoDAO import *
 
 from controlador.coordinador import Coordinador
+from dao.ObrasDAO import *
 
 class Logica:
     def __init__(self):
@@ -174,14 +175,16 @@ class Logica:
             messagebox.showwarning("Advertencia", "No existe ese título")
 
 
-    def comprobar_juego(self, mi_juego: JuegosObrasVO):
+    def comprobar_juego(self, mi_juego: JuegosObrasVO, mi_obra: ObrasVO):
         mi_juego_dao = JuegosObrasDao()
-        error=1
-        if len(mi_juego_dao.getJuegoObras(mi_juego.get_Nombre()))==0:
-            messagebox.showwarning("Advertencia", "No existe ese juego")
+        mi_obra_dao = ObrasDao()
+        # print(mi_obra_dao.getObraTitulo(mi_obra.getTitulo()))
+        if len(mi_obra_dao.getObraTitulo(mi_obra.getTitulo()))==0:
+            messagebox.showwarning("Advertencia", "No existe esa obra")
+        elif len(mi_juego_dao.getJuegoO(mi_juego.get_Nombre(), mi_obra_dao.getObraTitulo(mi_obra.getTitulo())[0].getIdObra()))==0:
+            messagebox.showwarning("Advertencia", "No existe ese juego para esa obra")
         else:
-            return True
-
+            return mi_juego_dao.getJuegoO(mi_juego.get_Nombre(), mi_obra_dao.getObraTitulo(mi_obra.getTitulo())[0].getIdObra())[0].get_ruta()
 
     def select_objetos(self):
         a=ObjetosDao()

@@ -13,7 +13,6 @@ from PyQt5.QtCore import *
 from PyQt5.QtGui import *
 from PyQt5.QtWidgets import *
 
-
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         if not MainWindow.objectName():
@@ -143,10 +142,10 @@ class Ui_MainWindow(object):
         self.pushButton = QPushButton(self.centralwidget)
         self.pushButton.setObjectName(u"pushButton")
         self.pushButton.setGeometry(QRect(590, 520, 81, 28))
-        self.lineJuego = QLineEdit(self.centralwidget)
-        self.lineJuego.setObjectName(u"lineJuego")
-        self.lineJuego.setGeometry(QRect(510, 220, 261, 41))
-        self.lineJuego.setStyleSheet(u"border-radius: 15px;\n"
+        self.lineNombre = QLineEdit(self.centralwidget)
+        self.lineNombre.setObjectName(u"lineNombre")
+        self.lineNombre.setGeometry(QRect(510, 220, 261, 41))
+        self.lineNombre.setStyleSheet(u"border-radius: 15px;\n"
 "background-color: rgb(208, 223, 232);")
         self.label = QLabel(self.centralwidget)
         self.label.setObjectName(u"label")
@@ -199,10 +198,10 @@ class Ui_MainWindow(object):
         self.label_2 = QLabel(self.centralwidget)
         self.label_2.setObjectName(u"label_2")
         self.label_2.setGeometry(QRect(810, 190, 251, 31))
-        self.lineJuego_2 = QLineEdit(self.centralwidget)
-        self.lineJuego_2.setObjectName(u"lineJuego_2")
-        self.lineJuego_2.setGeometry(QRect(810, 220, 261, 41))
-        self.lineJuego_2.setStyleSheet(u"border-radius: 15px;\n"
+        self.lineObra = QLineEdit(self.centralwidget)
+        self.lineObra.setObjectName(u"lineObra")
+        self.lineObra.setGeometry(QRect(810, 220, 261, 41))
+        self.lineObra.setStyleSheet(u"border-radius: 15px;\n"
 "background-color: rgb(208, 223, 232);")
         MainWindow.setCentralWidget(self.centralwidget)
         self.statusbar = QStatusBar(MainWindow)
@@ -226,6 +225,4 @@ class Ui_MainWindow(object):
         self.botonJugar.setText(QCoreApplication.translate("MainWindow", u"JUGAR", None))
         self.label_2.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" font-size:12pt; font-weight:600;\">BUSCADOR POR OBRA</span></p></body></html>", None))
     # retranslateUi
-
-
 

@@ -73,12 +73,13 @@ class JuegosDao(JuegosInterface, Conexion):
             #Obtiene todas las filas resultantes de la consulta
             row = cursor.fetchall()
             juego = JuegosVO()
-            IdJuego,Nombre,Dificultad,Descripcion,ruta= row[0]   #Al filtrar por la clave primaria, solo hay 1 resultado almacenado en la 1º pos
-            juego.set_IDJuego(IdJuego)
-            juego.set_Nombre(Nombre)
-            juego.set_Descripcion(Descripcion)
-            juego.set_Dificultad(Dificultad)
-            juego.set_ruta(ruta)
+            if len(row)>0:
+                IdJuego,Nombre,Dificultad,Descripcion,ruta= row[0]   #Al filtrar por la clave primaria, solo hay 1 resultado almacenado en la 1º pos
+                juego.set_IDJuego(IdJuego)
+                juego.set_Nombre(Nombre)
+                juego.set_Descripcion(Descripcion)
+                juego.set_Dificultad(Dificultad)
+                juego.set_ruta(ruta)
         except Error as e:
             print("Error al seleccionar juego:", e)
         #Se ejecuta siempre

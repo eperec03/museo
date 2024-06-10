@@ -64,6 +64,7 @@ class ObrasDao(ObrasInterface, Conexion):
         conexion = self.getConnection()
         conn = None
         cursor = None
+        obras = []
         try:
             if conexion:
                 conn = conexion
@@ -76,14 +77,16 @@ class ObrasDao(ObrasInterface, Conexion):
             #Obtiene todas las filas resultantes de la consulta
             row = cursor.fetchall()
             obra = ObrasVO()
-            IdObra,Imagen,Titulo,Descripcion, Fecha, IdArtista, NumSala= row[0]   #Al filtrar por la clave primaria, solo hay 1 resultado almacenado en la 1º pos
-            obra.setIdObra(IdObra)
-            obra.setImagen(Imagen)
-            obra.setDescripcion(Descripcion)
-            obra.setTitulo(Titulo)
-            obra.setFecha(Fecha)
-            obra.setIdArtista(IdArtista)
-            obra.setNumSala(NumSala)
+            if len(row)>0:
+                IdObra,Imagen,Titulo,Descripcion, Fecha, IdArtista, NumSala= row[0]   #Al filtrar por la clave primaria, solo hay 1 resultado almacenado en la 1º pos
+                obra.setIdObra(IdObra)
+                obra.setImagen(Imagen)
+                obra.setDescripcion(Descripcion)
+                obra.setTitulo(Titulo)
+                obra.setFecha(Fecha)
+                obra.setIdArtista(IdArtista)
+                obra.setNumSala(NumSala)
+                obras.append(obra)
         except Error as e:
             print("Error al seleccionar obra:", e)
         #Se ejecuta siempre
@@ -92,7 +95,7 @@ class ObrasDao(ObrasInterface, Conexion):
                 #Cierra el cursor para liberar recursos
                 cursor.close()
         conexion = self.closeConnection(conn)
-        return obra
+        return obras
     
     def getObraId(self,titulo) -> ObrasVO:
         conexion = self.getConnection()
