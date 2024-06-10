@@ -182,6 +182,10 @@ class Logica:
     def select_objetos(self):
         a=ObjetosDao()
         return a.getObjetos()
+
+    def select_exposiciones(self):
+        a=ExposicionesDao()
+        return a.getExposiciones()
     
     def select_obras(self):
         a=ObrasDao()

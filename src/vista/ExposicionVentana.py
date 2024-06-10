@@ -13,8 +13,8 @@ from PyQt5.QtCore import pyqtSlot, Qt
 class VentanaExposiciones(QtWidgets.QMainWindow):
     def __init__(self, controlador=None):
         super(VentanaSala1, self).__init__()
-        uic.loadUi('src/vista/ui/Sala1.ui', self)
-        self.setWindowTitle("Museo: ")
+        uic.loadUi('src/vista/ui/VentanaExposiciones.ui', self)
+        self.setWindowTitle("EXPOSICIONES")
         self.setWindowIcon(QIcon('src/vista/Imagenes/logomuseo.png'))  
 
         # Almacena una referencia al controlador
@@ -27,23 +27,63 @@ class VentanaExposiciones(QtWidgets.QMainWindow):
         # Crear una tabla
         self.tableWidget = QTableWidget()
         self.tableWidget.setColumnCount(3)
-        self.tableWidget.setRowCount(4)
+        self.tableWidget.setRowCount(4) #aqui tiene que haber el numero de exposiciones que haya en la bd
 
         # Añadir títulos a las columnas
-        self.tableWidget.setHorizontalHeaderLabels(["Obra", "Descripción", "Imagen"])
+        self.tableWidget.setHorizontalHeaderLabels(["Título", "Descripción", "Imagen"])
 
-        self.tableWidget.setItem(0, 0, QTableWidgetItem("Obra 1"))
-        self.tableWidget.setItem(0, 1, QTableWidgetItem("Descripción 1"))
-        self.tableWidget.setItem(0, 2, QTableWidgetItem("Imagen 1"))
-        self.tableWidget.setItem(1, 0, QTableWidgetItem("Obra 2"))
-        self.tableWidget.setItem(1, 1, QTableWidgetItem("Descripción 2"))
-        self.tableWidget.setItem(1, 2, QTableWidgetItem("Imagen 2"))
-        self.tableWidget.setItem(2, 0, QTableWidgetItem("Obra 3"))
-        self.tableWidget.setItem(2, 1, QTableWidgetItem("Descripción 3"))
-        self.tableWidget.setItem(2, 2, QTableWidgetItem("Imagen 3"))
-        self.tableWidget.setItem(3, 0, QTableWidgetItem("Obra 4"))
-        self.tableWidget.setItem(3, 1, QTableWidgetItem("Descripción 4"))
-        self.tableWidget.setItem(3, 2, QTableWidgetItem("Imagen 4"))
+        exposiciones = self.coordinador.obtener_todos_exposiciones()
+        print(f"Fetched {len(exposiciones)} objects from the database.")
+
+        layout = QVBoxLayout()
+
+        for exposicion in exposiciones:
+            Titulo = exposicion.getTitulo()
+            Imagen = exposicion.getImagen()
+            Descripcion = exposicion.getDescripcion()
+            # exposicion_widget = QWidget()
+            # exposicion_layout = QHBoxLayout()
+
+            if Imagen is not None:
+                pixmap = QPixmap(Imagen)
+                imagen_label = QLabel()
+                imagen_label.setPixmap(pixmap)
+                imagen_label.setFixedSize(100, 100)
+                imagen_label.setScaledContents(True)
+
+                titulo_label = QLabel(f"{Titulo}")
+                descripcion_label = QLabel(f"{Descripcion}")
+                
+                titulo_label.setStyleSheet("font-size: 16px; font-weight: bold; margin-left: 10px;")
+                descripcion_label.setStyleSheet("font-size: 14px; margin-left: 10px;")
+                
+                self.tableWidget.setItem(exposiciones.index(exposicion), 0, QTableWidgetItem(titulo_label))
+                self.tableWidget.setItem(exposiciones.index(exposicion), 1, QTableWidgetItem(descripcion_label))
+                self.tableWidget.setItem(exposiciones.index(exposicion), 2, QTableWidgetItem(imagen_label))
+
+                # objeto_layout.addWidget(imagen_label)
+                # objeto_layout.addWidget(titulo_label)
+                # objeto_layout.addWidget(descripcion_label)
+                # objeto_layout.addWidget(boton_info)
+                # objeto_widget.setLayout(objeto_layout)
+
+                # layout.addWidget(objeto_widget)
+            else:
+                print("Error: Image path is None for object:", NombreObjeto)
+
+
+        # self.tableWidget.setItem(0, 0, QTableWidgetItem("Obra 1"))
+        # self.tableWidget.setItem(0, 1, QTableWidgetItem("Descripción 1"))
+        # self.tableWidget.setItem(0, 2, QTableWidgetItem("Imagen 1"))
+        # self.tableWidget.setItem(1, 0, QTableWidgetItem("Obra 2"))
+        # self.tableWidget.setItem(1, 1, QTableWidgetItem("Descripción 2"))
+        # self.tableWidget.setItem(1, 2, QTableWidgetItem("Imagen 2"))
+        # self.tableWidget.setItem(2, 0, QTableWidgetItem("Obra 3"))
+        # self.tableWidget.setItem(2, 1, QTableWidgetItem("Descripción 3"))
+        # self.tableWidget.setItem(2, 2, QTableWidgetItem("Imagen 3"))
+        # self.tableWidget.setItem(3, 0, QTableWidgetItem("Obra 4"))
+        # self.tableWidget.setItem(3, 1, QTableWidgetItem("Descripción 4"))
+        # self.tableWidget.setItem(3, 2, QTableWidgetItem("Imagen 4"))
 
         # Hace que las celdas no sean editables
         for row in range(self.tableWidget.rowCount()):
@@ -57,8 +97,8 @@ class VentanaExposiciones(QtWidgets.QMainWindow):
         header.setSectionResizeMode(QtWidgets.QHeaderView.Stretch)
 
         # Ajustar el tamaño de la tabla
-        self.tableWidget.setMinimumSize(400, 200)
-        self.tableWidget.setMaximumSize(500, 300)
+        self.tableWidget.setMinimumSize(1000, 200)
+        self.tableWidget.setMaximumSize(1000, 800)
 
         # Buscar el layout principal definido en el archivo .ui
         central_widget = self.findChild(QtWidgets.QWidget, "centralwidget")
@@ -92,25 +132,25 @@ class VentanaExposiciones(QtWidgets.QMainWindow):
     def applyStyles(self):
         self.tableWidget.setStyleSheet("""
             QTableWidget {
-                border: 2px solid #DAA520;  /* Color dorado */
-                border-radius: 15px;  /* Bordes redondeados */
-                background-color: #F0F0F0;
+                border: 2px solid rgb(208, 223, 232);  
+                border-radius: 15px;  
+                background-color: rgb(67, 157, 175);
                 gridline-color: #DADADA;
             }
             QHeaderView::section {
-                background-color: #FFD700;  /* Color oro suave */
+                background-color: rgb(67, 157, 175); 
                 color: #333333;
                 padding: 4px;
-                border: 1px solid #DAA520;  /* Color dorado */
+                border: 1px solid rgb(208, 223, 232); 
             }
             QTableWidget::item {
                 padding: 5px;
                 border: none;
-                background-color: #FFF8DC;  /* Color oro suave */
+                background-color: rgb(67, 157, 175);  
                 color: #333333;
             }
             QTableWidget::item:selected {
-                background-color: #B0C4DE;
+                background-color: rgb(67, 157, 175);
                 color: #000000;
             }
         """)
@@ -144,5 +184,5 @@ class VentanaExposiciones(QtWidgets.QMainWindow):
 if __name__ == '__main__':
     app = QApplication(sys.argv)
     ex = VentanaSala1()
-    ex.show()  # ¡Asegúrate de mostrar la ventana!
+    ex.show()  
     sys.exit(app.exec_())
