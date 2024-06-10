@@ -11,7 +11,7 @@ from modelo.logica import Logica
 class VentanaSala2(QMainWindow):
     def __init__(self, controlador=None, ventana_anterior=None):
         super(VentanaSala2, self).__init__()
-        uic.loadUi('src/vista/ui/Sala1.ui', self)
+        uic.loadUi('src/vista/ui/Sala2.ui', self)
         self.setWindowTitle("Sala 1")
         self.setWindowIcon(QIcon('src/vista/Imagenes/logomuseo.png'))
         self.coordinador = controlador
@@ -22,8 +22,14 @@ class VentanaSala2(QMainWindow):
         except Exception as e:
             print(f"Error finding scroll area or its contents: {e}")
             return
+        self.ventana_anterior=ventana_anterior
+        self.BotonAtras.clicked.connect(self.go_back)
         self.load_data()
 
+    def go_back(self):
+        self.ventana_anterior.show()
+        self.destroy()
+        
     def setCoordinador(self, coord) -> None:
         self.coordinador = coord
         

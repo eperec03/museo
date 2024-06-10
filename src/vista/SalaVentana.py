@@ -22,8 +22,14 @@ class VentanaSala1(QMainWindow):
         except Exception as e:
             print(f"Error finding scroll area or its contents: {e}")
             return
+        self.ventana_anterior=ventana_anterior
+        self.BotonAtras.clicked.connect(self.go_back)
         self.load_data()
 
+    def go_back(self):
+        self.ventana_anterior.show()
+        self.destroy()
+        
     def setCoordinador(self, coord) -> None:
         self.coordinador = coord
         
