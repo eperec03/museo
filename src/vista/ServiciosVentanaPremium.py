@@ -52,7 +52,7 @@ class VentanaServicioPremium(QtWidgets.QMainWindow):
     #     self.hide()
 
     def go_to_window_exposiciones(self):
-        self.ventana_registro = VentanaExposiciones(ventana_anterior=self)
+        self.ventana_registro = VentanaExposiciones(ventana_anterior=self, controlador=self.coordinador)
         self.ventana_registro.setCoordinador(self.coordinador)
         self.ventana_registro.show()
         self.hide()

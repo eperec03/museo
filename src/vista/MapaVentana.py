@@ -9,6 +9,9 @@ from PyQt5 import QtWidgets, uic
 from PyQt5.QtWidgets import QMessageBox
 from PyQt5.QtGui import QIcon
 from vista.ServiciosVentana import *
+from vista.SalaVentana import *
+from vista.SalaVentana_2 import *
+
 
 class MapaVentana(QtWidgets.QMainWindow):
     def __init__(self, controlador = None, ventana_anterior=None):
@@ -20,16 +23,28 @@ class MapaVentana(QtWidgets.QMainWindow):
         # self.enviarBoton.clicked.connect(self.registrarEntrada)
         self.ventana_anterior = ventana_anterior
         self.BotonHome.clicked.connect(self.go_back)
+        self.boton_sala1.clicked.connect(self.go_to_sala1)
+        self.mini_sala1.clicked.connect(self.go_to_sala1)
+        self.boton_sala2.clicked.connect(self.go_to_sala2)
+        self.mini_sala1.clicked.connect(self.go_to_sala2)
+
+
 
     def go_back(self):
         self.ventana_anterior.show()
         self.destroy()
 
-    # def go_to_ventana_servicios(self):
-    #     self.ventana_servicios = VentanaServicio()
-    #     self.ventana_servicios.setCoordinador(self.coordinador)
-    #     self.ventana_servicios.show()
-    #     self.hide()
+    def go_to_sala1(self):
+        self.ventana_servicios = VentanaSala1(controlador=self.coordinador, ventana_anterior=self)
+        self.ventana_servicios.setCoordinador(self.coordinador)
+        self.ventana_servicios.show()
+        self.hide()
+
+    def go_to_sala2(self):
+        self.ventana_servicios = VentanaSala2(controlador=self.coordinador, ventana_anterior=self)
+        self.ventana_servicios.setCoordinador(self.coordinador)
+        self.ventana_servicios.show()
+        self.hide()
 
     def setCoordinador(self, coord) -> None:
         self.coordinador = coord

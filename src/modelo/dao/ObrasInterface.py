@@ -15,6 +15,13 @@ class ObrasInterface(ABC):
         """
         raise NotImplementedError("Método getObras no implementado")
     
+    def getObrasFiltro(self,salas) -> List[ObrasVO]:
+        """
+        Recupera todas las Obra de la base de datos.        
+        Devuelve: List[ObrasVO]: Una lista de objetos ObrasVO.
+        """
+        raise NotImplementedError("Método getObras no implementado")
+    
     @abstractmethod
     def getObraTitulo(self,id) ->ObrasVO:
         """

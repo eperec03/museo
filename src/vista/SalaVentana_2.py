@@ -8,9 +8,9 @@ from PyQt5 import uic
 from controlador.coordinador import Coordinador
 from modelo.logica import Logica
 
-class VentanaSala1(QMainWindow):
+class VentanaSala2(QMainWindow):
     def __init__(self, controlador=None, ventana_anterior=None):
-        super(VentanaSala1, self).__init__()
+        super(VentanaSala2, self).__init__()
         uic.loadUi('src/vista/ui/Sala1.ui', self)
         self.setWindowTitle("Sala 1")
         self.setWindowIcon(QIcon('src/vista/Imagenes/logomuseo.png'))
@@ -28,7 +28,7 @@ class VentanaSala1(QMainWindow):
         self.coordinador = coord
         
     def load_data(self):
-        obras = self.coordinador.obtener_todas_obras_1()
+        obras = self.coordinador.obtener_todas_obras_2()
         print(f"Fetched {len(obras)} objects from the database.")
 
         layout = QVBoxLayout()

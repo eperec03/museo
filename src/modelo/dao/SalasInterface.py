@@ -14,6 +14,7 @@ class SalasInterface(ABC):
         Devuelve: List[SalasVO]: Una lista de objetoss SalasVO.
         """
         raise NotImplementedError("Método getSalas no implementado")
+        
     
     @abstractmethod
     def getSala(self,id) ->SalasVO:

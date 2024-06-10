@@ -187,9 +187,13 @@ class Logica:
         a=ExposicionesDao()
         return a.getExposiciones()
     
-    def select_obras(self):
+    def select_obras_1(self):
         a=ObrasDao()
-        return a.getObras()
+        return a.getObrasFiltro(1)
+    
+    def select_obras_2(self):
+        a=ObrasDao()
+        return a.getObrasFiltro(2)
     
     def select_artista_nombre(self,id):
         a=ArtistasDao()

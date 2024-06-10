@@ -135,8 +135,11 @@ class Coordinador:
    def actualizarExposiciones(self, exposicion: ExposicionesVO) -> None:
       self._model.actualizar_exposicion(exposicion)
 
-   def obtener_todas_obras(self):
-      return self._model.select_obras()
+   def obtener_todas_obras_1(self):
+      return self._model.select_obras_1()
+   
+   def obtener_todas_obras_2(self):
+      return self._model.select_obras_2()
 
    def eliminarExposiciones(self, exposicion: ExposicionesVO) -> None:
       self._model.eliminar_exposicion(exposicion)

@@ -18,10 +18,46 @@ class ObrasDao(ObrasInterface, Conexion):
     SQL_UPDATE = "UPDATE Obras SET Descripcion= ?, Fecha = ?, Imagen = ?, IDArtista = ?, NumSala = ? WHERE Titulo = ?"
     SQL_FILTER_TITULO = "SELECT * FROM Obras WHERE Titulo = ?"
     SQL_FILTER_ID = "SELECT * FROM Obras WHERE IDObra = ?"
+    SQL_FILTER_SALA="SELECT * FROM Obras WHERE NumSala = ?"
 
-    SQL_FILTER_SALA="SELECT * FROM Obras WHERE ID"
+    def getObrasFiltro(self,sala) -> List[ObrasVO]:
+        conexion = self.getConnection()
+        conn = None
+        cursor = None
+        obras = []
+        try:
+            if conexion:
+                conn = conexion
+            else:
+                print("La base de datos no esta disponible")
+            #Crea un obra para poder ejecutar consultas SQL sobre la conexion abierta
+            cursor = conn.cursor()
+            #Ejecuta de consulta SQL
+            cursor.execute(self.SQL_FILTER_SALA,(sala,)) #Obtiene todas las filas resultantes de la consulta
+            rows = cursor.fetchall()
+            #Itera sobre todas las filas
+            for row in rows:
+                IdObra,Titulo,Descripcion,Fecha,Imagen,IdArtista,NumSala= row
+                obra = ObrasVO()
+                obra.setIdObra(IdObra)
+                obra.setDescripcion(Descripcion)
+                obra.setImagen(Imagen)
+                obra.setTitulo(Titulo)
+                obra.setFecha(Fecha)
+                obra.setIdArtista(IdArtista)
+                obra.setNumSala(NumSala)
+                obras.append(obra)
 
-
+        except Error as e:
+            print("Error al seleccionar obra:", e)
+        #Se ejecuta siempre
+        finally:
+            if cursor:
+                #Cierra el cursor para liberar recursos
+                cursor.close()
+        conexion = self.closeConnection(conn)
+        return obras
+    
     def getObras(self) -> List[ObrasVO]:
         conexion = self.getConnection()
         conn = None
@@ -39,7 +75,7 @@ class ObrasDao(ObrasInterface, Conexion):
             rows = cursor.fetchall()
             #Itera sobre todas las filas
             for row in rows:
-                IdObra,Imagen,Titulo,Descripcion,Fecha,IdArtista,NumSala= row
+                IdObra,Titulo,Descripcion,Fecha,Imagen,IdArtista,NumSala= row
                 obra = ObrasVO()
                 obra.setIdObra(IdObra)
                 obra.setDescripcion(Descripcion)
