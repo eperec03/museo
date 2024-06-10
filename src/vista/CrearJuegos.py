@@ -4,15 +4,13 @@ sys.path.append(r'c:\Users\clara\Documents\2ºUNI\2CUATRI\IS\src')
 
 import tkinter as tk
 from tkinter import messagebox
+from modelo.vo.JuegosVO import JuegosVO
 from PyQt5 import QtWidgets, uic
 from PyQt5.QtWidgets import QMessageBox
 from PyQt5.QtGui import QIcon
-from vista.MenuEditor import *
-from vista.ActualizaJuegos import *
-from vista.CrearJuegos import *
 
-class CrearJuegos(QtWidgets.QMainWindow):
-    def __init__(self, controlador = None,ventana_anterior=None):
+class CrearJuego(QtWidgets.QMainWindow):
+    def __init__(self, controlador = None, ventana_anterior=None):
         # Importamos el .ui
         super().__init__()
         uic.loadUi('src/vista/ui/CrearJuegos.ui', self)
@@ -21,42 +19,42 @@ class CrearJuegos(QtWidgets.QMainWindow):
         # Almacena una referencia al controlador
         self.coordinador = controlador
         # "EnviarBoton" es el nombre que se le ha dado al objeto en el .ui
+        self.BotonEditarJuego.clicked.connect(self.crearJuego)
         self.ventana_anterior=ventana_anterior
         self.BotonAtras.clicked.connect(self.go_back)
-        self.BotonCrear.clicked.connect(self.go_crear)
-        # self.BotonEliminar.clicked.connect(self.go_eliminar)
-        self.BotonActualizar.clicked.connect(self.go_actualizar)
-        
-        self.show()
 
     def go_back(self):
-        self.ventana_anterior.show()    
-        self.destroy()      
-
-    def go_crear(self):
-        # self.ventana_crear = CrearJuegos()
-        self.ventana_crear.setCoordinador(self)
-        self.ventana_crear.show()
-        self.hide()
-
-    def go_eliminar(self):
-        # self.ventana_eliminar = EliminarJuegos()
-        self.ventana_eliminar.setCoordinador(self)
-        self.ventana_eliminar.show()
-        self.hide()
-
-    def go_actualizar(self):
-        self.ventana_actualizar = ActualizarJuego(self)
-        self.ventana_actualizar.setCoordinador(self.coordinador)
-        self.ventana_actualizar.show()
-        self.hide()
+        self.ventana_anterior.show()
+        self.destroy()
 
     def setCoordinador(self, coord) -> None:
         self.coordinador = coord
 
+    def limpiar(self):
+        self.IDJuego_entrada.clear()
+        self.Nombre_entrada.clear()
+        self.Descripcion_entrada.clear()
+        self.Dificultad_entrada.clear()
+        self.Ruta_entrada.clear()
+
+    def actualizarJuego(self) -> None:
+        try:
+            Juego = JuegosVO(
+                IDJuego = self.IDJuego_entrada.text(),
+                Nombre = self.Nombre_entrada.text(),
+                Descripcion = self.Descripcion_entrada.text(),
+                Dificultad = self.Dificultad_entrada.text(),
+                ruta = self.Ruta_entrada.text()
+                )
+            self.coordinador.actualizarJuegos(Juego)
+            self.limpiar()
+        except Exception as ex:
+            print(ex)
+            self.mostrar_advertencia(ex)
+
     def mostrar_advertencia(ex):
         mensaje = QMessageBox()
-        mensaje.setIcon(QMessageBox.Warning)
+        mensaje.setIcon(QMessageBox.warning)
         mensaje.setText("Error")
         mensaje.setInformativeText(str(ex))
         mensaje.setWindowTitle("Advertencia")
