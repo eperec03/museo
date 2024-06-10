@@ -1,18 +1,16 @@
 import sys
 sys.path.append(r'C:\Users\eripe\OneDrive\Documentos\ERI ULE\2º\SEGUNDO CUATRI\IS\PROYECTO\src')
 sys.path.append(r'c:\Users\clara\Documents\2ºUNI\2CUATRI\IS\src')
-
-import tkinter as tk
-from tkinter import messagebox
 from PyQt5 import QtWidgets, uic
-from PyQt5.QtWidgets import QMessageBox, QTableWidget, QMainWindow, QApplication, QTableWidgetItem, QVBoxLayout, QHBoxLayout, QLabel, QSpacerItem, QSizePolicy
-from PyQt5.QtGui import QIcon
-from PyQt5 import QtCore
-from PyQt5.QtCore import pyqtSlot, Qt
+from PyQt5.QtWidgets import QTableWidget, QTableWidgetItem, QVBoxLayout, QHBoxLayout, QLabel, QSpacerItem, QSizePolicy, QApplication
+from PyQt5.QtGui import QIcon, QPixmap
+from PyQt5.QtCore import Qt, pyqtSlot
+from controlador.coordinador import Coordinador
+from modelo.logica import Logica
 
 class VentanaExposiciones(QtWidgets.QMainWindow):
     def __init__(self, controlador=None):
-        super(VentanaSala1, self).__init__()
+        super(VentanaExposiciones, self).__init__()
         uic.loadUi('src/vista/ui/VentanaExposiciones.ui', self)
         self.setWindowTitle("EXPOSICIONES")
         self.setWindowIcon(QIcon('src/vista/Imagenes/logomuseo.png'))  
@@ -27,7 +25,7 @@ class VentanaExposiciones(QtWidgets.QMainWindow):
         # Crear una tabla
         self.tableWidget = QTableWidget()
         self.tableWidget.setColumnCount(3)
-        self.tableWidget.setRowCount(4) #aqui tiene que haber el numero de exposiciones que haya en la bd
+        self.tableWidget.setRowCount(4)  # Aquí tiene que haber el número de exposiciones que haya en la BD
 
         # Añadir títulos a las columnas
         self.tableWidget.setHorizontalHeaderLabels(["Título", "Descripción", "Imagen"])
@@ -37,53 +35,27 @@ class VentanaExposiciones(QtWidgets.QMainWindow):
 
         layout = QVBoxLayout()
 
-        for exposicion in exposiciones:
+        for row_index, exposicion in enumerate(exposiciones):
             Titulo = exposicion.getTitulo()
             Imagen = exposicion.getImagen()
             Descripcion = exposicion.getDescripcion()
-            # exposicion_widget = QWidget()
-            # exposicion_layout = QHBoxLayout()
 
-            if Imagen is not None:
-                pixmap = QPixmap(Imagen)
+            # Crear widgets de QLabel para Título y Descripción
+            titulo_item = QTableWidgetItem(Titulo)
+            descripcion_item = QTableWidgetItem(Descripcion)
+
+            self.tableWidget.setItem(row_index, 0, titulo_item)
+            self.tableWidget.setItem(row_index, 1, descripcion_item)
+
+            if Imagen:
                 imagen_label = QLabel()
+                pixmap = QPixmap(Imagen)
                 imagen_label.setPixmap(pixmap)
                 imagen_label.setFixedSize(100, 100)
                 imagen_label.setScaledContents(True)
-
-                titulo_label = QLabel(f"{Titulo}")
-                descripcion_label = QLabel(f"{Descripcion}")
-                
-                titulo_label.setStyleSheet("font-size: 16px; font-weight: bold; margin-left: 10px;")
-                descripcion_label.setStyleSheet("font-size: 14px; margin-left: 10px;")
-                
-                self.tableWidget.setItem(exposiciones.index(exposicion), 0, QTableWidgetItem(titulo_label))
-                self.tableWidget.setItem(exposiciones.index(exposicion), 1, QTableWidgetItem(descripcion_label))
-                self.tableWidget.setItem(exposiciones.index(exposicion), 2, QTableWidgetItem(imagen_label))
-
-                # objeto_layout.addWidget(imagen_label)
-                # objeto_layout.addWidget(titulo_label)
-                # objeto_layout.addWidget(descripcion_label)
-                # objeto_layout.addWidget(boton_info)
-                # objeto_widget.setLayout(objeto_layout)
-
-                # layout.addWidget(objeto_widget)
+                self.tableWidget.setCellWidget(row_index, 2, imagen_label)
             else:
-                print("Error: Image path is None for object:", NombreObjeto)
-
-
-        # self.tableWidget.setItem(0, 0, QTableWidgetItem("Obra 1"))
-        # self.tableWidget.setItem(0, 1, QTableWidgetItem("Descripción 1"))
-        # self.tableWidget.setItem(0, 2, QTableWidgetItem("Imagen 1"))
-        # self.tableWidget.setItem(1, 0, QTableWidgetItem("Obra 2"))
-        # self.tableWidget.setItem(1, 1, QTableWidgetItem("Descripción 2"))
-        # self.tableWidget.setItem(1, 2, QTableWidgetItem("Imagen 2"))
-        # self.tableWidget.setItem(2, 0, QTableWidgetItem("Obra 3"))
-        # self.tableWidget.setItem(2, 1, QTableWidgetItem("Descripción 3"))
-        # self.tableWidget.setItem(2, 2, QTableWidgetItem("Imagen 3"))
-        # self.tableWidget.setItem(3, 0, QTableWidgetItem("Obra 4"))
-        # self.tableWidget.setItem(3, 1, QTableWidgetItem("Descripción 4"))
-        # self.tableWidget.setItem(3, 2, QTableWidgetItem("Imagen 4"))
+                print("Error: Image path is None for object:", Titulo)
 
         # Hace que las celdas no sean editables
         for row in range(self.tableWidget.rowCount()):
@@ -102,7 +74,7 @@ class VentanaExposiciones(QtWidgets.QMainWindow):
 
         # Buscar el layout principal definido en el archivo .ui
         central_widget = self.findChild(QtWidgets.QWidget, "centralwidget")
-        if (central_widget is None):
+        if not central_widget:
             central_widget = QtWidgets.QWidget(self)
             self.setCentralWidget(central_widget)
         
@@ -155,34 +127,29 @@ class VentanaExposiciones(QtWidgets.QMainWindow):
             }
         """)
 
-    # Slot para manejar la señal doubleClicked
     @pyqtSlot()
     def on_click(self):
         print("\n")
         for currentQTableWidgetItem in self.tableWidget.selectedItems():
             print(currentQTableWidgetItem.row(), currentQTableWidgetItem.column(), currentQTableWidgetItem.text())
 
-    def go_to_window_mapa(self):
-        self.ventana_registro = MapaVentana()
-        self.ventana_registro.setCoordinador(self.coordinador)
-        self.ventana_registro.show()
-        self.hide()
-
     def setCoordinador(self, coord) -> None:
         self.coordinador = coord
 
-    #############################Listeners##############################
-
+    @staticmethod
     def mostrar_advertencia(ex):
         mensaje = QMessageBox()
         mensaje.setIcon(QMessageBox.Warning)
         mensaje.setText("Error")
         mensaje.setInformativeText(str(ex))
         mensaje.setWindowTitle("Advertencia")
-        mensaje.exec
+        mensaje.exec()
 
 if __name__ == '__main__':
     app = QApplication(sys.argv)
-    ex = VentanaSala1()
+    c = Coordinador()
+    logica = Logica()
+    c.setModel(logica)
+    ex = VentanaExposiciones(controlador=c)
     ex.show()  
     sys.exit(app.exec_())
