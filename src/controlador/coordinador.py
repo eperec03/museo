@@ -90,6 +90,41 @@ class Coordinador:
 
    def obtener_todos_objetos(self):
       return self._model.select_objetos()
+
+    def actualizarSala(self, sala: SalasVO) -> None:
+       self._model.actualizar_sala(sala)
+
+    def actualizarArtista(self, artista: ArtistasVO) -> None:
+       self._model.actualizar_artista(artista)
+
+    def actualizarObjeto(self, objeto: ObjetosVO) -> None:
+       self._model.actualizar_objeto(objeto)
+
+    def actualizarObras(self, obra: ObrasVO) -> None:
+       self._model.actualizar_obra(obra)
+   
+    def actualizarJuegos(self, juego: JuegosVO) -> None:
+       self._model.actualizar_juego(juego)
+
+    def actualizarCatalogo(self, catalogo: CatalogoVO) -> None:
+       self._model.actualizar_catalogo(catalogo)
+   
+    def actualizarAudioguias(self, audioguia: AudioguiasVO) -> None:
+       self._model.actualizar_audioguia(audioguia)
+
+    def actualizarExposiciones(self, exposicion: ExposicionesVO) -> None:
+       self._model.actualizar_exposicion(exposicion)
+    
+
+   #HAY QUE AÑADIR TODO LO DE ACTUALIZAR A COORDINADOR
+   #actualizarSala
+   #actualizarArtista
+   #actualizarObjeto
+   #actualizarObras
+   #actualizarJuegos
+   #actualizarCatalogo
+   #actualizarAudioguia
+   #actualizarExposiciones
    
    def obtener_todas_obras(self):
       return self._model.select_obras()
