@@ -63,18 +63,19 @@ class VentanaVisualizarObra(QMainWindow):
             
             texto_label.setStyleSheet("font-size: 16px; font-weight: bold; margin-left: 10px;")
             artista_label.setStyleSheet("font-size: 14px; margin-left: 10px;")
-            artista_label.setStyleSheet("font-size: 14px; margin-left: 10px;")
-            artista_label.setStyleSheet("font-size: 14px; margin-left: 10px;")
-            artista_label.setStyleSheet("font-size: 14px; margin-left: 10px;")
-
+            desc1_label.setStyleSheet("font-size: 14px; margin-left: 10px;")
+            desc2_label.setStyleSheet("font-size: 14px; margin-left: 10px;")
+            fecha_label.setStyleSheet("font-size: 14px; margin-left: 10px;")
 
             boton_info = QPushButton("Más Información")
-            boton_info.clicked.connect(lambda _, obj=obra: self.mostrar_info(obj))
+            boton_info.clicked.connect(lambda _, obj=self.obra: self.mostrar_info(obj))
             
             obra_layout.addWidget(imagen_label)
             obra_layout.addWidget(texto_label)
             obra_layout.addWidget(artista_label)
-            obra_layout.addWidget(boton_info)
+            obra_layout.addWidget(desc1_label)
+            obra_layout.addWidget(desc2_label)
+            obra_layout.addWidget(fecha_label)
             obra_widget.setLayout(obra_layout)
 
             layout.addWidget(obra_widget)
@@ -83,17 +84,4 @@ class VentanaVisualizarObra(QMainWindow):
             
         self.scrollAreaWidgetContents.setLayout(layout)
 
-    def mostrar_info(self, obra):
-        # Aquí puedes definir qué hacer cuando se haga clic en el botón "Más Información"
-        print(f"Mostrando más información sobre el obra: {obra.getTitulo()}")
-
-    def refresh_data(self):
-        layout = self.scrollAreaWidgetContents.layout()
-        if layout:
-            while layout.count():
-                child = layout.takeAt(0)
-                if child.widget():
-                    child.widget().deleteLater()
-
-        self.load_data()
 

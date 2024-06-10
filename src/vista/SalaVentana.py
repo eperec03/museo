@@ -7,6 +7,7 @@ from PyQt5.QtGui import QIcon, QPixmap
 from PyQt5 import uic
 from controlador.coordinador import Coordinador
 from modelo.logica import Logica
+from vista.VisualizarObras import *
 
 class VentanaSala1(QMainWindow):
     def __init__(self, controlador=None, ventana_anterior=None):
@@ -75,18 +76,11 @@ class VentanaSala1(QMainWindow):
                 print("Error: Image path is None for object:", Titulo)
 
         self.scrollAreaWidgetContents.setLayout(layout)
+        self.boton_info.clicked.connect(self.mostrar_info(self.obra))
 
     def mostrar_info(self, obra):
-        # Aquí puedes definir qué hacer cuando se haga clic en el botón "Más Información"
-        print(f"Mostrando más información sobre el obra: {obra.getTitulo()}")
-
-    def refresh_data(self):
-        layout = self.scrollAreaWidgetContents.layout()
-        if layout:
-            while layout.count():
-                child = layout.takeAt(0)
-                if child.widget():
-                    child.widget().deleteLater()
-
-        self.load_data()
+        self.ventana_obra = VentanaVisualizarObra(ventana_anterior=self)
+        self.ventana_obra.setCoordinador(self.coordinador)
+        self.ventana_obra.show()
+        self.hide()
 
