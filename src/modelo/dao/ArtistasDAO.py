@@ -15,6 +15,8 @@ class ArtistasDao(ArtistasInterface, Conexion):
     SQL_DELETE = "DELETE FROM artistas WHERE NombreArtista = ?"
     SQL_UPDATE = "UPDATE artistas SET FechaNac= ?, FechaMuerte = ?, Descripcion = ?, Corriente = ? WHERE NombreArtista = ?"
     SQL_FILTER = "SELECT * FROM artistas WHERE NombreArtista = ?"
+    SQL_FILTER = "SELECT * FROM artistas WHERE NombreArtista = ?"
+
 
     def getArtistas(self) -> List[ArtistasVO]:
         conexion = self.getConnection()

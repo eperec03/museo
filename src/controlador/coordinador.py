@@ -90,3 +90,7 @@ class Coordinador:
 
    def obtener_todos_objetos(self):
       return self._model.select_objetos()
+   
+   def obtener_todas_obras(self):
+      return self._model.select_obras()
+   
