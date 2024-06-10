@@ -8,9 +8,9 @@ from controlador.coordinador import Coordinador
 from modelo.logica import Logica
 
 class VentanaVisualizarObra(QMainWindow):
-    def __init__(self, controlador=None, ventana_anterior=None):
+    def __init__(self, controlador=None, ventana_anterior=None, obra=None):
         super().__init__()
-        uic.loadUi('src/vista/ui/VisualizarObra.ui', self)
+        uic.loadUi('src/vista/ui/VisualizarObras.ui', self)
         self.setWindowTitle("Sala 1")
         self.setWindowIcon(QIcon('src/vista/Imagenes/logomuseo.png'))
         self.coordinador = controlador
@@ -24,6 +24,7 @@ class VentanaVisualizarObra(QMainWindow):
         self.ventana_anterior=ventana_anterior
         self.BotonAtras.clicked.connect(self.go_back)
         self.load_data()
+        self.obra=obra
 
     def go_back(self):
         self.ventana_anterior.show()
@@ -33,59 +34,54 @@ class VentanaVisualizarObra(QMainWindow):
         self.coordinador = coord
         
     def load_data(self):
-        obras = self.coordinador.obtener_todas_obras_1()
-        print(f"Fetched {len(obras)} objects from the database.")
-
         layout = QVBoxLayout()
 
-        for obra in obras:
-            artista = self.coordinador.obtener_artista(obra.getIdArtista())
-            Titulo = obra.getTitulo()
-            Imagen = obra.getImagen()
-            NombreArtista = artista.getNombreArtista() if artista else "Desconocido"
+        artista = self.coordinador.obtener_artista(self.obra.getIdArtista())
 
-            obra_widget = QWidget()
-            obra_layout = QHBoxLayout()
+        Titulo = self.obra.getTitulo()
+        Imagen = self.obra.getImagen()
+        Descripcion = self.obra.getDescripcion()
+        Fecha = self.obra.getFecha()
+        NombreArtista = artista.getNombreArtista() if artista else "Desconocido"
+        DescripcionArt = artista.getDescripcion()
 
-            if Imagen is not None:
-                pixmap = QPixmap(Imagen)
-                imagen_label = QLabel()
-                imagen_label.setPixmap(pixmap)
-                imagen_label.setFixedSize(100, 100)
-                imagen_label.setScaledContents(True)
+        obra_widget = QWidget()
+        obra_layout = QHBoxLayout()
 
-                texto_label = QLabel(f"Título: {Titulo}")
-                artista_label = QLabel(f"Artista: {NombreArtista}")
-                
-                texto_label.setStyleSheet("font-size: 16px; font-weight: bold; margin-left: 10px;")
-                artista_label.setStyleSheet("font-size: 14px; margin-left: 10px;")
+        if Imagen is not None:
+            pixmap = QPixmap(Imagen)
+            imagen_label = QLabel()
+            imagen_label.setPixmap(pixmap)
+            imagen_label.setFixedSize(100, 100)
+            imagen_label.setScaledContents(True)
 
-                boton_info = QPushButton("Más Información")
-                boton_info.clicked.connect(lambda _, obj=obra: self.mostrar_info(obj))
-                
-                obra_layout.addWidget(imagen_label)
-                obra_layout.addWidget(texto_label)
-                obra_layout.addWidget(artista_label)
-                obra_layout.addWidget(boton_info)
-                obra_widget.setLayout(obra_layout)
+            texto_label = QLabel(f"Título: {Titulo}")
+            artista_label = QLabel(f"Artista: {NombreArtista}")
+            desc1_label = QLabel(f"Cuadro: {Descripcion}")
+            desc2_label = QLabel(f"Info artista: {DescripcionArt}")
+            fecha_label = QLabel(f"Fecha cuadro: {Fecha}")
+            
+            texto_label.setStyleSheet("font-size: 16px; font-weight: bold; margin-left: 10px;")
+            artista_label.setStyleSheet("font-size: 14px; margin-left: 10px;")
+            desc1_label.setStyleSheet("font-size: 14px; margin-left: 10px;")
+            desc2_label.setStyleSheet("font-size: 14px; margin-left: 10px;")
+            fecha_label.setStyleSheet("font-size: 14px; margin-left: 10px;")
 
-                layout.addWidget(obra_widget)
-            else:
-                print("Error: Image path is None for object:", Titulo)
+            boton_info = QPushButton("Más Información")
+            boton_info.clicked.connect(lambda _, obj=self.obra: self.mostrar_info(obj))
+            
+            obra_layout.addWidget(imagen_label)
+            obra_layout.addWidget(texto_label)
+            obra_layout.addWidget(artista_label)
+            obra_layout.addWidget(desc1_label)
+            obra_layout.addWidget(desc2_label)
+            obra_layout.addWidget(fecha_label)
+            obra_widget.setLayout(obra_layout)
 
+            layout.addWidget(obra_widget)
+        else:
+            print("Error: Image path is None for object:", Titulo)
+            
         self.scrollAreaWidgetContents.setLayout(layout)
 
-    def mostrar_info(self, obra):
-        # Aquí puedes definir qué hacer cuando se haga clic en el botón "Más Información"
-        print(f"Mostrando más información sobre el obra: {obra.getTitulo()}")
-
-    def refresh_data(self):
-        layout = self.scrollAreaWidgetContents.layout()
-        if layout:
-            while layout.count():
-                child = layout.takeAt(0)
-                if child.widget():
-                    child.widget().deleteLater()
-
-        self.load_data()
 
