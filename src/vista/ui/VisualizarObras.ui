@@ -14,7 +14,7 @@
    <string>MainWindow</string>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <widget class="QPushButton" name="BotonAtras">
+   <widget class="QPushButton" name="BotonHome">
     <property name="geometry">
      <rect>
       <x>30</x>
@@ -227,7 +227,7 @@ border-radius: 15px;</string>
      </font>
     </property>
     <property name="text">
-     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:48pt;&quot;&gt;SALA 1&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:48pt;&quot;&gt;OBRAS&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
     </property>
    </widget>
    <widget class="QLabel" name="tituloobra">
@@ -294,11 +294,7 @@ border-radius: 15px;</string>
     </property>
    </widget>
    <zorder>foto</zorder>
-<<<<<<< HEAD
-   <zorder>BotonAtras</zorder>
-=======
    <zorder>BotonHome</zorder>
->>>>>>> 38d60e20a38ef826d43b73fd70be13cd8e41dbfb
    <zorder>Titulo</zorder>
    <zorder>tituloobra</zorder>
    <zorder>scrollArea</zorder>
