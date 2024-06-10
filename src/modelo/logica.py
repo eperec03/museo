@@ -206,3 +206,7 @@ class Logica:
             mi_persona_dao.insertUsuario(mi_persona)
         else:
             messagebox.showwarning("Advertencia", "El email no es válido")
+
+    def crear_artistas(self, artista: ArtistasVO):
+        artista_dao = ArtistasDao()
+        artista_dao.insertArtista(artista)

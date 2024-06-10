@@ -9,6 +9,7 @@ from PyQt5.QtWidgets import QMessageBox
 from PyQt5.QtGui import QIcon
 from vista.MenuEditor import *
 from vista.ActualizaArtistas import *
+from vista.CrearArtistas import CrearArtistas
 
 class EditarArtistas(QtWidgets.QMainWindow):
     def __init__(self, controlador = None,ventana_anterior=None):
@@ -34,7 +35,7 @@ class EditarArtistas(QtWidgets.QMainWindow):
 
     def go_crear(self):
         self.ventana_crear = CrearArtistas()
-        self.ventana_crear.setCoordinador(self)
+        self.ventana_crear.setCoordinador(self.coordinador)
         self.ventana_crear.show()
         self.hide()
 

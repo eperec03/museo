@@ -132,3 +132,5 @@ class Coordinador:
    def obtener_todas_obras(self):
       return self._model.select_obras()
    
+   def crearArtistas(self, artista: ArtistasVO) -> None:
+      self._model.crear_artistas(artista)

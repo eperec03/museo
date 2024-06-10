@@ -1,8 +1,8 @@
 class ArtistasVO:
-    def __init__(self, IdArtista=None,NombreArtista=None, FechaNacimiento=None, FechaMuerte=None, Descripcion=None, Corriente=None):
+    def __init__(self, IdArtista=None,NombreArtista=None, FechaNac=None, FechaMuerte=None, Descripcion=None, Corriente=None):
         self.IdArtista=IdArtista
         self.NombreArtista = NombreArtista
-        self.FechaNacimiento = FechaNacimiento
+        self.FechaNac = FechaNac
         self.FechaMuerte = FechaMuerte
         self.Descripcion = Descripcion
         self.Corriente = Corriente
@@ -20,10 +20,10 @@ class ArtistasVO:
         self.NombreArtista = NombreArtista
 
     def getFechaNacimiento(self):
-        return self.FechaNacimiento
+        return self.FechaNac
 
-    def setFechaNacimiento(self, FechaNacimiento):
-        self.FechaNacimiento = FechaNacimiento
+    def setFechaNacimiento(self, FechaNac):
+        self.FechaNac = FechaNac
 
     def getFechaMuerte(self):
         return self.FechaMuerte
