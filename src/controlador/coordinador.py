@@ -128,17 +128,6 @@ class Coordinador:
 
    def actualizarExposiciones(self, exposicion: ExposicionesVO) -> None:
       self._model.actualizar_exposicion(exposicion)
-   
-
-#HAY QUE AÑADIR TODO LO DE ACTUALIZAR A COORDINADOR
-#actualizarSala
-#actualizarArtista
-#actualizarObjeto
-#actualizarObras
-#actualizarJuegos
-#actualizarCatalogo
-#actualizarAudioguia
-#actualizarExposiciones
 
    def obtener_todas_obras(self):
       return self._model.select_obras()
