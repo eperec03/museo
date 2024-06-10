@@ -6,9 +6,13 @@ import tkinter as tk
 from tkinter import messagebox
 from modelo.vo.UsuariosVO import *
 from modelo.dao.ClientePremiumDAO import *
+from modelo.dao.EditoresDAO import *
 from modelo.vo.ClienteEstandarVO import *
 from modelo.dao.ClienteEstandarDAO import *
 from controlador.coordinador import Coordinador
+from dao.ObjetosDAO import *
+from modelo.vo.JuegosVO import *
+from dao.JuegosObrasDAO import *
 from modelo.vo.ArtistasVO import *
 from modelo.dao.ArtistasDAO import *
 from modelo.vo.ObrasVO import *
@@ -162,3 +166,25 @@ class Logica:
                 error=0
         if error==1:
             messagebox.showwarning("Advertencia", "No existe ese IDExposicion")
+
+
+    def comprobar_juego(self, mi_juego: JuegosObrasVO):
+        mi_juego_dao = JuegosObrasDao()
+        error=1
+        if len(mi_juego_dao.getJuegoObras(mi_juego.get_Nombre()))==0:
+            messagebox.showwarning("Advertencia", "No existe ese juego")
+        else:
+            return True
+
+
+    def select_objetos(self):
+        a=ObjetosDao()
+        return a.getObjetos()
+    
+    def validar_registro_editor(self, mi_persona: EditorVO):
+        #habría que poner más cosas para validar el registtro?
+        if '@' in mi_persona.get_UsuEmail():
+            mi_persona_dao = EditorDAO()
+            mi_persona_dao.insertUsuario(mi_persona)
+        else:
+            messagebox.showwarning("Advertencia", "El email no es válido")

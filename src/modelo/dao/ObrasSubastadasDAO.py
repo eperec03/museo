@@ -35,19 +35,23 @@ class ObrasSubastadasDao(ObrasSubastadasInterface, Conexion):
             #Crea un obra para poder ejecutar consultas SQL sobre la conexion abierta
             cursor = conn.cursor()
             #Ejecuta de consulta SQL
+            obras_dao=ObrasDao()
             cursor.execute(self.SQL_SELECT) #Obtiene todas las filas resultantes de la consulta
             rows = cursor.fetchall()
             #Itera sobre todas las filas
             for row in rows:
-                IdObra,Titulo,Descripcion,Fecha,Imagen,IdArtista,IdExposicion,PrecioSalida,PrecioVenta,MejorPostor= row
+                IdObra,PrecioSalida,PrecioVenta,MejorPostor= row
+                obra_vo=obras_dao.getObraId(IdObra)
+                #En obra_vo tenemos los atributos de la tabla Juegos...
+                obraSubastada = ObrasVO()
                 obraSubastada = ObrasSubastadasVO()
                 obraSubastada.setIdObra(IdObra)
-                obraSubastada.setTitulo(Titulo)
-                obraSubastada.setDescripcion(Descripcion)
-                obraSubastada.setFecha(Fecha)
-                obraSubastada.setImagen(Imagen)
-                obraSubastada.setIdArtista(IdArtista)
-                obraSubastada.setIdExposicion(IdExposicion)
+                obraSubastada.setTitulo(obra_vo.getTitulo())
+                obraSubastada.setDescripcion(obra_vo.getDescripcion())
+                obraSubastada.setFecha(obra_vo.getFecha())
+                obraSubastada.setImagen(obra_vo.getImagen())
+                obraSubastada.setIdArtista(obra_vo.getIdArtista())
+                obraSubastada.setNumSala(obra_vo.getNumSala())
                 obraSubastada.set_MejorPostor(MejorPostor)
                 obraSubastada.set_PrecioSalida(PrecioSalida)
                 obraSubastada.set_PrecioVenta(PrecioVenta)
@@ -77,7 +81,7 @@ class ObrasSubastadasDao(ObrasSubastadasInterface, Conexion):
             #Primero, vamos a obtener los atributos de la tabla Obras
             cursor.execute(self.SQL_FILTER_OBR, (titulo,))
             row_obr = cursor.fetchall()
-            IdObra,Titulo,Descripcion,Fecha,Imagen,IdArtista,IdExposicion= row_obr[0]
+            IdObra,Titulo,Descripcion,Fecha,Imagen,IdArtista,NumSala= row_obr[0]
             #Ahora, cogemos los parámetros de la tabla ObrasSubastadas
             cursor.execute(self.SQL_FILTER, (IdObra,)) 
             row_obrsub = cursor.fetchall()
@@ -89,7 +93,7 @@ class ObrasSubastadasDao(ObrasSubastadasInterface, Conexion):
             obraSubastada.setFecha(Fecha)
             obraSubastada.setImagen(Imagen)
             obraSubastada.setIdArtista(IdArtista)
-            obraSubastada.setIdExposicion(IdExposicion)
+            obraSubastada.setNumSala(NumSala)
             obraSubastada.set_MejorPostor(MejorPostor)
             obraSubastada.set_PrecioSalida(PrecioSalida)
             obraSubastada.set_PrecioVenta(PrecioVenta)
@@ -116,7 +120,7 @@ class ObrasSubastadasDao(ObrasSubastadasInterface, Conexion):
             else:
                 print("La base de datos no esta disponible")
             cursor = conn.cursor()
-            obra=ObrasVO(IdObra=obraSub.getIdObra(),Titulo=obraSub.getTitulo(),Descripcion=obraSub.getDescripcion(),Fecha=obraSub.getFecha(), Imagen=obraSub.getImagen(), IdArtista=obraSub.getIdArtista(), IdExposicion=obraSub.getIdExposicion())
+            obra=ObrasVO(IdObra=obraSub.getIdObra(),Titulo=obraSub.getTitulo(),Descripcion=obraSub.getDescripcion(),Fecha=obraSub.getFecha(), Imagen=obraSub.getImagen(), IdArtista=obraSub.getIdArtista(), NumSala=obraSub.getNumSala())
             obra_dao=ObrasDao()
             obra_dao.insertObra(obra)
             cursor.execute(self.SQL_SELECT_OBR, (obra.getTitulo(),))
@@ -180,7 +184,7 @@ class ObrasSubastadasDao(ObrasSubastadasInterface, Conexion):
 
             cursor = conn.cursor()
             #Tenemos que actualizar el padre:
-            obra=ObrasVO(IdObra=obraSub.getIdObra(),Titulo=obraSub.getTitulo(),Descripcion=obraSub.getDescripcion(),Fecha=obraSub.getFecha(), Imagen=obraSub.getImagen(), IdArtista=obraSub.getIdArtista(), IdExposicion=obraSub.getIdExposicion())
+            obra=ObrasVO(IdObra=obraSub.getIdObra(),Titulo=obraSub.getTitulo(),Descripcion=obraSub.getDescripcion(),Fecha=obraSub.getFecha(), Imagen=obraSub.getImagen(), IdArtista=obraSub.getIdArtista(), NumSala=obraSub.getNumSala())
             obras_dao=ObrasDao()
             obras_dao.updateObra(obra)
             obras_dao.updateObra()
@@ -197,34 +201,33 @@ class ObrasSubastadasDao(ObrasSubastadasInterface, Conexion):
         conexion = self.closeConnection(conn)
 
         return rows
-obra_subastada1 = ObrasSubastadasVO()
-obra_subastada1.setIdObra(1)
-obra_subastada1.setTitulo("La Noche Estrellada")
-obra_subastada1.setDescripcion("Una pintura famosa de Vincent van Gogh")
-obra_subastada1.setFecha("1889-06-01")
-obra_subastada1.setImagen("noche_estrellada.jpg")
-obra_subastada1.setIdArtista(1)
-obra_subastada1.setIdExposicion(2)
-obra_subastada1.setIdObra(1001)
-obra_subastada1.set_PrecioSalida(500000)
-obra_subastada1.set_PrecioVenta(650000)
-obra_subastada1.set_MejorPostor("John Doe")
+# obra_subastada1 = ObrasSubastadasVO()
+# obra_subastada1.setTitulo("La Noche Estrellada")
+# obra_subastada1.setDescripcion("Una pintura famosa de Vincent van Gogh")
+# obra_subastada1.setFecha("1889-06-01")
+# obra_subastada1.setImagen("noche_estrellada.jpg")
+# obra_subastada1.setIdArtista(1)
+# obra_subastada1.setNumSala(102)
+# obra_subastada1.set_PrecioSalida(500000)
+# obra_subastada1.set_PrecioVenta(650000)
+# obra_subastada1.set_MejorPostor("John Doe")
 
-obra_subastada2 = ObrasSubastadasVO()
-obra_subastada2.setIdObra(2)
-obra_subastada2.setTitulo("Mona Lisa")
-obra_subastada2.setDescripcion("Una pintura de Leonardo da Vinci")
-obra_subastada2.setFecha("1503-10-01")
-obra_subastada2.setImagen("mona_lisa.jpg")
-obra_subastada2.setIdArtista(2)
-obra_subastada2.setIdExposicion(3)
-obra_subastada2.setIdObra(1002)
-obra_subastada2.set_PrecioSalida(750000)
-obra_subastada2.set_PrecioVenta(950000)
-obra_subastada2.set_MejorPostor("Jane Smith")
+# obra_subastada2 = ObrasSubastadasVO()
+# obra_subastada2.setTitulo("Mona Lisa")
+# obra_subastada2.setDescripcion("Una pintura de Leonardo da Vinci")
+# obra_subastada2.setFecha("1503-10-01")
+# obra_subastada2.setImagen("mona_lisa.jpg")
+# obra_subastada2.setIdArtista(2)
+# obra_subastada2.setNumSala(103)
+# obra_subastada2.setIdObra(1002)
+# obra_subastada2.set_PrecioSalida(750000)
+# obra_subastada2.set_PrecioVenta(950000)
+# obra_subastada2.set_MejorPostor("Jane Smith")
 
-a=ObrasSubastadasDao()
-# a.insertObraSubastada(obra_subastada1)
-# a.insertObraSubastada(obra_subastada2)
-# a.deleteObraSubastada("Mona Lisa")
-print(a.getObraSubastada("Mona Lisa").getIdObra())
+# a=ObrasSubastadasDao()
+# # a.insertObraSubastada(obra_subastada1)
+# # a.insertObraSubastada(obra_subastada2)
+# # # a.deleteObraSubastada("Mona Lisa")
+# # print(a.getObraSubastada("Mona Lisa").getIdObra())
+
+# print(a.getObrasSubastadas())

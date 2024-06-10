@@ -524,7 +524,7 @@ DROP TABLE IF EXISTS `juegos`;
 CREATE TABLE `juegos` (
   `IDJuego` int NOT NULL,
   `Nombre` varchar(45) NOT NULL,
-  `Dificultad` varchar(45) NOT NULL,
+  `Dificultad` varchar(45) DEFAULT NULL,
   `Descripcion` varchar(100) DEFAULT NULL,
   `ruta` varchar(1000) DEFAULT NULL,
   PRIMARY KEY (`IDJuego`),
@@ -652,7 +652,7 @@ DROP TABLE IF EXISTS `objetos`;
 CREATE TABLE `objetos` (
   `IDObjeto` int NOT NULL auto_increment,
   `NombreObjeto` varchar(30) not null unique,
-  `imagen` blob NOT NULL,
+  `imagen` varchar(1000) NOT NULL,
   `precio` float NOT NULL,
   `tipo` varchar(45) NOT NULL,
   `inspiracion` varchar(45) NOT NULL,
@@ -687,12 +687,12 @@ CREATE TABLE `obras` (
   `Fecha` date NULL,
   `Imagen` blob NOT NULL,
   `IDArtista` int NOT NULL,
-  `IDExposicion` int NOT NULL,
+  `NumSala` int NOT NULL,
   PRIMARY KEY (`IDObra`),
-  KEY `ExpOb_idx` (`IDExposicion`),
+  KEY `SalOb_idx` (`NumSala`),
   KEY `ArtObr_idx` (`IDArtista`),
   CONSTRAINT `ArtObr` FOREIGN KEY (`IDArtista`) REFERENCES `artistas` (`IdArtista`) ON UPDATE CASCADE,
-  CONSTRAINT `ExpOb` FOREIGN KEY (`IDExposicion`) REFERENCES `exposiciones` (`IDExposiciones`) ON UPDATE CASCADE
+  CONSTRAINT `SalOb` FOREIGN KEY (`NumSala`) REFERENCES `Salas` (`NumSala`) ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
