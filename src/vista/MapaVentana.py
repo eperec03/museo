@@ -26,7 +26,7 @@ class MapaVentana(QtWidgets.QMainWindow):
         self.boton_sala1.clicked.connect(self.go_to_sala1)
         self.mini_sala1.clicked.connect(self.go_to_sala1)
         self.boton_sala2.clicked.connect(self.go_to_sala2)
-        self.mini_sala1.clicked.connect(self.go_to_sala2)
+        self.mini_sala2.clicked.connect(self.go_to_sala2)
 
 
 

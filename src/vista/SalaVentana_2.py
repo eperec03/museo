@@ -12,7 +12,7 @@ class VentanaSala2(QMainWindow):
     def __init__(self, controlador=None, ventana_anterior=None):
         super(VentanaSala2, self).__init__()
         uic.loadUi('src/vista/ui/Sala2.ui', self)
-        self.setWindowTitle("Sala 1")
+        self.setWindowTitle("Sala 2")
         self.setWindowIcon(QIcon('src/vista/Imagenes/logomuseo.png'))
         self.coordinador = controlador
         try:

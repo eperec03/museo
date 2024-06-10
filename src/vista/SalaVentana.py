@@ -76,7 +76,7 @@ class VentanaSala1(QMainWindow):
                 print("Error: Image path is None for object:", Titulo)
 
         self.scrollAreaWidgetContents.setLayout(layout)
-        self.boton_info.clicked.connect(self.mostrar_info(self.obra))
+        # self.boton_info.clicked.connect(self.mostrar_info(self.obra))
 
     def mostrar_info(self, obra):
         self.ventana_obra = VentanaVisualizarObra(ventana_anterior=self)
