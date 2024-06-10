@@ -10,6 +10,7 @@ from PyQt5.QtGui import QIcon
 from vista.MapaVentana import MapaVentana
 from vista.VentanaJuegos import *
 from vista.ExposicionVentana import *
+from vista.Catalogo import *
 
 
 class VentanaServicio(QtWidgets.QMainWindow):
@@ -24,7 +25,8 @@ class VentanaServicio(QtWidgets.QMainWindow):
         # "EnviarBoton" es el nombre que se le ha dado al objeto en el .ui
         self.BotonMapa.clicked.connect(self.go_to_window_mapa)
         self.BotonJuegos.clicked.connect(self.go_to_window_juegos)   
-        self.BotonExposiciones.clicked.connect(self.go_to_window_exposiciones) 
+        self.BotonExposiciones.clicked.connect(self.go_to_window_exposiciones)
+        self.BotonCatalogo.clicked.connect(self.go_to_window_objetos) 
         # self.BotonInicioS.clicked.connect(self.go_to_window_inicio)
         self.show()
         self.ventana_anterior=ventana_anterior
@@ -40,6 +42,10 @@ class VentanaServicio(QtWidgets.QMainWindow):
         self.ventana_registro.show()
         self.hide()
 
+    def go_to_window_objetos(self):
+        self.ventana_inicio = VentanaCatalogo(controlador=self.coordinador,ventana_anterior=self)
+        self.ventana_inicio.show()
+        self.hide()
 
     def go_to_window_mapa(self):
         self.ventana_registro = MapaVentana(ventana_anterior=self)

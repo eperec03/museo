@@ -56,7 +56,7 @@ class VentanaJuegos(QtWidgets.QMainWindow):
     def validar_juego(self) -> None:
         try:
             juegos = JuegosObrasVO(
-                Nombre = self.lineNombre.text(),
+                Nombre = self.lineJuego.text(),
             )
             obra = ObrasVO(
                 Titulo = self.lineObra.text(),

@@ -578,7 +578,7 @@ border-radius: 15px;</string>
      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:12pt; font-weight:600;&quot;&gt;BUSCADOR POR OBRA&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
     </property>
    </widget>
-   <widget class="QLineEdit" name="lineJuego_2">
+   <widget class="QLineEdit" name="lineObra">
     <property name="geometry">
      <rect>
       <x>810</x>
@@ -711,7 +711,7 @@ background-color: rgb(208, 223, 232);</string>
    </widget>
    <zorder>foto</zorder>
    <zorder>lineJuego</zorder>
-   <zorder>lineJuego_2</zorder>
+   <zorder>lineObra</zorder>
    <zorder>Titulo</zorder>
    <zorder>Titulo_2</zorder>
    <zorder>BotonAtras</zorder>

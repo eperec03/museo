@@ -15,6 +15,7 @@ class JuegosDao(JuegosInterface, Conexion):
     SQL_SELECT = "SELECT * FROM juegos"
     SQL_INSERT = "INSERT INTO juegos(IdJuego, Nombre, Dificultad, Descripcion, Ruta) VALUES (?, ?, ?, ?, ?)"
     SQL_INSERT_SERV = "INSERT INTO Servicios(Nombre) VALUES (?)"
+    SQL_SELECT_SERV = "SELECT * FROM Servicios WHERE Nombre = ?"
     SQL_DELETE_SERV = "DELETE FROM Juegos WHERE IdJuego = ?"
     SQL_UPDATE = "UPDATE juegos SET Nombre= ?, Dificultad= ?, Descripcion = ? WHERE IdJuego = ?"
     SQL_FILTER = "SELECT * FROM juegos WHERE IdJuego = ?"

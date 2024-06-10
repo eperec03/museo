@@ -9,13 +9,14 @@ from controlador.coordinador import Coordinador
 from modelo.logica import Logica
 
 class VentanaCatalogo(QMainWindow):
-    def __init__(self, controlador=None, ventana_anterior=None):
-        super(VentanaCatalogo, self).__init__()
+    def _init_(self, controlador=None, ventana_anterior=None):
+        super(VentanaCatalogo, self)._init_()
         uic.loadUi('src/vista/ui/Catalogo.ui', self)
         self.setWindowTitle("Catalogo")
         self.setWindowIcon(QIcon('src/vista/Imagenes/logomuseo.png'))
         self.coordinador = controlador
         self.ventana_anterior = ventana_anterior
+        self.BotonAtras.clicked.connect(self.go_back)
         try:
             self.scrollArea = self.findChild(QScrollArea, 'scrollArea')
             self.scrollAreaWidgetContents = QWidget()
@@ -23,6 +24,10 @@ class VentanaCatalogo(QMainWindow):
         except Exception as e:
             print(f"Error finding scroll area or its contents: {e}")
             return
+
+    def go_back(self):
+        self.ventana_anterior.show()
+        self.destroy()
         self.load_data()
 
     def setCoordinador(self, coord) -> None:
@@ -82,12 +87,3 @@ class VentanaCatalogo(QMainWindow):
                     child.widget().deleteLater()
 
         self.load_data()
-
-if __name__ == '__main__':
-    app = QApplication(sys.argv)
-    c = Coordinador()
-    logica = Logica()
-    c.setModel(logica)
-    ex = VentanaCatalogo(controlador=c)
-    ex.show()
-    sys.exit(app.exec_())
