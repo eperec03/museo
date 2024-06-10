@@ -22,7 +22,7 @@ class InicioEditorVentana(QtWidgets.QMainWindow):
         # "EnviarBoton" es el nombre que se le ha dado al objeto en el .ui
         self.ventana_anterior=ventana_anterior
         self.BotonAtras.clicked.connect(self.go_back)
-        self.enviarBoton.clicked.connect(self.validarCliente)
+        self.enviarBoton.clicked.connect(self.validarEditor)
         self.show()
 
     def go_back(self):

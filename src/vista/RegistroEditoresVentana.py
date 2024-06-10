@@ -57,7 +57,7 @@ class RegistroEditoresVentana(QtWidgets.QMainWindow):
     def registrarPersona(self) -> None:
         try:
             persona = EditorVO(
-                SSN = self.lineSSN.text(),
+                DNI = self.lineSSN.text(),
                 UsuNombreCompleto = self.lineNombre.text(),
                 Usutfno = self.lineTfno.text(),
                 UsuEmail = self.lineEmail.text(),
@@ -68,7 +68,7 @@ class RegistroEditoresVentana(QtWidgets.QMainWindow):
                 UsuContrasenna = self.lineContrasenna.text(), 
                 Rol=self.lineRol.text()
             )
-            self.coordinador.registrarUsuario(persona)
+            self.coordinador.registrarEditor(persona)
             self.limpiar()
         except Exception as ex:
             print(ex)

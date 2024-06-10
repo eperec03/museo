@@ -78,6 +78,9 @@ class Coordinador:
       self._model.validar_registro(usuario)
    #aqui van los metodos de lo que hacen los 'botones'
 
+   def registrarEditor(self, usuario: EditorVO) -> None:
+      self._model.validar_registroEditor(usuario)
+
    def eliminarUsuario(self, usuario: ClientePremiumVO) -> None:
       self._model.eliminar_registro(usuario)
 

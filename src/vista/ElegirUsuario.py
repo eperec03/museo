@@ -7,6 +7,7 @@ from tkinter import messagebox
 from PyQt5 import QtWidgets, uic
 from PyQt5.QtWidgets import QMessageBox
 from PyQt5.QtGui import QIcon
+from vista.InicioEditoresVentana import *
 from vista.InicioClientePVentana import *
 from vista.RegistroEntradaVentana import RegistroEntradaVentana
 # from vista.InicioVentana import *
@@ -20,7 +21,7 @@ class ElegirUsuario(QtWidgets.QMainWindow):
         self.coordinador = controlador
         self.BotonCliE.clicked.connect(self.go_to_window_estandar)
         self.BotonCliP.clicked.connect(self.go_to_window_premium)
-        #falta poner boton editores
+        self.BotonEditores.clicked.connect(self.go_to_window_editor)
         self.ventana_anterior=ventana_anterior
         self.BotonAtras.clicked.connect(self.go_back)
         self.show()
@@ -36,6 +37,13 @@ class ElegirUsuario(QtWidgets.QMainWindow):
         self.ventana_CliPremium.setCoordinador(self.coordinador)
         self.ventana_CliPremium.show()
         self.hide()
+
+    def go_to_window_editor(self):
+        self.ventana_editor = InicioEditorVentana(ventana_anterior=self)
+        self.ventana_editor.setCoordinador(self.coordinador)
+        self.ventana_editor.show()
+        self.hide()
+
         
     def go_back(self):
         self.ventana_anterior.show()    
