@@ -34,7 +34,7 @@ class EditarArtistas(QtWidgets.QMainWindow):
         self.destroy()      
 
     def go_crear(self):
-        self.ventana_crear = CrearArtistas()
+        self.ventana_crear = CrearArtistas(ventana_anterior=self)
         self.ventana_crear.setCoordinador(self.coordinador)
         self.ventana_crear.show()
         self.hide()

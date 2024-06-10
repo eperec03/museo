@@ -203,3 +203,11 @@ class Logica:
     def crear_artistas(self, artista: ArtistasVO):
         artista_dao = ArtistasDao()
         artista_dao.insertArtista(artista)
+
+    def crear_audioguias(self, audio: AudioguiasVO):
+        audio_dao = AudioguiasDao()
+        audio_dao.insertAudioguia(audio)
+
+    def crear_exposiciones(self, exposicion: ExposicionesVO):
+        exposicion_dao = ExposicionesDao()
+        exposicion_dao.insertExposicion(exposicion)

@@ -9,6 +9,7 @@ from PyQt5.QtWidgets import QMessageBox
 from PyQt5.QtGui import QIcon
 from vista.MenuEditor import *
 from vista.ActualizaAudioguias import *
+from vista.CrearAudioguias import CrearAudioguias
 
 class EditarAudioguias(QtWidgets.QMainWindow):
     def __init__(self, controlador = None,ventana_anterior=None):
@@ -22,7 +23,7 @@ class EditarAudioguias(QtWidgets.QMainWindow):
         # "EnviarBoton" es el nombre que se le ha dado al objeto en el .ui
         self.ventana_anterior=ventana_anterior
         self.BotonAtras.clicked.connect(self.go_back)
-        # self.BotonCrear.clicked.connect(self.go_crear)
+        self.BotonCrear.clicked.connect(self.go_crear)
         # self.BotonEliminar.clicked.connect(self.go_eliminar)
         self.BotonActualizar.clicked.connect(self.go_actualizar)
         
@@ -32,11 +33,11 @@ class EditarAudioguias(QtWidgets.QMainWindow):
         self.ventana_anterior.show()    
         self.destroy()      
 
-    # def go_crear(self):
-    #     self.ventana_crear = CrearAudioguias()
-    #     self.ventana_crear.setCoordinador(self)
-    #     self.ventana_crear.show()
-    #     self.hide()
+    def go_crear(self):
+        self.ventana_crear = CrearAudioguias(ventana_anterior=self)
+        self.ventana_crear.setCoordinador(self.coordinador)
+        self.ventana_crear.show()
+        self.hide()
 
     # def go_eliminar(self):
     #     self.ventana_eliminar = EliminarAudioguias()
