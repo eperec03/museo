@@ -55,11 +55,13 @@ class MenuEditor(QtWidgets.QMainWindow):
 
     def go_salas(self):
         self.ventana_salas = ActualizarSala(ventana_anterior=self)
+        self.ventana_salas = ActualizarSala(ventana_anterior=self)
         self.ventana_salas.setCoordinador(self.coordinador)
         self.ventana_salas.show()
         self.hide()
 
     def go_catalogo(self):
+        self.ventana_catalogo = ActualizarCatalogo(ventana_anterior=self)
         self.ventana_catalogo = ActualizarCatalogo(ventana_anterior=self)
         self.ventana_catalogo.setCoordinador(self.coordinador)
         self.ventana_catalogo.show()
@@ -67,11 +69,13 @@ class MenuEditor(QtWidgets.QMainWindow):
 
     def go_exposiciones(self):
         self.ventana_exposiciones = EditarExposiciones(ventana_anterior=self)
+        self.ventana_exposiciones = EditarExposiciones(ventana_anterior=self)
         self.ventana_exposiciones.setCoordinador(self.coordinador)
         self.ventana_exposiciones.show()
         self.hide()
 
     def go_objetos(self):
+        self.ventana_objetos = EditarObjetos(ventana_anterior=self)
         self.ventana_objetos = EditarObjetos(ventana_anterior=self)
         self.ventana_objetos.setCoordinador(self.coordinador)
         self.ventana_objetos.show()
@@ -79,17 +83,20 @@ class MenuEditor(QtWidgets.QMainWindow):
 
     def go_juegos(self):
         self.ventana_juegos = EditarJuegos(ventana_anterior=self)
+        self.ventana_juegos = EditarJuegos(ventana_anterior=self)
         self.ventana_juegos.setCoordinador(self.coordinador)
         self.ventana_juegos.show()
         self.hide()
 
     def go_obras(self):
         self.ventana_obras = EditarObras(ventana_anterior=self)
+        self.ventana_obras = EditarObras(ventana_anterior=self)
         self.ventana_obras.setCoordinador(self.coordinador)
         self.ventana_obras.show()
         self.hide()
 
     def go_artistas(self):
+        self.ventana_artistas = EditarArtistas(ventana_anterior=self)
         self.ventana_artistas = EditarArtistas(ventana_anterior=self)
         self.ventana_artistas.setCoordinador(self.coordinador)
         self.ventana_artistas.show()

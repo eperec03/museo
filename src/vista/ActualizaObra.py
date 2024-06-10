@@ -36,17 +36,17 @@ class ActualizarObra(QtWidgets.QMainWindow):
         self.Descripcion_entrada.clear()
         self.Fecha_entrada.clear()
         self.IdArtista_entrada.clear()
-        self.IdExposicion_entrada.clear()
+        self.NumSala_entrada.clear()
 
     def actualizarObra(self) -> None:
         try:
             Obra = ObrasVO(
-                NombreObra = self.NombreObra_entrada.text(),
+                Titulo = self.NombreObra_entrada.text(),
                 Imagen = self.Imagen_entrada.text(),
                 Descripcion = self.Descripcion_entrada.text(),
                 Fecha = self.Fecha_entrada.text(), 
                 IdArtista = self.IdArtista_entrada.text(),
-                IdExposicion = self.IdExposicion_entrada.text()
+                NumSala = self.NumSala_entrada.text()
                 )
             self.coordinador.actualizarObras(Obra)
             self.limpiar()

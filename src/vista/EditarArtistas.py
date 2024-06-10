@@ -10,6 +10,7 @@ from PyQt5.QtGui import QIcon
 from vista.MenuEditor import *
 from vista.ActualizaArtistas import *
 from vista.CrearArtistas import CrearArtistas
+from vista.EliminarArtistas import *
 
 class EditarArtistas(QtWidgets.QMainWindow):
     def __init__(self, controlador = None,ventana_anterior=None):
@@ -24,7 +25,7 @@ class EditarArtistas(QtWidgets.QMainWindow):
         self.ventana_anterior=ventana_anterior
         self.BotonAtras.clicked.connect(self.go_back)
         self.BotonCrear.clicked.connect(self.go_crear)
-        # self.BotonEliminar.clicked.connect(self.go_eliminar)
+        self.BotonEliminar.clicked.connect(self.go_eliminar)
         self.BotonActualizar.clicked.connect(self.go_actualizar)
         
         self.show()
@@ -50,6 +51,11 @@ class EditarArtistas(QtWidgets.QMainWindow):
     #     self.ventana_actualizar.setCoordinador(self)
     #     self.ventana_actualizar.show()
     #     self.hide()
+    def go_eliminar(self):
+        self.ventana_eliminar = EliminarArtista()
+        self.ventana_eliminar.setCoordinador(self)
+        self.ventana_eliminar.show()
+        self.hide()
 
     def setCoordinador(self, coord) -> None:
         self.coordinador = coord

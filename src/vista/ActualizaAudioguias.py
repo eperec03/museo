@@ -39,12 +39,12 @@ class ActualizarAudioguia(QtWidgets.QMainWindow):
     def actualizarAudioguia(self) -> None:
         try:
             Audioguia = AudioguiasVO(
-                Titulo = self.NombreAudioguia_entrada.text(),
-                IDObra = self.IDObra_entrada.text(),
+                Titulo = self.Titulo_entrada.text(),
+                IdObra = self.IDObra_entrada.text(),
                 Audio = self.Audio_entrada.text(),
                 Duracion = self.Duracion_entrada.text()
                 )
-            self.coordinador.actualizarAudioguia(Audioguia)
+            self.coordinador.actualizarAudioguias(Audioguia)
             self.limpiar()
         except Exception as ex:
             print(ex)
