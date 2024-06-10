@@ -524,7 +524,7 @@ DROP TABLE IF EXISTS `juegos`;
 CREATE TABLE `juegos` (
   `IDJuego` int NOT NULL,
   `Nombre` varchar(45) NOT NULL,
-  `Dificultad` varchar(45) NOT NULL,
+  `Dificultad` varchar(45) DEFAULT NULL,
   `Descripcion` varchar(100) DEFAULT NULL,
   `ruta` varchar(1000) DEFAULT NULL,
   PRIMARY KEY (`IDJuego`),
