@@ -9,6 +9,8 @@ from PyQt5.QtWidgets import QMessageBox
 from PyQt5.QtGui import QIcon
 from vista.MenuEditor import *
 from vista.ActualizaAudioguias import *
+from vista.EliminarAudioguias import *
+from vista.CrearAudioguías import *
 from vista.CrearAudioguias import CrearAudioguias
 from vista.EliminarAudioguias import *
 
@@ -35,12 +37,16 @@ class EditarAudioguias(QtWidgets.QMainWindow):
         self.destroy()      
 
     def go_crear(self):
+        self.ventana_crear = CrearAudioguia()
+        self.ventana_crear.setCoordinador(self)
         self.ventana_crear = CrearAudioguias(ventana_anterior=self)
         self.ventana_crear.setCoordinador(self.coordinador)
         self.ventana_crear.show()
         self.hide()
 
     def go_eliminar(self):
+        self.ventana_eliminar = EliminarAudioguia()
+        self.ventana_eliminar.setCoordinador(self)
         self.ventana_eliminar = EliminarAudioguias(ventana_anterior=self)
         self.ventana_eliminar.setCoordinador(self.coordinador)
         self.ventana_eliminar.show()

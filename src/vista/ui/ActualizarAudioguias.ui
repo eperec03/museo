@@ -17,10 +17,10 @@
    <widget class="QPushButton" name="BotonEditarAudioguia">
     <property name="geometry">
      <rect>
-      <x>680</x>
-      <y>520</y>
-      <width>271</width>
-      <height>51</height>
+      <x>720</x>
+      <y>530</y>
+      <width>161</width>
+      <height>41</height>
      </rect>
     </property>
     <property name="palette">
@@ -222,14 +222,6 @@
       </disabled>
      </palette>
     </property>
-    <property name="font">
-     <font>
-      <family>Verdana</family>
-      <pointsize>12</pointsize>
-      <weight>75</weight>
-      <bold>true</bold>
-     </font>
-    </property>
     <property name="cursor">
      <cursorShape>PointingHandCursor</cursorShape>
     </property>
@@ -247,8 +239,8 @@ border-radius: 15px;</string>
    <widget class="QLabel" name="Titulo">
     <property name="geometry">
      <rect>
-      <x>410</x>
-      <y>60</y>
+      <x>420</x>
+      <y>20</y>
       <width>841</width>
       <height>91</height>
      </rect>
@@ -268,8 +260,8 @@ border-radius: 15px;</string>
    <widget class="QLineEdit" name="IDObra_entrada">
     <property name="geometry">
      <rect>
-      <x>850</x>
-      <y>230</y>
+      <x>830</x>
+      <y>220</y>
       <width>171</width>
       <height>41</height>
      </rect>
@@ -282,8 +274,8 @@ background-color: rgb(208, 223, 232);</string>
    <widget class="QLineEdit" name="Audio_entrada">
     <property name="geometry">
      <rect>
-      <x>620</x>
-      <y>390</y>
+      <x>600</x>
+      <y>350</y>
       <width>161</width>
       <height>41</height>
      </rect>
@@ -296,8 +288,8 @@ background-color: rgb(208, 223, 232);</string>
    <widget class="QLineEdit" name="Titulo_entrada">
     <property name="geometry">
      <rect>
-      <x>620</x>
-      <y>230</y>
+      <x>600</x>
+      <y>220</y>
       <width>171</width>
       <height>41</height>
      </rect>
@@ -310,8 +302,8 @@ background-color: rgb(208, 223, 232);</string>
    <widget class="QLabel" name="label_2">
     <property name="geometry">
      <rect>
-      <x>600</x>
-      <y>330</y>
+      <x>580</x>
+      <y>290</y>
       <width>211</width>
       <height>41</height>
      </rect>
@@ -323,8 +315,8 @@ background-color: rgb(208, 223, 232);</string>
    <widget class="QLabel" name="label_3">
     <property name="geometry">
      <rect>
-      <x>600</x>
-      <y>170</y>
+      <x>580</x>
+      <y>160</y>
       <width>211</width>
       <height>41</height>
      </rect>
@@ -336,8 +328,8 @@ background-color: rgb(208, 223, 232);</string>
    <widget class="QLabel" name="label_8">
     <property name="geometry">
      <rect>
-      <x>830</x>
-      <y>330</y>
+      <x>810</x>
+      <y>290</y>
       <width>211</width>
       <height>41</height>
      </rect>
@@ -349,8 +341,8 @@ background-color: rgb(208, 223, 232);</string>
    <widget class="QLabel" name="label_4">
     <property name="geometry">
      <rect>
-      <x>830</x>
-      <y>170</y>
+      <x>810</x>
+      <y>160</y>
       <width>211</width>
       <height>41</height>
      </rect>
@@ -362,8 +354,8 @@ background-color: rgb(208, 223, 232);</string>
    <widget class="QLineEdit" name="Duracion_entrada">
     <property name="geometry">
      <rect>
-      <x>850</x>
-      <y>390</y>
+      <x>830</x>
+      <y>350</y>
       <width>171</width>
       <height>41</height>
      </rect>

@@ -98,7 +98,7 @@ class MenuEditor(QtWidgets.QMainWindow):
         self.hide()
 
     def go_audioguias(self):
-        self.ventana_audioguias = EditarAudioguias(ventana_anterior=self)
+        self.ventana_audioguias = EditarAudioguias(controlador= self.coordinador,ventana_anterior=self)
         self.ventana_audioguias.setCoordinador(self.coordinador)
         self.ventana_audioguias.show()
         self.hide()
