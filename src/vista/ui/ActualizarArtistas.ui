@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1699</width>
-    <height>866</height>
+    <width>794</width>
+    <height>611</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -17,7 +17,7 @@
    <widget class="QLabel" name="Titulo">
     <property name="geometry">
      <rect>
-      <x>460</x>
+      <x>270</x>
       <y>20</y>
       <width>731</width>
       <height>91</height>
@@ -32,14 +32,14 @@
      </font>
     </property>
     <property name="text">
-     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:48pt;&quot;&gt;EDITAR ARTISTAS&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;EDITAR ARTISTAS&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
     </property>
    </widget>
    <widget class="QLineEdit" name="Corriente_entrada">
     <property name="geometry">
      <rect>
-      <x>960</x>
-      <y>390</y>
+      <x>540</x>
+      <y>310</y>
       <width>171</width>
       <height>41</height>
      </rect>
@@ -52,8 +52,8 @@ background-color: rgb(208, 223, 232);</string>
    <widget class="QLineEdit" name="FechaMuerte_entrada">
     <property name="geometry">
      <rect>
-      <x>730</x>
-      <y>390</y>
+      <x>310</x>
+      <y>310</y>
       <width>171</width>
       <height>41</height>
      </rect>
@@ -66,8 +66,8 @@ background-color: rgb(208, 223, 232);</string>
    <widget class="QLineEdit" name="NombreArtista_entrada">
     <property name="geometry">
      <rect>
-      <x>730</x>
-      <y>270</y>
+      <x>310</x>
+      <y>190</y>
       <width>171</width>
       <height>41</height>
      </rect>
@@ -80,8 +80,8 @@ background-color: rgb(208, 223, 232);</string>
    <widget class="QLineEdit" name="IDArtista_entrada">
     <property name="geometry">
      <rect>
-      <x>500</x>
-      <y>270</y>
+      <x>80</x>
+      <y>190</y>
       <width>161</width>
       <height>41</height>
      </rect>
@@ -94,8 +94,8 @@ background-color: rgb(208, 223, 232);</string>
    <widget class="QLabel" name="label">
     <property name="geometry">
      <rect>
-      <x>480</x>
-      <y>210</y>
+      <x>60</x>
+      <y>130</y>
       <width>211</width>
       <height>41</height>
      </rect>
@@ -107,8 +107,8 @@ background-color: rgb(208, 223, 232);</string>
    <widget class="QLabel" name="label_4">
     <property name="geometry">
      <rect>
-      <x>940</x>
-      <y>210</y>
+      <x>520</x>
+      <y>130</y>
       <width>211</width>
       <height>41</height>
      </rect>
@@ -120,8 +120,8 @@ background-color: rgb(208, 223, 232);</string>
    <widget class="QLabel" name="label_7">
     <property name="geometry">
      <rect>
-      <x>940</x>
-      <y>330</y>
+      <x>520</x>
+      <y>250</y>
       <width>211</width>
       <height>41</height>
      </rect>
@@ -133,8 +133,8 @@ background-color: rgb(208, 223, 232);</string>
    <widget class="QLabel" name="label_8">
     <property name="geometry">
      <rect>
-      <x>710</x>
-      <y>330</y>
+      <x>290</x>
+      <y>250</y>
       <width>211</width>
       <height>41</height>
      </rect>
@@ -146,8 +146,8 @@ background-color: rgb(208, 223, 232);</string>
    <widget class="QLabel" name="label_2">
     <property name="geometry">
      <rect>
-      <x>480</x>
-      <y>330</y>
+      <x>60</x>
+      <y>250</y>
       <width>211</width>
       <height>41</height>
      </rect>
@@ -159,8 +159,8 @@ background-color: rgb(208, 223, 232);</string>
    <widget class="QLineEdit" name="Descripcion_entrada">
     <property name="geometry">
      <rect>
-      <x>960</x>
-      <y>270</y>
+      <x>540</x>
+      <y>190</y>
       <width>171</width>
       <height>41</height>
      </rect>
@@ -173,8 +173,8 @@ background-color: rgb(208, 223, 232);</string>
    <widget class="QLineEdit" name="FechaNacimiento_entrada">
     <property name="geometry">
      <rect>
-      <x>500</x>
-      <y>390</y>
+      <x>80</x>
+      <y>310</y>
       <width>161</width>
       <height>41</height>
      </rect>
@@ -187,8 +187,8 @@ background-color: rgb(208, 223, 232);</string>
    <widget class="QLabel" name="label_3">
     <property name="geometry">
      <rect>
-      <x>710</x>
-      <y>210</y>
+      <x>290</x>
+      <y>130</y>
       <width>211</width>
       <height>41</height>
      </rect>
@@ -200,8 +200,8 @@ background-color: rgb(208, 223, 232);</string>
    <widget class="QPushButton" name="BotonEditarArtista">
     <property name="geometry">
      <rect>
-      <x>700</x>
-      <y>540</y>
+      <x>280</x>
+      <y>410</y>
       <width>251</width>
       <height>51</height>
      </rect>
@@ -263,15 +263,6 @@ background-color: rgb(208, 223, 232);</string>
          </color>
         </brush>
        </colorrole>
-       <colorrole role="PlaceholderText">
-        <brush brushstyle="NoBrush">
-         <color alpha="128">
-          <red>255</red>
-          <green>255</green>
-          <blue>255</blue>
-         </color>
-        </brush>
-       </colorrole>
       </active>
       <inactive>
        <colorrole role="WindowText">
@@ -328,15 +319,6 @@ background-color: rgb(208, 223, 232);</string>
          </color>
         </brush>
        </colorrole>
-       <colorrole role="PlaceholderText">
-        <brush brushstyle="NoBrush">
-         <color alpha="128">
-          <red>255</red>
-          <green>255</green>
-          <blue>255</blue>
-         </color>
-        </brush>
-       </colorrole>
       </inactive>
       <disabled>
        <colorrole role="WindowText">
@@ -390,15 +372,6 @@ background-color: rgb(208, 223, 232);</string>
           <red>67</red>
           <green>157</green>
           <blue>175</blue>
-         </color>
-        </brush>
-       </colorrole>
-       <colorrole role="PlaceholderText">
-        <brush brushstyle="NoBrush">
-         <color alpha="128">
-          <red>255</red>
-          <green>255</green>
-          <blue>255</blue>
          </color>
         </brush>
        </colorrole>
@@ -493,15 +466,6 @@ border-radius: 15px;</string>
          </color>
         </brush>
        </colorrole>
-       <colorrole role="PlaceholderText">
-        <brush brushstyle="NoBrush">
-         <color alpha="128">
-          <red>67</red>
-          <green>157</green>
-          <blue>175</blue>
-         </color>
-        </brush>
-       </colorrole>
       </active>
       <inactive>
        <colorrole role="WindowText">
@@ -558,15 +522,6 @@ border-radius: 15px;</string>
          </color>
         </brush>
        </colorrole>
-       <colorrole role="PlaceholderText">
-        <brush brushstyle="NoBrush">
-         <color alpha="128">
-          <red>67</red>
-          <green>157</green>
-          <blue>175</blue>
-         </color>
-        </brush>
-       </colorrole>
       </inactive>
       <disabled>
        <colorrole role="WindowText">
@@ -620,15 +575,6 @@ border-radius: 15px;</string>
           <red>208</red>
           <green>223</green>
           <blue>232</blue>
-         </color>
-        </brush>
-       </colorrole>
-       <colorrole role="PlaceholderText">
-        <brush brushstyle="NoBrush">
-         <color alpha="128">
-          <red>67</red>
-          <green>157</green>
-          <blue>175</blue>
          </color>
         </brush>
        </colorrole>
