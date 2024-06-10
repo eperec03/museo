@@ -64,7 +64,7 @@ class Coordinador:
    ##############################################
 
    def registrarUsuario(self, usuario: ClientePremiumVO) -> None:
-      self._model.validar_registro_editor(usuario)
+      self._model.validar_registro(usuario)
    #aqui van los metodos de lo que hacen los 'botones'
 
    def eliminarUsuario(self, usuario: ClientePremiumVO) -> None:
