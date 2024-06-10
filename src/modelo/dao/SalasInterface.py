@@ -32,13 +32,13 @@ class SalasInterface(ABC):
         """
         raise NotImplementedError("Método inesertSala no implementado")
     
-    @abstractmethod
-    def deleteSala(self, Sala: SalasVO):
-        """
-        Elimina un nuevo usuario en la base de datos.
-        Parametros requeridos: El objeto SalasVO para borrar.
-        """
-        raise NotImplementedError("Método deleteSala no implementado")
+    # @abstractmethod
+    # def deleteSala(self, Sala: SalasVO):
+    #     """
+    #     Elimina un nuevo usuario en la base de datos.
+    #     Parametros requeridos: El objeto SalasVO para borrar.
+    #     """
+    #     raise NotImplementedError("Método deleteSala no implementado")
 
     @abstractmethod
     def updateSala(self, Sala: SalasVO):

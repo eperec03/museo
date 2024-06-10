@@ -5,7 +5,18 @@ sys.path.append(r'c:\Users\clara\Documents\2ºUNI\2CUATRI\IS\museo\src')
 from modelo.vo.UsuariosVO import *
 from modelo.vo.ClienteEstandarVO import *
 from modelo.vo.JuegosVO import *
+from modelo.vo.UsuariosVO import *
+from modelo.vo.ClienteEstandarVO import *
+from modelo.vo.JuegosVO import *
+from modelo.vo.ArtistasVO import *
 from modelo.vo.ObrasVO import *
+from modelo.vo.ObjetosVO import *
+from modelo.vo.AudioguiasVO import *
+from modelo.vo.ExposicionesVO import *
+from modelo.vo.JuegosVO import *
+from modelo.vo.SalasVO import *
+from modelo.vo.CatalogoVO import *
+
 
 class Coordinador:
    def __init__(self):
@@ -82,7 +93,6 @@ class Coordinador:
          return True
       
    def validarJuego(self, juego: JuegosObrasVO, obra:ObrasVO) -> str:
-      print(self._model.comprobar_juego(juego, obra))
       return self._model.comprobar_juego(juego, obra)
       
    # def validarObra(self, obra: ObrasVO) -> bool:
@@ -94,3 +104,42 @@ class Coordinador:
 
    def obtener_todos_objetos(self):
       return self._model.select_objetos()
+
+   def actualizarSala(self, sala: SalasVO) -> None:
+      self._model.actualizar_sala(sala)
+
+   def actualizarArtista(self, artista: ArtistasVO) -> None:
+      self._model.actualizar_artista(artista)
+
+   def actualizarObjeto(self, objeto: ObjetosVO) -> None:
+      self._model.actualizar_objeto(objeto)
+
+   def actualizarObras(self, obra: ObrasVO) -> None:
+      self._model.actualizar_obra(obra)
+
+   def actualizarJuegos(self, juego: JuegosVO) -> None:
+      self._model.actualizar_juego(juego)
+
+   def actualizarCatalogo(self, catalogo: CatalogoVO) -> None:
+      self._model.actualizar_catalogo(catalogo)
+
+   def actualizarAudioguias(self, audioguia: AudioguiasVO) -> None:
+      self._model.actualizar_audioguia(audioguia)
+
+   def actualizarExposiciones(self, exposicion: ExposicionesVO) -> None:
+      self._model.actualizar_exposicion(exposicion)
+   
+
+#HAY QUE AÑADIR TODO LO DE ACTUALIZAR A COORDINADOR
+#actualizarSala
+#actualizarArtista
+#actualizarObjeto
+#actualizarObras
+#actualizarJuegos
+#actualizarCatalogo
+#actualizarAudioguia
+#actualizarExposiciones
+
+   def obtener_todas_obras(self):
+      return self._model.select_obras()
+   
