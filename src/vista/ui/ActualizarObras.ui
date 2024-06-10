@@ -18,9 +18,9 @@
     <property name="geometry">
      <rect>
       <x>760</x>
-      <y>550</y>
-      <width>161</width>
-      <height>41</height>
+      <y>540</y>
+      <width>191</width>
+      <height>51</height>
      </rect>
     </property>
     <property name="palette">
@@ -221,6 +221,14 @@
        </colorrole>
       </disabled>
      </palette>
+    </property>
+    <property name="font">
+     <font>
+      <family>Verdana</family>
+      <pointsize>12</pointsize>
+      <weight>75</weight>
+      <bold>true</bold>
+     </font>
     </property>
     <property name="cursor">
      <cursorShape>PointingHandCursor</cursorShape>
@@ -641,6 +649,48 @@ border-radius: 15px;</string>
      <string>🡸</string>
     </property>
    </widget>
+<<<<<<< HEAD
+   <widget class="QLabel" name="fondo">
+    <property name="geometry">
+     <rect>
+      <x>-100</x>
+      <y>-30</y>
+      <width>2001</width>
+      <height>1061</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Bell MT</family>
+      <pointsize>24</pointsize>
+      <weight>50</weight>
+      <bold>false</bold>
+     </font>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="pixmap">
+     <pixmap>../Imagenes/foto.png</pixmap>
+    </property>
+   </widget>
+   <zorder>fondo</zorder>
+   <zorder>BotonEditarSala</zorder>
+   <zorder>Titulo</zorder>
+   <zorder>Titulo_entrada</zorder>
+   <zorder>label_3</zorder>
+   <zorder>Descripcion_entrada</zorder>
+   <zorder>label_4</zorder>
+   <zorder>NumSala_entrada</zorder>
+   <zorder>label_6</zorder>
+   <zorder>IDArtista_entrada</zorder>
+   <zorder>Fecha_entrada</zorder>
+   <zorder>label_2</zorder>
+   <zorder>label_7</zorder>
+   <zorder>Imagen_entrada</zorder>
+   <zorder>label_8</zorder>
+   <zorder>BotonAtras</zorder>
+=======
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">
@@ -651,6 +701,7 @@ border-radius: 15px;</string>
      <height>26</height>
     </rect>
    </property>
+>>>>>>> 2aa75706c855b3f41f36b89ea4d37adb950de114
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
  </widget>

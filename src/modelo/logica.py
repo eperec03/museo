@@ -294,3 +294,7 @@ class Logica:
     def crear_objetos(self, objeto: ObjetosVO):
         objetos_dao = ObjetosDao()
         objetos_dao.insertObjeto(objeto)
+
+    def crear_obras(self, obras: ObrasVO):
+        obra_dao = ObrasDao()
+        obra_dao.insertObra(obras)

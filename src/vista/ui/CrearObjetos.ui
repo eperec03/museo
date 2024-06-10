@@ -48,7 +48,7 @@
      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:14pt; font-weight:600;&quot;&gt;Precio&lt;/span&gt;&lt;/p&gt;&lt;p align=&quot;center&quot;&gt;&lt;br/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
     </property>
    </widget>
-   <widget class="QLineEdit" name="Titulo_entrada">
+   <widget class="QLineEdit" name="NombreObjeto_entrada">
     <property name="geometry">
      <rect>
       <x>650</x>
@@ -116,7 +116,7 @@ background-color: rgb(208, 223, 232);</string>
      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:14pt; font-weight:600;&quot;&gt;Link de la imagen&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="BotonEditarExposicion">
+   <widget class="QPushButton" name="BotonCrearObjetos">
     <property name="geometry">
      <rect>
       <x>790</x>
@@ -676,12 +676,12 @@ background-color: rgb(208, 223, 232);</string>
    <zorder>fondo</zorder>
    <zorder>Titulo</zorder>
    <zorder>label_2</zorder>
-   <zorder>Titulo_entrada</zorder>
+   <zorder>NombreObjeto_entrada</zorder>
    <zorder>Imagen_entrada</zorder>
    <zorder>Precio_entrada</zorder>
    <zorder>label_8</zorder>
    <zorder>label_4</zorder>
-   <zorder>BotonEditarExposicion</zorder>
+   <zorder>BotonCrearObjetos</zorder>
    <zorder>Tipo_entrada</zorder>
    <zorder>label_3</zorder>
    <zorder>BotonAtras</zorder>
