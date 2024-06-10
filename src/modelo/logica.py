@@ -56,7 +56,6 @@ class Logica:
             messagebox.showwarning("Advertencia", "El email no es válido")
 
     def validar_registroEditor(self, mi_persona: EditorVO):
-        #habría que poner más cosas para validar el registtro?
         if '@' in mi_persona.get_UsuEmail():
             mi_persona_dao = EditorDAO()
             mi_persona_dao.insertEditor(mi_persona)

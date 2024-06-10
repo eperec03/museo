@@ -59,8 +59,7 @@ class VentanaServicioPremium(QtWidgets.QMainWindow):
         self.hide()
 
     def go_to_window_subastas(self):
-        self.ventana_registro = VentanaSubastas(ventana_anterior=self)
-        self.ventana_registro.setCoordinador(self.coordinador)
+        self.ventana_registro = VentanaSubastas(controlador=self.coordinador,ventana_anterior=self)
         self.ventana_registro.show()
         self.hide()   
 
