@@ -282,3 +282,11 @@ class Logica:
     def crear_exposiciones(self, exposicion: ExposicionesVO):
         exposicion_dao = ExposicionesDao()
         exposicion_dao.insertExposicion(exposicion)
+
+    def crear_juegos(self, juego: JuegosObrasVO):
+        juegos_dao = JuegosObrasDao()
+        juegos_dao.insertJuegosObras(juego)
+
+    def crear_objetos(self, objeto: ObjetosVO):
+        objetos_dao = ObjetosDao()
+        objetos_dao.insertObjeto(objeto)

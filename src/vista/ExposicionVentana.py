@@ -5,9 +5,8 @@ sys.path.append(r'c:\Users\clara\Documents\2ºUNI\2CUATRI\IS\src')
 import tkinter as tk
 from tkinter import messagebox
 from PyQt5 import QtWidgets, uic
-from PyQt5.QtWidgets import QMessageBox, QTableWidget, QMainWindow, QApplication, QWidget, QAction, QTableWidgetItem, QVBoxLayout, QHBoxLayout, QHeaderView, QLabel, QScrollArea
+from PyQt5.QtWidgets import QMessageBox, QTableWidget, QMainWindow, QApplication, QTableWidgetItem, QVBoxLayout, QHBoxLayout, QLabel, QSpacerItem, QSizePolicy
 from PyQt5.QtGui import QIcon
-from vista.MapaVentana import *
 from PyQt5 import QtCore
 from PyQt5.QtCore import pyqtSlot, Qt
 
@@ -26,7 +25,7 @@ class VentanaSala1(QtWidgets.QMainWindow):
 
     def initUI(self):
         # Crear una tabla
-        self.tableWidget = QTableWidget(self)
+        self.tableWidget = QTableWidget()
         self.tableWidget.setColumnCount(3)
         self.tableWidget.setRowCount(4)
 
@@ -55,37 +54,37 @@ class VentanaSala1(QtWidgets.QMainWindow):
 
         # Ajustar columnas para llenar el espacio disponible
         header = self.tableWidget.horizontalHeader()
-        header.setSectionResizeMode(QHeaderView.Stretch)
+        header.setSectionResizeMode(QtWidgets.QHeaderView.Stretch)
 
         # Ajustar el tamaño de la tabla
-        self.tableWidget.setGeometry(QtCore.QRect(0, 0, 100, 100))
-
-        # Envolver la tabla en un QScrollArea para hacerla scrollable
-        scroll_area = QScrollArea(self)
-        scroll_area.setWidgetResizable(True)
-        scroll_area.setWidget(self.tableWidget)
-        scroll_area.setMinimumSize(400, 200)
-        scroll_area.setGeometry(0, 0, 100, 100)
-
+        self.tableWidget.setMinimumSize(400, 200)
+        self.tableWidget.setMaximumSize(500, 300)
 
         # Buscar el layout principal definido en el archivo .ui
         central_widget = self.findChild(QtWidgets.QWidget, "centralwidget")
-        if central_widget is None:
+        if (central_widget is None):
             central_widget = QtWidgets.QWidget(self)
             self.setCentralWidget(central_widget)
         
-        layout = QVBoxLayout(central_widget)
-        central_widget.setLayout(layout)
+        main_layout = QVBoxLayout(central_widget)
+        central_widget.setLayout(main_layout)
 
-        # Agregar etiquetas (o cualquier otro widget) si las tienes
-        label1 = QLabel("Etiqueta 1", self)
-        layout.addWidget(label1)
+        # Añadir espaciadores para centrar verticalmente
+        main_layout.addItem(QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding))
 
-        label2 = QLabel("Etiqueta 2", self)
-        layout.addWidget(label2)
+        # Crear un layout horizontal para centrar la tabla
+        h_layout = QHBoxLayout()
 
-        # Añadir el QScrollArea al layout
-        layout.addWidget(scroll_area)
+        # Añadir espacios vacíos a la izquierda y derecha
+        h_layout.addItem(QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum))
+        h_layout.addWidget(self.tableWidget)
+        h_layout.addItem(QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum))
+
+        # Añadir el layout horizontal al layout principal
+        main_layout.addLayout(h_layout)
+
+        # Añadir espaciadores para centrar verticalmente
+        main_layout.addItem(QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding))
 
         # Aplica estilos a la tabla
         self.applyStyles()

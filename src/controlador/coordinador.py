@@ -164,3 +164,9 @@ class Coordinador:
 
    def crearExposiciones(self, exposicion: ExposicionesVO) -> None:
       self._model.crear_exposiciones(exposicion)
+
+   def crearJuegos(self, juego: JuegosObrasVO) -> None:
+      self._model.crear_juegos(juego)
+
+   def crearObjetos(self, objeto:ObjetosVO) -> None:
+      self._model.crear_objetos(objeto)
