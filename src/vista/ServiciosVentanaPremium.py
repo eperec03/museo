@@ -8,7 +8,7 @@ from PyQt5 import QtWidgets, uic
 from PyQt5.QtWidgets import QMessageBox
 from PyQt5.QtGui import QIcon
 from vista.MapaVentana import *
-from vista.LogicaPruebaScroll import *
+from vista.ExposicionVentana import *
 from vista.VentanaJuegos import *
 
 class VentanaServicioPremium(QtWidgets.QMainWindow):
@@ -24,6 +24,7 @@ class VentanaServicioPremium(QtWidgets.QMainWindow):
         self.BotonMapa.clicked.connect(self.go_to_window_mapa)
         self.BotonJuegos.clicked.connect(self.go_to_window_juegos)    
         # self.BotonCatalogo.clicked.connect(self.go_to_window_objetos)
+        self.BotonExposiciones.clicked.connect(self.go_to_window_exposiciones) 
         # self.BotonInicioS.clicked.connect(self.go_to_window_inicio)
         self.ventana_anterior=ventana_anterior
         self.BotonAtras.clicked.connect(self.go_back)
@@ -49,6 +50,12 @@ class VentanaServicioPremium(QtWidgets.QMainWindow):
     #     self.ventana_inicio.setCoordinador(self.coordinador)
     #     self.ventana_inicio.show()
     #     self.hide()
+
+    def go_to_window_exposiciones(self):
+        self.ventana_registro = VentanaExposiciones(ventana_anterior=self)
+        self.ventana_registro.setCoordinador(self.coordinador)
+        self.ventana_registro.show()
+        self.hide()
 
     # def go_to_window_inicio(self):
     #     self.ventana_inicio = ElegirUsuario()

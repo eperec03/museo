@@ -51,7 +51,7 @@ CREATE TABLE `audioguias` (
   `IDAudioguia` int NOT NULL auto_increment,
   `Titulo` varchar(30) not null unique,
   `IDObra` int NOT NULL,
-  `Audio` blob NOT NULL,
+  `Audio` varchar(1000) NOT NULL,
   `Duracion` time NOT NULL,
   PRIMARY KEY (`IDAudioguia`,`IDObra`),
   KEY `ObraAud_idx` (`IDObra`),
@@ -77,7 +77,7 @@ DROP TABLE IF EXISTS `catalogo`;
 CREATE TABLE `catalogo` (
   `IDCatalogo` int NOT NULL,
   `Titulo` varchar(30) not null unique,
-  `Imagen` blob NOT NULL,
+  `Imagen` varchar(1000) NOT NULL,
   PRIMARY KEY (`IDCatalogo`),
   CONSTRAINT `SerCat` FOREIGN KEY (`IDCatalogo`) REFERENCES `servicios` (`IDServicios`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
@@ -494,7 +494,7 @@ DROP TABLE IF EXISTS `exposiciones`;
 CREATE TABLE `exposiciones` (
   `IDExposiciones` int NOT NULL,
   `Titulo` varchar(45) NOT NULL,
-  `Imagen` blob NOT NULL,
+  `Imagen` varchar(1000) NOT NULL,
   `Descripcion` text(10000) null,
   `NumSala` int NOT NULL,
   PRIMARY KEY (`IDExposiciones`),
@@ -601,7 +601,7 @@ DROP TABLE IF EXISTS `mapa`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `mapa` (
   `IDMapa` int NOT NULL,
-  `imagen` blob NOT NULL,
+  `imagen` varchar(1000) NOT NULL,
   PRIMARY KEY (`IDMapa`),
   CONSTRAINT `SerMap` FOREIGN KEY (`IDMapa`) REFERENCES `servicios` (`IDServicios`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
@@ -684,7 +684,7 @@ CREATE TABLE `obras` (
   `Titulo` varchar(45) NOT NULL unique,
   `Descripcion` varchar(100) DEFAULT NULL,
   `Fecha` date NULL,
-  `Imagen` blob NOT NULL,
+  `Imagen` varchar(1000) NOT NULL,
   `IDArtista` int NOT NULL,
   `NumSala` int NOT NULL,
   PRIMARY KEY (`IDObra`),

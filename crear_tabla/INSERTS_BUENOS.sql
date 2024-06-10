@@ -27,12 +27,17 @@ VALUES
 INSERT INTO servicios (Nombre) VALUES ('Exposición de Picasso');
 INSERT INTO servicios (Nombre) VALUES ('Renacimiento Italiano');
 INSERT INTO servicios (Nombre) VALUES ('Frida Kahlo: Viva la Vida');
+INSERT INTO servicios (Nombre) VALUES ('Arte Moderno');
+INSERT INTO servicios (Nombre) VALUES ('Escultura Griega');
 
-INSERT INTO `exposiciones` (`IDExposiciones`, `Titulo`, `Imagen`, `NumSala`)
+
+INSERT INTO `exposiciones` (`IDExposiciones`, `Titulo`, `Imagen`, `Descripcion`, `NumSala`)
 VALUES 
-(2, 'Exposición de Picasso', 'C:\\ProgramData\\MySQL\\MySQL Server 8.0\\Uploads\\exposicion_picasso.jpg', 1),
-(3, 'Renacimiento Italiano', 'C:\\ProgramData\\MySQL\\MySQL Server 8.0\\Uploads\\exposicion_renacimientoitaliano.jpg', 2),
-(4, 'Frida Kahlo: Viva la Vida', 'C:\\ProgramData\\MySQL\\MySQL Server 8.0\\Uploads\\exposicion_frida.jpg', 3);
+(2, 'Exposición de Picasso', 'C:\\ProgramData\\MySQL\\MySQL Server 8.0\\Uploads\\exposicion_picasso.jpg', 'Disfruta de una colección única de obras maestras del renombrado artista Pablo Picasso.', 1),
+(3, 'Renacimiento Italiano', 'C:\\ProgramData\\MySQL\\MySQL Server 8.0\\Uploads\\exposicion_renacimientoitaliano.jpg', 'Explora el florecimiento del arte renacentista italiano y su impacto en la historia del arte europeo.', 2),
+(4, 'Frida Kahlo: Viva la Vida', 'C:\\ProgramData\\MySQL\\MySQL Server 8.0\\Uploads\\exposicion_frida.jpg', 'Sumérgete en la vida y obra de la icónica artista Frida Kahlo, una figura destacada del arte mexicano del siglo XX.', 3),
+(5, 'Arte Moderno', 'C:\\ProgramData\\MySQL\\MySQL Server 8.0\\Uploads\\exposicion_artemoderno.jpg', 'Explora la evolución del arte moderno a través de una colección ecléctica de obras maestras que abarcan desde el impresionismo hasta el arte contemporáneo.', 1),
+(6, 'Escultura Griega', 'C:\\ProgramData\\MySQL\\MySQL Server 8.0\\Uploads\\exposicion_esculturagriega.jpg', 'Sumérgete en la belleza y el significado de la escultura griega clásica, donde cada obra cuenta una historia única de la antigua civilización griega.', 2);
 
 INSERT INTO `obras` (`Titulo`, `Descripcion`, `Fecha`, `Imagen`, `IDArtista`, `NumSala`)
 VALUES 

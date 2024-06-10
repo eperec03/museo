@@ -163,9 +163,9 @@ class ArtistasDao(ArtistasInterface, Conexion):
             cursor.execute(self.SQL_FILTER_NOMBRE, (IDArtista,))
             row = cursor.fetchone()
             artista = None
-            if row:
-                IDArtista, FechaNac, FechaMuerte, Descripcion, Corriente = row
-                artista = ArtistasVO(IDArtista, FechaNac, FechaMuerte, Descripcion, Corriente)
+            if len(row)>0:
+                IDArtista, NombreArtista, FechaNac, FechaMuerte, Descripcion, Corriente = row
+                artista = ArtistasVO(IDArtista,NombreArtista, FechaNac, FechaMuerte, Descripcion, Corriente)
         except Error as e:
             print("Error al seleccionar artista:", e)
         finally:

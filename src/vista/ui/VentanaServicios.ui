@@ -244,7 +244,7 @@ border-radius: 15px;</string>
      <string>MAPA</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="BotonExposicioes">
+   <widget class="QPushButton" name="BotonExposiciones">
     <property name="geometry">
      <rect>
       <x>770</x>
@@ -1203,7 +1203,7 @@ border-radius: 15px;</string>
    </widget>
    <zorder>foto</zorder>
    <zorder>BotonMapa</zorder>
-   <zorder>BotonExposicioes</zorder>
+   <zorder>BotonExposiciones</zorder>
    <zorder>Titulo</zorder>
    <zorder>BotonCliP</zorder>
    <zorder>BotonJuegos</zorder>

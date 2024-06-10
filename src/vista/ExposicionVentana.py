@@ -1,38 +1,45 @@
+import os
 import sys
 sys.path.append(r'C:\Users\eripe\OneDrive\Documentos\ERI ULE\2º\SEGUNDO CUATRI\IS\PROYECTO\src')
 sys.path.append(r'c:\Users\clara\Documents\2ºUNI\2CUATRI\IS\src')
 from PyQt5 import QtWidgets, uic
-from PyQt5.QtWidgets import QTableWidget, QTableWidgetItem, QVBoxLayout, QHBoxLayout, QLabel, QSpacerItem, QSizePolicy, QApplication
+from PyQt5.QtWidgets import QTableWidget, QTableWidgetItem, QVBoxLayout, QHBoxLayout, QLabel, QSpacerItem, QSizePolicy, QApplication, QMessageBox
 from PyQt5.QtGui import QIcon, QPixmap
 from PyQt5.QtCore import Qt, pyqtSlot
 from controlador.coordinador import Coordinador
 from modelo.logica import Logica
 
 class VentanaExposiciones(QtWidgets.QMainWindow):
-    def __init__(self, controlador=None):
+    def __init__(self, controlador=None, ventana_anterior=None):
         super(VentanaExposiciones, self).__init__()
         uic.loadUi('src/vista/ui/VentanaExposiciones.ui', self)
         self.setWindowTitle("EXPOSICIONES")
-        self.setWindowIcon(QIcon('src/vista/Imagenes/logomuseo.png'))  
-
+        self.setWindowIcon(QIcon('src/vista/Imagenes/logomuseo.png'))
+        self.ventana_anterior = ventana_anterior
         # Almacena una referencia al controlador
         self.coordinador = controlador
-
+        self.BotonAtras.clicked.connect(self.go_back)
         # Llama al método para crear la tabla y configurar la interfaz de usuario
         self.initUI()
+
+    def setCoordinador(self, coord) -> None:
+        self.coordinador = coord
+
+    def go_back(self):
+        self.ventana_anterior.show()
+        self.destroy()
 
     def initUI(self):
         # Crear una tabla
         self.tableWidget = QTableWidget()
         self.tableWidget.setColumnCount(3)
-        self.tableWidget.setRowCount(4)  # Aquí tiene que haber el número de exposiciones que haya en la BD
 
         # Añadir títulos a las columnas
         self.tableWidget.setHorizontalHeaderLabels(["Título", "Descripción", "Imagen"])
 
         exposiciones = self.coordinador.obtener_todos_exposiciones()
         print(f"Fetched {len(exposiciones)} objects from the database.")
-
+        self.tableWidget.setRowCount(len(exposiciones))
         layout = QVBoxLayout()
 
         for row_index, exposicion in enumerate(exposiciones):
@@ -49,11 +56,22 @@ class VentanaExposiciones(QtWidgets.QMainWindow):
 
             if Imagen:
                 imagen_label = QLabel()
-                pixmap = QPixmap(Imagen)
-                imagen_label.setPixmap(pixmap)
-                imagen_label.setFixedSize(100, 100)
-                imagen_label.setScaledContents(True)
-                self.tableWidget.setCellWidget(row_index, 2, imagen_label)
+                imagen_path = os.path.abspath(Imagen)  # Convertir la ruta a una ruta absoluta
+                print(f"Loading image from: {imagen_path}")  # Verifica la ruta de la imagen
+
+                if os.path.exists(imagen_path):
+                    pixmap = QPixmap(imagen_path)
+                    if not pixmap.isNull():
+                        pixmap = pixmap.scaled(100, 100, Qt.KeepAspectRatio, Qt.SmoothTransformation)
+                        imagen_label.setPixmap(pixmap)
+                        imagen_label.setAlignment(Qt.AlignCenter)
+                        self.tableWidget.setCellWidget(row_index, 2, imagen_label)
+                    else:
+                        print(f"Error: Could not load image from path: {imagen_path}")
+                        self.tableWidget.setItem(row_index, 2, QTableWidgetItem("No Image"))
+                else:
+                    print(f"Error: Image file does not exist at path: {imagen_path}")
+                    self.tableWidget.setItem(row_index, 2, QTableWidgetItem("No Image"))
             else:
                 print("Error: Image path is None for object:", Titulo)
 
@@ -69,15 +87,18 @@ class VentanaExposiciones(QtWidgets.QMainWindow):
         header.setSectionResizeMode(QtWidgets.QHeaderView.Stretch)
 
         # Ajustar el tamaño de la tabla
-        self.tableWidget.setMinimumSize(1000, 200)
-        self.tableWidget.setMaximumSize(1000, 800)
+        self.tableWidget.setMinimumSize(1000, 500)
+        self.tableWidget.setMaximumSize(1500, 500)
+
+        # Ajustar el tamaño de las filas
+        self.tableWidget.verticalHeader().setDefaultSectionSize(100)
 
         # Buscar el layout principal definido en el archivo .ui
         central_widget = self.findChild(QtWidgets.QWidget, "centralwidget")
         if not central_widget:
             central_widget = QtWidgets.QWidget(self)
             self.setCentralWidget(central_widget)
-        
+
         main_layout = QVBoxLayout(central_widget)
         central_widget.setLayout(main_layout)
 
@@ -104,7 +125,7 @@ class VentanaExposiciones(QtWidgets.QMainWindow):
     def applyStyles(self):
         self.tableWidget.setStyleSheet("""
             QTableWidget {
-                border: 2px solid rgb(208, 223, 232);  
+                border: 2px solid rgb(255, 250, 255);  
                 border-radius: 15px;  
                 background-color: rgb(67, 157, 175);
                 gridline-color: #DADADA;
@@ -113,12 +134,12 @@ class VentanaExposiciones(QtWidgets.QMainWindow):
                 background-color: rgb(67, 157, 175); 
                 color: #333333;
                 padding: 4px;
-                border: 1px solid rgb(208, 223, 232); 
+                border: 1px solid rgb(255, 250, 255); 
             }
             QTableWidget::item {
                 padding: 5px;
                 border: none;
-                background-color: rgb(67, 157, 175);  
+                background-color: rgb(250, 255, 255);  
                 color: #333333;
             }
             QTableWidget::item:selected {
@@ -133,9 +154,6 @@ class VentanaExposiciones(QtWidgets.QMainWindow):
         for currentQTableWidgetItem in self.tableWidget.selectedItems():
             print(currentQTableWidgetItem.row(), currentQTableWidgetItem.column(), currentQTableWidgetItem.text())
 
-    def setCoordinador(self, coord) -> None:
-        self.coordinador = coord
-
     @staticmethod
     def mostrar_advertencia(ex):
         mensaje = QMessageBox()
@@ -144,12 +162,3 @@ class VentanaExposiciones(QtWidgets.QMainWindow):
         mensaje.setInformativeText(str(ex))
         mensaje.setWindowTitle("Advertencia")
         mensaje.exec()
-
-if __name__ == '__main__':
-    app = QApplication(sys.argv)
-    c = Coordinador()
-    logica = Logica()
-    c.setModel(logica)
-    ex = VentanaExposiciones(controlador=c)
-    ex.show()  
-    sys.exit(app.exec_())
