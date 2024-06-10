@@ -551,7 +551,7 @@ border-radius: 15px;</string>
      <string>Obra</string>
     </property>
    </widget>
-   <widget class="QLineEdit" name="lineJuego">
+   <widget class="QLineEdit" name="lineNombre">
     <property name="geometry">
      <rect>
       <x>510</x>
@@ -821,7 +821,7 @@ border-radius: 15px;</string>
      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:12pt; font-weight:600;&quot;&gt;BUSCADOR POR OBRA&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
     </property>
    </widget>
-   <widget class="QLineEdit" name="lineJuego_2">
+   <widget class="QLineEdit" name="lineObra">
     <property name="geometry">
      <rect>
       <x>810</x>

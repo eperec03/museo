@@ -3,7 +3,7 @@ from typing import List
 
 import sys
 sys.path.append(r'C:\Users\eripe\OneDrive\Documentos\ERI ULE\2º\SEGUNDO CUATRI\IS\PROYECTO\src\modelo')
-sys.path.append(r'c:\Users\clara\Documents\2ºUNI\2CUATRI\IS\museoTrabajo\src\modelo')
+sys.path.append(r'c:\Users\clara\Documents\2ºUNI\2CUATRI\IS\museo\src\modelo')
 
 from vo.JuegosVO import * 
 from dao.JuegosDAO import *
@@ -18,6 +18,7 @@ class JuegosObrasDao(JuegosObrasInterface, Conexion):
     SQL_DELETE = "DELETE FROM JuegosObras WHERE IDJuegoObra = ?"
     SQL_UPDATE = "UPDATE JuegosObras SET IDObra= ? WHERE IDJuegoObra = ?"
     SQL_FILTER = "SELECT * FROM JuegosObras WHERE IDJuegoObra = ?"
+    SQL_FILTER2 = "SELECT * FROM JuegosObras WHERE IDObra = ?"
     SQL_SELECT_SERV = "SELECT IDServicios FROM servicios WHERE Nombre = ?"
     SQL_FILTER_JUEGO_GETALL = "SELECT Nombre FROM Juegos WHERE IDJuego = ?"
     SQL_DELETE_SERV = "DELETE FROM Servicios WHERE IDServicios = ?"
@@ -64,10 +65,11 @@ class JuegosObrasDao(JuegosObrasInterface, Conexion):
         conexion = self.closeConnection(conn)
         return juegosObras
     
-    def getJuegoObras(self,Titulo) -> JuegosObrasVO:
+    def getJuegoObras(self,Titulo) -> List[JuegosObrasVO]:
         conexion = self.getConnection()
         conn = None
         cursor = None
+        juegos = []
         try:
             if conexion:
                 conn = conexion
@@ -90,6 +92,8 @@ class JuegosObrasDao(JuegosObrasInterface, Conexion):
             juegoObras.set_Dificultad(juego_vo.get_Dificultad())
             juegoObras.set_Descripcion(juego_vo.get_Descripcion())
             juegoObras.set_ruta(juego_vo.get_ruta())
+            juegos.append(juegoObras)
+
         except Error as e:
             print("Error al seleccionar JuegosObras:", e)
         #Se ejecuta siempre
@@ -98,7 +102,47 @@ class JuegosObrasDao(JuegosObrasInterface, Conexion):
                 #Cierra el cursor para liberar recursos
                 cursor.close()
         conexion = self.closeConnection(conn)
-        return juegoObras
+        return juegos
+
+    def getJuegoO(self,Titulo, IDObra) -> List[JuegosObrasVO]:
+        conexion = self.getConnection()
+        conn = None
+        cursor = None
+        juegos = []
+        try:
+            if conexion:
+                conn = conexion
+            else:
+                print("La base de datos no esta disponible")
+            #Crea un objeto para poder ejecutar consultas SQL sobre la conexion abierta
+            cursor = conn.cursor()
+            #Ejecuta de consulta SQL
+            #Primero, obtiene los datos de la tabla Juegos. Obtengamos su informacion:
+            juegos_dao=JuegosDao()
+            juego_vo=juegos_dao.getJuego(Titulo)
+            #En juegovo tenemos los atributos de la tabla Juegos...
+            cursor.execute(self.SQL_FILTER2, (IDObra,)) #Obtiene todas las filas resultantes de la consulta
+            row = cursor.fetchall()
+            juegoObras = JuegosObrasVO()
+            if len(row)>0:
+                IDJuegoObra = row[0]  #Al filtrar por la clave primaria, solo hay 1 resultado almacenado en la 1º pos
+                juegoObras.set_IDJuego(IDJuegoObra)
+                juegoObras.set_IDObra(IDObra)
+                juegoObras.set_Nombre(juego_vo.get_Nombre())
+                juegoObras.set_Dificultad(juego_vo.get_Dificultad())
+                juegoObras.set_Descripcion(juego_vo.get_Descripcion())
+                juegoObras.set_ruta(juego_vo.get_ruta())
+                juegos.append(juegoObras)
+
+        except Error as e:
+            print("Error al seleccionar JuegosObras:", e)
+        #Se ejecuta siempre
+        finally:
+            if cursor:
+                #Cierra el cursor para liberar recursos
+                cursor.close()
+        conexion = self.closeConnection(conn)
+        return juegos
     
     def insertJuegosObras (self, juegosObras: JuegosObrasVO) -> int:
         conexion = self.getConnection()
@@ -200,20 +244,38 @@ class JuegosObrasDao(JuegosObrasInterface, Conexion):
 
         return rows
     
-a=JuegosObrasDao()
+# b=JuegosObrasDao()
+# # b=JuegosObrasVO()
+# # b.set_Nombre('Snake')
+# # b.set_Dificultad('Imposible')
+# # b.set_Descripcion('Serpiente manzana ñam ñam')
+# # b.set_ruta(r"C:\Users\clara\Documents\2ºUNI\2CUATRI\IS\museo\src\vista\JuegoSerpiente2.py")
+# # b.set_IDObra('2')
+# c=JuegosObrasVO()
+# c.set_Nombre('Snake')
+# c.set_Dificultad('Fácil')
+# c.set_Descripcion('Serpiente manzana ñam ñam')
+# c.set_ruta(r"C:\Users\clara\Documents\2ºUNI\2CUATRI\IS\museo\src\vista\JuegoSerpiente3.py")
+# c.set_IDObra('3')
+# # a.insertJuegosObras(b)
+# # b=JuegosObrasVO()
+# # b.set_Nombre('Snake')
+# # b.set_Dificultad('Facilon')
+# # b.set_Descripcion('Serpiente manzana ñom ñom')
+# # b.set_ruta('/MiCasa')
+# # b.set_IDObra('3')
+# # a.updateJuegosObras(b)
+# # a.deleteJuegosObras('Snake')
+# print(b.getJuegosObras())
+# c=JuegosObrasDao()
 # b=JuegosObrasVO()
 # b.set_Nombre('Snake')
 # b.set_Dificultad('Imposible')
 # b.set_Descripcion('Serpiente manzana ñam ñam')
-# b.set_ruta('/Escritorio')
-# b.set_IDObra('2')
-# a.insertJuegosObras(b)
-# b=JuegosObrasVO()
-# b.set_Nombre('Snake')
-# b.set_Dificultad('Facilon')
-# b.set_Descripcion('Serpiente manzana ñom ñom')
-# b.set_ruta('/MiCasa')
+# b.set_ruta(r"C:\Users\clara\Documents\2ºUNI\2CUATRI\IS\museo\src\vista\JuegoSerpiente3.py")
 # b.set_IDObra('3')
-# a.updateJuegosObras(b)
-# a.deleteJuegosObras('Snake')
-# print(a.getJuegosObras())
+# c.insertJuegosObras(b)
+# b = JuegosObrasDao()
+# print(b.getJuegosObras()[1].get_ruta())
+# print(b.getJuegoO('snake','2'))
+# print(b.getJuegoO('snake','2')[0].get_Nombre())

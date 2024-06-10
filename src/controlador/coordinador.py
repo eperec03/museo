@@ -5,7 +5,7 @@ sys.path.append(r'c:\Users\clara\Documents\2ºUNI\2CUATRI\IS\museo\src')
 from modelo.vo.UsuariosVO import *
 from modelo.vo.ClienteEstandarVO import *
 from modelo.vo.JuegosVO import *
-
+from modelo.vo.ObrasVO import *
 
 class Coordinador:
    def __init__(self):
@@ -73,17 +73,21 @@ class Coordinador:
    def actualizarUsuario(self, usuario: ClientePremiumVO) -> None:
       self._model.actualizar_registro(usuario)
 
-   def registrarEntrada(self, usuario: ClienteEstandarVO) -> bool:
-      if self._model.validar_entrada(usuario):
+   def registrarEntrada(self, entrada: ClienteEstandarVO) -> bool:
+      if self._model.validar_entrada(entrada):
          return True      
 
    def validarUsuario(self, usuario: ClientePremiumVO) -> bool:
       if self._model.comprobar_cliente(usuario):
          return True
       
-   def validarJuego(self, usuario: JuegosObrasVO) -> bool:
-      if self._model.comprobar_juego(usuario):
-         return True
+   def validarJuego(self, juego: JuegosObrasVO, obra:ObrasVO) -> str:
+      print(self._model.comprobar_juego(juego, obra))
+      return self._model.comprobar_juego(juego, obra)
+      
+   # def validarObra(self, obra: ObrasVO) -> bool:
+   #    if self._model.comprobar_obra(obra):
+   #       return True
 
    def registrarEditor(self, usuario: EditorVO) -> None:
       self._model.validar_registro(usuario)

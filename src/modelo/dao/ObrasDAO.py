@@ -64,6 +64,7 @@ class ObrasDao(ObrasInterface, Conexion):
         conexion = self.getConnection()
         conn = None
         cursor = None
+        obras = []
         try:
             if conexion:
                 conn = conexion
@@ -84,6 +85,7 @@ class ObrasDao(ObrasInterface, Conexion):
             obra.setFecha(Fecha)
             obra.setIdArtista(IdArtista)
             obra.setNumSala(NumSala)
+            obras.append(obra)
         except Error as e:
             print("Error al seleccionar obra:", e)
         #Se ejecuta siempre
@@ -92,7 +94,7 @@ class ObrasDao(ObrasInterface, Conexion):
                 #Cierra el cursor para liberar recursos
                 cursor.close()
         conexion = self.closeConnection(conn)
-        return obra
+        return obras
     
     def getObraId(self,titulo) -> ObrasVO:
         conexion = self.getConnection()

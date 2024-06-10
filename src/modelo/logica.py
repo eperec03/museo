@@ -13,6 +13,7 @@ from controlador.coordinador import Coordinador
 from dao.ObjetosDAO import *
 from modelo.vo.JuegosVO import *
 from dao.JuegosObrasDAO import *
+from dao.ObrasDAO import *
 
 class Logica:
     def __init__(self):
@@ -71,14 +72,13 @@ class Logica:
             if error==1:
                 messagebox.showwarning("Advertencia", "Contraseña incorrecta")
 
-    def comprobar_juego(self, mi_juego: JuegosObrasVO):
+    def comprobar_juego(self, mi_juego: JuegosObrasVO, mi_obra: ObrasVO):
         mi_juego_dao = JuegosObrasDao()
-        error=1
-        if len(mi_juego_dao.getJuegoObras(mi_juego.get_Nombre()))==0:
-            messagebox.showwarning("Advertencia", "No existe ese juego")
+        mi_obra_dao = ObrasDao()
+        if len(mi_juego_dao.getJuegoO(mi_juego.get_Nombre(), mi_obra_dao.getObraTitulo(mi_obra.getTitulo())[0].getIdObra()))==0:
+            messagebox.showwarning("Advertencia", "No existe ese juego para esa obra")
         else:
-            return True
-
+            return mi_juego_dao.getJuegoO(mi_juego.get_Nombre(), mi_obra_dao.getObraTitulo(mi_obra.getTitulo())[0].getIdObra())[0].get_ruta()
 
     def select_objetos(self):
         a=ObjetosDao()
