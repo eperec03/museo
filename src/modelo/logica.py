@@ -204,8 +204,6 @@ class Logica:
     def select_subastas(self):
         a=SubastasDao()
         return a.getSubastas()
-
-    def select_obras(self):
     
     def select_obras_1(self):
         a=ObrasDao()
