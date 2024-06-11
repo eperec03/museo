@@ -2,8 +2,8 @@ from jaydebeapi import Error
 from typing import List
 
 import sys
-sys.path.append(r'C:\Users\eripe\OneDrive\Documentos\ERI ULE\2º\SEGUNDO CUATRI\IS\PROYECTO\src\modelo')
-sys.path.append(r'c:\Users\clara\Documents\2ºUNI\2CUATRI\IS\museo\src\modelo')
+sys.path.append(r'C:\Users\eripe\Downloads\EntregaFinal\museo\src\modelo')
+# sys.path.append(r'c:\Users\clara\Documents\2ºUNI\2CUATRI\IS\museo\src\modelo')
 
 from vo.JuegosVO import * 
 from dao.JuegosDAO import *
@@ -126,7 +126,7 @@ class JuegosObrasDao(JuegosObrasInterface, Conexion):
             row = cursor.fetchall()
             juegoObras = JuegosObrasVO()
             if len(row)>0:
-                IDJuegoObra = row[0]  #Al filtrar por la clave primaria, solo hay 1 resultado almacenado en la 1º pos
+                IDJuegoObra,IDObra = row[0]  #Al filtrar por la clave primaria, solo hay 1 resultado almacenado en la 1º pos
                 juegoObras.set_IDJuego(IDJuegoObra)
                 juegoObras.set_IDObra(IDObra)
                 juegoObras.set_Nombre(juego_vo.get_Nombre())
@@ -245,20 +245,20 @@ class JuegosObrasDao(JuegosObrasInterface, Conexion):
 
         return rows
     
-a=JuegosObrasDao()
-b=JuegosObrasVO()
-b.set_Nombre('Snake')
-b.set_Dificultad('Imposible')
-b.set_Descripcion('Serpiente manzana ñam ñam')
-b.set_ruta(r"C:\Users\clara\Documents\2ºUNI\2CUATRI\IS\museo\src\vista\JuegoSerpiente2.py")
-b.set_IDObra('2')
-# c=JuegosObrasVO()
-# c.set_Nombre('Snake')
-# c.set_Dificultad('Fácil')
-# c.set_Descripcion('Serpiente manzana ñam ñam')
-# c.set_ruta(r"C:\Users\clara\Documents\2ºUNI\2CUATRI\IS\museo\src\vista\JuegoSerpiente3.py")
-# c.set_IDObra('3')
-a.insertJuegosObras(b)
+# a=JuegosObrasDao()
+# b=JuegosObrasVO()
+# b.set_Nombre('Snake')
+# b.set_Dificultad('Imposible')
+# b.set_Descripcion('Serpiente manzana ñam ñam')
+# b.set_ruta(r"C:\Users\eripe\Downloads\EntregaFinal\museo\src\vista\JuegoSerpiente2.py")
+# b.set_IDObra('2')
+# # c=JuegosObrasVO()
+# # c.set_Nombre('Snake')
+# # c.set_Dificultad('Fácil')
+# # c.set_Descripcion('Serpiente manzana ñam ñam')
+# # c.set_ruta(r"C:\Users\clara\Documents\2ºUNI\2CUATRI\IS\museo\src\vista\JuegoSerpiente3.py")
+# # c.set_IDObra('3')
+# a.insertJuegosObras(b)
 # # b=JuegosObrasVO()
 # # b.set_Nombre('Snake')
 # # b.set_Dificultad('Facilon')

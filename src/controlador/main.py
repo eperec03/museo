@@ -5,13 +5,12 @@
 # guardamos la ventana en la carpeta vista
 import sys
 ruta_modulo = r'ruta'
-sys.path.append(r'C:\Users\eripe\OneDrive\Documentos\ERI ULE\2º\SEGUNDO CUATRI\IS\PROYECTO\src')
-sys.path.append(r'c:\Users\clara\Documents\2ºUNI\2CUATRI\IS\museo\src')
+sys.path.append(r'C:\Users\eripe\Downloads\EntregaFinal\museo\src')
+# sys.path.append(r'C:\Users\eripe\OneDrive\Documentos\ERI ULE\2º\SEGUNDO CUATRI\IS\PROYECTO\src')
+# sys.path.append(r'c:\Users\clara\Documents\2ºUNI\2CUATRI\IS\museo\src')
 
 from PyQt5 import QtWidgets, uic
 
-from vista.RegistroClientePVentana import *
-from vista.RegistroEntradaVentana import *
 from vista.InicioVentana import *
 
 from controlador.coordinador import Coordinador
@@ -23,19 +22,20 @@ if __name__ == "__main__":
     app = QtWidgets.QApplication(sys.argv)
     # ventanaRegistro = RegistroClientePVentana()
     # ventanaRegistroEntrada = RegistroEntradaVentana()
-    ventanaInicio = InicioVentana()
+    logica = Logica()
+    controlador = Coordinador()
+    controlador.setModel(logica)
+    ventanaInicio = InicioVentana(controlador=controlador)
+    ventanaInicio.setCoordinador(controlador)
     # ventanaEliminarUsuario = EliminarUsuarioVentana()
     # ventanaActualizarUsuario = ActualizarUsuarioVentana()
     ##################################################################################################################
     #TODAVIA NO LE HE PUESTO QUE SE VEAN LAS VENTANAS DE ELIMINAR Y ACTUALIZAR, HAY QUE IRLAS CAMBIANDO PARA PROBARLAS
     ##################################################################################################################
-    logica = Logica()
-    controlador = Coordinador()
 
     # A cada ventana hay que asignarle un coordinador. Un mismo controlador puede controlar varias ventanas
     # ventanaRegistro.setCoordinador(controlador)
     # ventanaRegistroEntrada.setCoordinador(controlador)
-    ventanaInicio.setCoordinador(controlador)
 
     # ventanaEliminarUsuario.setCoordinador(controlador)
     # ventanaActualizarUsuario.setCoordinador(controlador)
@@ -49,7 +49,6 @@ if __name__ == "__main__":
 
 
     # Al coordinador también hay que asignarle la lógica del modelo
-    controlador.setModel(logica)
 
     #Para comenzar con la pantalla de inicio: True aparece la pantalla y False la destruye
     # ventanaRegistro.setVisible(True)

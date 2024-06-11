@@ -2,8 +2,9 @@ from jaydebeapi import Error
 from typing import List
 
 import sys
-sys.path.append(r'C:\Users\eripe\OneDrive\Documentos\ERI ULE\2º\SEGUNDO CUATRI\IS\PROYECTO\src\modelo')
-sys.path.append(r'c:\Users\clara\Documents\2ºUNI\2CUATRI\IS\museo\src\modelo')
+sys.path.append(r'C:\Users\eripe\Downloads\EntregaFinal\museo\src\modelo')
+# sys.path.append(r'C:\Users\eripe\OneDrive\Documentos\ERI ULE\2º\SEGUNDO CUATRI\IS\PROYECTO\src\modelo')
+# sys.path.append(r'c:\Users\clara\Documents\2ºUNI\2CUATRI\IS\museo\src\modelo')
 
 from vo.JuegosVO import *
 from conexion.conexion2JDBC import Conexion
@@ -18,7 +19,7 @@ class JuegosDao(JuegosInterface, Conexion):
     SQL_SELECT_SERV = "SELECT * FROM Servicios WHERE Nombre = ?"
     SQL_DELETE_SERV = "DELETE FROM Juegos WHERE IdJuego = ?"
     SQL_UPDATE = "UPDATE juegos SET Nombre= ?, Dificultad= ?, Descripcion = ? WHERE IdJuego = ?"
-    SQL_FILTER = "SELECT * FROM juegos WHERE IdJuego = ?"
+    SQL_FILTER = "SELECT * FROM juegos WHERE Nombre = ?"
 
 
     def getJuegos(self) -> List[JuegosVO]:
@@ -184,6 +185,6 @@ class JuegosDao(JuegosInterface, Conexion):
 
         return rows
     
-a=JuegosDao()
-print(a.deleteJuego('26'))
+# a=JuegosDao()
+# print(a.deleteJuego('26'))
 # # print(a.getJuego('Memory de Arte'))

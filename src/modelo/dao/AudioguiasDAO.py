@@ -169,15 +169,15 @@ class AudioguiasDao(AudioguiasInterface, Conexion):
 
         return rows
 
-a=AudioguiasDao()
-b=AudioguiasVO()
-b.setTitulo('AUDIO1')
-b.setIdObra(1)
-b.setDuracion('01:15:00')
-b.setAudio('55')
-a.insertAudioguia(b)
-print(str(a.getAudioguia('AUDIO1').Duracion))
-# a.deleteAudioguia('AUDIO1')
+# a=AudioguiasDao()
+# b=AudioguiasVO()
+# b.setTitulo('AUDIO1')
+# b.setIdObra(1)
+# b.setDuracion('01:15:00')
+# b.setAudio('55')
+# a.insertAudioguia(b)
+# print(str(a.getAudioguia('AUDIO1').Duracion))
+# # a.deleteAudioguia('AUDIO1')
 
 
 

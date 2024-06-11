@@ -2,8 +2,10 @@ from jaydebeapi import Error
 from typing import List
 
 import sys
-sys.path.append(r'C:\Users\eripe\OneDrive\Documentos\ERI ULE\2º\SEGUNDO CUATRI\IS\PROYECTO\src\modelo')
-sys.path.append(r'c:\Users\clara\Documents\2ºUNI\2CUATRI\IS\museo\src\modelo')
+sys.path.append(r'C:\Users\eripe\Downloads\EntregaFinal\museo\src\modelo')
+
+# sys.path.append(r'C:\Users\eripe\OneDrive\Documentos\ERI ULE\2º\SEGUNDO CUATRI\IS\PROYECTO\src\modelo')
+# sys.path.append(r'c:\Users\clara\Documents\2ºUNI\2CUATRI\IS\museo\src\modelo')
 
 from vo.UsuariosVO import * 
 from dao.UsuarioDAO import *

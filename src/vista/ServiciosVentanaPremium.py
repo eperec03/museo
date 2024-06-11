@@ -1,6 +1,7 @@
 import sys
+sys.path.append(r'C:\Users\eripe\Downloads\EntregaFinal\museo\src\modelo')
 # #sys.path.append(r'C:\Users\eripe\OneDrive\Documentos\ERI ULE\2º\SEGUNDO CUATRI\IS\PROYECTO\src\modelo')
-sys.path.append(r'c:\Users\clara\Documents\2ºUNI\2CUATRI\IS\museo\src')
+# sys.path.append(r'c:\Users\clara\Documents\2ºUNI\2CUATRI\IS\museo\src')
 
 import tkinter as tk
 from tkinter import messagebox
@@ -48,17 +49,20 @@ class VentanaServicioPremium(QtWidgets.QMainWindow):
         self.hide()
 
     def go_to_window_objetos(self):
-        self.ventana_inicio = VentanaCatalogo(controlador=self.coordinador,ventana_anterior=self)
+        self.ventana_inicio = VentanaCatalogo(ventana_anterior=self)
+        self.ventana_registro.setCoordinador(self.coordinador)
         self.ventana_inicio.show()
         self.hide()
 
     def go_to_window_exposiciones(self):
         self.ventana_registro = VentanaExposiciones(controlador=self.coordinador, ventana_anterior=self)
+        self.ventana_registro.setCoordinador(self.coordinador)
         self.ventana_registro.show()
         self.hide()
 
     def go_to_window_subastas(self):
         self.ventana_registro = VentanaSubastas(controlador=self.coordinador,ventana_anterior=self)
+        self.ventana_registro.setCoordinador(self.coordinador)
         self.ventana_registro.show()
         self.hide()   
 

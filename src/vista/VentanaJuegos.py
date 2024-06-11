@@ -1,5 +1,6 @@
 import sys
-# #sys.path.append(r'C:\Users\eripe\OneDrive\Documentos\ERI ULE\2º\SEGUNDO CUATRI\IS\PROYECTO\src\modelo')
+sys.path.append(r'C:\Users\eripe\Downloads\EntregaFinal\museo\src\modelo')
+# sys.path.append(r'C:\Users\eripe\OneDrive\Documentos\ERI ULE\2º\SEGUNDO CUATRI\IS\PROYECTO\src\modelo')
 sys.path.append(r'c:\Users\clara\Documents\2ºUNI\2CUATRI\IS\src')
 import os
 
@@ -61,8 +62,10 @@ class VentanaJuegos(QtWidgets.QMainWindow):
             obra = ObrasVO(
                 Titulo = self.lineObra.text(),
             )
+            print(self.coordinador)
             a = self.coordinador.validarJuego(juegos, obra)
-            if a is not None:           
+            if a is not None:
+                print('HELLO')           
                 self.go_to_snake(ruta=a)
                     
         except Exception as ex:

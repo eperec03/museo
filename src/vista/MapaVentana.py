@@ -1,5 +1,6 @@
 import sys
-sys.path.append(r'C:\Users\eripe\OneDrive\Documentos\ERI ULE\2º\SEGUNDO CUATRI\IS\PROYECTO\src')
+sys.path.append(r'C:\Users\eripe\Downloads\EntregaFinal\museo\src')
+# sys.path.append(r'C:\Users\eripe\OneDrive\Documentos\ERI ULE\2º\SEGUNDO CUATRI\IS\PROYECTO\src')
 sys.path.append(r'c:\Users\clara\Documents\2ºUNI\2CUATRI\IS\src')
 
 import tkinter as tk
@@ -8,7 +9,6 @@ from modelo.vo.SalasVO import *
 from PyQt5 import QtWidgets, uic
 from PyQt5.QtWidgets import QMessageBox
 from PyQt5.QtGui import QIcon
-from vista.ServiciosVentana import *
 from vista.SalaVentana import *
 from vista.SalaVentana_2 import *
 
